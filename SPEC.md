@@ -28,8 +28,8 @@ Taco is a transparent HTTP proxy for Large Language Model APIs (Claude and OpenA
 ## Architecture
 
 ```
-Client � Taco Proxy � Upstream API (Claude/OpenAI)
-              �
+Client � Taco Proxy � Upstream API (Claude/OpenAI)
+              �
          Recording Store
 ```
 
@@ -43,7 +43,7 @@ Client � Taco Proxy � Upstream API (Claude/OpenAI)
 
 ## Request Flow
 
-1. Client sends request to Taco (e.g., `http://localhost:8080/v1/messages`)
+1. Client sends request to Taco (e.g., `http://localhost:4567/v1/messages`)
 2. Taco identifies the target API from configuration
 3. Request body and headers are captured
 4. Request is forwarded to upstream API
@@ -99,12 +99,16 @@ Configuration via JSON file or environment variables:
 
 ```json
 {
-  "port": 8080,
+  "port": 4567,
   "recording": {
     "enabled": true,
     "storage": "file", // we will add more storage options in the future
     "path": "./recordings",
     "format": "jsonl"
+  },
+  "logging": {
+    "format": "pretty",
+    "level": "info"
   },
   "providers": {
     "claude": {
@@ -119,7 +123,7 @@ Configuration via JSON file or environment variables:
 
 ### Environment Variables
 
-- `TACO_PORT` - Server port (default: 8080)
+- `TACO_PORT` - Server port (default: 4567)
 - `TACO_RECORDING_ENABLED` - Enable/disable recording (default: true)
 - `TACO_RECORDING_PATH` - Path to store recordings (default: ./recordings)
 - `TACO_CLAUDE_UPSTREAM` - Claude upstream URL
@@ -130,7 +134,7 @@ Configuration via JSON file or environment variables:
 ### Start Server
 
 ```bash
-taco start [--port 8080] [--config ./config.json]
+taco start [--port 4567] [--config ./config.json]
 ```
 
 Starts the proxy server.
@@ -188,7 +192,28 @@ Displays a specific recording in formatted output.
 
 ### Observability
 - Health check endpoint: `GET /health`
-- Structured logging (slog)
+
+### Logging
+
+Taco uses structured logging (Go's `log/slog` package) with three configurable output formats:
+
+**Pretty Format (default)**: Custom human-readable handler with:
+- Color-coded log levels with visual symbols (▪ debug, ◆ info, ▲ warn, ● error)
+- Special formatting for proxy request logs with taco symbol ⛁
+- Provider-specific colored symbols (◆ claude in orange, ● openai in green)
+- Human-readable duration formatting (ms/s/m)
+- Status code color coding (green 2xx, blue 3xx, yellow 4xx, red 5xx)
+- Request log format: `[TIME] ⛁ [ID] [PROVIDER] [DURATION] [STATUS] [PATH]`
+
+**JSON Format**: Standard structured JSON output for log aggregation systems
+
+**Plain Format**: Standard text format with key=value pairs
+
+Example pretty request log:
+```
+[14:23:45] ⛁ a1b2c3d4 ◆ claude 1.2s 200 /v1/messages
+[14:23:46] ◆ info taco proxy server started port=4567 recording=true
+```
 
 ## Future Enhancements (don't implement yet)
 

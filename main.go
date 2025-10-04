@@ -4,16 +4,22 @@ import (
 	"context"
 	"flag"
 	"fmt"
+	"log/slog"
 	"os"
 	"os/signal"
 	"syscall"
 
 	"github.com/jpoz/taco/internal/commands"
 	"github.com/jpoz/taco/internal/config"
+	"github.com/jpoz/taco/internal/logger"
 	"github.com/jpoz/taco/internal/server"
 )
 
 func main() {
+	// Initialize default logger for commands
+	log := logger.NewLogger("pretty", "info", os.Stdout)
+	slog.SetDefault(log)
+
 	if len(os.Args) < 2 {
 		printUsage()
 		os.Exit(1)
@@ -27,23 +33,23 @@ func main() {
 		startCommand(args)
 	case "export":
 		if err := commands.Export(args); err != nil {
-			fmt.Fprintf(os.Stderr, "Export error: %v\n", err)
+			slog.Error("export failed", "error", err)
 			os.Exit(1)
 		}
 	case "stats":
 		if err := commands.Stats(args); err != nil {
-			fmt.Fprintf(os.Stderr, "Stats error: %v\n", err)
+			slog.Error("stats failed", "error", err)
 			os.Exit(1)
 		}
 	case "view":
 		if err := commands.View(args); err != nil {
-			fmt.Fprintf(os.Stderr, "View error: %v\n", err)
+			slog.Error("view failed", "error", err)
 			os.Exit(1)
 		}
 	case "help", "-h", "--help":
 		printUsage()
 	default:
-		fmt.Fprintf(os.Stderr, "Unknown command: %s\n\n", command)
+		slog.Error("unknown command", "command", command)
 		printUsage()
 		os.Exit(1)
 	}
@@ -55,19 +61,23 @@ func startCommand(args []string) {
 	configPath := fs.String("config", "", "Path to config file")
 
 	if err := fs.Parse(args); err != nil {
-		fmt.Fprintf(os.Stderr, "Failed to parse flags: %v\n", err)
+		slog.Error("failed to parse flags", "error", err)
 		os.Exit(1)
 	}
 
 	cfg, err := config.Load(*configPath)
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Failed to load config: %v\n", err)
+		slog.Error("failed to load config", "error", err)
 		os.Exit(1)
 	}
 
 	if *port != 0 {
 		cfg.Port = *port
 	}
+
+	// Reinitialize logger with config settings
+	log := logger.NewLogger(cfg.Logging.Format, cfg.Logging.Level, os.Stdout)
+	slog.SetDefault(log)
 
 	srv := server.New(cfg)
 
@@ -79,28 +89,31 @@ func startCommand(args []string) {
 
 	go func() {
 		<-sigChan
-		fmt.Println("\nShutting down...")
+		slog.Info("shutting down")
 		cancel()
 	}()
 
 	if err := srv.Start(ctx); err != nil {
-		fmt.Fprintf(os.Stderr, "Server error: %v\n", err)
+		slog.Error("server error", "error", err)
 		os.Exit(1)
 	}
 }
 
 func printUsage() {
-	fmt.Println("Taco - LLM API Proxy")
-	fmt.Println("\nUsage:")
-	fmt.Println("  taco start [--port 4567] [--config ./config.json]")
-	fmt.Println("  taco export [--from YYYY-MM-DD] [--to YYYY-MM-DD] [--provider claude|openai] [--output file.jsonl]")
-	fmt.Println("  taco stats [--from YYYY-MM-DD] [--provider claude|openai]")
-	fmt.Println("  taco view <recording-id>")
-	fmt.Println("  taco help")
-	fmt.Println("\nCommands:")
-	fmt.Println("  start   - Start the proxy server")
-	fmt.Println("  export  - Export recordings to a file")
-	fmt.Println("  stats   - Show statistics about recordings")
-	fmt.Println("  view    - View a specific recording")
-	fmt.Println("  help    - Show this help message")
+	usage := `Taco - LLM API Proxy
+
+Usage:
+  taco start [--port 4567] [--config ./config.json]
+  taco export [--from YYYY-MM-DD] [--to YYYY-MM-DD] [--provider claude|openai] [--output file.jsonl]
+  taco stats [--from YYYY-MM-DD] [--provider claude|openai]
+  taco view <recording-id>
+  taco help
+
+Commands:
+  start   - Start the proxy server
+  export  - Export recordings to a file
+  stats   - Show statistics about recordings
+  view    - View a specific recording
+  help    - Show this help message`
+	fmt.Fprintln(os.Stdout, usage)
 }

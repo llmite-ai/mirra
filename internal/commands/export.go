@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"flag"
 	"fmt"
+	"log/slog"
 	"os"
 	"path/filepath"
 	"strings"
@@ -126,6 +127,6 @@ func Export(args []string) error {
 		f.Close()
 	}
 
-	fmt.Printf("Exported %d recordings to %s\n", count, *output)
+	slog.Info("export complete", "count", count, "output", *output)
 	return nil
 }

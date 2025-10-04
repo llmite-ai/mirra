@@ -44,7 +44,10 @@ func (s *Server) Start(ctx context.Context) error {
 
 	errChan := make(chan error, 1)
 	go func() {
-		slog.Info("starting proxy server", "port", s.cfg.Port)
+		slog.Info("taco proxy server started",
+			"port", s.cfg.Port,
+			"recording", s.cfg.Recording.Enabled,
+			"recordings_path", s.cfg.Recording.Path)
 		errChan <- srv.ListenAndServe()
 	}()
 
@@ -53,7 +56,7 @@ func (s *Server) Start(ctx context.Context) error {
 		s.recorder.Close()
 		return err
 	case <-ctx.Done():
-		slog.Info("shutting down server")
+		slog.Info("shutting down gracefully")
 		shutdownCtx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 		defer cancel()
 
@@ -65,6 +68,7 @@ func (s *Server) Start(ctx context.Context) error {
 			slog.Error("recorder close error", "error", err)
 		}
 
+		slog.Info("shutdown complete")
 		return nil
 	}
 }

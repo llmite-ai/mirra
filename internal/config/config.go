@@ -9,6 +9,7 @@ import (
 type Config struct {
 	Port      int                  `json:"port"`
 	Recording RecordingConfig      `json:"recording"`
+	Logging   LoggingConfig        `json:"logging"`
 	Providers map[string]Provider  `json:"providers"`
 }
 
@@ -17,6 +18,11 @@ type RecordingConfig struct {
 	Storage string `json:"storage"`
 	Path    string `json:"path"`
 	Format  string `json:"format"`
+}
+
+type LoggingConfig struct {
+	Format string `json:"format"` // "pretty", "json", or "plain"
+	Level  string `json:"level"`  // "debug", "info", "warn", "error"
 }
 
 type Provider struct {
@@ -31,6 +37,10 @@ func Load(path string) (*Config, error) {
 			Storage: "file",
 			Path:    "./recordings",
 			Format:  "jsonl",
+		},
+		Logging: LoggingConfig{
+			Format: "pretty",
+			Level:  "info",
 		},
 		Providers: map[string]Provider{
 			"claude": {UpstreamURL: "https://api.anthropic.com"},

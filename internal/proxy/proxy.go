@@ -136,6 +136,21 @@ func (p *Proxy) Handle(w http.ResponseWriter, r *http.Request) {
 	rec.Timing.CompletedAt = time.Now()
 	rec.Timing.DurationMs = rec.Timing.CompletedAt.Sub(rec.Timing.StartedAt).Milliseconds()
 
+	// Log completion
+	logLevel := slog.LevelInfo
+	if rec.Response.Status >= 400 {
+		logLevel = slog.LevelError
+	} else if rec.Response.Status >= 300 {
+		logLevel = slog.LevelWarn
+	}
+
+	slog.Log(r.Context(), logLevel, "request completed",
+		"id", rec.ID[:8],
+		"provider", rec.Provider,
+		"status", rec.Response.Status,
+		"duration_ms", rec.Timing.DurationMs,
+		"path", rec.Request.Path)
+
 	// Record asynchronously
 	p.recorder.Record(rec)
 }
