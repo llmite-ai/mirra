@@ -11,8 +11,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/jpoz/taco/internal/config"
-	"github.com/jpoz/taco/internal/recorder"
+	"github.com/llmite-ai/taco/internal/config"
+	"github.com/llmite-ai/taco/internal/recorder"
 )
 
 type Proxy struct {

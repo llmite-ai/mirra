@@ -9,7 +9,7 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/jpoz/taco/internal/recorder"
+	"github.com/llmite-ai/taco/internal/recorder"
 )
 
 func View(args []string) error {

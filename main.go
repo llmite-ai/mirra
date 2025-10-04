@@ -9,10 +9,10 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/jpoz/taco/internal/commands"
-	"github.com/jpoz/taco/internal/config"
-	"github.com/jpoz/taco/internal/logger"
-	"github.com/jpoz/taco/internal/server"
+	"github.com/llmite-ai/taco/internal/commands"
+	"github.com/llmite-ai/taco/internal/config"
+	"github.com/llmite-ai/taco/internal/logger"
+	"github.com/llmite-ai/taco/internal/server"
 )
 
 func main() {

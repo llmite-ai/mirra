@@ -1,4 +1,4 @@
-module github.com/jpoz/taco
+module github.com/llmite-ai/taco
 
 go 1.25.1
 

@@ -7,9 +7,9 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/jpoz/taco/internal/config"
-	"github.com/jpoz/taco/internal/proxy"
-	"github.com/jpoz/taco/internal/recorder"
+	"github.com/llmite-ai/taco/internal/config"
+	"github.com/llmite-ai/taco/internal/proxy"
+	"github.com/llmite-ai/taco/internal/recorder"
 )
 
 type Server struct {
