@@ -72,6 +72,11 @@ func Stats(args []string) error {
 		}
 
 		scanner := bufio.NewScanner(f)
+		// Increase buffer size to handle large recordings (default is 64KB)
+		const maxScanTokenSize = 10 * 1024 * 1024 // 10MB
+		buf := make([]byte, maxScanTokenSize)
+		scanner.Buffer(buf, maxScanTokenSize)
+
 		for scanner.Scan() {
 			var rec recorder.Recording
 			if err := json.Unmarshal(scanner.Bytes(), &rec); err != nil {
