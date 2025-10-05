@@ -45,6 +45,7 @@ func Load(path string) (*Config, error) {
 		Providers: map[string]Provider{
 			"claude": {UpstreamURL: "https://api.anthropic.com"},
 			"openai": {UpstreamURL: "https://api.openai.com"},
+			"gemini": {UpstreamURL: "https://generativelanguage.googleapis.com"},
 		},
 	}
 
@@ -86,6 +87,13 @@ func Load(path string) (*Config, error) {
 			cfg.Providers = make(map[string]Provider)
 		}
 		cfg.Providers["openai"] = Provider{UpstreamURL: openaiUpstream}
+	}
+
+	if geminiUpstream := os.Getenv("TACO_GEMINI_UPSTREAM"); geminiUpstream != "" {
+		if cfg.Providers == nil {
+			cfg.Providers = make(map[string]Provider)
+		}
+		cfg.Providers["gemini"] = Provider{UpstreamURL: geminiUpstream}
 	}
 
 	return cfg, nil

@@ -24,6 +24,7 @@ type Recording struct {
 type RequestData struct {
 	Method  string              `json:"method"`
 	Path    string              `json:"path"`
+	Query   string              `json:"query,omitempty"`
 	Headers map[string][]string `json:"headers"`
 	Body    interface{}         `json:"body,omitempty"`
 }
@@ -144,7 +145,7 @@ func (r *Recorder) Close() error {
 	return nil
 }
 
-func NewRecording(provider, method, path string, startTime time.Time) Recording {
+func NewRecording(provider, method, path, query string, startTime time.Time) Recording {
 	return Recording{
 		ID:        uuid.New().String(),
 		Timestamp: time.Now(),
@@ -152,6 +153,7 @@ func NewRecording(provider, method, path string, startTime time.Time) Recording 
 		Request: RequestData{
 			Method:  method,
 			Path:    path,
+			Query:   query,
 			Headers: make(map[string][]string),
 		},
 		Response: ResponseData{

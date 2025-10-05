@@ -10,6 +10,9 @@ CYAN   := $(shell tput -Txterm setaf 6)
 RESET  := $(shell tput -Txterm sgr0)
 
 ## Development:
+dev: ## Start the proxy server with live reloading (requires air)
+	air
+
 start: ## Start the proxy server
 	go run main.go start
 
@@ -21,6 +24,11 @@ test: ## Run tests
 
 clean: ## Remove built binaries
 	rm -f taco
+
+## Pokes
+
+poke_gemini: ## Poke the Gemini server
+	(cd _dev/gemini && go run main.go)
 
 ## Help:
 help: ## Show this help.
