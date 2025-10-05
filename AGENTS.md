@@ -1,110 +1,19 @@
-# AGENTS.md
+# Repository Guidelines
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+## Project Structure & Module Organization
+`main.go` wires the CLI to command handlers in `internal/commands`. Proxy runtime code is grouped under `internal/server`, `internal/proxy`, and `internal/recorder`; configuration and logging helpers live in `internal/config` and `internal/logger`. Persisted traffic resides in `recordings/` (one JSONL per day). Use `_dev/` for local pokes or fixtures and avoid merging ad-hoc helpers from that folder.
 
-## Project Overview
+## Build, Run, and Development Commands
+`go build -o taco .` produces the binary in the repo root. `make start` or `go run main.go start` launches the proxy on port 4567, while `./taco start --config ./config.json` loads custom settings. `make dev` (Air required) enables live reload, and `make clean` removes cached binaries. Power users expose recordings via `./taco export`, `./taco stats`, and `./taco view`; document example invocations when behavior changes.
 
-Taco is a transparent HTTP proxy for Large Language Model APIs (Claude, OpenAI, and Google Gemini) that records all request/response traffic without modifying it. The proxy acts as a pass-through intermediary for inspection, auditing, and analysis of LLM API usage.
+## Coding Style & Naming Conventions
+Format Go code with `gofmt` or `goimports` before committing; tabs are standard and lines should stay comfortably under 120 characters. Keep package names lowercase and descriptive, exported API in PascalCase, and internals camelCase. Prefer structured logs through `internal/logger` rather than `fmt.Printf`, and reuse existing helper types when extending recorder payloads.
 
-## Commands
+## Testing Guidelines
+`go test ./...` is the canonical entry even though coverage is light today. Add table-driven tests in `_test.go` files beside the code, naming functions `TestThing_Scenario`. Capture streaming or gzip fixtures under `_dev/` or temporary directories, and record any manual verification steps in the PR body until automated coverage exists.
 
-### Building
-```bash
-go build -o taco .
-```
+## Commit & Pull Request Guidelines
+Follow the Conventional Commit style seen in history (`feat:`, `fix:`, `chore:`) and keep logical changes isolated by package. Pull requests should state the user-facing impact, list build or CLI commands exercised, and reference linked issues. Include logs or screenshots only when they illuminate behavior, and scrub customer-identifying details.
 
-### Running the server
-```bash
-./taco start [--port 4567] [--config ./config.json]
-```
-
-Default port is 4567. Configuration can be provided via JSON file or environment variables.
-
-### Running commands
-```bash
-./taco export [--from YYYY-MM-DD] [--to YYYY-MM-DD] [--provider claude|openai|gemini] [--output file.jsonl]
-./taco stats [--from YYYY-MM-DD] [--provider claude|openai|gemini]
-./taco view [<recording-id>]  # Supports partial UUID matching, defaults to last recording
-```
-
-### Testing
-No test suite currently exists.
-
-## Architecture
-
-The codebase follows a clean separation of concerns:
-
-- **main.go**: CLI entry point with command routing (start, export, stats, view)
-- **internal/server**: HTTP server setup and health check endpoint
-- **internal/proxy**: Core proxy logic that handles request forwarding and response streaming
-- **internal/recorder**: Asynchronous recording of request/response pairs to JSONL files
-- **internal/config**: Configuration loading from files and environment variables
-- **internal/commands**: CLI command implementations (export, stats, view)
-
-### Request Flow
-1. Client sends request to Taco proxy (e.g., `http://localhost:4567/v1/messages`)
-2. Proxy identifies provider (Claude or OpenAI) from URL path
-3. Request body and headers are captured
-4. Request is forwarded to upstream API
-5. Response is streamed back to client in real-time
-6. Response is captured simultaneously
-7. Recording is persisted asynchronously (failures logged but not propagated to client)
-
-### Provider Routing
-Provider identification happens in `proxy.identifyProvider()` based on URL path prefixes:
-- Claude: `/v1/messages`, `/v1/complete`
-- OpenAI: `/v1/chat/completions`, `/v1/completions`, `/v1/embeddings`, `/v1/models`, `/v1/responses`
-- Gemini: All `/v1/*`, `/v1beta/*`, `/v1alpha/*`, `/upload/*` endpoints
-
-### Recording Format
-Recordings are stored as JSONL files (one JSON object per line) in the format `recordings-YYYY-MM-DD.jsonl`. Each recording includes:
-- Unique ID (UUID v4)
-- Provider (claude/openai/gemini)
-- Request data (method, path, query parameters, headers, body)
-- Response data (status, headers, body, streaming flag)
-- Timing data (start time, end time, duration in ms)
-- Gzip-compressed response bodies stored as base64-encoded with "base64:" prefix
-
-### Streaming Handling
-The proxy supports both regular and streaming (SSE) responses:
-- Streaming responses are detected via `Content-Type: text/event-stream`
-- Chunks are passed through immediately to client without buffering
-- Full response is accumulated for recording
-- Uses `http.Flusher` interface for real-time streaming
-
-### Compression Handling
-The proxy handles gzip-compressed responses transparently:
-- Detects `Content-Encoding: gzip` header
-- Decompresses response for recording
-- Stores decompressed body as base64-encoded with "base64:" prefix
-- Original compressed response sent to client
-
-### Configuration
-Default configuration:
-- Port: 4567
-- Recording enabled: true
-- Recording path: `./recordings`
-- Logging format: `pretty` (options: pretty, json, plain)
-- Logging level: `info`
-- Claude upstream: `https://api.anthropic.com`
-- OpenAI upstream: `https://api.openai.com`
-- Gemini upstream: `https://generativelanguage.googleapis.com`
-
-Environment variables override config file values:
-- `TACO_PORT`
-- `TACO_RECORDING_ENABLED`
-- `TACO_RECORDING_PATH`
-- `TACO_CLAUDE_UPSTREAM`
-- `TACO_OPENAI_UPSTREAM`
-- `TACO_GEMINI_UPSTREAM`
-
-### Async Recording
-The recorder uses a buffered channel (capacity 100) with a background worker goroutine to write recordings asynchronously. If the channel is full, recordings are dropped with a warning. On shutdown, the recorder drains remaining recordings before closing.
-
-## Design Principles
-
-1. **Transparency**: Requests and responses pass through unmodified
-2. **Non-blocking**: Recording failures must not affect request/response flow
-3. **Compatibility**: Routes exactly match upstream API specifications
-4. **Observability**: All traffic recorded with timing and metadata
-5. **Minimal latency**: Target < 1ms overhead
+## Security & Configuration Tips
+Never commit live API keys; rely on `TACO_*` environment variables or an ignored `config.json`. Validate new upstream URLs or headers in both `internal/config` and `internal/proxy` to preserve transparency. When expanding recordings, confirm JSONL output remains gzip-safe and free of unnecessary PII.
