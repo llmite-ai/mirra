@@ -31,11 +31,10 @@ func New(cfg *config.Config) *Server {
 func (s *Server) Start(ctx context.Context) error {
 	mux := http.NewServeMux()
 
-	// Route all /v1/* paths to the proxy
-	mux.HandleFunc("/v1/", s.proxy.Handle)
-
 	// Health check endpoint
 	mux.HandleFunc("/health", s.healthHandler)
+	// Catch-all for unmatched routes proxy
+	mux.HandleFunc("/{path...}", s.proxy.Handle)
 
 	srv := &http.Server{
 		Addr:    fmt.Sprintf(":%d", s.cfg.Port),

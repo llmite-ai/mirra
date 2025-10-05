@@ -1,0 +1,36 @@
+root = "."
+tmp_dir = "tmp"
+
+[build]
+cmd = "go build -o ./tmp/taco ."
+bin = "tmp/taco"
+full_bin = "./tmp/taco start"
+include_ext = ["go"]
+exclude_dir = ["tmp", "vendor", "recordings"]
+exclude_file = []
+exclude_regex = ["_test\\.go", "/_[^/]+/"]
+exclude_unchanged = true
+follow_symlink = true
+log = "air.log"
+poll = false
+poll_interval = 500
+delay = 1000
+stop_on_error = true
+send_interrupt = false
+kill_delay = 500
+
+[log]
+time = false
+
+[color]
+main = "magenta"
+watcher = "cyan"
+build = "yellow"
+runner = "green"
+
+[misc]
+clean_on_exit = true
+
+[screen]
+clear_on_rebuild = true
+keep_scroll = true

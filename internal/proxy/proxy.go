@@ -3,6 +3,7 @@ package proxy
 import (
 	"bufio"
 	"bytes"
+	"encoding/base64"
 	"encoding/json"
 	"fmt"
 	"io"
@@ -36,14 +37,73 @@ func (p *Proxy) identifyProvider(path string) string {
 	if strings.HasPrefix(path, "/v1/messages") || strings.HasPrefix(path, "/v1/complete") {
 		return "claude"
 	}
+	// Gemini endpoints - check before OpenAI to avoid /v1/models conflict
+	if isGeminiPath(path) {
+		return "gemini"
+	}
 	// OpenAI endpoints
 	if strings.HasPrefix(path, "/v1/chat/completions") ||
 		strings.HasPrefix(path, "/v1/completions") ||
 		strings.HasPrefix(path, "/v1/embeddings") ||
-		strings.HasPrefix(path, "/v1/models") {
+		strings.HasPrefix(path, "/v1/models") ||
+		strings.HasPrefix(path, "/v1/responses") {
 		return "openai"
 	}
 	return ""
+}
+
+// isGeminiPath checks if the path matches any Gemini API endpoint pattern.
+// Supports v1, v1beta, and v1alpha API versions.
+func isGeminiPath(path string) bool {
+	// Check for API version prefixes
+	hasVersion := strings.HasPrefix(path, "/v1/") ||
+		strings.HasPrefix(path, "/v1beta/") ||
+		strings.HasPrefix(path, "/v1alpha/")
+
+	if !hasVersion {
+		// Special case: file upload uses /upload/v1* prefix
+		if strings.HasPrefix(path, "/upload/v1/") ||
+			strings.HasPrefix(path, "/upload/v1beta/") ||
+			strings.HasPrefix(path, "/upload/v1alpha/") {
+			return strings.Contains(path, "/files")
+		}
+		return false
+	}
+
+	// Model operations: /v1*/models/*
+	// Includes: generateContent, streamGenerateContent, embedContent, countTokens, etc.
+	if strings.Contains(path, "/models/") || strings.Contains(path, "/models:") {
+		return true
+	}
+
+	// File operations: /v1*/files, /v1*/files/*
+	if strings.Contains(path, "/files") {
+		return true
+	}
+
+	// Cached contents: /v1*/cachedContents, /v1*/cachedContents/*
+	if strings.Contains(path, "/cachedContents") {
+		return true
+	}
+
+	// Corpora and semantic retrieval: /v1*/corpora, /v1*/corpora/*
+	// Includes documents and chunks nested resources
+	if strings.Contains(path, "/corpora") {
+		return true
+	}
+
+	// Tuned models: /v1*/tunedModels, /v1*/tunedModels/*
+	// Includes operations and permissions sub-resources
+	if strings.Contains(path, "/tunedModels") {
+		return true
+	}
+
+	// Batch operations: /v1*/batches, /v1*/batches/*
+	if strings.Contains(path, "/batches") {
+		return true
+	}
+
+	return false
 }
 
 func (p *Proxy) Handle(w http.ResponseWriter, r *http.Request) {
@@ -51,6 +111,12 @@ func (p *Proxy) Handle(w http.ResponseWriter, r *http.Request) {
 
 	provider := p.identifyProvider(r.URL.Path)
 	if provider == "" {
+		slog.Warn("unknown API endpoint",
+			"method", r.Method,
+			"path", r.URL.Path,
+			"host", r.Host,
+			"remote_addr", r.RemoteAddr,
+			"user_agent", r.Header.Get("User-Agent"))
 		http.Error(w, "unknown API endpoint", http.StatusNotFound)
 		return
 	}
@@ -70,11 +136,11 @@ func (p *Proxy) Handle(w http.ResponseWriter, r *http.Request) {
 	defer r.Body.Close()
 
 	// Create recording
-	rec := recorder.NewRecording(provider, r.Method, r.URL.Path, startTime)
+	rec := recorder.NewRecording(provider, r.Method, r.URL.Path, r.URL.RawQuery, startTime)
 	rec.Request.Headers = r.Header.Clone()
 	if len(bodyBytes) > 0 {
 		// Try to parse as JSON, otherwise store as string
-		var jsonBody interface{}
+		var jsonBody any
 		if err := json.Unmarshal(bodyBytes, &jsonBody); err == nil {
 			rec.Request.Body = jsonBody
 		} else {
@@ -165,12 +231,26 @@ func (p *Proxy) handleRegular(w http.ResponseWriter, body io.Reader, rec *record
 	}
 
 	if buf.Len() > 0 {
-		// Try to parse as JSON, otherwise store as string
-		var jsonBody interface{}
+		// Check if response is gzipped
+		isGzipped := false
+		if encodings, ok := rec.Response.Headers["Content-Encoding"]; ok {
+			for _, encoding := range encodings {
+				if strings.Contains(strings.ToLower(encoding), "gzip") {
+					isGzipped = true
+					break
+				}
+			}
+		}
+
+		// Try to parse as JSON, otherwise store as string or base64
+		var jsonBody any
 		if err := json.Unmarshal(buf.Bytes(), &jsonBody); err == nil {
 			rec.Response.Body = jsonBody
+		} else if isGzipped {
+			// For gzipped content, base64 encode to preserve binary data
+			rec.Response.Body = "base64:" + base64.StdEncoding.EncodeToString(buf.Bytes())
 		} else {
-			rec.Response.Body = string(buf.Bytes())
+			rec.Response.Body = buf.String()
 		}
 	}
 }

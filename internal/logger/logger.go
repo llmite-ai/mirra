@@ -19,6 +19,7 @@ const (
 	colorRed        = "\033[91m"
 	colorOrange     = "\033[38;5;208m"
 	colorBrightBlue = "\033[96m"
+	colorPurple     = "\033[95m"
 )
 
 // PrettyHandler is a human-readable slog.Handler implementation
@@ -95,11 +96,15 @@ func (h *PrettyHandler) formatRequestLog(b *strings.Builder, r slog.Record) {
 		switch provider {
 		case "claude":
 			b.WriteString(colorOrange)
-			b.WriteString("◆ claude")
+			b.WriteString("❈ claude")
 			b.WriteString(colorReset)
 		case "openai":
-			b.WriteString(colorGreen)
+			b.WriteString(colorGrey)
 			b.WriteString("● openai")
+			b.WriteString(colorReset)
+		case "gemini":
+			b.WriteString(colorPurple)
+			b.WriteString("𝗚 gemini")
 			b.WriteString(colorReset)
 		default:
 			b.WriteString(provider)
