@@ -2,15 +2,18 @@
 
 A transparent HTTP proxy for Large Language Model APIs that records all request/response traffic without modifying it.
 
-Taco acts as a pass-through intermediary for inspection, auditing, and analysis of LLM API usage. Currently supports Claude (Anthropic) and OpenAI APIs.
+Taco acts as a pass-through intermediary for inspection, auditing, and analysis of LLM API usage. Currently supports Claude (Anthropic), OpenAI, and Google Gemini APIs.
 
 ## Features
 
 - **Transparent proxying**: Requests and responses pass through unmodified
+- **Multi-provider support**: Claude (Anthropic), OpenAI, and Google Gemini APIs
 - **Streaming support**: Handles both regular and Server-Sent Events (SSE) streaming responses
 - **Asynchronous recording**: Records traffic without adding latency to API calls
-- **Multi-provider**: Supports Claude and OpenAI APIs
+- **Compression handling**: Automatically handles and records gzip-compressed responses
 - **Export & analysis**: Built-in commands to export and analyze recorded traffic
+- **Advanced viewing**: Partial UUID matching, automatic redaction of sensitive data, SSE formatting
+- **Structured logging**: Multiple output formats (pretty, JSON, plain) with color-coded request logs
 
 ## Installation
 
@@ -60,6 +63,12 @@ Point your LLM API client to the Taco proxy instead of the upstream API:
 # Use: http://localhost:4567
 ```
 
+**Gemini:**
+```bash
+# Instead of: https://generativelanguage.googleapis.com
+# Use: http://localhost:4567
+```
+
 Keep your API keys unchanged - Taco forwards them to the upstream APIs.
 
 ### Export recordings
@@ -76,6 +85,13 @@ Export with filters:
 ./taco export --from 2025-01-01 --to 2025-01-31 --provider claude --output claude-jan.jsonl
 ```
 
+Options:
+- `--from` - Start date (YYYY-MM-DD)
+- `--to` - End date (YYYY-MM-DD)
+- `--provider` - Filter by provider (claude, openai, or gemini)
+- `--output` - Output file path (default: export.jsonl)
+- `--recordings` - Path to recordings directory (default: ./recordings)
+
 ### View statistics
 
 ```bash
@@ -88,11 +104,35 @@ Filter by date range or provider:
 ./taco stats --from 2025-01-01 --provider openai
 ```
 
+Options:
+- `--from` - Start date (YYYY-MM-DD)
+- `--provider` - Filter by provider (claude, openai, or gemini)
+- `--recordings` - Path to recordings directory (default: ./recordings)
+
 ### View a specific recording
 
+View a recording by ID (supports partial UUID matching):
+
 ```bash
-./taco view <recording-id>
+./taco view a1b2c3d4
 ```
+
+View the most recent recording:
+
+```bash
+./taco view
+```
+
+Features:
+- Partial UUID matching - just provide the first few characters
+- Automatically redacts sensitive data (API keys, tokens)
+- Decompresses gzip-compressed responses
+- Formats streaming SSE responses for readability
+- Pretty-prints JSON
+
+Options:
+- `<recording-id>` - Full or partial UUID (optional, defaults to last recording)
+- `--recordings` - Path to recordings directory (default: ./recordings)
 
 ## Configuration
 
@@ -103,10 +143,27 @@ Configuration can be provided via a JSON file or environment variables.
 ```json
 {
   "port": 4567,
-  "recordingEnabled": true,
-  "recordingPath": "./recordings",
-  "claudeUpstream": "https://api.anthropic.com",
-  "openaiUpstream": "https://api.openai.com"
+  "recording": {
+    "enabled": true,
+    "storage": "file",
+    "path": "./recordings",
+    "format": "jsonl"
+  },
+  "logging": {
+    "format": "pretty",
+    "level": "info"
+  },
+  "providers": {
+    "claude": {
+      "upstream_url": "https://api.anthropic.com"
+    },
+    "openai": {
+      "upstream_url": "https://api.openai.com"
+    },
+    "gemini": {
+      "upstream_url": "https://generativelanguage.googleapis.com"
+    }
+  }
 }
 ```
 
@@ -119,6 +176,17 @@ Environment variables override config file values:
 - `TACO_RECORDING_PATH` - Directory for recording files (default: ./recordings)
 - `TACO_CLAUDE_UPSTREAM` - Claude API upstream URL
 - `TACO_OPENAI_UPSTREAM` - OpenAI API upstream URL
+- `TACO_GEMINI_UPSTREAM` - Gemini API upstream URL
+
+### Logging
+
+Taco supports three logging formats via the `logging.format` configuration:
+
+- **pretty** (default): Human-readable with color-coded log levels and request symbols
+- **json**: Structured JSON output for log aggregation systems
+- **plain**: Standard text format with key=value pairs
+
+Log levels: `debug`, `info`, `warn`, `error`
 
 ## Recording Format
 
@@ -129,41 +197,69 @@ Each recording includes:
 ```json
 {
   "id": "uuid-v4",
-  "provider": "claude|openai",
+  "timestamp": "2025-01-15T10:30:00Z",
+  "provider": "claude|openai|gemini",
   "request": {
     "method": "POST",
     "path": "/v1/messages",
-    "headers": {},
+    "query": "key=value",
+    "headers": {
+      "content-type": ["application/json"]
+    },
     "body": {}
   },
   "response": {
     "status": 200,
-    "headers": {},
+    "headers": {
+      "content-type": ["application/json"]
+    },
     "body": {},
     "streaming": false
   },
   "timing": {
-    "startTime": "2025-01-15T10:30:00Z",
-    "endTime": "2025-01-15T10:30:02Z",
-    "durationMs": 2000
+    "started_at": "2025-01-15T10:30:00.123Z",
+    "completed_at": "2025-01-15T10:30:02.456Z",
+    "duration_ms": 2333
   }
 }
 ```
 
+**Note**: For gzip-compressed responses, the body is stored as base64-encoded with a "base64:" prefix.
+
 ## Supported API Endpoints
 
 ### Claude (Anthropic)
-- `/v1/messages`
-- `/v1/complete`
+- `/v1/messages` - Messages API (streaming and non-streaming)
+- `/v1/complete` - Legacy completion API
 
 ### OpenAI
-- `/v1/chat/completions`
-- `/v1/completions`
-- `/v1/embeddings`
-- `/v1/models`
+- `/v1/chat/completions` - Chat completions (streaming and non-streaming)
+- `/v1/completions` - Legacy completions
+- `/v1/embeddings` - Embeddings
+- `/v1/models` - List models
+- `/v1/models/:id` - Retrieve model
+- `/v1/responses` - Responses API
 
-## Example: Using with curl
+### Gemini (Google)
+All Gemini API endpoints across versions (v1, v1beta, v1alpha):
+- Model operations (generateContent, streamGenerateContent, embedContent, countTokens, etc.)
+- File operations (upload, list, get, delete)
+- Cached contents management
+- Corpora and semantic retrieval (documents, chunks)
+- Tuned models (operations, permissions)
+- Batch operations
 
+Example endpoints:
+- `/v1/models/gemini-pro:generateContent`
+- `/v1beta/models/gemini-2.5-pro:streamGenerateContent`
+- `/v1/files`
+- `/upload/v1/files`
+
+## Examples
+
+### Using with curl
+
+**OpenAI:**
 ```bash
 # Start the proxy
 ./taco start
@@ -175,6 +271,30 @@ curl -X POST http://localhost:4567/v1/chat/completions \
   -d '{
     "model": "gpt-4",
     "messages": [{"role": "user", "content": "Hello!"}]
+  }'
+```
+
+**Claude:**
+```bash
+curl -X POST http://localhost:4567/v1/messages \
+  -H "Content-Type: application/json" \
+  -H "x-api-key: YOUR_ANTHROPIC_API_KEY" \
+  -H "anthropic-version: 2023-06-01" \
+  -d '{
+    "model": "claude-3-5-sonnet-20241022",
+    "messages": [{"role": "user", "content": "Hello!"}],
+    "max_tokens": 1024
+  }'
+```
+
+**Gemini:**
+```bash
+curl -X POST "http://localhost:4567/v1/models/gemini-2.5-pro:generateContent?key=YOUR_GEMINI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "contents": [{
+      "parts": [{"text": "Hello!"}]
+    }]
   }'
 ```
 

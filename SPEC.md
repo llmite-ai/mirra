@@ -24,6 +24,17 @@ Taco is a transparent HTTP proxy for Large Language Model APIs (Claude and OpenA
 - `POST /v1/embeddings` - Embeddings
 - `GET /v1/models` - List models
 - `GET /v1/models/:id` - Retrieve model
+- `POST /v1/responses` - Responses API
+
+### Gemini (Google)
+- Model operations: `/v1*/models/*` (generateContent, streamGenerateContent, embedContent, countTokens, etc.)
+- File operations: `/v1*/files`, `/v1*/files/*`, `/upload/v1*/files`
+- Cached contents: `/v1*/cachedContents`, `/v1*/cachedContents/*`
+- Corpora and semantic retrieval: `/v1*/corpora`, `/v1*/corpora/*` (includes documents and chunks)
+- Tuned models: `/v1*/tunedModels`, `/v1*/tunedModels/*` (includes operations and permissions)
+- Batch operations: `/v1*/batches`, `/v1*/batches/*`
+
+Supports API versions: v1, v1beta, v1alpha
 
 ## Architecture
 
@@ -59,10 +70,11 @@ Each request/response pair is recorded as a JSON document:
 {
   "id": "uuid-v4",
   "timestamp": "2025-10-03T20:52:00Z",
-  "provider": "claude|openai",
+  "provider": "claude|openai|gemini",
   "request": {
     "method": "POST",
     "path": "/v1/messages",
+    "query": "key=value&param=data",
     "headers": {
       "content-type": "application/json",
       "anthropic-version": "2023-06-01"
@@ -89,9 +101,15 @@ Each request/response pair is recorded as a JSON document:
 
 For streaming responses (SSE):
 - Each chunk is accumulated and recorded
-- The full reconstructed response is stored
+- The full reconstructed response is stored as a string (in SSE format)
 - Streaming flag is set to `true`
 - Chunks are passed through immediately without buffering
+
+### Compression Handling
+
+For gzip-compressed responses:
+- Response body is base64-encoded with "base64:" prefix to preserve binary data
+- The `view` command automatically decompresses and displays the content
 
 ## Configuration
 
@@ -102,7 +120,7 @@ Configuration via JSON file or environment variables:
   "port": 4567,
   "recording": {
     "enabled": true,
-    "storage": "file", // we will add more storage options in the future
+    "storage": "file",
     "path": "./recordings",
     "format": "jsonl"
   },
@@ -112,10 +130,13 @@ Configuration via JSON file or environment variables:
   },
   "providers": {
     "claude": {
-      "upstream_url": "https://api.anthropic.com",
+      "upstream_url": "https://api.anthropic.com"
     },
     "openai": {
-      "upstream_url": "https://api.openai.com",
+      "upstream_url": "https://api.openai.com"
+    },
+    "gemini": {
+      "upstream_url": "https://generativelanguage.googleapis.com"
     }
   }
 }
@@ -128,6 +149,7 @@ Configuration via JSON file or environment variables:
 - `TACO_RECORDING_PATH` - Path to store recordings (default: ./recordings)
 - `TACO_CLAUDE_UPSTREAM` - Claude upstream URL
 - `TACO_OPENAI_UPSTREAM` - OpenAI upstream URL
+- `TACO_GEMINI_UPSTREAM` - Gemini upstream URL
 
 ## CLI Commands
 
@@ -142,30 +164,54 @@ Starts the proxy server.
 ### Export Recordings
 
 ```bash
-taco export [--from 2025-10-01] [--to 2025-10-03] [--provider claude|openai] [--output recordings.jsonl]
+taco export [--from 2025-10-01] [--to 2025-10-03] [--provider claude|openai|gemini] [--output recordings.jsonl] [--recordings ./recordings]
 ```
 
 Exports recorded traffic to a file.
 
+Options:
+- `--from` - Start date (YYYY-MM-DD)
+- `--to` - End date (YYYY-MM-DD)
+- `--provider` - Filter by provider (claude, openai, or gemini)
+- `--output` - Output file path (default: export.jsonl)
+- `--recordings` - Path to recordings directory (default: ./recordings)
+
 ### Stats
 
 ```bash
-taco stats [--from 2025-10-01] [--provider claude|openai]
+taco stats [--from 2025-10-01] [--provider claude|openai|gemini] [--recordings ./recordings]
 ```
 
 Shows statistics about recorded traffic:
 - Total requests
 - Average response time
-- Token usage (if available in responses)
 - Error rate
+- Per-provider breakdown
+
+Options:
+- `--from` - Start date (YYYY-MM-DD)
+- `--provider` - Filter by provider (claude, openai, or gemini)
+- `--recordings` - Path to recordings directory (default: ./recordings)
 
 ### View Recording
 
 ```bash
-taco view <recording-id>
+taco view [recording-id] [--recordings ./recordings]
 ```
 
 Displays a specific recording in formatted output.
+
+Features:
+- Supports partial UUID matching (e.g., `taco view a1b2c3d4` to match full UUID `a1b2c3d4-...`)
+- If no recording ID provided, shows the last/most recent recording
+- Automatically redacts sensitive data (API keys, tokens) from headers and query parameters
+- Automatically decompresses and formats gzip-compressed responses
+- Special formatting for streaming SSE responses with event-by-event breakdown
+- Pretty-prints JSON request and response bodies
+
+Options:
+- `<recording-id>` - Full or partial UUID of the recording to view (optional, defaults to last recording)
+- `--recordings` - Path to recordings directory (default: ./recordings)
 
 ## Storage Options
 
@@ -187,7 +233,9 @@ Displays a specific recording in formatted output.
 - Connection failures to upstream result in 502 Bad Gateway
 
 ### Security
-- Optional: Redact sensitive fields from recordings
+- Sensitive data redaction in `view` command:
+  - Authorization and X-Api-Key headers are redacted
+  - Query parameters (key, apiKey, api_key, token, access_token) are redacted
 - Support for TLS/HTTPS
 
 ### Observability
