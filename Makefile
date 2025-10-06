@@ -24,17 +24,11 @@ clean: ## Remove built binaries
 	rm -f mirra
 
 ## Examples
-.PHONY: build_example
-build_example: ## Build a new example (usage: make build_example go openai)
+.PHONY: example_prompt
+echo_example_prompt: ## Echo the prompt used to build a new example (usage: make echo_example_prompt go openai)
 	@sed -e 's/{language}/$(word 1,$(filter-out $@,$(MAKECMDGOALS)))/g' \
 	     -e 's/{provider}/$(word 2,$(filter-out $@,$(MAKECMDGOALS)))/g' \
-	     _dev/examples_prompt.txt | ANTHROPIC_BASE_URL=http://localhost:4567/ claude --dangerously-skip-permissions -p ""
-
-.PHONY: build_example_codex
-build_example_codex: ## Build a new example using codex (usage: make build_example_codex go openai)
-	@sed -e 's/{language}/$(word 1,$(filter-out $@,$(MAKECMDGOALS)))/g' \
-	     -e 's/{provider}/$(word 2,$(filter-out $@,$(MAKECMDGOALS)))/g' \
-	     _dev/examples_prompt.txt | CODEX_BASE_URL=http://localhost:4567/ codex --dangerously-skip-permissions -p ""
+	     _dev/examples_prompt.txt
 
 .PHONY: list_examples
 list_examples: ## List available examples
