@@ -20,7 +20,7 @@ func main() {
 	client, err := genai.NewClient(
 		ctx,
 		option.WithAPIKey(apiKey),
-		option.WithEndpoint("http://localhost:4567"),
+		option.WithEndpoint("http://localhost:4567"), // This is where we're configuring mirra
 	)
 	if err != nil {
 		log.Fatalf("failed to create generative AI client: %v", err)

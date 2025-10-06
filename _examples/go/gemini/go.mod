@@ -1,4 +1,4 @@
-module github.com/llmite-ai/taco/_dev/gemini
+module _examples/go/gemini
 
 go 1.25.1
 

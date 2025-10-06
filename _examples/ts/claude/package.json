@@ -1,0 +1,13 @@
+{
+  "name": "claude-mirra-example",
+  "version": "1.0.0",
+  "description": "Example of using Claude API through mirra proxy",
+  "type": "module",
+  "scripts": {
+    "start": "tsx index.ts"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.32.1",
+    "tsx": "^4.19.2"
+  }
+}

@@ -1,0 +1,68 @@
+Create a new example in _examples/{language}/{provider}/ that demonstrates using the {provider} API through the mirra proxy.
+
+## Requirements
+
+### Directory Structure
+- Create the example at: `_examples/{language}/{provider}/`
+- The example must be completely self-contained within this directory
+
+### run.sh Script
+Create a `run.sh` file that:
+- Sets up the project dependencies (e.g., `go mod tidy`, `npm install`, `pip install -r requirements.txt`, etc.)
+- Runs the example code
+- Assumes the following environment variables are already set:
+  - ANTHROPIC_API_KEY (for Claude/Anthropic examples)
+  - GEMINI_API_KEY (for Gemini examples)
+  - OPENAI_API_KEY (for OpenAI examples)
+- Must be executable (chmod +x run.sh)
+
+### Example Code
+The example code should:
+- Check that the required API key environment variable is set (exit with error if missing)
+- Initialize the {provider} client SDK for {language}
+- Configure the SDK to use the mirra proxy by setting the base URL to `http://localhost:4567`
+  - Note: Some providers may need `/v1` appended (e.g., OpenAI uses `http://localhost:4567/v1`)
+  - **IMPORTANT**: Add an inline comment next to the baseURL/endpoint configuration: `// This is where we're configuring mirra` (or `# This is where we're configuring mirra` for Python)
+- Make a simple API call (e.g., "Say hello and a joke")
+- Print the response to stdout
+- Include proper error handling
+
+### Language-Specific Guidelines
+
+#### Go
+- Use Go modules (go.mod)
+- Use the official SDK for the provider
+- Follow standard Go error handling patterns
+- Use context.Background() for API calls
+
+#### Python
+- Use a requirements.txt for dependencies
+- Use the official SDK for the provider
+- Include proper error handling with try/except
+- Use type hints where appropriate
+- Add a .tool-versions see other examples for reference
+
+#### TypeScript/Node.js
+- Use package.json for dependencies
+- Use the official SDK for the provider
+- Include proper error handling
+- Use async/await patterns
+
+#### Ruby
+- Use a Gemfile for dependencies
+- Use the official SDK/gem for the provider
+- Include proper error handling with begin/rescue
+- Follow Ruby naming conventions (snake_case for methods and variables)
+- Add a .tool-versions see other examples for reference
+
+### Testing
+The example should successfully:
+1. Connect to the mirra proxy at http://localhost:4567
+2. Make an API call through the proxy
+3. Receive and display a response
+4. Be runnable via: `cd _examples/{language}/{provider} && ./run.sh`
+
+### Reference
+Look at existing examples in `_examples/go/` for patterns and structure to follow.
+
+After creating the example, test it locally to ensure it works as expected before finalizing via `make run_example {language} {provider}`. 
