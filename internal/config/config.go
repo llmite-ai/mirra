@@ -61,35 +61,35 @@ func Load(path string) (*Config, error) {
 	}
 
 	// Override with environment variables
-	if port := os.Getenv("TACO_PORT"); port != "" {
+	if port := os.Getenv("MIRRA_PORT"); port != "" {
 		if p, err := strconv.Atoi(port); err == nil {
 			cfg.Port = p
 		}
 	}
 
-	if enabled := os.Getenv("TACO_RECORDING_ENABLED"); enabled != "" {
+	if enabled := os.Getenv("MIRRA_RECORDING_ENABLED"); enabled != "" {
 		cfg.Recording.Enabled = enabled == "true"
 	}
 
-	if recordingPath := os.Getenv("TACO_RECORDING_PATH"); recordingPath != "" {
+	if recordingPath := os.Getenv("MIRRA_RECORDING_PATH"); recordingPath != "" {
 		cfg.Recording.Path = recordingPath
 	}
 
-	if claudeUpstream := os.Getenv("TACO_CLAUDE_UPSTREAM"); claudeUpstream != "" {
+	if claudeUpstream := os.Getenv("MIRRA_CLAUDE_UPSTREAM"); claudeUpstream != "" {
 		if cfg.Providers == nil {
 			cfg.Providers = make(map[string]Provider)
 		}
 		cfg.Providers["claude"] = Provider{UpstreamURL: claudeUpstream}
 	}
 
-	if openaiUpstream := os.Getenv("TACO_OPENAI_UPSTREAM"); openaiUpstream != "" {
+	if openaiUpstream := os.Getenv("MIRRA_OPENAI_UPSTREAM"); openaiUpstream != "" {
 		if cfg.Providers == nil {
 			cfg.Providers = make(map[string]Provider)
 		}
 		cfg.Providers["openai"] = Provider{UpstreamURL: openaiUpstream}
 	}
 
-	if geminiUpstream := os.Getenv("TACO_GEMINI_UPSTREAM"); geminiUpstream != "" {
+	if geminiUpstream := os.Getenv("MIRRA_GEMINI_UPSTREAM"); geminiUpstream != "" {
 		if cfg.Providers == nil {
 			cfg.Providers = make(map[string]Provider)
 		}

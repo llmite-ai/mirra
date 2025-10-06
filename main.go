@@ -9,10 +9,10 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/llmite-ai/taco/internal/commands"
-	"github.com/llmite-ai/taco/internal/config"
-	"github.com/llmite-ai/taco/internal/logger"
-	"github.com/llmite-ai/taco/internal/server"
+	"github.com/llmite-ai/mirra/internal/commands"
+	"github.com/llmite-ai/mirra/internal/config"
+	"github.com/llmite-ai/mirra/internal/logger"
+	"github.com/llmite-ai/mirra/internal/server"
 )
 
 func main() {
@@ -100,14 +100,14 @@ func startCommand(args []string) {
 }
 
 func printUsage() {
-	usage := `Taco - LLM API Proxy
+	usage := `MIRRA - Monitoring & Inspection Recording Relay Archive
 
 Usage:
-  taco start [--port 4567] [--config ./config.json]
-  taco export [--from YYYY-MM-DD] [--to YYYY-MM-DD] [--provider claude|openai] [--output file.jsonl]
-  taco stats [--from YYYY-MM-DD] [--provider claude|openai]
-  taco view <recording-id>
-  taco help
+  mirra start [--port 4567] [--config ./config.json]
+  mirra export [--from YYYY-MM-DD] [--to YYYY-MM-DD] [--provider claude|openai|gemini] [--output file.jsonl]
+  mirra stats [--from YYYY-MM-DD] [--provider claude|openai|gemini]
+  mirra view <recording-id>
+  mirra help
 
 Commands:
   start   - Start the proxy server

@@ -7,9 +7,9 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/llmite-ai/taco/internal/config"
-	"github.com/llmite-ai/taco/internal/proxy"
-	"github.com/llmite-ai/taco/internal/recorder"
+	"github.com/llmite-ai/mirra/internal/config"
+	"github.com/llmite-ai/mirra/internal/proxy"
+	"github.com/llmite-ai/mirra/internal/recorder"
 )
 
 type Server struct {
@@ -43,10 +43,7 @@ func (s *Server) Start(ctx context.Context) error {
 
 	errChan := make(chan error, 1)
 	go func() {
-		slog.Info("taco proxy server started",
-			"port", s.cfg.Port,
-			"recording", s.cfg.Recording.Enabled,
-			"recordings_path", s.cfg.Recording.Path)
+		slog.Info("𝕄𝕀ℝℝ𝔸 started", "port", s.cfg.Port)
 		errChan <- srv.ListenAndServe()
 	}()
 

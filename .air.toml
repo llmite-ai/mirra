@@ -2,9 +2,9 @@ root = "."
 tmp_dir = "tmp"
 
 [build]
-cmd = "go build -o ./tmp/taco ."
-bin = "tmp/taco"
-full_bin = "./tmp/taco start"
+cmd = "go build -o ./mirra ."
+bin = "mirra"
+full_bin = "./mirra start"
 include_ext = ["go"]
 exclude_dir = ["tmp", "vendor", "recordings"]
 exclude_file = []

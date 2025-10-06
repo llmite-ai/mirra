@@ -1,8 +1,10 @@
-# Taco - LLM API Proxy Specification
+# MIRRA - LLM API Proxy Specification
+
+**M**onitoring & **I**nspection **R**ecording **R**elay **A**rchive
 
 ## Overview
 
-Taco is a transparent HTTP proxy for Large Language Model APIs (Claude and OpenAI) that records all request/response traffic without modifying it. It acts as a pass-through intermediary, allowing developers to inspect, audit, and analyze their LLM API usage.
+MIRRA is a transparent HTTP proxy for Large Language Model APIs (Claude, OpenAI, and Gemini) that records all request/response traffic without modifying it. It acts as a pass-through intermediary, allowing developers to inspect, audit, and analyze their LLM API usage.
 
 ## Design Principles
 
@@ -39,8 +41,8 @@ Supports API versions: v1, v1beta, v1alpha
 ## Architecture
 
 ```
-Client � Taco Proxy � Upstream API (Claude/OpenAI)
-              �
+Client → MIRRA Proxy → Upstream API (Claude/OpenAI/Gemini)
+              ↓
          Recording Store
 ```
 
@@ -54,8 +56,8 @@ Client � Taco Proxy � Upstream API (Claude/OpenAI)
 
 ## Request Flow
 
-1. Client sends request to Taco (e.g., `http://localhost:4567/v1/messages`)
-2. Taco identifies the target API from configuration
+1. Client sends request to MIRRA (e.g., `http://localhost:4567/v1/messages`)
+2. MIRRA identifies the target API from configuration
 3. Request body and headers are captured
 4. Request is forwarded to upstream API
 5. Response is streamed back to client in real-time
@@ -144,19 +146,19 @@ Configuration via JSON file or environment variables:
 
 ### Environment Variables
 
-- `TACO_PORT` - Server port (default: 4567)
-- `TACO_RECORDING_ENABLED` - Enable/disable recording (default: true)
-- `TACO_RECORDING_PATH` - Path to store recordings (default: ./recordings)
-- `TACO_CLAUDE_UPSTREAM` - Claude upstream URL
-- `TACO_OPENAI_UPSTREAM` - OpenAI upstream URL
-- `TACO_GEMINI_UPSTREAM` - Gemini upstream URL
+- `MIRRA_PORT` - Server port (default: 4567)
+- `MIRRA_RECORDING_ENABLED` - Enable/disable recording (default: true)
+- `MIRRA_RECORDING_PATH` - Path to store recordings (default: ./recordings)
+- `MIRRA_CLAUDE_UPSTREAM` - Claude upstream URL
+- `MIRRA_OPENAI_UPSTREAM` - OpenAI upstream URL
+- `MIRRA_GEMINI_UPSTREAM` - Gemini upstream URL
 
 ## CLI Commands
 
 ### Start Server
 
 ```bash
-taco start [--port 4567] [--config ./config.json]
+mirra start [--port 4567] [--config ./config.json]
 ```
 
 Starts the proxy server.
@@ -164,7 +166,7 @@ Starts the proxy server.
 ### Export Recordings
 
 ```bash
-taco export [--from 2025-10-01] [--to 2025-10-03] [--provider claude|openai|gemini] [--output recordings.jsonl] [--recordings ./recordings]
+mirra export [--from 2025-10-01] [--to 2025-10-03] [--provider claude|openai|gemini] [--output recordings.jsonl] [--recordings ./recordings]
 ```
 
 Exports recorded traffic to a file.
@@ -179,7 +181,7 @@ Options:
 ### Stats
 
 ```bash
-taco stats [--from 2025-10-01] [--provider claude|openai|gemini] [--recordings ./recordings]
+mirra stats [--from 2025-10-01] [--provider claude|openai|gemini] [--recordings ./recordings]
 ```
 
 Shows statistics about recorded traffic:
@@ -196,13 +198,13 @@ Options:
 ### View Recording
 
 ```bash
-taco view [recording-id] [--recordings ./recordings]
+mirra view [recording-id] [--recordings ./recordings]
 ```
 
 Displays a specific recording in formatted output.
 
 Features:
-- Supports partial UUID matching (e.g., `taco view a1b2c3d4` to match full UUID `a1b2c3d4-...`)
+- Supports partial UUID matching (e.g., `mirra view a1b2c3d4` to match full UUID `a1b2c3d4-...`)
 - If no recording ID provided, shows the last/most recent recording
 - Automatically redacts sensitive data (API keys, tokens) from headers and query parameters
 - Automatically decompresses and formats gzip-compressed responses
@@ -243,11 +245,11 @@ Options:
 
 ### Logging
 
-Taco uses structured logging (Go's `log/slog` package) with three configurable output formats:
+MIRRA uses structured logging (Go's `log/slog` package) with three configurable output formats:
 
 **Pretty Format (default)**: Custom human-readable handler with:
 - Color-coded log levels with visual symbols (▪ debug, ◆ info, ▲ warn, ● error)
-- Special formatting for proxy request logs with taco symbol ⛁
+- Special formatting for proxy request logs with proxy symbol ⛁
 - Provider-specific colored symbols (◆ claude in orange, ● openai in green)
 - Human-readable duration formatting (ms/s/m)
 - Status code color coding (green 2xx, blue 3xx, yellow 4xx, red 5xx)
@@ -260,7 +262,7 @@ Taco uses structured logging (Go's `log/slog` package) with three configurable o
 Example pretty request log:
 ```
 [14:23:45] ⛁ a1b2c3d4 ◆ claude 1.2s 200 /v1/messages
-[14:23:46] ◆ info taco proxy server started port=4567 recording=true
+[14:23:46] ◆ info MIRRA proxy server started port=4567 recording=true
 ```
 
 ## Future Enhancements (don't implement yet)

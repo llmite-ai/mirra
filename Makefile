@@ -16,14 +16,14 @@ dev: ## Start the proxy server with live reloading (requires air)
 start: ## Start the proxy server
 	go run main.go start
 
-build: ## Build the taco binary
-	go build -o taco .
+build: ## Build the mirra binary
+	go build -o mirra .
 
 test: ## Run tests
 	go test ./...
 
 clean: ## Remove built binaries
-	rm -f taco
+	rm -f mirra
 
 ## Pokes
 

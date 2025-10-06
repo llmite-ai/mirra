@@ -1,4 +1,4 @@
-module github.com/llmite-ai/taco
+module github.com/llmite-ai/mirra
 
 go 1.25.1
 

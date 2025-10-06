@@ -79,7 +79,7 @@ func (h *PrettyHandler) formatRequestLog(b *strings.Builder, r slog.Record) {
 	b.WriteString(colorReset)
 	b.WriteString(" ")
 
-	// Taco symbol
+	// Proxy symbol
 	b.WriteString("⛁")
 	b.WriteString(" ")
 

@@ -1,8 +1,10 @@
-# Taco
+# MIRRA
+
+**M**onitoring & **I**nspection **R**ecording **R**elay **A**rchive
 
 A transparent HTTP proxy for Large Language Model APIs that records all request/response traffic without modifying it.
 
-Taco acts as a pass-through intermediary for inspection, auditing, and analysis of LLM API usage. Currently supports Claude (Anthropic), OpenAI, and Google Gemini APIs.
+MIRRA acts as a pass-through intermediary for inspection, auditing, and analysis of LLM API usage. Currently supports Claude (Anthropic), OpenAI, and Google Gemini APIs.
 
 ## Features
 
@@ -24,7 +26,7 @@ Taco acts as a pass-through intermediary for inspection, auditing, and analysis 
 ### Build from source
 
 ```bash
-go build -o taco .
+go build -o mirra .
 ```
 
 ## Usage
@@ -32,24 +34,24 @@ go build -o taco .
 ### Start the proxy server
 
 ```bash
-./taco start
+./mirra start
 ```
 
 By default, the proxy listens on port `4567`. You can specify a custom port:
 
 ```bash
-./taco start --port 8080
+./mirra start --port 8080
 ```
 
 Or provide a configuration file:
 
 ```bash
-./taco start --config ./config.json
+./mirra start --config ./config.json
 ```
 
 ### Configure your API client
 
-Point your LLM API client to the Taco proxy instead of the upstream API:
+Point your LLM API client to the MIRRA proxy instead of the upstream API:
 
 **Claude:**
 ```bash
@@ -69,20 +71,20 @@ Point your LLM API client to the Taco proxy instead of the upstream API:
 # Use: http://localhost:4567
 ```
 
-Keep your API keys unchanged - Taco forwards them to the upstream APIs.
+Keep your API keys unchanged - MIRRA forwards them to the upstream APIs.
 
 ### Export recordings
 
 Export all recordings:
 
 ```bash
-./taco export --output traffic.jsonl
+./mirra export --output traffic.jsonl
 ```
 
 Export with filters:
 
 ```bash
-./taco export --from 2025-01-01 --to 2025-01-31 --provider claude --output claude-jan.jsonl
+./mirra export --from 2025-01-01 --to 2025-01-31 --provider claude --output claude-jan.jsonl
 ```
 
 Options:
@@ -95,13 +97,13 @@ Options:
 ### View statistics
 
 ```bash
-./taco stats
+./mirra stats
 ```
 
 Filter by date range or provider:
 
 ```bash
-./taco stats --from 2025-01-01 --provider openai
+./mirra stats --from 2025-01-01 --provider openai
 ```
 
 Options:
@@ -114,13 +116,13 @@ Options:
 View a recording by ID (supports partial UUID matching):
 
 ```bash
-./taco view a1b2c3d4
+./mirra view a1b2c3d4
 ```
 
 View the most recent recording:
 
 ```bash
-./taco view
+./mirra view
 ```
 
 Features:
@@ -171,16 +173,16 @@ Configuration can be provided via a JSON file or environment variables.
 
 Environment variables override config file values:
 
-- `TACO_PORT` - Server port (default: 4567)
-- `TACO_RECORDING_ENABLED` - Enable/disable recording (default: true)
-- `TACO_RECORDING_PATH` - Directory for recording files (default: ./recordings)
-- `TACO_CLAUDE_UPSTREAM` - Claude API upstream URL
-- `TACO_OPENAI_UPSTREAM` - OpenAI API upstream URL
-- `TACO_GEMINI_UPSTREAM` - Gemini API upstream URL
+- `MIRRA_PORT` - Server port (default: 4567)
+- `MIRRA_RECORDING_ENABLED` - Enable/disable recording (default: true)
+- `MIRRA_RECORDING_PATH` - Directory for recording files (default: ./recordings)
+- `MIRRA_CLAUDE_UPSTREAM` - Claude API upstream URL
+- `MIRRA_OPENAI_UPSTREAM` - OpenAI API upstream URL
+- `MIRRA_GEMINI_UPSTREAM` - Gemini API upstream URL
 
 ### Logging
 
-Taco supports three logging formats via the `logging.format` configuration:
+MIRRA supports three logging formats via the `logging.format` configuration:
 
 - **pretty** (default): Human-readable with color-coded log levels and request symbols
 - **json**: Structured JSON output for log aggregation systems
@@ -262,7 +264,7 @@ Example endpoints:
 **OpenAI:**
 ```bash
 # Start the proxy
-./taco start
+./mirra start
 
 # Make a request through the proxy
 curl -X POST http://localhost:4567/v1/chat/completions \
@@ -302,7 +304,7 @@ The request and response will be automatically recorded in the `./recordings` di
 
 ## Performance
 
-Taco is designed for minimal overhead:
+MIRRA is designed for minimal overhead:
 - Target latency: < 1ms additional overhead
 - Streaming responses pass through in real-time
 - Recording happens asynchronously without blocking requests

@@ -12,8 +12,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/llmite-ai/taco/internal/config"
-	"github.com/llmite-ai/taco/internal/recorder"
+	"github.com/llmite-ai/mirra/internal/config"
+	"github.com/llmite-ai/mirra/internal/recorder"
 )
 
 type Proxy struct {
