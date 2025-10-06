@@ -1,3 +1,3 @@
 source 'https://rubygems.org'
 
-gem 'ruby-gemini-api'
+gem 'gemini-ai', '~> 4.2.0'

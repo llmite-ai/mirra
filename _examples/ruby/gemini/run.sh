@@ -1,3 +1,4 @@
 #!/bin/bash
+set -euo pipefail
 bundle install
-ruby main.rb
+bundle exec ruby main.rb
