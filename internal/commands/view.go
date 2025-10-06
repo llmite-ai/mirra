@@ -275,7 +275,7 @@ func printSSEEvent(eventType, data string) {
 	fmt.Printf("\n  Event: %s\n", eventType)
 
 	// Try to parse data as JSON and pretty-print it
-	var jsonData interface{}
+	var jsonData any
 	if err := json.Unmarshal([]byte(data), &jsonData); err == nil {
 		if formatted, err := json.MarshalIndent(jsonData, "    ", "  "); err == nil {
 			fmt.Println(string(formatted))
@@ -337,7 +337,7 @@ func printGzippedBody(gzippedBody string) {
 
 	fmt.Println("\n  [Decompressed Content]")
 	// Try to parse decompressed content as JSON
-	var jsonData interface{}
+	var jsonData any
 	if err := json.Unmarshal(decompressed, &jsonData); err == nil {
 		if formatted, err := json.MarshalIndent(jsonData, "  ", "  "); err == nil {
 			fmt.Println(string(formatted))

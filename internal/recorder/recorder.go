@@ -26,13 +26,13 @@ type RequestData struct {
 	Path    string              `json:"path"`
 	Query   string              `json:"query,omitempty"`
 	Headers map[string][]string `json:"headers"`
-	Body    interface{}         `json:"body,omitempty"`
+	Body    any         `json:"body,omitempty"`
 }
 
 type ResponseData struct {
 	Status    int                 `json:"status"`
 	Headers   map[string][]string `json:"headers"`
-	Body      interface{}         `json:"body,omitempty"`
+	Body      any         `json:"body,omitempty"`
 	Streaming bool                `json:"streaming"`
 }
 
