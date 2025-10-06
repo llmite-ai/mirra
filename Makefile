@@ -28,7 +28,7 @@ clean: ## Remove built binaries
 build_example: ## Build a new example (usage: make build_example go openai)
 	@sed -e 's/{language}/$(word 1,$(filter-out $@,$(MAKECMDGOALS)))/g' \
 	     -e 's/{provider}/$(word 2,$(filter-out $@,$(MAKECMDGOALS)))/g' \
-	     _dev/examples_prompt.txt | ANTHROPIC_BASE_URL=http://localhost:4567/ claude --dangerously-skip-permissions > output.txt
+	     _dev/examples_prompt.txt | ANTHROPIC_BASE_URL=http://localhost:4567/ claude --dangerously-skip-permissions -p ""
 
 .PHONY: list_examples
 list_examples: ## List available examples

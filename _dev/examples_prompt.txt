@@ -26,6 +26,7 @@ The example code should:
 - Make a simple API call (e.g., "Say hello and a joke")
 - Print the response to stdout
 - Include proper error handling
+- If there is already an example for the same language, use the same structure and patterns as that example.
 
 ### Language-Specific Guidelines
 

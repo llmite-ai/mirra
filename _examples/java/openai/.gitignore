@@ -1,0 +1,25 @@
+# Maven build output
+target/
+dependency-reduced-pom.xml
+
+# Compiled class files
+*.class
+*.jar
+!.mvn/wrapper/maven-wrapper.jar
+
+# IDE files
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+.settings/
+.classpath
+.project
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Tool version managers
+.tool-versions
