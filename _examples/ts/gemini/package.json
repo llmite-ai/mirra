@@ -1,0 +1,19 @@
+{
+  "name": "gemini-mirra-example",
+  "version": "1.0.0",
+  "description": "Example of using Gemini API through mirra proxy",
+  "main": "index.ts",
+  "scripts": {
+    "start": "tsx index.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@google/generative-ai": "^0.21.0"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}

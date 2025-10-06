@@ -1,6 +1,69 @@
 # Tools
-.PHONY: default help
+.PHONY: default
 default: help
+
+## Development:
+.PHONY: dev
+dev: ## Start the proxy server with live reloading (requires air)
+	air
+
+.PHONY: start
+start: ## Start the proxy server
+	go run main.go start
+
+.PHONY: build
+build: ## Build the mirra binary
+	go build -o mirra .
+
+.PHONY: test
+test: ## Run tests
+	go test ./...
+
+.PHONY: clean
+clean: ## Remove built binaries
+	rm -f mirra
+
+## Examples
+.PHONY: example_prompt
+echo_example_prompt: ## Echo the prompt used to build a new example (usage: make echo_example_prompt go openai)
+	@sed -e 's/{language}/$(word 1,$(filter-out $@,$(MAKECMDGOALS)))/g' \
+	     -e 's/{provider}/$(word 2,$(filter-out $@,$(MAKECMDGOALS)))/g' \
+	     _dev/examples_prompt.txt
+
+.PHONY: list_examples
+list_examples: ## List available examples
+	@echo "Available examples:"
+	@for lang in _examples/*/; do \
+		if [ -d "$$lang" ]; then \
+			echo "$$(basename $$lang):"; \
+			for lib in $$lang*/; do \
+				if [ -d "$$lib" ]; then \
+					echo "  - $$(basename $$lib)"; \
+				fi \
+			done \
+		fi \
+	done
+
+.PHONY: run_example
+run_example: ## Run an example (usage: make run_example go openai)
+	cd _examples/$(word 1,$(filter-out $@,$(MAKECMDGOALS)))/$(word 2,$(filter-out $@,$(MAKECMDGOALS))) && ./run.sh
+
+.PHONY: run_all_examples
+run_all_examples: ## Run all examples
+	@for lang in _examples/*/; do \
+		if [ -d "$$lang" ]; then \
+			for lib in $$lang*/; do \
+				if [ -d "$$lib" ] && [ -f "$$lib/run.sh" ]; then \
+					echo "Running $$(basename $$lang)/$$(basename $$lib)..."; \
+					cd "$$lib" && ./run.sh && cd - > /dev/null || exit 1; \
+				fi \
+			done \
+		fi \
+	done
+
+.PHONY: chmod_examples
+chmod_chmod_examples: ## Make example run scripts executable
+	find _examples -name "run.sh" -type f -exec chmod +x {} +
 
 
 GREEN  := $(shell tput -Txterm setaf 2)
@@ -9,28 +72,9 @@ WHITE  := $(shell tput -Txterm setaf 7)
 CYAN   := $(shell tput -Txterm setaf 6)
 RESET  := $(shell tput -Txterm sgr0)
 
-## Development:
-dev: ## Start the proxy server with live reloading (requires air)
-	air
-
-start: ## Start the proxy server
-	go run main.go start
-
-build: ## Build the mirra binary
-	go build -o mirra .
-
-test: ## Run tests
-	go test ./...
-
-clean: ## Remove built binaries
-	rm -f mirra
-
-## Pokes
-
-poke_gemini: ## Poke the Gemini server
-	(cd _dev/gemini && go run main.go)
 
 ## Help:
+.PHONY: help
 help: ## Show this help.
 	@echo ''
 	@echo 'Usage:'
@@ -41,3 +85,6 @@ help: ## Show this help.
 		if (/^[a-zA-Z_-]+:.*?##.*$$/) {printf "    ${YELLOW}%-20s${GREEN}%s${RESET}\n", $$1, $$2} \
 		else if (/^## .*$$/) {printf "  ${CYAN}%s${RESET}\n", substr($$1,4)} \
 		}' $(MAKEFILE_LIST)
+
+%:
+	@:

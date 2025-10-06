@@ -1,0 +1,19 @@
+{
+  "name": "mirra-openai-example",
+  "version": "1.0.0",
+  "description": "Example of using OpenAI API through mirra proxy",
+  "main": "index.ts",
+  "scripts": {
+    "start": "tsx index.ts"
+  },
+  "keywords": ["mirra", "openai", "proxy"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "openai": "^4.73.0"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}
