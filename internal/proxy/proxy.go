@@ -109,9 +109,74 @@ func isGeminiPath(path string) bool {
 func (p *Proxy) Handle(w http.ResponseWriter, r *http.Request) {
 	startTime := time.Now()
 
+	// Identify provider early - use "unknown" as fallback for recording
 	provider := p.identifyProvider(r.URL.Path)
+	recordProvider := provider
+	if recordProvider == "" {
+		recordProvider = "unknown"
+	}
+
+	// Create recording FIRST - before ANY validation or body reading
+	rec := recorder.NewRecording(recordProvider, r.Method, r.URL.Path, r.URL.RawQuery, startTime)
+	rec.Request.Headers = r.Header.Clone()
+
+	// Ensure recording happens even on early returns (including body read failures)
+	defer func() {
+		rec.Timing.CompletedAt = time.Now()
+		rec.Timing.DurationMs = rec.Timing.CompletedAt.Sub(rec.Timing.StartedAt).Milliseconds()
+
+		// Log completion
+		logLevel := slog.LevelInfo
+		if rec.Response.Status >= 400 {
+			logLevel = slog.LevelError
+		} else if rec.Response.Status >= 300 {
+			logLevel = slog.LevelWarn
+		}
+
+		logAttrs := []any{
+			"id", rec.ID[:8],
+			"provider", rec.Provider,
+			"status", rec.Response.Status,
+			"duration_ms", rec.Timing.DurationMs,
+			"path", rec.Request.Path,
+		}
+		if rec.Error != "" {
+			logAttrs = append(logAttrs, "error", rec.Error)
+		}
+
+		slog.Log(r.Context(), logLevel, "request completed", logAttrs...)
+
+		// Record asynchronously
+		p.recorder.Record(rec)
+	}()
+
+	// Read and capture request body
+	bodyBytes, err := io.ReadAll(r.Body)
+	if err != nil {
+		rec.Error = "failed to read request body"
+		rec.Response.Status = http.StatusBadRequest
+		http.Error(w, "failed to read request body", http.StatusBadRequest)
+		return
+	}
+	defer r.Body.Close()
+
+	// Capture request body
+	if len(bodyBytes) > 0 {
+		// Try to parse as JSON, otherwise store as string
+		var jsonBody any
+		if err := json.Unmarshal(bodyBytes, &jsonBody); err == nil {
+			rec.Request.Body = jsonBody
+		} else {
+			rec.Request.Body = string(bodyBytes)
+		}
+	}
+
+	// Check if provider is known
 	if provider == "" {
+		rec.Error = "unknown API endpoint"
+		rec.Response.Status = http.StatusNotFound
 		slog.Warn("unknown API endpoint",
+			"id", rec.ID[:8],
 			"method", r.Method,
 			"path", r.URL.Path,
 			"host", r.Host,
@@ -123,29 +188,10 @@ func (p *Proxy) Handle(w http.ResponseWriter, r *http.Request) {
 
 	providerCfg, ok := p.cfg.Providers[provider]
 	if !ok {
-		http.Error(w, fmt.Sprintf("provider %s not configured", provider), http.StatusInternalServerError)
+		rec.Error = fmt.Sprintf("provider %s not configured", provider)
+		rec.Response.Status = http.StatusInternalServerError
+		http.Error(w, rec.Error, http.StatusInternalServerError)
 		return
-	}
-
-	// Read and capture request body
-	bodyBytes, err := io.ReadAll(r.Body)
-	if err != nil {
-		http.Error(w, "failed to read request body", http.StatusBadRequest)
-		return
-	}
-	defer r.Body.Close()
-
-	// Create recording
-	rec := recorder.NewRecording(provider, r.Method, r.URL.Path, r.URL.RawQuery, startTime)
-	rec.Request.Headers = r.Header.Clone()
-	if len(bodyBytes) > 0 {
-		// Try to parse as JSON, otherwise store as string
-		var jsonBody any
-		if err := json.Unmarshal(bodyBytes, &jsonBody); err == nil {
-			rec.Request.Body = jsonBody
-		} else {
-			rec.Request.Body = string(bodyBytes)
-		}
 	}
 
 	// Create upstream request
@@ -156,7 +202,9 @@ func (p *Proxy) Handle(w http.ResponseWriter, r *http.Request) {
 
 	req, err := http.NewRequestWithContext(r.Context(), r.Method, upstreamURL, bytes.NewReader(bodyBytes))
 	if err != nil {
-		http.Error(w, "failed to create upstream request", http.StatusInternalServerError)
+		rec.Error = "failed to create upstream request"
+		rec.Response.Status = http.StatusInternalServerError
+		http.Error(w, rec.Error, http.StatusInternalServerError)
 		return
 	}
 
@@ -170,7 +218,9 @@ func (p *Proxy) Handle(w http.ResponseWriter, r *http.Request) {
 	// Make upstream request
 	resp, err := p.client.Do(req)
 	if err != nil {
-		slog.Error("upstream request failed", "error", err, "provider", provider, "path", r.URL.Path)
+		rec.Error = fmt.Sprintf("upstream request failed: %v", err)
+		rec.Response.Status = http.StatusBadGateway
+		slog.Error("upstream request failed", "id", rec.ID[:8], "error", err, "provider", provider, "path", r.URL.Path)
 		http.Error(w, "upstream request failed", http.StatusBadGateway)
 		return
 	}
@@ -198,27 +248,6 @@ func (p *Proxy) Handle(w http.ResponseWriter, r *http.Request) {
 	} else {
 		p.handleRegular(w, resp.Body, &rec)
 	}
-
-	rec.Timing.CompletedAt = time.Now()
-	rec.Timing.DurationMs = rec.Timing.CompletedAt.Sub(rec.Timing.StartedAt).Milliseconds()
-
-	// Log completion
-	logLevel := slog.LevelInfo
-	if rec.Response.Status >= 400 {
-		logLevel = slog.LevelError
-	} else if rec.Response.Status >= 300 {
-		logLevel = slog.LevelWarn
-	}
-
-	slog.Log(r.Context(), logLevel, "request completed",
-		"id", rec.ID[:8],
-		"provider", rec.Provider,
-		"status", rec.Response.Status,
-		"duration_ms", rec.Timing.DurationMs,
-		"path", rec.Request.Path)
-
-	// Record asynchronously
-	p.recorder.Record(rec)
 }
 
 func (p *Proxy) handleRegular(w http.ResponseWriter, body io.Reader, rec *recorder.Recording) {
