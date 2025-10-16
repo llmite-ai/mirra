@@ -19,6 +19,7 @@ type Recording struct {
 	Request   RequestData            `json:"request"`
 	Response  ResponseData           `json:"response"`
 	Timing    TimingData             `json:"timing"`
+	Error     string                 `json:"error,omitempty"`
 }
 
 type RequestData struct {
