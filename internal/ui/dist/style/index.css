@@ -24,6 +24,7 @@
       "Courier New",
       monospace;
     --color-red-50: oklch(97.1% .013 17.38);
+    --color-red-100: oklch(93.6% .032 17.717);
     --color-red-200: oklch(88.5% .062 18.334);
     --color-red-300: oklch(80.8% .114 19.571);
     --color-red-400: oklch(70.4% .191 22.216);
@@ -279,6 +280,9 @@
   .pointer-events-none {
     pointer-events: none;
   }
+  .collapse {
+    visibility: collapse;
+  }
   .invisible {
     visibility: hidden;
   }
@@ -373,6 +377,9 @@
   }
   .ml-2 {
     margin-left: calc(var(--spacing) * 2);
+  }
+  .ml-8 {
+    margin-left: calc(var(--spacing) * 8);
   }
   .line-clamp-1 {
     overflow: hidden;
@@ -755,6 +762,14 @@
   .border-input {
     border-color: var(--input);
   }
+  .border-muted-foreground\/20 {
+    border-color: var(--muted-foreground);
+  }
+  @supports (color: color-mix(in lab, red, red)) {
+    .border-muted-foreground\/20 {
+      border-color: color-mix(in oklab, var(--muted-foreground) 20%, transparent);
+    }
+  }
   .border-primary {
     border-color: var(--primary);
   }
@@ -791,8 +806,14 @@
   .bg-border {
     background-color: var(--border);
   }
-  .bg-card {
+  .bg-card,
+  .bg-card\/50 {
     background-color: var(--card);
+  }
+  @supports (color: color-mix(in lab, red, red)) {
+    .bg-card\/50 {
+      background-color: color-mix(in oklab, var(--card) 50%, transparent);
+    }
   }
   .bg-destructive {
     background-color: var(--destructive);
@@ -816,6 +837,14 @@
   @supports (color: color-mix(in lab, red, red)) {
     .bg-muted\/10 {
       background-color: color-mix(in oklab, var(--muted) 10%, transparent);
+    }
+  }
+  .bg-muted\/20 {
+    background-color: var(--muted);
+  }
+  @supports (color: color-mix(in lab, red, red)) {
+    .bg-muted\/20 {
+      background-color: color-mix(in oklab, var(--muted) 20%, transparent);
     }
   }
   .bg-muted\/30 {
@@ -851,6 +880,9 @@
   }
   .bg-red-50 {
     background-color: var(--color-red-50);
+  }
+  .bg-red-100 {
+    background-color: var(--color-red-100);
   }
   .bg-secondary {
     background-color: var(--secondary);
@@ -1204,6 +1236,11 @@
     transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
     transition-duration: var(--tw-duration, var(--default-transition-duration));
   }
+  .transition-opacity {
+    transition-property: opacity;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+  }
   .transition-shadow {
     transition-property: box-shadow;
     transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
@@ -1299,6 +1336,16 @@
     }
   }
   @media (hover: hover) {
+    .hover\:border-muted-foreground\/30:hover {
+      border-color: var(--muted-foreground);
+    }
+    @supports (color: color-mix(in lab, red, red)) {
+      .hover\:border-muted-foreground\/30:hover {
+        border-color: color-mix(in oklab, var(--muted-foreground) 30%, transparent);
+      }
+    }
+  }
+  @media (hover: hover) {
     .hover\:bg-accent:hover {
       background-color: var(--accent);
     }
@@ -1316,6 +1363,16 @@
   @media (hover: hover) {
     .hover\:bg-muted:hover {
       background-color: var(--muted);
+    }
+  }
+  @media (hover: hover) {
+    .hover\:bg-muted\/30:hover {
+      background-color: var(--muted);
+    }
+    @supports (color: color-mix(in lab, red, red)) {
+      .hover\:bg-muted\/30:hover {
+        background-color: color-mix(in oklab, var(--muted) 30%, transparent);
+      }
     }
   }
   @media (hover: hover) {
@@ -1384,6 +1441,11 @@
     }
   }
   @media (hover: hover) {
+    .hover\:opacity-80:hover {
+      opacity: 80%;
+    }
+  }
+  @media (hover: hover) {
     .hover\:opacity-100:hover {
       opacity: 100%;
     }
@@ -1399,6 +1461,23 @@
   }
   .focus\:text-primary-foreground:focus {
     color: var(--primary-foreground);
+  }
+  .focus\:ring-2:focus {
+    --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
+    box-shadow:
+      var(--tw-inset-shadow),
+      var(--tw-inset-ring-shadow),
+      var(--tw-ring-offset-shadow),
+      var(--tw-ring-shadow),
+      var(--tw-shadow);
+  }
+  .focus\:ring-primary\/50:focus {
+    --tw-ring-color: var(--primary);
+  }
+  @supports (color: color-mix(in lab, red, red)) {
+    .focus\:ring-primary\/50:focus {
+      --tw-ring-color: color-mix(in oklab, var(--primary) 50%, transparent);
+    }
   }
   .focus\:outline-none:focus {
     --tw-outline-style: none;

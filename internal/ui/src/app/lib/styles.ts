@@ -77,3 +77,19 @@ export function getSizeColor(bytes: number): string {
   }
   return "text-red-600 dark:text-red-400";
 }
+
+/**
+ * Returns Tailwind classes for session context badges
+ * Blue color scheme to distinguish from provider badges
+ */
+export function getSessionBadgeStyles(): string {
+  return "bg-blue-100 text-blue-800 dark:bg-blue-900/20 dark:text-blue-300";
+}
+
+/**
+ * Returns Tailwind classes for error indicator badges
+ * Red color scheme to highlight errors in sessions
+ */
+export function getErrorBadgeStyles(): string {
+  return "bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-300";
+}

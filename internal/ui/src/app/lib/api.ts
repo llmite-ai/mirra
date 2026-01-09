@@ -90,3 +90,67 @@ export async function fetchParsedRecording(id: string): Promise<ParsedStream> {
   }
   return response.json();
 }
+
+// Session Grouping Interfaces and Functions
+
+export interface SessionGroup {
+  trace_id: string;
+  session_id: string;
+  recording_ids: string[];
+  first_timestamp: string;
+  last_timestamp: string;
+  request_count: number;
+  providers: string[];
+  has_errors: boolean;
+}
+
+export interface SessionGroupListResponse {
+  groups: SessionGroup[];
+  total: number;
+  page: number;
+  limit: number;
+  hasMore: boolean;
+}
+
+export interface SessionGroupDetail {
+  group: SessionGroup;
+  recordings: RecordingSummary[];
+}
+
+/**
+ * Fetches session groups with optional filters
+ */
+export async function fetchSessionGroups(
+  page: number,
+  limit: number,
+  provider?: string,
+  hasErrors?: boolean,
+  fromDate?: string,
+  toDate?: string,
+): Promise<SessionGroupListResponse> {
+  const params = new URLSearchParams({
+    page: page.toString(),
+    limit: limit.toString(),
+  });
+  if (provider) params.append("provider", provider);
+  if (hasErrors !== undefined) params.append("has_errors", hasErrors.toString());
+  if (fromDate) params.append("from", fromDate);
+  if (toDate) params.append("to", toDate);
+
+  const response = await fetch(`/api/groups/sessions?${params}`);
+  if (!response.ok) {
+    throw new Error("Failed to fetch session groups");
+  }
+  return response.json();
+}
+
+/**
+ * Fetches a single session group with full recording details
+ */
+export async function fetchSessionGroup(traceId: string): Promise<SessionGroupDetail> {
+  const response = await fetch(`/api/groups/sessions/${traceId}`);
+  if (!response.ok) {
+    throw new Error(`Failed to fetch session group: ${response.statusText}`);
+  }
+  return response.json();
+}

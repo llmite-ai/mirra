@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { Loader2 } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { useSearchParams } from "react-router";
-import { fetchRecording, fetchParsedRecording } from "@/lib/api";
+import { fetchRecording, fetchParsedRecording, fetchSessionGroup } from "@/lib/api";
 import { RecordingHeader } from "./RecordingHeader";
 import { RecordingMetadata } from "./RecordingMetadata";
 import { RecordingError } from "./RecordingError";
@@ -46,6 +46,43 @@ export default function RecordingDetail({ recordingId }: RecordingDetailProps) {
     enabled: !!recordingId,
   });
 
+  // Extract trace ID from sentry-trace header
+  const traceId = useMemo(() => {
+    if (!recording?.request?.headers) return null;
+
+    // Look for sentry-trace header (case-insensitive)
+    const sentryTrace = Object.entries(recording.request.headers).find(
+      ([key]) => key.toLowerCase() === "sentry-trace"
+    );
+
+    if (!sentryTrace || !sentryTrace[1] || sentryTrace[1].length === 0) {
+      return null;
+    }
+
+    // Extract trace ID (before first dash)
+    const traceValue = sentryTrace[1][0];
+    return traceValue.split("-")[0];
+  }, [recording]);
+
+  // Fetch session group if we have a trace ID
+  const { data: sessionData } = useQuery({
+    queryKey: ["session-for-recording", traceId],
+    queryFn: () => fetchSessionGroup(traceId!),
+    enabled: !!traceId,
+  });
+
+  // Build session context if we have session data
+  const sessionContext = useMemo(() => {
+    if (!sessionData || !recordingId) return undefined;
+
+    const position = sessionData.group.recording_ids.indexOf(recordingId) + 1;
+    return {
+      traceId: sessionData.group.trace_id || sessionData.group.session_id,
+      position,
+      total: sessionData.group.request_count,
+    };
+  }, [sessionData, recordingId]);
+
   const {
     data: parsedData,
     isLoading: isParsing,
@@ -77,7 +114,11 @@ export default function RecordingDetail({ recordingId }: RecordingDetailProps) {
 
   return (
     <div className="w-full h-full flex flex-col bg-background text-foreground">
-      <RecordingHeader recordingId={recordingId} recording={recording} />
+      <RecordingHeader
+        recordingId={recordingId}
+        recording={recording}
+        sessionContext={sessionContext}
+      />
 
       <div className="flex-1 flex flex-col overflow-hidden bg-background">
         <div className="bg-card border-b">

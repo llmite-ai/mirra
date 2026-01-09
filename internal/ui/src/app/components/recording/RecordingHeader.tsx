@@ -1,18 +1,27 @@
 import React, { useState } from "react";
-import { ArrowLeft, Copy, Download, Check } from "lucide-react";
+import { ArrowLeft, Copy, Download, Check, FolderTree } from "lucide-react";
 import { useNavigate } from "react-router";
 import { Button } from "@/components/ui/button";
 import { Recording } from "@/lib/api";
+import { getSessionBadgeStyles } from "@/lib/styles";
+import { formatTraceId } from "@/lib/formatters";
+
+interface SessionContext {
+  traceId: string;
+  position: number;
+  total: number;
+}
 
 interface RecordingHeaderProps {
   recordingId: string;
   recording?: Recording;
+  sessionContext?: SessionContext;
 }
 
 /**
  * Header bar with back button and recording ID
  */
-export function RecordingHeader({ recordingId, recording }: RecordingHeaderProps) {
+export function RecordingHeader({ recordingId, recording, sessionContext }: RecordingHeaderProps) {
   const navigate = useNavigate();
   const [copied, setCopied] = useState(false);
 
@@ -63,6 +72,15 @@ export function RecordingHeader({ recordingId, recording }: RecordingHeaderProps
           <p className="text-sm text-muted-foreground font-mono mt-1">
             {recordingId}
           </p>
+          {sessionContext && (
+            <button
+              onClick={() => navigate(`/recordings?view=sessions&expanded=${sessionContext.traceId}`)}
+              className={`inline-flex items-center gap-1 px-2 py-1 rounded text-xs font-medium mt-2 ${getSessionBadgeStyles()} hover:opacity-80 transition-opacity`}
+            >
+              <FolderTree className="h-3 w-3" />
+              Part of Session {formatTraceId(sessionContext.traceId, 12)} (Request {sessionContext.position} of {sessionContext.total})
+            </button>
+          )}
         </div>
       </div>
       <div className="flex items-center gap-2">

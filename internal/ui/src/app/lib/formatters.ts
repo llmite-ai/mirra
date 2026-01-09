@@ -42,3 +42,40 @@ export function formatBody(body: any): string {
   }
   return formatJSON(body);
 }
+
+/**
+ * Formats a time range from start to end timestamps
+ * @example formatTimeRange("2024-11-30T15:23:01Z", "2024-11-30T15:45:22Z")
+ *          // "Nov 30, 15:23 - 15:45 (22m)"
+ */
+export function formatTimeRange(start: string, end: string): string {
+  const startDate = new Date(start);
+  const endDate = new Date(end);
+
+  const startTime = startDate.toLocaleTimeString("en-US", {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false
+  });
+  const endTime = endDate.toLocaleTimeString("en-US", {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false
+  });
+
+  const durationMs = endDate.getTime() - startDate.getTime();
+  const durationMin = Math.round(durationMs / 60000);
+
+  return `${startTime} - ${endTime} (${durationMin}m)`;
+}
+
+/**
+ * Formats trace ID for display by truncating long IDs
+ * @example formatTraceId("abc123def456ghi789") // "abc123de..."
+ */
+export function formatTraceId(id: string, maxLength: number = 12): string {
+  if (id.length <= maxLength) {
+    return id;
+  }
+  return `${id.substring(0, maxLength)}...`;
+}
