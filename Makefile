@@ -2,22 +2,31 @@
 .PHONY: default
 default: help
 
+UI_SRC := internal/ui/src
+
 ## Development:
 .PHONY: setup
 setup: install-hooks install-ui fmt vet lint ## Setup development environment
 	@echo "Development environment setup complete!"
 
 .PHONY: dev
-dev: ## Start the proxy server with live reloading (requires air)
+dev: install-ui ## Start the proxy server with live reloading (requires air)
 	air
 
 .PHONY: start
-start: ## Start the proxy server
+start: install-ui ## Start the proxy server
 	go run main.go start
 
 .PHONY: build
-build: ## Build the mirra binary
+build: install-ui ## Build the mirra binary
 	go build -o mirra .
+
+.PHONY: install
+install: install-ui ## Install all dependencies, then build and install mirra to GOBIN (or GOPATH/bin)
+	go install .
+	@bin_dir="$$(go env GOBIN)"; \
+	[ -n "$$bin_dir" ] || bin_dir="$$(go env GOPATH)/bin"; \
+	echo "Installed mirra to $$bin_dir/mirra"
 
 .PHONY: test
 test: ## Run tests
@@ -70,8 +79,12 @@ check: fmt-check vet lint ## Run all checks (fmt-check, vet, lint) like CI does
 	@echo "All checks passed!"
 
 .PHONY: install-ui
-install-ui: ## Install UI dependencies
-	cd internal/ui/src && npm install
+install-ui: $(UI_SRC)/node_modules ## Install UI dependencies
+
+# Only reinstall when the package manifest or lockfile changes.
+$(UI_SRC)/node_modules: $(UI_SRC)/package.json $(UI_SRC)/package-lock.json
+	cd $(UI_SRC) && npm install
+	@touch $(UI_SRC)/node_modules
 
 .PHONY: install-hooks
 install-hooks: ## Install git hooks

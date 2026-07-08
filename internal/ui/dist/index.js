@@ -362,7 +362,7 @@
             value: source
           }), Object.freeze && (Object.freeze(element.props), Object.freeze(element)), element;
         };
-        function createElement15(type, config, children) {
+        function createElement16(type, config, children) {
           var propName, props = {}, key = null, ref = null, self = null, source = null;
           if (config != null) {
             hasValidRef(config) && (ref = config.ref, warnIfStringRefCannotBeAutoConverted(config)), hasValidKey(config) && (checkKeyStringCoercion(config.key), key = "" + config.key), self = config.__self === void 0 ? null : config.__self, source = config.__source === void 0 ? null : config.__source;
@@ -739,7 +739,7 @@ See https://reactjs.org/link/invalid-hook-call for tips about how to debug and f
           }
           return dispatcher.useContext(Context);
         }
-        function useState13(initialState2) {
+        function useState20(initialState2) {
           var dispatcher = resolveDispatcher();
           return dispatcher.useState(initialState2);
         }
@@ -747,7 +747,7 @@ See https://reactjs.org/link/invalid-hook-call for tips about how to debug and f
           var dispatcher = resolveDispatcher();
           return dispatcher.useReducer(reducer, initialArg, init);
         }
-        function useRef6(initialValue) {
+        function useRef7(initialValue) {
           var dispatcher = resolveDispatcher();
           return dispatcher.useRef(initialValue);
         }
@@ -759,7 +759,7 @@ See https://reactjs.org/link/invalid-hook-call for tips about how to debug and f
           var dispatcher = resolveDispatcher();
           return dispatcher.useInsertionEffect(create, deps);
         }
-        function useLayoutEffect4(create, deps) {
+        function useLayoutEffect5(create, deps) {
           var dispatcher = resolveDispatcher();
           return dispatcher.useLayoutEffect(create, deps);
         }
@@ -767,7 +767,7 @@ See https://reactjs.org/link/invalid-hook-call for tips about how to debug and f
           var dispatcher = resolveDispatcher();
           return dispatcher.useCallback(callback, deps);
         }
-        function useMemo5(create, deps) {
+        function useMemo7(create, deps) {
           var dispatcher = resolveDispatcher();
           return dispatcher.useMemo(create, deps);
         }
@@ -1129,7 +1129,7 @@ Check the top-level render call using <` + parentName + ">.");
             var typeString;
             type === null ? typeString = "null" : isArray(type) ? typeString = "array" : type !== void 0 && type.$$typeof === REACT_ELEMENT_TYPE ? (typeString = "<" + (getComponentNameFromType(type.type) || "Unknown") + " />", info = " Did you accidentally export a JSX literal instead of a component?") : typeString = typeof type, error("React.createElement: type is invalid -- expected a string (for built-in components) or a class/function (for composite components) but got: %s.%s", typeString, info);
           }
-          var element = createElement15.apply(this, arguments);
+          var element = createElement16.apply(this, arguments);
           if (element == null)
             return element;
           if (validType)
@@ -1280,7 +1280,7 @@ Check the top-level render call using <` + parentName + ">.");
           toArray,
           only: onlyChild
         };
-        exports.Children = Children3, exports.Component = Component4, exports.Fragment = REACT_FRAGMENT_TYPE, exports.Profiler = REACT_PROFILER_TYPE, exports.PureComponent = PureComponent, exports.StrictMode = REACT_STRICT_MODE_TYPE, exports.Suspense = REACT_SUSPENSE_TYPE, exports.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED = ReactSharedInternals, exports.act = act, exports.cloneElement = cloneElement$1, exports.createContext = createContext9, exports.createElement = createElement$1, exports.createFactory = createFactory, exports.createRef = createRef, exports.forwardRef = forwardRef6, exports.isValidElement = isValidElement3, exports.lazy = lazy, exports.memo = memo2, exports.startTransition = startTransition3, exports.unstable_act = act, exports.useCallback = useCallback7, exports.useContext = useContext10, exports.useDebugValue = useDebugValue, exports.useDeferredValue = useDeferredValue, exports.useEffect = useEffect11, exports.useId = useId2, exports.useImperativeHandle = useImperativeHandle, exports.useInsertionEffect = useInsertionEffect, exports.useLayoutEffect = useLayoutEffect4, exports.useMemo = useMemo5, exports.useReducer = useReducer, exports.useRef = useRef6, exports.useState = useState13, exports.useSyncExternalStore = useSyncExternalStore2, exports.useTransition = useTransition2, exports.version = ReactVersion, typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ < "u" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop == "function" && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(new Error());
+        exports.Children = Children3, exports.Component = Component4, exports.Fragment = REACT_FRAGMENT_TYPE, exports.Profiler = REACT_PROFILER_TYPE, exports.PureComponent = PureComponent, exports.StrictMode = REACT_STRICT_MODE_TYPE, exports.Suspense = REACT_SUSPENSE_TYPE, exports.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED = ReactSharedInternals, exports.act = act, exports.cloneElement = cloneElement$1, exports.createContext = createContext9, exports.createElement = createElement$1, exports.createFactory = createFactory, exports.createRef = createRef, exports.forwardRef = forwardRef6, exports.isValidElement = isValidElement3, exports.lazy = lazy, exports.memo = memo2, exports.startTransition = startTransition3, exports.unstable_act = act, exports.useCallback = useCallback7, exports.useContext = useContext10, exports.useDebugValue = useDebugValue, exports.useDeferredValue = useDeferredValue, exports.useEffect = useEffect11, exports.useId = useId2, exports.useImperativeHandle = useImperativeHandle, exports.useInsertionEffect = useInsertionEffect, exports.useLayoutEffect = useLayoutEffect5, exports.useMemo = useMemo7, exports.useReducer = useReducer, exports.useRef = useRef7, exports.useState = useState20, exports.useSyncExternalStore = useSyncExternalStore2, exports.useTransition = useTransition2, exports.version = ReactVersion, typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ < "u" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop == "function" && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(new Error());
       })();
     }
   });
@@ -1584,7 +1584,7 @@ Check the top-level render call using <` + parentName + ">.");
       (function() {
         "use strict";
         typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ < "u" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart == "function" && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(new Error());
-        var React37 = require_react(), Scheduler = require_scheduler(), ReactSharedInternals = React37.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED, suppressWarning = !1;
+        var React48 = require_react(), Scheduler = require_scheduler(), ReactSharedInternals = React48.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED, suppressWarning = !1;
         function setSuppressWarning(newSuppressWarning) {
           suppressWarning = newSuppressWarning;
         }
@@ -2708,7 +2708,7 @@ Error generating stack: ` + x.message + `
         }
         var didWarnSelectedSetOnOption = !1, didWarnInvalidChild = !1, didWarnInvalidInnerHTML = !1;
         function validateProps(element, props) {
-          props.value == null && (typeof props.children == "object" && props.children !== null ? React37.Children.forEach(props.children, function(child) {
+          props.value == null && (typeof props.children == "object" && props.children !== null ? React48.Children.forEach(props.children, function(child) {
             child != null && (typeof child == "string" || typeof child == "number" || didWarnInvalidChild || (didWarnInvalidChild = !0, error("Cannot infer the option value of complex children. Pass a `value` prop or use a plain string as children to <option>.")));
           }) : props.dangerouslySetInnerHTML != null && (didWarnInvalidInnerHTML || (didWarnInvalidInnerHTML = !0, error("Pass a `value` prop if you set dangerouslyInnerHTML so React knows which value should be selected.")))), props.selected != null && !didWarnSelectedSetOnOption && (error("Use the `defaultValue` or `value` props on <select> instead of setting `selected` on <option>."), didWarnSelectedSetOnOption = !0);
         }
@@ -6470,7 +6470,7 @@ Check the render method of \`` + ownerName + "`." : "";
             propKey === STYLE ? setValueForStyles(domElement, propValue) : propKey === DANGEROUSLY_SET_INNER_HTML ? setInnerHTML(domElement, propValue) : propKey === CHILDREN ? setTextContent(domElement, propValue) : setValueForProperty(domElement, propKey, propValue, isCustomComponentTag);
           }
         }
-        function createElement15(type, props, rootContainerElement, parentNamespace) {
+        function createElement16(type, props, rootContainerElement, parentNamespace) {
           var isCustomComponentTag, ownerDocument = getOwnerDocumentFromRootContainer(rootContainerElement), domElement, namespaceURI = parentNamespace;
           if (namespaceURI === HTML_NAMESPACE && (namespaceURI = getIntrinsicNamespace(type)), namespaceURI === HTML_NAMESPACE) {
             if (isCustomComponentTag = isCustomComponent(type, props), !isCustomComponentTag && type !== type.toLowerCase() && error("<%s /> is using incorrect casing. Use PascalCase for React components, or lowercase for HTML elements.", type), type === "script") {
@@ -7023,7 +7023,7 @@ Check the render method of \`` + ownerName + "`." : "";
             }
             parentNamespace = hostContextDev.namespace;
           }
-          var domElement = createElement15(type, props, rootContainerInstance, parentNamespace);
+          var domElement = createElement16(type, props, rootContainerInstance, parentNamespace);
           return precacheFiberNode(internalInstanceHandle, domElement), updateFiberProps(domElement, props), domElement;
         }
         function appendInitialChild(parentInstance, child) {
@@ -15060,14 +15060,14 @@ You might need to use a local HTTP server (instead of file://): https://reactjs.
       "use strict";
       (function() {
         "use strict";
-        var React37 = require_react(), REACT_ELEMENT_TYPE = Symbol.for("react.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler"), REACT_PROVIDER_TYPE = Symbol.for("react.provider"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE2 = Symbol.for("react.lazy"), REACT_OFFSCREEN_TYPE = Symbol.for("react.offscreen"), MAYBE_ITERATOR_SYMBOL = Symbol.iterator, FAUX_ITERATOR_SYMBOL = "@@iterator";
+        var React48 = require_react(), REACT_ELEMENT_TYPE = Symbol.for("react.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler"), REACT_PROVIDER_TYPE = Symbol.for("react.provider"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE2 = Symbol.for("react.lazy"), REACT_OFFSCREEN_TYPE = Symbol.for("react.offscreen"), MAYBE_ITERATOR_SYMBOL = Symbol.iterator, FAUX_ITERATOR_SYMBOL = "@@iterator";
         function getIteratorFn(maybeIterable) {
           if (maybeIterable === null || typeof maybeIterable != "object")
             return null;
           var maybeIterator = MAYBE_ITERATOR_SYMBOL && maybeIterable[MAYBE_ITERATOR_SYMBOL] || maybeIterable[FAUX_ITERATOR_SYMBOL];
           return typeof maybeIterator == "function" ? maybeIterator : null;
         }
-        var ReactSharedInternals = React37.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+        var ReactSharedInternals = React48.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
         function error(format2) {
           {
             for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++)
@@ -15670,10 +15670,10 @@ React keys must be passed directly to JSX without using spread:
   });
 
   // internal/ui/src/index.tsx
-  var import_react18 = __toESM(require_react(), 1), import_client = __toESM(require_client(), 1);
+  var import_react28 = __toESM(require_react(), 1), import_client = __toESM(require_client(), 1);
 
   // internal/ui/src/app/App.tsx
-  var import_react17 = __toESM(require_react(), 1);
+  var import_react27 = __toESM(require_react(), 1);
 
   // internal/ui/src/node_modules/react-router/dist/development/chunk-UIGDSWPH.mjs
   var React = __toESM(require_react(), 1), React2 = __toESM(require_react(), 1), React3 = __toESM(require_react(), 1), React4 = __toESM(require_react(), 1), React9 = __toESM(require_react(), 1), React8 = __toESM(require_react(), 1), React7 = __toESM(require_react(), 1), React6 = __toESM(require_react(), 1), React5 = __toESM(require_react(), 1), React10 = __toESM(require_react(), 1), React11 = __toESM(require_react(), 1), import_meta = {};
@@ -17492,7 +17492,7 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
   }
 
   // internal/ui/src/app/pages/Recordings.tsx
-  var import_react4 = __toESM(require_react(), 1);
+  var import_react5 = __toESM(require_react(), 1);
 
   // internal/ui/src/node_modules/@tanstack/query-core/build/modern/subscribable.js
   var Subscribable = class {
@@ -19342,1339 +19342,6 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
     return useBaseQuery(options, QueryObserver, queryClient2);
   }
 
-  // internal/ui/src/node_modules/date-fns/toDate.mjs
-  function toDate(argument) {
-    let argStr = Object.prototype.toString.call(argument);
-    return argument instanceof Date || typeof argument == "object" && argStr === "[object Date]" ? new argument.constructor(+argument) : typeof argument == "number" || argStr === "[object Number]" || typeof argument == "string" || argStr === "[object String]" ? new Date(argument) : /* @__PURE__ */ new Date(NaN);
-  }
-
-  // internal/ui/src/node_modules/date-fns/constructFrom.mjs
-  function constructFrom(date, value) {
-    return date instanceof Date ? new date.constructor(value) : new Date(value);
-  }
-
-  // internal/ui/src/node_modules/date-fns/constants.mjs
-  var maxTime = Math.pow(10, 8) * 24 * 60 * 60 * 1e3, minTime = -maxTime, millisecondsInWeek = 6048e5, millisecondsInDay = 864e5;
-  var secondsInHour = 3600;
-  var secondsInDay = secondsInHour * 24, secondsInWeek = secondsInDay * 7, secondsInYear = secondsInDay * 365.2425, secondsInMonth = secondsInYear / 12, secondsInQuarter = secondsInMonth * 3;
-
-  // internal/ui/src/node_modules/date-fns/_lib/defaultOptions.mjs
-  var defaultOptions = {};
-  function getDefaultOptions() {
-    return defaultOptions;
-  }
-
-  // internal/ui/src/node_modules/date-fns/startOfWeek.mjs
-  function startOfWeek(date, options) {
-    let defaultOptions2 = getDefaultOptions(), weekStartsOn = options?.weekStartsOn ?? options?.locale?.options?.weekStartsOn ?? defaultOptions2.weekStartsOn ?? defaultOptions2.locale?.options?.weekStartsOn ?? 0, _date = toDate(date), day = _date.getDay(), diff = (day < weekStartsOn ? 7 : 0) + day - weekStartsOn;
-    return _date.setDate(_date.getDate() - diff), _date.setHours(0, 0, 0, 0), _date;
-  }
-
-  // internal/ui/src/node_modules/date-fns/startOfISOWeek.mjs
-  function startOfISOWeek(date) {
-    return startOfWeek(date, { weekStartsOn: 1 });
-  }
-
-  // internal/ui/src/node_modules/date-fns/getISOWeekYear.mjs
-  function getISOWeekYear(date) {
-    let _date = toDate(date), year = _date.getFullYear(), fourthOfJanuaryOfNextYear = constructFrom(date, 0);
-    fourthOfJanuaryOfNextYear.setFullYear(year + 1, 0, 4), fourthOfJanuaryOfNextYear.setHours(0, 0, 0, 0);
-    let startOfNextYear = startOfISOWeek(fourthOfJanuaryOfNextYear), fourthOfJanuaryOfThisYear = constructFrom(date, 0);
-    fourthOfJanuaryOfThisYear.setFullYear(year, 0, 4), fourthOfJanuaryOfThisYear.setHours(0, 0, 0, 0);
-    let startOfThisYear = startOfISOWeek(fourthOfJanuaryOfThisYear);
-    return _date.getTime() >= startOfNextYear.getTime() ? year + 1 : _date.getTime() >= startOfThisYear.getTime() ? year : year - 1;
-  }
-
-  // internal/ui/src/node_modules/date-fns/startOfDay.mjs
-  function startOfDay(date) {
-    let _date = toDate(date);
-    return _date.setHours(0, 0, 0, 0), _date;
-  }
-
-  // internal/ui/src/node_modules/date-fns/_lib/getTimezoneOffsetInMilliseconds.mjs
-  function getTimezoneOffsetInMilliseconds(date) {
-    let _date = toDate(date), utcDate = new Date(
-      Date.UTC(
-        _date.getFullYear(),
-        _date.getMonth(),
-        _date.getDate(),
-        _date.getHours(),
-        _date.getMinutes(),
-        _date.getSeconds(),
-        _date.getMilliseconds()
-      )
-    );
-    return utcDate.setUTCFullYear(_date.getFullYear()), +date - +utcDate;
-  }
-
-  // internal/ui/src/node_modules/date-fns/differenceInCalendarDays.mjs
-  function differenceInCalendarDays(dateLeft, dateRight) {
-    let startOfDayLeft = startOfDay(dateLeft), startOfDayRight = startOfDay(dateRight), timestampLeft = +startOfDayLeft - getTimezoneOffsetInMilliseconds(startOfDayLeft), timestampRight = +startOfDayRight - getTimezoneOffsetInMilliseconds(startOfDayRight);
-    return Math.round((timestampLeft - timestampRight) / millisecondsInDay);
-  }
-
-  // internal/ui/src/node_modules/date-fns/startOfISOWeekYear.mjs
-  function startOfISOWeekYear(date) {
-    let year = getISOWeekYear(date), fourthOfJanuary = constructFrom(date, 0);
-    return fourthOfJanuary.setFullYear(year, 0, 4), fourthOfJanuary.setHours(0, 0, 0, 0), startOfISOWeek(fourthOfJanuary);
-  }
-
-  // internal/ui/src/node_modules/date-fns/isDate.mjs
-  function isDate(value) {
-    return value instanceof Date || typeof value == "object" && Object.prototype.toString.call(value) === "[object Date]";
-  }
-
-  // internal/ui/src/node_modules/date-fns/isValid.mjs
-  function isValid(date) {
-    if (!isDate(date) && typeof date != "number")
-      return !1;
-    let _date = toDate(date);
-    return !isNaN(Number(_date));
-  }
-
-  // internal/ui/src/node_modules/date-fns/startOfYear.mjs
-  function startOfYear(date) {
-    let cleanDate = toDate(date), _date = constructFrom(date, 0);
-    return _date.setFullYear(cleanDate.getFullYear(), 0, 1), _date.setHours(0, 0, 0, 0), _date;
-  }
-
-  // internal/ui/src/node_modules/date-fns/locale/en-US/_lib/formatDistance.mjs
-  var formatDistanceLocale = {
-    lessThanXSeconds: {
-      one: "less than a second",
-      other: "less than {{count}} seconds"
-    },
-    xSeconds: {
-      one: "1 second",
-      other: "{{count}} seconds"
-    },
-    halfAMinute: "half a minute",
-    lessThanXMinutes: {
-      one: "less than a minute",
-      other: "less than {{count}} minutes"
-    },
-    xMinutes: {
-      one: "1 minute",
-      other: "{{count}} minutes"
-    },
-    aboutXHours: {
-      one: "about 1 hour",
-      other: "about {{count}} hours"
-    },
-    xHours: {
-      one: "1 hour",
-      other: "{{count}} hours"
-    },
-    xDays: {
-      one: "1 day",
-      other: "{{count}} days"
-    },
-    aboutXWeeks: {
-      one: "about 1 week",
-      other: "about {{count}} weeks"
-    },
-    xWeeks: {
-      one: "1 week",
-      other: "{{count}} weeks"
-    },
-    aboutXMonths: {
-      one: "about 1 month",
-      other: "about {{count}} months"
-    },
-    xMonths: {
-      one: "1 month",
-      other: "{{count}} months"
-    },
-    aboutXYears: {
-      one: "about 1 year",
-      other: "about {{count}} years"
-    },
-    xYears: {
-      one: "1 year",
-      other: "{{count}} years"
-    },
-    overXYears: {
-      one: "over 1 year",
-      other: "over {{count}} years"
-    },
-    almostXYears: {
-      one: "almost 1 year",
-      other: "almost {{count}} years"
-    }
-  }, formatDistance = (token, count, options) => {
-    let result, tokenValue = formatDistanceLocale[token];
-    return typeof tokenValue == "string" ? result = tokenValue : count === 1 ? result = tokenValue.one : result = tokenValue.other.replace("{{count}}", count.toString()), options?.addSuffix ? options.comparison && options.comparison > 0 ? "in " + result : result + " ago" : result;
-  };
-
-  // internal/ui/src/node_modules/date-fns/locale/_lib/buildFormatLongFn.mjs
-  function buildFormatLongFn(args) {
-    return (options = {}) => {
-      let width = options.width ? String(options.width) : args.defaultWidth;
-      return args.formats[width] || args.formats[args.defaultWidth];
-    };
-  }
-
-  // internal/ui/src/node_modules/date-fns/locale/en-US/_lib/formatLong.mjs
-  var dateFormats = {
-    full: "EEEE, MMMM do, y",
-    long: "MMMM do, y",
-    medium: "MMM d, y",
-    short: "MM/dd/yyyy"
-  }, timeFormats = {
-    full: "h:mm:ss a zzzz",
-    long: "h:mm:ss a z",
-    medium: "h:mm:ss a",
-    short: "h:mm a"
-  }, dateTimeFormats = {
-    full: "{{date}} 'at' {{time}}",
-    long: "{{date}} 'at' {{time}}",
-    medium: "{{date}}, {{time}}",
-    short: "{{date}}, {{time}}"
-  }, formatLong = {
-    date: buildFormatLongFn({
-      formats: dateFormats,
-      defaultWidth: "full"
-    }),
-    time: buildFormatLongFn({
-      formats: timeFormats,
-      defaultWidth: "full"
-    }),
-    dateTime: buildFormatLongFn({
-      formats: dateTimeFormats,
-      defaultWidth: "full"
-    })
-  };
-
-  // internal/ui/src/node_modules/date-fns/locale/en-US/_lib/formatRelative.mjs
-  var formatRelativeLocale = {
-    lastWeek: "'last' eeee 'at' p",
-    yesterday: "'yesterday at' p",
-    today: "'today at' p",
-    tomorrow: "'tomorrow at' p",
-    nextWeek: "eeee 'at' p",
-    other: "P"
-  }, formatRelative = (token, _date, _baseDate, _options) => formatRelativeLocale[token];
-
-  // internal/ui/src/node_modules/date-fns/locale/_lib/buildLocalizeFn.mjs
-  function buildLocalizeFn(args) {
-    return (value, options) => {
-      let context = options?.context ? String(options.context) : "standalone", valuesArray;
-      if (context === "formatting" && args.formattingValues) {
-        let defaultWidth = args.defaultFormattingWidth || args.defaultWidth, width = options?.width ? String(options.width) : defaultWidth;
-        valuesArray = args.formattingValues[width] || args.formattingValues[defaultWidth];
-      } else {
-        let defaultWidth = args.defaultWidth, width = options?.width ? String(options.width) : args.defaultWidth;
-        valuesArray = args.values[width] || args.values[defaultWidth];
-      }
-      let index = args.argumentCallback ? args.argumentCallback(value) : value;
-      return valuesArray[index];
-    };
-  }
-
-  // internal/ui/src/node_modules/date-fns/locale/en-US/_lib/localize.mjs
-  var eraValues = {
-    narrow: ["B", "A"],
-    abbreviated: ["BC", "AD"],
-    wide: ["Before Christ", "Anno Domini"]
-  }, quarterValues = {
-    narrow: ["1", "2", "3", "4"],
-    abbreviated: ["Q1", "Q2", "Q3", "Q4"],
-    wide: ["1st quarter", "2nd quarter", "3rd quarter", "4th quarter"]
-  }, monthValues = {
-    narrow: ["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"],
-    abbreviated: [
-      "Jan",
-      "Feb",
-      "Mar",
-      "Apr",
-      "May",
-      "Jun",
-      "Jul",
-      "Aug",
-      "Sep",
-      "Oct",
-      "Nov",
-      "Dec"
-    ],
-    wide: [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December"
-    ]
-  }, dayValues = {
-    narrow: ["S", "M", "T", "W", "T", "F", "S"],
-    short: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"],
-    abbreviated: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
-    wide: [
-      "Sunday",
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday"
-    ]
-  }, dayPeriodValues = {
-    narrow: {
-      am: "a",
-      pm: "p",
-      midnight: "mi",
-      noon: "n",
-      morning: "morning",
-      afternoon: "afternoon",
-      evening: "evening",
-      night: "night"
-    },
-    abbreviated: {
-      am: "AM",
-      pm: "PM",
-      midnight: "midnight",
-      noon: "noon",
-      morning: "morning",
-      afternoon: "afternoon",
-      evening: "evening",
-      night: "night"
-    },
-    wide: {
-      am: "a.m.",
-      pm: "p.m.",
-      midnight: "midnight",
-      noon: "noon",
-      morning: "morning",
-      afternoon: "afternoon",
-      evening: "evening",
-      night: "night"
-    }
-  }, formattingDayPeriodValues = {
-    narrow: {
-      am: "a",
-      pm: "p",
-      midnight: "mi",
-      noon: "n",
-      morning: "in the morning",
-      afternoon: "in the afternoon",
-      evening: "in the evening",
-      night: "at night"
-    },
-    abbreviated: {
-      am: "AM",
-      pm: "PM",
-      midnight: "midnight",
-      noon: "noon",
-      morning: "in the morning",
-      afternoon: "in the afternoon",
-      evening: "in the evening",
-      night: "at night"
-    },
-    wide: {
-      am: "a.m.",
-      pm: "p.m.",
-      midnight: "midnight",
-      noon: "noon",
-      morning: "in the morning",
-      afternoon: "in the afternoon",
-      evening: "in the evening",
-      night: "at night"
-    }
-  }, ordinalNumber = (dirtyNumber, _options) => {
-    let number = Number(dirtyNumber), rem100 = number % 100;
-    if (rem100 > 20 || rem100 < 10)
-      switch (rem100 % 10) {
-        case 1:
-          return number + "st";
-        case 2:
-          return number + "nd";
-        case 3:
-          return number + "rd";
-      }
-    return number + "th";
-  }, localize = {
-    ordinalNumber,
-    era: buildLocalizeFn({
-      values: eraValues,
-      defaultWidth: "wide"
-    }),
-    quarter: buildLocalizeFn({
-      values: quarterValues,
-      defaultWidth: "wide",
-      argumentCallback: (quarter) => quarter - 1
-    }),
-    month: buildLocalizeFn({
-      values: monthValues,
-      defaultWidth: "wide"
-    }),
-    day: buildLocalizeFn({
-      values: dayValues,
-      defaultWidth: "wide"
-    }),
-    dayPeriod: buildLocalizeFn({
-      values: dayPeriodValues,
-      defaultWidth: "wide",
-      formattingValues: formattingDayPeriodValues,
-      defaultFormattingWidth: "wide"
-    })
-  };
-
-  // internal/ui/src/node_modules/date-fns/locale/_lib/buildMatchFn.mjs
-  function buildMatchFn(args) {
-    return (string, options = {}) => {
-      let width = options.width, matchPattern = width && args.matchPatterns[width] || args.matchPatterns[args.defaultMatchWidth], matchResult = string.match(matchPattern);
-      if (!matchResult)
-        return null;
-      let matchedString = matchResult[0], parsePatterns = width && args.parsePatterns[width] || args.parsePatterns[args.defaultParseWidth], key = Array.isArray(parsePatterns) ? findIndex(parsePatterns, (pattern) => pattern.test(matchedString)) : (
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any -- I challange you to fix the type
-        findKey(parsePatterns, (pattern) => pattern.test(matchedString))
-      ), value;
-      value = args.valueCallback ? args.valueCallback(key) : key, value = options.valueCallback ? (
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any -- I challange you to fix the type
-        options.valueCallback(value)
-      ) : value;
-      let rest = string.slice(matchedString.length);
-      return { value, rest };
-    };
-  }
-  function findKey(object, predicate) {
-    for (let key in object)
-      if (Object.prototype.hasOwnProperty.call(object, key) && predicate(object[key]))
-        return key;
-  }
-  function findIndex(array, predicate) {
-    for (let key = 0; key < array.length; key++)
-      if (predicate(array[key]))
-        return key;
-  }
-
-  // internal/ui/src/node_modules/date-fns/locale/_lib/buildMatchPatternFn.mjs
-  function buildMatchPatternFn(args) {
-    return (string, options = {}) => {
-      let matchResult = string.match(args.matchPattern);
-      if (!matchResult) return null;
-      let matchedString = matchResult[0], parseResult = string.match(args.parsePattern);
-      if (!parseResult) return null;
-      let value = args.valueCallback ? args.valueCallback(parseResult[0]) : parseResult[0];
-      value = options.valueCallback ? options.valueCallback(value) : value;
-      let rest = string.slice(matchedString.length);
-      return { value, rest };
-    };
-  }
-
-  // internal/ui/src/node_modules/date-fns/locale/en-US/_lib/match.mjs
-  var matchOrdinalNumberPattern = /^(\d+)(th|st|nd|rd)?/i, parseOrdinalNumberPattern = /\d+/i, matchEraPatterns = {
-    narrow: /^(b|a)/i,
-    abbreviated: /^(b\.?\s?c\.?|b\.?\s?c\.?\s?e\.?|a\.?\s?d\.?|c\.?\s?e\.?)/i,
-    wide: /^(before christ|before common era|anno domini|common era)/i
-  }, parseEraPatterns = {
-    any: [/^b/i, /^(a|c)/i]
-  }, matchQuarterPatterns = {
-    narrow: /^[1234]/i,
-    abbreviated: /^q[1234]/i,
-    wide: /^[1234](th|st|nd|rd)? quarter/i
-  }, parseQuarterPatterns = {
-    any: [/1/i, /2/i, /3/i, /4/i]
-  }, matchMonthPatterns = {
-    narrow: /^[jfmasond]/i,
-    abbreviated: /^(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)/i,
-    wide: /^(january|february|march|april|may|june|july|august|september|october|november|december)/i
-  }, parseMonthPatterns = {
-    narrow: [
-      /^j/i,
-      /^f/i,
-      /^m/i,
-      /^a/i,
-      /^m/i,
-      /^j/i,
-      /^j/i,
-      /^a/i,
-      /^s/i,
-      /^o/i,
-      /^n/i,
-      /^d/i
-    ],
-    any: [
-      /^ja/i,
-      /^f/i,
-      /^mar/i,
-      /^ap/i,
-      /^may/i,
-      /^jun/i,
-      /^jul/i,
-      /^au/i,
-      /^s/i,
-      /^o/i,
-      /^n/i,
-      /^d/i
-    ]
-  }, matchDayPatterns = {
-    narrow: /^[smtwf]/i,
-    short: /^(su|mo|tu|we|th|fr|sa)/i,
-    abbreviated: /^(sun|mon|tue|wed|thu|fri|sat)/i,
-    wide: /^(sunday|monday|tuesday|wednesday|thursday|friday|saturday)/i
-  }, parseDayPatterns = {
-    narrow: [/^s/i, /^m/i, /^t/i, /^w/i, /^t/i, /^f/i, /^s/i],
-    any: [/^su/i, /^m/i, /^tu/i, /^w/i, /^th/i, /^f/i, /^sa/i]
-  }, matchDayPeriodPatterns = {
-    narrow: /^(a|p|mi|n|(in the|at) (morning|afternoon|evening|night))/i,
-    any: /^([ap]\.?\s?m\.?|midnight|noon|(in the|at) (morning|afternoon|evening|night))/i
-  }, parseDayPeriodPatterns = {
-    any: {
-      am: /^a/i,
-      pm: /^p/i,
-      midnight: /^mi/i,
-      noon: /^no/i,
-      morning: /morning/i,
-      afternoon: /afternoon/i,
-      evening: /evening/i,
-      night: /night/i
-    }
-  }, match = {
-    ordinalNumber: buildMatchPatternFn({
-      matchPattern: matchOrdinalNumberPattern,
-      parsePattern: parseOrdinalNumberPattern,
-      valueCallback: (value) => parseInt(value, 10)
-    }),
-    era: buildMatchFn({
-      matchPatterns: matchEraPatterns,
-      defaultMatchWidth: "wide",
-      parsePatterns: parseEraPatterns,
-      defaultParseWidth: "any"
-    }),
-    quarter: buildMatchFn({
-      matchPatterns: matchQuarterPatterns,
-      defaultMatchWidth: "wide",
-      parsePatterns: parseQuarterPatterns,
-      defaultParseWidth: "any",
-      valueCallback: (index) => index + 1
-    }),
-    month: buildMatchFn({
-      matchPatterns: matchMonthPatterns,
-      defaultMatchWidth: "wide",
-      parsePatterns: parseMonthPatterns,
-      defaultParseWidth: "any"
-    }),
-    day: buildMatchFn({
-      matchPatterns: matchDayPatterns,
-      defaultMatchWidth: "wide",
-      parsePatterns: parseDayPatterns,
-      defaultParseWidth: "any"
-    }),
-    dayPeriod: buildMatchFn({
-      matchPatterns: matchDayPeriodPatterns,
-      defaultMatchWidth: "any",
-      parsePatterns: parseDayPeriodPatterns,
-      defaultParseWidth: "any"
-    })
-  };
-
-  // internal/ui/src/node_modules/date-fns/locale/en-US.mjs
-  var enUS = {
-    code: "en-US",
-    formatDistance,
-    formatLong,
-    formatRelative,
-    localize,
-    match,
-    options: {
-      weekStartsOn: 0,
-      firstWeekContainsDate: 1
-    }
-  };
-
-  // internal/ui/src/node_modules/date-fns/getDayOfYear.mjs
-  function getDayOfYear(date) {
-    let _date = toDate(date);
-    return differenceInCalendarDays(_date, startOfYear(_date)) + 1;
-  }
-
-  // internal/ui/src/node_modules/date-fns/getISOWeek.mjs
-  function getISOWeek(date) {
-    let _date = toDate(date), diff = +startOfISOWeek(_date) - +startOfISOWeekYear(_date);
-    return Math.round(diff / millisecondsInWeek) + 1;
-  }
-
-  // internal/ui/src/node_modules/date-fns/getWeekYear.mjs
-  function getWeekYear(date, options) {
-    let _date = toDate(date), year = _date.getFullYear(), defaultOptions2 = getDefaultOptions(), firstWeekContainsDate = options?.firstWeekContainsDate ?? options?.locale?.options?.firstWeekContainsDate ?? defaultOptions2.firstWeekContainsDate ?? defaultOptions2.locale?.options?.firstWeekContainsDate ?? 1, firstWeekOfNextYear = constructFrom(date, 0);
-    firstWeekOfNextYear.setFullYear(year + 1, 0, firstWeekContainsDate), firstWeekOfNextYear.setHours(0, 0, 0, 0);
-    let startOfNextYear = startOfWeek(firstWeekOfNextYear, options), firstWeekOfThisYear = constructFrom(date, 0);
-    firstWeekOfThisYear.setFullYear(year, 0, firstWeekContainsDate), firstWeekOfThisYear.setHours(0, 0, 0, 0);
-    let startOfThisYear = startOfWeek(firstWeekOfThisYear, options);
-    return _date.getTime() >= startOfNextYear.getTime() ? year + 1 : _date.getTime() >= startOfThisYear.getTime() ? year : year - 1;
-  }
-
-  // internal/ui/src/node_modules/date-fns/startOfWeekYear.mjs
-  function startOfWeekYear(date, options) {
-    let defaultOptions2 = getDefaultOptions(), firstWeekContainsDate = options?.firstWeekContainsDate ?? options?.locale?.options?.firstWeekContainsDate ?? defaultOptions2.firstWeekContainsDate ?? defaultOptions2.locale?.options?.firstWeekContainsDate ?? 1, year = getWeekYear(date, options), firstWeek = constructFrom(date, 0);
-    return firstWeek.setFullYear(year, 0, firstWeekContainsDate), firstWeek.setHours(0, 0, 0, 0), startOfWeek(firstWeek, options);
-  }
-
-  // internal/ui/src/node_modules/date-fns/getWeek.mjs
-  function getWeek(date, options) {
-    let _date = toDate(date), diff = +startOfWeek(_date, options) - +startOfWeekYear(_date, options);
-    return Math.round(diff / millisecondsInWeek) + 1;
-  }
-
-  // internal/ui/src/node_modules/date-fns/_lib/addLeadingZeros.mjs
-  function addLeadingZeros(number, targetLength) {
-    let sign = number < 0 ? "-" : "", output = Math.abs(number).toString().padStart(targetLength, "0");
-    return sign + output;
-  }
-
-  // internal/ui/src/node_modules/date-fns/_lib/format/lightFormatters.mjs
-  var lightFormatters = {
-    // Year
-    y(date, token) {
-      let signedYear = date.getFullYear(), year = signedYear > 0 ? signedYear : 1 - signedYear;
-      return addLeadingZeros(token === "yy" ? year % 100 : year, token.length);
-    },
-    // Month
-    M(date, token) {
-      let month = date.getMonth();
-      return token === "M" ? String(month + 1) : addLeadingZeros(month + 1, 2);
-    },
-    // Day of the month
-    d(date, token) {
-      return addLeadingZeros(date.getDate(), token.length);
-    },
-    // AM or PM
-    a(date, token) {
-      let dayPeriodEnumValue = date.getHours() / 12 >= 1 ? "pm" : "am";
-      switch (token) {
-        case "a":
-        case "aa":
-          return dayPeriodEnumValue.toUpperCase();
-        case "aaa":
-          return dayPeriodEnumValue;
-        case "aaaaa":
-          return dayPeriodEnumValue[0];
-        case "aaaa":
-        default:
-          return dayPeriodEnumValue === "am" ? "a.m." : "p.m.";
-      }
-    },
-    // Hour [1-12]
-    h(date, token) {
-      return addLeadingZeros(date.getHours() % 12 || 12, token.length);
-    },
-    // Hour [0-23]
-    H(date, token) {
-      return addLeadingZeros(date.getHours(), token.length);
-    },
-    // Minute
-    m(date, token) {
-      return addLeadingZeros(date.getMinutes(), token.length);
-    },
-    // Second
-    s(date, token) {
-      return addLeadingZeros(date.getSeconds(), token.length);
-    },
-    // Fraction of second
-    S(date, token) {
-      let numberOfDigits = token.length, milliseconds = date.getMilliseconds(), fractionalSeconds = Math.trunc(
-        milliseconds * Math.pow(10, numberOfDigits - 3)
-      );
-      return addLeadingZeros(fractionalSeconds, token.length);
-    }
-  };
-
-  // internal/ui/src/node_modules/date-fns/_lib/format/formatters.mjs
-  var dayPeriodEnum = {
-    am: "am",
-    pm: "pm",
-    midnight: "midnight",
-    noon: "noon",
-    morning: "morning",
-    afternoon: "afternoon",
-    evening: "evening",
-    night: "night"
-  }, formatters = {
-    // Era
-    G: function(date, token, localize2) {
-      let era = date.getFullYear() > 0 ? 1 : 0;
-      switch (token) {
-        // AD, BC
-        case "G":
-        case "GG":
-        case "GGG":
-          return localize2.era(era, { width: "abbreviated" });
-        // A, B
-        case "GGGGG":
-          return localize2.era(era, { width: "narrow" });
-        // Anno Domini, Before Christ
-        case "GGGG":
-        default:
-          return localize2.era(era, { width: "wide" });
-      }
-    },
-    // Year
-    y: function(date, token, localize2) {
-      if (token === "yo") {
-        let signedYear = date.getFullYear(), year = signedYear > 0 ? signedYear : 1 - signedYear;
-        return localize2.ordinalNumber(year, { unit: "year" });
-      }
-      return lightFormatters.y(date, token);
-    },
-    // Local week-numbering year
-    Y: function(date, token, localize2, options) {
-      let signedWeekYear = getWeekYear(date, options), weekYear = signedWeekYear > 0 ? signedWeekYear : 1 - signedWeekYear;
-      if (token === "YY") {
-        let twoDigitYear = weekYear % 100;
-        return addLeadingZeros(twoDigitYear, 2);
-      }
-      return token === "Yo" ? localize2.ordinalNumber(weekYear, { unit: "year" }) : addLeadingZeros(weekYear, token.length);
-    },
-    // ISO week-numbering year
-    R: function(date, token) {
-      let isoWeekYear = getISOWeekYear(date);
-      return addLeadingZeros(isoWeekYear, token.length);
-    },
-    // Extended year. This is a single number designating the year of this calendar system.
-    // The main difference between `y` and `u` localizers are B.C. years:
-    // | Year | `y` | `u` |
-    // |------|-----|-----|
-    // | AC 1 |   1 |   1 |
-    // | BC 1 |   1 |   0 |
-    // | BC 2 |   2 |  -1 |
-    // Also `yy` always returns the last two digits of a year,
-    // while `uu` pads single digit years to 2 characters and returns other years unchanged.
-    u: function(date, token) {
-      let year = date.getFullYear();
-      return addLeadingZeros(year, token.length);
-    },
-    // Quarter
-    Q: function(date, token, localize2) {
-      let quarter = Math.ceil((date.getMonth() + 1) / 3);
-      switch (token) {
-        // 1, 2, 3, 4
-        case "Q":
-          return String(quarter);
-        // 01, 02, 03, 04
-        case "QQ":
-          return addLeadingZeros(quarter, 2);
-        // 1st, 2nd, 3rd, 4th
-        case "Qo":
-          return localize2.ordinalNumber(quarter, { unit: "quarter" });
-        // Q1, Q2, Q3, Q4
-        case "QQQ":
-          return localize2.quarter(quarter, {
-            width: "abbreviated",
-            context: "formatting"
-          });
-        // 1, 2, 3, 4 (narrow quarter; could be not numerical)
-        case "QQQQQ":
-          return localize2.quarter(quarter, {
-            width: "narrow",
-            context: "formatting"
-          });
-        // 1st quarter, 2nd quarter, ...
-        case "QQQQ":
-        default:
-          return localize2.quarter(quarter, {
-            width: "wide",
-            context: "formatting"
-          });
-      }
-    },
-    // Stand-alone quarter
-    q: function(date, token, localize2) {
-      let quarter = Math.ceil((date.getMonth() + 1) / 3);
-      switch (token) {
-        // 1, 2, 3, 4
-        case "q":
-          return String(quarter);
-        // 01, 02, 03, 04
-        case "qq":
-          return addLeadingZeros(quarter, 2);
-        // 1st, 2nd, 3rd, 4th
-        case "qo":
-          return localize2.ordinalNumber(quarter, { unit: "quarter" });
-        // Q1, Q2, Q3, Q4
-        case "qqq":
-          return localize2.quarter(quarter, {
-            width: "abbreviated",
-            context: "standalone"
-          });
-        // 1, 2, 3, 4 (narrow quarter; could be not numerical)
-        case "qqqqq":
-          return localize2.quarter(quarter, {
-            width: "narrow",
-            context: "standalone"
-          });
-        // 1st quarter, 2nd quarter, ...
-        case "qqqq":
-        default:
-          return localize2.quarter(quarter, {
-            width: "wide",
-            context: "standalone"
-          });
-      }
-    },
-    // Month
-    M: function(date, token, localize2) {
-      let month = date.getMonth();
-      switch (token) {
-        case "M":
-        case "MM":
-          return lightFormatters.M(date, token);
-        // 1st, 2nd, ..., 12th
-        case "Mo":
-          return localize2.ordinalNumber(month + 1, { unit: "month" });
-        // Jan, Feb, ..., Dec
-        case "MMM":
-          return localize2.month(month, {
-            width: "abbreviated",
-            context: "formatting"
-          });
-        // J, F, ..., D
-        case "MMMMM":
-          return localize2.month(month, {
-            width: "narrow",
-            context: "formatting"
-          });
-        // January, February, ..., December
-        case "MMMM":
-        default:
-          return localize2.month(month, { width: "wide", context: "formatting" });
-      }
-    },
-    // Stand-alone month
-    L: function(date, token, localize2) {
-      let month = date.getMonth();
-      switch (token) {
-        // 1, 2, ..., 12
-        case "L":
-          return String(month + 1);
-        // 01, 02, ..., 12
-        case "LL":
-          return addLeadingZeros(month + 1, 2);
-        // 1st, 2nd, ..., 12th
-        case "Lo":
-          return localize2.ordinalNumber(month + 1, { unit: "month" });
-        // Jan, Feb, ..., Dec
-        case "LLL":
-          return localize2.month(month, {
-            width: "abbreviated",
-            context: "standalone"
-          });
-        // J, F, ..., D
-        case "LLLLL":
-          return localize2.month(month, {
-            width: "narrow",
-            context: "standalone"
-          });
-        // January, February, ..., December
-        case "LLLL":
-        default:
-          return localize2.month(month, { width: "wide", context: "standalone" });
-      }
-    },
-    // Local week of year
-    w: function(date, token, localize2, options) {
-      let week = getWeek(date, options);
-      return token === "wo" ? localize2.ordinalNumber(week, { unit: "week" }) : addLeadingZeros(week, token.length);
-    },
-    // ISO week of year
-    I: function(date, token, localize2) {
-      let isoWeek = getISOWeek(date);
-      return token === "Io" ? localize2.ordinalNumber(isoWeek, { unit: "week" }) : addLeadingZeros(isoWeek, token.length);
-    },
-    // Day of the month
-    d: function(date, token, localize2) {
-      return token === "do" ? localize2.ordinalNumber(date.getDate(), { unit: "date" }) : lightFormatters.d(date, token);
-    },
-    // Day of year
-    D: function(date, token, localize2) {
-      let dayOfYear = getDayOfYear(date);
-      return token === "Do" ? localize2.ordinalNumber(dayOfYear, { unit: "dayOfYear" }) : addLeadingZeros(dayOfYear, token.length);
-    },
-    // Day of week
-    E: function(date, token, localize2) {
-      let dayOfWeek = date.getDay();
-      switch (token) {
-        // Tue
-        case "E":
-        case "EE":
-        case "EEE":
-          return localize2.day(dayOfWeek, {
-            width: "abbreviated",
-            context: "formatting"
-          });
-        // T
-        case "EEEEE":
-          return localize2.day(dayOfWeek, {
-            width: "narrow",
-            context: "formatting"
-          });
-        // Tu
-        case "EEEEEE":
-          return localize2.day(dayOfWeek, {
-            width: "short",
-            context: "formatting"
-          });
-        // Tuesday
-        case "EEEE":
-        default:
-          return localize2.day(dayOfWeek, {
-            width: "wide",
-            context: "formatting"
-          });
-      }
-    },
-    // Local day of week
-    e: function(date, token, localize2, options) {
-      let dayOfWeek = date.getDay(), localDayOfWeek = (dayOfWeek - options.weekStartsOn + 8) % 7 || 7;
-      switch (token) {
-        // Numerical value (Nth day of week with current locale or weekStartsOn)
-        case "e":
-          return String(localDayOfWeek);
-        // Padded numerical value
-        case "ee":
-          return addLeadingZeros(localDayOfWeek, 2);
-        // 1st, 2nd, ..., 7th
-        case "eo":
-          return localize2.ordinalNumber(localDayOfWeek, { unit: "day" });
-        case "eee":
-          return localize2.day(dayOfWeek, {
-            width: "abbreviated",
-            context: "formatting"
-          });
-        // T
-        case "eeeee":
-          return localize2.day(dayOfWeek, {
-            width: "narrow",
-            context: "formatting"
-          });
-        // Tu
-        case "eeeeee":
-          return localize2.day(dayOfWeek, {
-            width: "short",
-            context: "formatting"
-          });
-        // Tuesday
-        case "eeee":
-        default:
-          return localize2.day(dayOfWeek, {
-            width: "wide",
-            context: "formatting"
-          });
-      }
-    },
-    // Stand-alone local day of week
-    c: function(date, token, localize2, options) {
-      let dayOfWeek = date.getDay(), localDayOfWeek = (dayOfWeek - options.weekStartsOn + 8) % 7 || 7;
-      switch (token) {
-        // Numerical value (same as in `e`)
-        case "c":
-          return String(localDayOfWeek);
-        // Padded numerical value
-        case "cc":
-          return addLeadingZeros(localDayOfWeek, token.length);
-        // 1st, 2nd, ..., 7th
-        case "co":
-          return localize2.ordinalNumber(localDayOfWeek, { unit: "day" });
-        case "ccc":
-          return localize2.day(dayOfWeek, {
-            width: "abbreviated",
-            context: "standalone"
-          });
-        // T
-        case "ccccc":
-          return localize2.day(dayOfWeek, {
-            width: "narrow",
-            context: "standalone"
-          });
-        // Tu
-        case "cccccc":
-          return localize2.day(dayOfWeek, {
-            width: "short",
-            context: "standalone"
-          });
-        // Tuesday
-        case "cccc":
-        default:
-          return localize2.day(dayOfWeek, {
-            width: "wide",
-            context: "standalone"
-          });
-      }
-    },
-    // ISO day of week
-    i: function(date, token, localize2) {
-      let dayOfWeek = date.getDay(), isoDayOfWeek = dayOfWeek === 0 ? 7 : dayOfWeek;
-      switch (token) {
-        // 2
-        case "i":
-          return String(isoDayOfWeek);
-        // 02
-        case "ii":
-          return addLeadingZeros(isoDayOfWeek, token.length);
-        // 2nd
-        case "io":
-          return localize2.ordinalNumber(isoDayOfWeek, { unit: "day" });
-        // Tue
-        case "iii":
-          return localize2.day(dayOfWeek, {
-            width: "abbreviated",
-            context: "formatting"
-          });
-        // T
-        case "iiiii":
-          return localize2.day(dayOfWeek, {
-            width: "narrow",
-            context: "formatting"
-          });
-        // Tu
-        case "iiiiii":
-          return localize2.day(dayOfWeek, {
-            width: "short",
-            context: "formatting"
-          });
-        // Tuesday
-        case "iiii":
-        default:
-          return localize2.day(dayOfWeek, {
-            width: "wide",
-            context: "formatting"
-          });
-      }
-    },
-    // AM or PM
-    a: function(date, token, localize2) {
-      let dayPeriodEnumValue = date.getHours() / 12 >= 1 ? "pm" : "am";
-      switch (token) {
-        case "a":
-        case "aa":
-          return localize2.dayPeriod(dayPeriodEnumValue, {
-            width: "abbreviated",
-            context: "formatting"
-          });
-        case "aaa":
-          return localize2.dayPeriod(dayPeriodEnumValue, {
-            width: "abbreviated",
-            context: "formatting"
-          }).toLowerCase();
-        case "aaaaa":
-          return localize2.dayPeriod(dayPeriodEnumValue, {
-            width: "narrow",
-            context: "formatting"
-          });
-        case "aaaa":
-        default:
-          return localize2.dayPeriod(dayPeriodEnumValue, {
-            width: "wide",
-            context: "formatting"
-          });
-      }
-    },
-    // AM, PM, midnight, noon
-    b: function(date, token, localize2) {
-      let hours = date.getHours(), dayPeriodEnumValue;
-      switch (hours === 12 ? dayPeriodEnumValue = dayPeriodEnum.noon : hours === 0 ? dayPeriodEnumValue = dayPeriodEnum.midnight : dayPeriodEnumValue = hours / 12 >= 1 ? "pm" : "am", token) {
-        case "b":
-        case "bb":
-          return localize2.dayPeriod(dayPeriodEnumValue, {
-            width: "abbreviated",
-            context: "formatting"
-          });
-        case "bbb":
-          return localize2.dayPeriod(dayPeriodEnumValue, {
-            width: "abbreviated",
-            context: "formatting"
-          }).toLowerCase();
-        case "bbbbb":
-          return localize2.dayPeriod(dayPeriodEnumValue, {
-            width: "narrow",
-            context: "formatting"
-          });
-        case "bbbb":
-        default:
-          return localize2.dayPeriod(dayPeriodEnumValue, {
-            width: "wide",
-            context: "formatting"
-          });
-      }
-    },
-    // in the morning, in the afternoon, in the evening, at night
-    B: function(date, token, localize2) {
-      let hours = date.getHours(), dayPeriodEnumValue;
-      switch (hours >= 17 ? dayPeriodEnumValue = dayPeriodEnum.evening : hours >= 12 ? dayPeriodEnumValue = dayPeriodEnum.afternoon : hours >= 4 ? dayPeriodEnumValue = dayPeriodEnum.morning : dayPeriodEnumValue = dayPeriodEnum.night, token) {
-        case "B":
-        case "BB":
-        case "BBB":
-          return localize2.dayPeriod(dayPeriodEnumValue, {
-            width: "abbreviated",
-            context: "formatting"
-          });
-        case "BBBBB":
-          return localize2.dayPeriod(dayPeriodEnumValue, {
-            width: "narrow",
-            context: "formatting"
-          });
-        case "BBBB":
-        default:
-          return localize2.dayPeriod(dayPeriodEnumValue, {
-            width: "wide",
-            context: "formatting"
-          });
-      }
-    },
-    // Hour [1-12]
-    h: function(date, token, localize2) {
-      if (token === "ho") {
-        let hours = date.getHours() % 12;
-        return hours === 0 && (hours = 12), localize2.ordinalNumber(hours, { unit: "hour" });
-      }
-      return lightFormatters.h(date, token);
-    },
-    // Hour [0-23]
-    H: function(date, token, localize2) {
-      return token === "Ho" ? localize2.ordinalNumber(date.getHours(), { unit: "hour" }) : lightFormatters.H(date, token);
-    },
-    // Hour [0-11]
-    K: function(date, token, localize2) {
-      let hours = date.getHours() % 12;
-      return token === "Ko" ? localize2.ordinalNumber(hours, { unit: "hour" }) : addLeadingZeros(hours, token.length);
-    },
-    // Hour [1-24]
-    k: function(date, token, localize2) {
-      let hours = date.getHours();
-      return hours === 0 && (hours = 24), token === "ko" ? localize2.ordinalNumber(hours, { unit: "hour" }) : addLeadingZeros(hours, token.length);
-    },
-    // Minute
-    m: function(date, token, localize2) {
-      return token === "mo" ? localize2.ordinalNumber(date.getMinutes(), { unit: "minute" }) : lightFormatters.m(date, token);
-    },
-    // Second
-    s: function(date, token, localize2) {
-      return token === "so" ? localize2.ordinalNumber(date.getSeconds(), { unit: "second" }) : lightFormatters.s(date, token);
-    },
-    // Fraction of second
-    S: function(date, token) {
-      return lightFormatters.S(date, token);
-    },
-    // Timezone (ISO-8601. If offset is 0, output is always `'Z'`)
-    X: function(date, token, _localize) {
-      let timezoneOffset = date.getTimezoneOffset();
-      if (timezoneOffset === 0)
-        return "Z";
-      switch (token) {
-        // Hours and optional minutes
-        case "X":
-          return formatTimezoneWithOptionalMinutes(timezoneOffset);
-        // Hours, minutes and optional seconds without `:` delimiter
-        // Note: neither ISO-8601 nor JavaScript supports seconds in timezone offsets
-        // so this token always has the same output as `XX`
-        case "XXXX":
-        case "XX":
-          return formatTimezone(timezoneOffset);
-        // Hours, minutes and optional seconds with `:` delimiter
-        // Note: neither ISO-8601 nor JavaScript supports seconds in timezone offsets
-        // so this token always has the same output as `XXX`
-        case "XXXXX":
-        case "XXX":
-        // Hours and minutes with `:` delimiter
-        default:
-          return formatTimezone(timezoneOffset, ":");
-      }
-    },
-    // Timezone (ISO-8601. If offset is 0, output is `'+00:00'` or equivalent)
-    x: function(date, token, _localize) {
-      let timezoneOffset = date.getTimezoneOffset();
-      switch (token) {
-        // Hours and optional minutes
-        case "x":
-          return formatTimezoneWithOptionalMinutes(timezoneOffset);
-        // Hours, minutes and optional seconds without `:` delimiter
-        // Note: neither ISO-8601 nor JavaScript supports seconds in timezone offsets
-        // so this token always has the same output as `xx`
-        case "xxxx":
-        case "xx":
-          return formatTimezone(timezoneOffset);
-        // Hours, minutes and optional seconds with `:` delimiter
-        // Note: neither ISO-8601 nor JavaScript supports seconds in timezone offsets
-        // so this token always has the same output as `xxx`
-        case "xxxxx":
-        case "xxx":
-        // Hours and minutes with `:` delimiter
-        default:
-          return formatTimezone(timezoneOffset, ":");
-      }
-    },
-    // Timezone (GMT)
-    O: function(date, token, _localize) {
-      let timezoneOffset = date.getTimezoneOffset();
-      switch (token) {
-        // Short
-        case "O":
-        case "OO":
-        case "OOO":
-          return "GMT" + formatTimezoneShort(timezoneOffset, ":");
-        // Long
-        case "OOOO":
-        default:
-          return "GMT" + formatTimezone(timezoneOffset, ":");
-      }
-    },
-    // Timezone (specific non-location)
-    z: function(date, token, _localize) {
-      let timezoneOffset = date.getTimezoneOffset();
-      switch (token) {
-        // Short
-        case "z":
-        case "zz":
-        case "zzz":
-          return "GMT" + formatTimezoneShort(timezoneOffset, ":");
-        // Long
-        case "zzzz":
-        default:
-          return "GMT" + formatTimezone(timezoneOffset, ":");
-      }
-    },
-    // Seconds timestamp
-    t: function(date, token, _localize) {
-      let timestamp = Math.trunc(date.getTime() / 1e3);
-      return addLeadingZeros(timestamp, token.length);
-    },
-    // Milliseconds timestamp
-    T: function(date, token, _localize) {
-      let timestamp = date.getTime();
-      return addLeadingZeros(timestamp, token.length);
-    }
-  };
-  function formatTimezoneShort(offset, delimiter = "") {
-    let sign = offset > 0 ? "-" : "+", absOffset = Math.abs(offset), hours = Math.trunc(absOffset / 60), minutes = absOffset % 60;
-    return minutes === 0 ? sign + String(hours) : sign + String(hours) + delimiter + addLeadingZeros(minutes, 2);
-  }
-  function formatTimezoneWithOptionalMinutes(offset, delimiter) {
-    return offset % 60 === 0 ? (offset > 0 ? "-" : "+") + addLeadingZeros(Math.abs(offset) / 60, 2) : formatTimezone(offset, delimiter);
-  }
-  function formatTimezone(offset, delimiter = "") {
-    let sign = offset > 0 ? "-" : "+", absOffset = Math.abs(offset), hours = addLeadingZeros(Math.trunc(absOffset / 60), 2), minutes = addLeadingZeros(absOffset % 60, 2);
-    return sign + hours + delimiter + minutes;
-  }
-
-  // internal/ui/src/node_modules/date-fns/_lib/format/longFormatters.mjs
-  var dateLongFormatter = (pattern, formatLong2) => {
-    switch (pattern) {
-      case "P":
-        return formatLong2.date({ width: "short" });
-      case "PP":
-        return formatLong2.date({ width: "medium" });
-      case "PPP":
-        return formatLong2.date({ width: "long" });
-      case "PPPP":
-      default:
-        return formatLong2.date({ width: "full" });
-    }
-  }, timeLongFormatter = (pattern, formatLong2) => {
-    switch (pattern) {
-      case "p":
-        return formatLong2.time({ width: "short" });
-      case "pp":
-        return formatLong2.time({ width: "medium" });
-      case "ppp":
-        return formatLong2.time({ width: "long" });
-      case "pppp":
-      default:
-        return formatLong2.time({ width: "full" });
-    }
-  }, dateTimeLongFormatter = (pattern, formatLong2) => {
-    let matchResult = pattern.match(/(P+)(p+)?/) || [], datePattern = matchResult[1], timePattern = matchResult[2];
-    if (!timePattern)
-      return dateLongFormatter(pattern, formatLong2);
-    let dateTimeFormat;
-    switch (datePattern) {
-      case "P":
-        dateTimeFormat = formatLong2.dateTime({ width: "short" });
-        break;
-      case "PP":
-        dateTimeFormat = formatLong2.dateTime({ width: "medium" });
-        break;
-      case "PPP":
-        dateTimeFormat = formatLong2.dateTime({ width: "long" });
-        break;
-      case "PPPP":
-      default:
-        dateTimeFormat = formatLong2.dateTime({ width: "full" });
-        break;
-    }
-    return dateTimeFormat.replace("{{date}}", dateLongFormatter(datePattern, formatLong2)).replace("{{time}}", timeLongFormatter(timePattern, formatLong2));
-  }, longFormatters = {
-    p: timeLongFormatter,
-    P: dateTimeLongFormatter
-  };
-
-  // internal/ui/src/node_modules/date-fns/_lib/protectedTokens.mjs
-  var dayOfYearTokenRE = /^D+$/, weekYearTokenRE = /^Y+$/, throwTokens = ["D", "DD", "YY", "YYYY"];
-  function isProtectedDayOfYearToken(token) {
-    return dayOfYearTokenRE.test(token);
-  }
-  function isProtectedWeekYearToken(token) {
-    return weekYearTokenRE.test(token);
-  }
-  function warnOrThrowProtectedError(token, format2, input) {
-    let _message = message(token, format2, input);
-    if (console.warn(_message), throwTokens.includes(token)) throw new RangeError(_message);
-  }
-  function message(token, format2, input) {
-    let subject = token[0] === "Y" ? "years" : "days of the month";
-    return `Use \`${token.toLowerCase()}\` instead of \`${token}\` (in \`${format2}\`) for formatting ${subject} to the input \`${input}\`; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md`;
-  }
-
-  // internal/ui/src/node_modules/date-fns/format.mjs
-  var formattingTokensRegExp = /[yYQqMLwIdDecihHKkms]o|(\w)\1*|''|'(''|[^'])+('|$)|./g, longFormattingTokensRegExp = /P+p+|P+|p+|''|'(''|[^'])+('|$)|./g, escapedStringRegExp = /^'([^]*?)'?$/, doubleQuoteRegExp = /''/g, unescapedLatinCharacterRegExp = /[a-zA-Z]/;
-  function format(date, formatStr, options) {
-    let defaultOptions2 = getDefaultOptions(), locale = options?.locale ?? defaultOptions2.locale ?? enUS, firstWeekContainsDate = options?.firstWeekContainsDate ?? options?.locale?.options?.firstWeekContainsDate ?? defaultOptions2.firstWeekContainsDate ?? defaultOptions2.locale?.options?.firstWeekContainsDate ?? 1, weekStartsOn = options?.weekStartsOn ?? options?.locale?.options?.weekStartsOn ?? defaultOptions2.weekStartsOn ?? defaultOptions2.locale?.options?.weekStartsOn ?? 0, originalDate = toDate(date);
-    if (!isValid(originalDate))
-      throw new RangeError("Invalid time value");
-    let parts = formatStr.match(longFormattingTokensRegExp).map((substring) => {
-      let firstCharacter = substring[0];
-      if (firstCharacter === "p" || firstCharacter === "P") {
-        let longFormatter = longFormatters[firstCharacter];
-        return longFormatter(substring, locale.formatLong);
-      }
-      return substring;
-    }).join("").match(formattingTokensRegExp).map((substring) => {
-      if (substring === "''")
-        return { isToken: !1, value: "'" };
-      let firstCharacter = substring[0];
-      if (firstCharacter === "'")
-        return { isToken: !1, value: cleanEscapedString(substring) };
-      if (formatters[firstCharacter])
-        return { isToken: !0, value: substring };
-      if (firstCharacter.match(unescapedLatinCharacterRegExp))
-        throw new RangeError(
-          "Format string contains an unescaped latin alphabet character `" + firstCharacter + "`"
-        );
-      return { isToken: !1, value: substring };
-    });
-    locale.localize.preprocessor && (parts = locale.localize.preprocessor(originalDate, parts));
-    let formatterOptions = {
-      firstWeekContainsDate,
-      weekStartsOn,
-      locale
-    };
-    return parts.map((part) => {
-      if (!part.isToken) return part.value;
-      let token = part.value;
-      (!options?.useAdditionalWeekYearTokens && isProtectedWeekYearToken(token) || !options?.useAdditionalDayOfYearTokens && isProtectedDayOfYearToken(token)) && warnOrThrowProtectedError(token, formatStr, String(date));
-      let formatter = formatters[token[0]];
-      return formatter(originalDate, token, locale.localize, formatterOptions);
-    }).join("");
-  }
-  function cleanEscapedString(input) {
-    let matched = input.match(escapedStringRegExp);
-    return matched ? matched[1].replace(doubleQuoteRegExp, "'") : input;
-  }
-
   // internal/ui/src/node_modules/lucide-react/dist/esm/createLucideIcon.js
   var import_react2 = __toESM(require_react());
 
@@ -20746,52 +19413,97 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
     ["path", { d: "M19 12H5", key: "x3x0zl" }]
   ], ArrowLeft = createLucideIcon("ArrowLeft", __iconNode);
 
+  // internal/ui/src/node_modules/lucide-react/dist/esm/icons/brain.js
+  var __iconNode2 = [
+    [
+      "path",
+      {
+        d: "M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z",
+        key: "l5xja"
+      }
+    ],
+    [
+      "path",
+      {
+        d: "M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z",
+        key: "ep3f8r"
+      }
+    ],
+    ["path", { d: "M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4", key: "1p4c4q" }],
+    ["path", { d: "M17.599 6.5a3 3 0 0 0 .399-1.375", key: "tmeiqw" }],
+    ["path", { d: "M6.003 5.125A3 3 0 0 0 6.401 6.5", key: "105sqy" }],
+    ["path", { d: "M3.477 10.896a4 4 0 0 1 .585-.396", key: "ql3yin" }],
+    ["path", { d: "M19.938 10.5a4 4 0 0 1 .585.396", key: "1qfode" }],
+    ["path", { d: "M6 18a4 4 0 0 1-1.967-.516", key: "2e4loj" }],
+    ["path", { d: "M19.967 17.484A4 4 0 0 1 18 18", key: "159ez6" }]
+  ], Brain = createLucideIcon("Brain", __iconNode2);
+
   // internal/ui/src/node_modules/lucide-react/dist/esm/icons/check.js
-  var __iconNode2 = [["path", { d: "M20 6 9 17l-5-5", key: "1gmf2c" }]], Check = createLucideIcon("Check", __iconNode2);
+  var __iconNode3 = [["path", { d: "M20 6 9 17l-5-5", key: "1gmf2c" }]], Check = createLucideIcon("Check", __iconNode3);
 
   // internal/ui/src/node_modules/lucide-react/dist/esm/icons/chevron-down.js
-  var __iconNode3 = [["path", { d: "m6 9 6 6 6-6", key: "qrunsl" }]], ChevronDown = createLucideIcon("ChevronDown", __iconNode3);
+  var __iconNode4 = [["path", { d: "m6 9 6 6 6-6", key: "qrunsl" }]], ChevronDown = createLucideIcon("ChevronDown", __iconNode4);
 
   // internal/ui/src/node_modules/lucide-react/dist/esm/icons/chevron-right.js
-  var __iconNode4 = [["path", { d: "m9 18 6-6-6-6", key: "mthhwq" }]], ChevronRight = createLucideIcon("ChevronRight", __iconNode4);
+  var __iconNode5 = [["path", { d: "m9 18 6-6-6-6", key: "mthhwq" }]], ChevronRight = createLucideIcon("ChevronRight", __iconNode5);
 
   // internal/ui/src/node_modules/lucide-react/dist/esm/icons/copy.js
-  var __iconNode5 = [
+  var __iconNode6 = [
     ["rect", { width: "14", height: "14", x: "8", y: "8", rx: "2", ry: "2", key: "17jyea" }],
     ["path", { d: "M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2", key: "zix9uf" }]
-  ], Copy = createLucideIcon("Copy", __iconNode5);
+  ], Copy = createLucideIcon("Copy", __iconNode6);
+
+  // internal/ui/src/node_modules/lucide-react/dist/esm/icons/corner-down-right.js
+  var __iconNode7 = [
+    ["polyline", { points: "15 10 20 15 15 20", key: "1q7qjw" }],
+    ["path", { d: "M4 4v7a4 4 0 0 0 4 4h12", key: "z08zvw" }]
+  ], CornerDownRight = createLucideIcon("CornerDownRight", __iconNode7);
 
   // internal/ui/src/node_modules/lucide-react/dist/esm/icons/download.js
-  var __iconNode6 = [
+  var __iconNode8 = [
     ["path", { d: "M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4", key: "ih7n3h" }],
     ["polyline", { points: "7 10 12 15 17 10", key: "2ggqvy" }],
     ["line", { x1: "12", x2: "12", y1: "15", y2: "3", key: "1vk2je" }]
-  ], Download = createLucideIcon("Download", __iconNode6);
+  ], Download = createLucideIcon("Download", __iconNode8);
 
   // internal/ui/src/node_modules/lucide-react/dist/esm/icons/loader-circle.js
-  var __iconNode7 = [["path", { d: "M21 12a9 9 0 1 1-6.219-8.56", key: "13zald" }]], LoaderCircle = createLucideIcon("LoaderCircle", __iconNode7);
+  var __iconNode9 = [["path", { d: "M21 12a9 9 0 1 1-6.219-8.56", key: "13zald" }]], LoaderCircle = createLucideIcon("LoaderCircle", __iconNode9);
 
   // internal/ui/src/node_modules/lucide-react/dist/esm/icons/moon.js
-  var __iconNode8 = [
+  var __iconNode10 = [
     ["path", { d: "M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z", key: "a7tn18" }]
-  ], Moon = createLucideIcon("Moon", __iconNode8);
+  ], Moon = createLucideIcon("Moon", __iconNode10);
 
   // internal/ui/src/node_modules/lucide-react/dist/esm/icons/refresh-cw.js
-  var __iconNode9 = [
+  var __iconNode11 = [
     ["path", { d: "M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8", key: "v9h5vc" }],
     ["path", { d: "M21 3v5h-5", key: "1q7to0" }],
     ["path", { d: "M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16", key: "3uifl3" }],
     ["path", { d: "M8 16H3v5", key: "1cv678" }]
-  ], RefreshCw = createLucideIcon("RefreshCw", __iconNode9);
+  ], RefreshCw = createLucideIcon("RefreshCw", __iconNode11);
+
+  // internal/ui/src/node_modules/lucide-react/dist/esm/icons/scroll-text.js
+  var __iconNode12 = [
+    ["path", { d: "M15 12h-5", key: "r7krc0" }],
+    ["path", { d: "M15 8h-5", key: "1khuty" }],
+    ["path", { d: "M19 17V5a2 2 0 0 0-2-2H4", key: "zz82l3" }],
+    [
+      "path",
+      {
+        d: "M8 21h12a2 2 0 0 0 2-2v-1a1 1 0 0 0-1-1H11a1 1 0 0 0-1 1v1a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v2a1 1 0 0 0 1 1h3",
+        key: "1ph1d7"
+      }
+    ]
+  ], ScrollText = createLucideIcon("ScrollText", __iconNode12);
 
   // internal/ui/src/node_modules/lucide-react/dist/esm/icons/search.js
-  var __iconNode10 = [
+  var __iconNode13 = [
     ["circle", { cx: "11", cy: "11", r: "8", key: "4ej97u" }],
     ["path", { d: "m21 21-4.3-4.3", key: "1qie3q" }]
-  ], Search = createLucideIcon("Search", __iconNode10);
+  ], Search = createLucideIcon("Search", __iconNode13);
 
   // internal/ui/src/node_modules/lucide-react/dist/esm/icons/sun.js
-  var __iconNode11 = [
+  var __iconNode14 = [
     ["circle", { cx: "12", cy: "12", r: "4", key: "4exip2" }],
     ["path", { d: "M12 2v2", key: "tus03m" }],
     ["path", { d: "M12 20v2", key: "1lh1kg" }],
@@ -20801,66 +19513,46 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
     ["path", { d: "M20 12h2", key: "1q8mjw" }],
     ["path", { d: "m6.34 17.66-1.41 1.41", key: "1m8zz5" }],
     ["path", { d: "m19.07 4.93-1.41 1.41", key: "1shlcs" }]
-  ], Sun = createLucideIcon("Sun", __iconNode11);
+  ], Sun = createLucideIcon("Sun", __iconNode14);
 
-  // internal/ui/src/app/components/ui/table.tsx
-  var import_react3 = __toESM(require_react(), 1);
-  function Table({ children, className = "", ...props }) {
-    return /* @__PURE__ */ import_react3.default.createElement("div", { className: "w-full overflow-auto" }, /* @__PURE__ */ import_react3.default.createElement(
-      "table",
+  // internal/ui/src/node_modules/lucide-react/dist/esm/icons/triangle-alert.js
+  var __iconNode15 = [
+    [
+      "path",
       {
-        className: `w-full caption-bottom text-sm ${className}`,
-        ...props
-      },
-      children
-    ));
-  }
-  function TableHeader({ children, className = "", ...props }) {
-    return /* @__PURE__ */ import_react3.default.createElement("thead", { className: `border-b ${className}`, ...props }, children);
-  }
-  function TableBody({ children, className = "", ...props }) {
-    return /* @__PURE__ */ import_react3.default.createElement("tbody", { className: `[&_tr:last-child]:border-0 ${className}`, ...props }, children);
-  }
-  function TableRow({ children, className = "", onClick, ...props }) {
-    return /* @__PURE__ */ import_react3.default.createElement(
-      "tr",
+        d: "m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3",
+        key: "wmoenq"
+      }
+    ],
+    ["path", { d: "M12 9v4", key: "juzpu7" }],
+    ["path", { d: "M12 17h.01", key: "p32p05" }]
+  ], TriangleAlert = createLucideIcon("TriangleAlert", __iconNode15);
+
+  // internal/ui/src/node_modules/lucide-react/dist/esm/icons/wrench.js
+  var __iconNode16 = [
+    [
+      "path",
       {
-        className: `border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted ${onClick ? "cursor-pointer" : ""} ${className}`,
-        onClick,
-        ...props
-      },
-      children
-    );
-  }
-  function TableHead({ children, className = "", ...props }) {
-    return /* @__PURE__ */ import_react3.default.createElement(
-      "th",
-      {
-        className: `h-12 px-4 text-left align-middle font-medium text-muted-foreground [&:has([role=checkbox])]:pr-0 ${className}`,
-        ...props
-      },
-      children
-    );
-  }
-  function TableCell({ children, className = "", ...props }) {
-    return /* @__PURE__ */ import_react3.default.createElement(
-      "td",
-      {
-        className: `p-4 align-middle [&:has([role=checkbox])]:pr-0 ${className}`,
-        ...props
-      },
-      children
-    );
-  }
+        d: "M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z",
+        key: "cbrjhi"
+      }
+    ]
+  ], Wrench = createLucideIcon("Wrench", __iconNode16);
+
+  // internal/ui/src/node_modules/lucide-react/dist/esm/icons/x.js
+  var __iconNode17 = [
+    ["path", { d: "M18 6 6 18", key: "1bl5f8" }],
+    ["path", { d: "m6 6 12 12", key: "d8bk6v" }]
+  ], X = createLucideIcon("X", __iconNode17);
 
   // internal/ui/src/app/components/ui/button.tsx
-  var React20 = __toESM(require_react(), 1);
-
-  // internal/ui/src/node_modules/@radix-ui/react-slot/dist/index.mjs
   var React19 = __toESM(require_react(), 1);
 
-  // internal/ui/src/node_modules/@radix-ui/react-compose-refs/dist/index.mjs
+  // internal/ui/src/node_modules/@radix-ui/react-slot/dist/index.mjs
   var React18 = __toESM(require_react(), 1);
+
+  // internal/ui/src/node_modules/@radix-ui/react-compose-refs/dist/index.mjs
+  var React17 = __toESM(require_react(), 1);
   function setRef(ref, value) {
     if (typeof ref == "function")
       return ref(value);
@@ -20883,7 +19575,7 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
   }
 
   // internal/ui/src/node_modules/@radix-ui/react-slot/dist/index.mjs
-  var import_jsx_runtime3 = __toESM(require_jsx_runtime(), 1), REACT_LAZY_TYPE = Symbol.for("react.lazy"), use = React19[" use ".trim().toString()];
+  var import_jsx_runtime3 = __toESM(require_jsx_runtime(), 1), REACT_LAZY_TYPE = Symbol.for("react.lazy"), use = React18[" use ".trim().toString()];
   function isPromiseLike(value) {
     return typeof value == "object" && value !== null && "then" in value;
   }
@@ -20892,13 +19584,13 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
   }
   // @__NO_SIDE_EFFECTS__
   function createSlot(ownerName) {
-    let SlotClone = /* @__PURE__ */ createSlotClone(ownerName), Slot2 = React19.forwardRef((props, forwardedRef) => {
+    let SlotClone = /* @__PURE__ */ createSlotClone(ownerName), Slot2 = React18.forwardRef((props, forwardedRef) => {
       let { children, ...slotProps } = props;
       isLazyComponent(children) && typeof use == "function" && (children = use(children._payload));
-      let childrenArray = React19.Children.toArray(children), slottable = childrenArray.find(isSlottable);
+      let childrenArray = React18.Children.toArray(children), slottable = childrenArray.find(isSlottable);
       if (slottable) {
-        let newElement = slottable.props.children, newChildren = childrenArray.map((child) => child === slottable ? React19.Children.count(newElement) > 1 ? React19.Children.only(null) : React19.isValidElement(newElement) ? newElement.props.children : null : child);
-        return /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(SlotClone, { ...slotProps, ref: forwardedRef, children: React19.isValidElement(newElement) ? React19.cloneElement(newElement, void 0, newChildren) : null });
+        let newElement = slottable.props.children, newChildren = childrenArray.map((child) => child === slottable ? React18.Children.count(newElement) > 1 ? React18.Children.only(null) : React18.isValidElement(newElement) ? newElement.props.children : null : child);
+        return /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(SlotClone, { ...slotProps, ref: forwardedRef, children: React18.isValidElement(newElement) ? React18.cloneElement(newElement, void 0, newChildren) : null });
       }
       return /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(SlotClone, { ...slotProps, ref: forwardedRef, children });
     });
@@ -20907,19 +19599,19 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
   var Slot = /* @__PURE__ */ createSlot("Slot");
   // @__NO_SIDE_EFFECTS__
   function createSlotClone(ownerName) {
-    let SlotClone = React19.forwardRef((props, forwardedRef) => {
+    let SlotClone = React18.forwardRef((props, forwardedRef) => {
       let { children, ...slotProps } = props;
-      if (isLazyComponent(children) && typeof use == "function" && (children = use(children._payload)), React19.isValidElement(children)) {
+      if (isLazyComponent(children) && typeof use == "function" && (children = use(children._payload)), React18.isValidElement(children)) {
         let childrenRef = getElementRef(children), props2 = mergeProps(slotProps, children.props);
-        return children.type !== React19.Fragment && (props2.ref = forwardedRef ? composeRefs(forwardedRef, childrenRef) : childrenRef), React19.cloneElement(children, props2);
+        return children.type !== React18.Fragment && (props2.ref = forwardedRef ? composeRefs(forwardedRef, childrenRef) : childrenRef), React18.cloneElement(children, props2);
       }
-      return React19.Children.count(children) > 1 ? React19.Children.only(null) : null;
+      return React18.Children.count(children) > 1 ? React18.Children.only(null) : null;
     });
     return SlotClone.displayName = `${ownerName}.SlotClone`, SlotClone;
   }
   var SLOTTABLE_IDENTIFIER = Symbol("radix.slottable");
   function isSlottable(child) {
-    return React19.isValidElement(child) && typeof child.type == "function" && "__radixId" in child.type && child.type.__radixId === SLOTTABLE_IDENTIFIER;
+    return React18.isValidElement(child) && typeof child.type == "function" && "__radixId" in child.type && child.type.__radixId === SLOTTABLE_IDENTIFIER;
   }
   function mergeProps(slotProps, childProps) {
     let overrideProps = { ...childProps };
@@ -23737,8 +22429,8 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
         size: "default"
       }
     }
-  ), Button = React20.forwardRef(
-    ({ className, variant, size, asChild = !1, ...props }, ref) => /* @__PURE__ */ React20.createElement(
+  ), Button = React19.forwardRef(
+    ({ className, variant, size, asChild = !1, ...props }, ref) => /* @__PURE__ */ React19.createElement(
       asChild ? Slot : "button",
       {
         className: cn(buttonVariants({ variant, size, className })),
@@ -23750,9 +22442,9 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
   Button.displayName = "Button";
 
   // internal/ui/src/app/components/ui/input.tsx
-  var React21 = __toESM(require_react(), 1);
+  var React20 = __toESM(require_react(), 1);
   function Input({ className, type, ...props }) {
-    return /* @__PURE__ */ React21.createElement(
+    return /* @__PURE__ */ React20.createElement(
       "input",
       {
         type,
@@ -23768,29 +22460,1390 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
     );
   }
 
-  // internal/ui/src/app/lib/api.ts
-  async function fetchRecordings(page, limit, provider, search) {
-    let params = new URLSearchParams({
-      page: page.toString(),
-      limit: limit.toString()
+  // internal/ui/src/app/components/RecordingsTable.tsx
+  var import_react4 = __toESM(require_react(), 1);
+
+  // internal/ui/src/node_modules/date-fns/toDate.mjs
+  function toDate(argument) {
+    let argStr = Object.prototype.toString.call(argument);
+    return argument instanceof Date || typeof argument == "object" && argStr === "[object Date]" ? new argument.constructor(+argument) : typeof argument == "number" || argStr === "[object Number]" || typeof argument == "string" || argStr === "[object String]" ? new Date(argument) : /* @__PURE__ */ new Date(NaN);
+  }
+
+  // internal/ui/src/node_modules/date-fns/constructFrom.mjs
+  function constructFrom(date, value) {
+    return date instanceof Date ? new date.constructor(value) : new Date(value);
+  }
+
+  // internal/ui/src/node_modules/date-fns/constants.mjs
+  var maxTime = Math.pow(10, 8) * 24 * 60 * 60 * 1e3, minTime = -maxTime, millisecondsInWeek = 6048e5, millisecondsInDay = 864e5;
+  var secondsInHour = 3600;
+  var secondsInDay = secondsInHour * 24, secondsInWeek = secondsInDay * 7, secondsInYear = secondsInDay * 365.2425, secondsInMonth = secondsInYear / 12, secondsInQuarter = secondsInMonth * 3;
+
+  // internal/ui/src/node_modules/date-fns/_lib/defaultOptions.mjs
+  var defaultOptions = {};
+  function getDefaultOptions() {
+    return defaultOptions;
+  }
+
+  // internal/ui/src/node_modules/date-fns/startOfWeek.mjs
+  function startOfWeek(date, options) {
+    let defaultOptions2 = getDefaultOptions(), weekStartsOn = options?.weekStartsOn ?? options?.locale?.options?.weekStartsOn ?? defaultOptions2.weekStartsOn ?? defaultOptions2.locale?.options?.weekStartsOn ?? 0, _date = toDate(date), day = _date.getDay(), diff = (day < weekStartsOn ? 7 : 0) + day - weekStartsOn;
+    return _date.setDate(_date.getDate() - diff), _date.setHours(0, 0, 0, 0), _date;
+  }
+
+  // internal/ui/src/node_modules/date-fns/startOfISOWeek.mjs
+  function startOfISOWeek(date) {
+    return startOfWeek(date, { weekStartsOn: 1 });
+  }
+
+  // internal/ui/src/node_modules/date-fns/getISOWeekYear.mjs
+  function getISOWeekYear(date) {
+    let _date = toDate(date), year = _date.getFullYear(), fourthOfJanuaryOfNextYear = constructFrom(date, 0);
+    fourthOfJanuaryOfNextYear.setFullYear(year + 1, 0, 4), fourthOfJanuaryOfNextYear.setHours(0, 0, 0, 0);
+    let startOfNextYear = startOfISOWeek(fourthOfJanuaryOfNextYear), fourthOfJanuaryOfThisYear = constructFrom(date, 0);
+    fourthOfJanuaryOfThisYear.setFullYear(year, 0, 4), fourthOfJanuaryOfThisYear.setHours(0, 0, 0, 0);
+    let startOfThisYear = startOfISOWeek(fourthOfJanuaryOfThisYear);
+    return _date.getTime() >= startOfNextYear.getTime() ? year + 1 : _date.getTime() >= startOfThisYear.getTime() ? year : year - 1;
+  }
+
+  // internal/ui/src/node_modules/date-fns/startOfDay.mjs
+  function startOfDay(date) {
+    let _date = toDate(date);
+    return _date.setHours(0, 0, 0, 0), _date;
+  }
+
+  // internal/ui/src/node_modules/date-fns/_lib/getTimezoneOffsetInMilliseconds.mjs
+  function getTimezoneOffsetInMilliseconds(date) {
+    let _date = toDate(date), utcDate = new Date(
+      Date.UTC(
+        _date.getFullYear(),
+        _date.getMonth(),
+        _date.getDate(),
+        _date.getHours(),
+        _date.getMinutes(),
+        _date.getSeconds(),
+        _date.getMilliseconds()
+      )
+    );
+    return utcDate.setUTCFullYear(_date.getFullYear()), +date - +utcDate;
+  }
+
+  // internal/ui/src/node_modules/date-fns/differenceInCalendarDays.mjs
+  function differenceInCalendarDays(dateLeft, dateRight) {
+    let startOfDayLeft = startOfDay(dateLeft), startOfDayRight = startOfDay(dateRight), timestampLeft = +startOfDayLeft - getTimezoneOffsetInMilliseconds(startOfDayLeft), timestampRight = +startOfDayRight - getTimezoneOffsetInMilliseconds(startOfDayRight);
+    return Math.round((timestampLeft - timestampRight) / millisecondsInDay);
+  }
+
+  // internal/ui/src/node_modules/date-fns/startOfISOWeekYear.mjs
+  function startOfISOWeekYear(date) {
+    let year = getISOWeekYear(date), fourthOfJanuary = constructFrom(date, 0);
+    return fourthOfJanuary.setFullYear(year, 0, 4), fourthOfJanuary.setHours(0, 0, 0, 0), startOfISOWeek(fourthOfJanuary);
+  }
+
+  // internal/ui/src/node_modules/date-fns/isDate.mjs
+  function isDate(value) {
+    return value instanceof Date || typeof value == "object" && Object.prototype.toString.call(value) === "[object Date]";
+  }
+
+  // internal/ui/src/node_modules/date-fns/isValid.mjs
+  function isValid(date) {
+    if (!isDate(date) && typeof date != "number")
+      return !1;
+    let _date = toDate(date);
+    return !isNaN(Number(_date));
+  }
+
+  // internal/ui/src/node_modules/date-fns/startOfYear.mjs
+  function startOfYear(date) {
+    let cleanDate = toDate(date), _date = constructFrom(date, 0);
+    return _date.setFullYear(cleanDate.getFullYear(), 0, 1), _date.setHours(0, 0, 0, 0), _date;
+  }
+
+  // internal/ui/src/node_modules/date-fns/locale/en-US/_lib/formatDistance.mjs
+  var formatDistanceLocale = {
+    lessThanXSeconds: {
+      one: "less than a second",
+      other: "less than {{count}} seconds"
+    },
+    xSeconds: {
+      one: "1 second",
+      other: "{{count}} seconds"
+    },
+    halfAMinute: "half a minute",
+    lessThanXMinutes: {
+      one: "less than a minute",
+      other: "less than {{count}} minutes"
+    },
+    xMinutes: {
+      one: "1 minute",
+      other: "{{count}} minutes"
+    },
+    aboutXHours: {
+      one: "about 1 hour",
+      other: "about {{count}} hours"
+    },
+    xHours: {
+      one: "1 hour",
+      other: "{{count}} hours"
+    },
+    xDays: {
+      one: "1 day",
+      other: "{{count}} days"
+    },
+    aboutXWeeks: {
+      one: "about 1 week",
+      other: "about {{count}} weeks"
+    },
+    xWeeks: {
+      one: "1 week",
+      other: "{{count}} weeks"
+    },
+    aboutXMonths: {
+      one: "about 1 month",
+      other: "about {{count}} months"
+    },
+    xMonths: {
+      one: "1 month",
+      other: "{{count}} months"
+    },
+    aboutXYears: {
+      one: "about 1 year",
+      other: "about {{count}} years"
+    },
+    xYears: {
+      one: "1 year",
+      other: "{{count}} years"
+    },
+    overXYears: {
+      one: "over 1 year",
+      other: "over {{count}} years"
+    },
+    almostXYears: {
+      one: "almost 1 year",
+      other: "almost {{count}} years"
+    }
+  }, formatDistance = (token, count, options) => {
+    let result, tokenValue = formatDistanceLocale[token];
+    return typeof tokenValue == "string" ? result = tokenValue : count === 1 ? result = tokenValue.one : result = tokenValue.other.replace("{{count}}", count.toString()), options?.addSuffix ? options.comparison && options.comparison > 0 ? "in " + result : result + " ago" : result;
+  };
+
+  // internal/ui/src/node_modules/date-fns/locale/_lib/buildFormatLongFn.mjs
+  function buildFormatLongFn(args) {
+    return (options = {}) => {
+      let width = options.width ? String(options.width) : args.defaultWidth;
+      return args.formats[width] || args.formats[args.defaultWidth];
+    };
+  }
+
+  // internal/ui/src/node_modules/date-fns/locale/en-US/_lib/formatLong.mjs
+  var dateFormats = {
+    full: "EEEE, MMMM do, y",
+    long: "MMMM do, y",
+    medium: "MMM d, y",
+    short: "MM/dd/yyyy"
+  }, timeFormats = {
+    full: "h:mm:ss a zzzz",
+    long: "h:mm:ss a z",
+    medium: "h:mm:ss a",
+    short: "h:mm a"
+  }, dateTimeFormats = {
+    full: "{{date}} 'at' {{time}}",
+    long: "{{date}} 'at' {{time}}",
+    medium: "{{date}}, {{time}}",
+    short: "{{date}}, {{time}}"
+  }, formatLong = {
+    date: buildFormatLongFn({
+      formats: dateFormats,
+      defaultWidth: "full"
+    }),
+    time: buildFormatLongFn({
+      formats: timeFormats,
+      defaultWidth: "full"
+    }),
+    dateTime: buildFormatLongFn({
+      formats: dateTimeFormats,
+      defaultWidth: "full"
+    })
+  };
+
+  // internal/ui/src/node_modules/date-fns/locale/en-US/_lib/formatRelative.mjs
+  var formatRelativeLocale = {
+    lastWeek: "'last' eeee 'at' p",
+    yesterday: "'yesterday at' p",
+    today: "'today at' p",
+    tomorrow: "'tomorrow at' p",
+    nextWeek: "eeee 'at' p",
+    other: "P"
+  }, formatRelative = (token, _date, _baseDate, _options) => formatRelativeLocale[token];
+
+  // internal/ui/src/node_modules/date-fns/locale/_lib/buildLocalizeFn.mjs
+  function buildLocalizeFn(args) {
+    return (value, options) => {
+      let context = options?.context ? String(options.context) : "standalone", valuesArray;
+      if (context === "formatting" && args.formattingValues) {
+        let defaultWidth = args.defaultFormattingWidth || args.defaultWidth, width = options?.width ? String(options.width) : defaultWidth;
+        valuesArray = args.formattingValues[width] || args.formattingValues[defaultWidth];
+      } else {
+        let defaultWidth = args.defaultWidth, width = options?.width ? String(options.width) : args.defaultWidth;
+        valuesArray = args.values[width] || args.values[defaultWidth];
+      }
+      let index = args.argumentCallback ? args.argumentCallback(value) : value;
+      return valuesArray[index];
+    };
+  }
+
+  // internal/ui/src/node_modules/date-fns/locale/en-US/_lib/localize.mjs
+  var eraValues = {
+    narrow: ["B", "A"],
+    abbreviated: ["BC", "AD"],
+    wide: ["Before Christ", "Anno Domini"]
+  }, quarterValues = {
+    narrow: ["1", "2", "3", "4"],
+    abbreviated: ["Q1", "Q2", "Q3", "Q4"],
+    wide: ["1st quarter", "2nd quarter", "3rd quarter", "4th quarter"]
+  }, monthValues = {
+    narrow: ["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"],
+    abbreviated: [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec"
+    ],
+    wide: [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December"
+    ]
+  }, dayValues = {
+    narrow: ["S", "M", "T", "W", "T", "F", "S"],
+    short: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"],
+    abbreviated: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+    wide: [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday"
+    ]
+  }, dayPeriodValues = {
+    narrow: {
+      am: "a",
+      pm: "p",
+      midnight: "mi",
+      noon: "n",
+      morning: "morning",
+      afternoon: "afternoon",
+      evening: "evening",
+      night: "night"
+    },
+    abbreviated: {
+      am: "AM",
+      pm: "PM",
+      midnight: "midnight",
+      noon: "noon",
+      morning: "morning",
+      afternoon: "afternoon",
+      evening: "evening",
+      night: "night"
+    },
+    wide: {
+      am: "a.m.",
+      pm: "p.m.",
+      midnight: "midnight",
+      noon: "noon",
+      morning: "morning",
+      afternoon: "afternoon",
+      evening: "evening",
+      night: "night"
+    }
+  }, formattingDayPeriodValues = {
+    narrow: {
+      am: "a",
+      pm: "p",
+      midnight: "mi",
+      noon: "n",
+      morning: "in the morning",
+      afternoon: "in the afternoon",
+      evening: "in the evening",
+      night: "at night"
+    },
+    abbreviated: {
+      am: "AM",
+      pm: "PM",
+      midnight: "midnight",
+      noon: "noon",
+      morning: "in the morning",
+      afternoon: "in the afternoon",
+      evening: "in the evening",
+      night: "at night"
+    },
+    wide: {
+      am: "a.m.",
+      pm: "p.m.",
+      midnight: "midnight",
+      noon: "noon",
+      morning: "in the morning",
+      afternoon: "in the afternoon",
+      evening: "in the evening",
+      night: "at night"
+    }
+  }, ordinalNumber = (dirtyNumber, _options) => {
+    let number = Number(dirtyNumber), rem100 = number % 100;
+    if (rem100 > 20 || rem100 < 10)
+      switch (rem100 % 10) {
+        case 1:
+          return number + "st";
+        case 2:
+          return number + "nd";
+        case 3:
+          return number + "rd";
+      }
+    return number + "th";
+  }, localize = {
+    ordinalNumber,
+    era: buildLocalizeFn({
+      values: eraValues,
+      defaultWidth: "wide"
+    }),
+    quarter: buildLocalizeFn({
+      values: quarterValues,
+      defaultWidth: "wide",
+      argumentCallback: (quarter) => quarter - 1
+    }),
+    month: buildLocalizeFn({
+      values: monthValues,
+      defaultWidth: "wide"
+    }),
+    day: buildLocalizeFn({
+      values: dayValues,
+      defaultWidth: "wide"
+    }),
+    dayPeriod: buildLocalizeFn({
+      values: dayPeriodValues,
+      defaultWidth: "wide",
+      formattingValues: formattingDayPeriodValues,
+      defaultFormattingWidth: "wide"
+    })
+  };
+
+  // internal/ui/src/node_modules/date-fns/locale/_lib/buildMatchFn.mjs
+  function buildMatchFn(args) {
+    return (string, options = {}) => {
+      let width = options.width, matchPattern = width && args.matchPatterns[width] || args.matchPatterns[args.defaultMatchWidth], matchResult = string.match(matchPattern);
+      if (!matchResult)
+        return null;
+      let matchedString = matchResult[0], parsePatterns = width && args.parsePatterns[width] || args.parsePatterns[args.defaultParseWidth], key = Array.isArray(parsePatterns) ? findIndex(parsePatterns, (pattern) => pattern.test(matchedString)) : (
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any -- I challange you to fix the type
+        findKey(parsePatterns, (pattern) => pattern.test(matchedString))
+      ), value;
+      value = args.valueCallback ? args.valueCallback(key) : key, value = options.valueCallback ? (
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any -- I challange you to fix the type
+        options.valueCallback(value)
+      ) : value;
+      let rest = string.slice(matchedString.length);
+      return { value, rest };
+    };
+  }
+  function findKey(object, predicate) {
+    for (let key in object)
+      if (Object.prototype.hasOwnProperty.call(object, key) && predicate(object[key]))
+        return key;
+  }
+  function findIndex(array, predicate) {
+    for (let key = 0; key < array.length; key++)
+      if (predicate(array[key]))
+        return key;
+  }
+
+  // internal/ui/src/node_modules/date-fns/locale/_lib/buildMatchPatternFn.mjs
+  function buildMatchPatternFn(args) {
+    return (string, options = {}) => {
+      let matchResult = string.match(args.matchPattern);
+      if (!matchResult) return null;
+      let matchedString = matchResult[0], parseResult = string.match(args.parsePattern);
+      if (!parseResult) return null;
+      let value = args.valueCallback ? args.valueCallback(parseResult[0]) : parseResult[0];
+      value = options.valueCallback ? options.valueCallback(value) : value;
+      let rest = string.slice(matchedString.length);
+      return { value, rest };
+    };
+  }
+
+  // internal/ui/src/node_modules/date-fns/locale/en-US/_lib/match.mjs
+  var matchOrdinalNumberPattern = /^(\d+)(th|st|nd|rd)?/i, parseOrdinalNumberPattern = /\d+/i, matchEraPatterns = {
+    narrow: /^(b|a)/i,
+    abbreviated: /^(b\.?\s?c\.?|b\.?\s?c\.?\s?e\.?|a\.?\s?d\.?|c\.?\s?e\.?)/i,
+    wide: /^(before christ|before common era|anno domini|common era)/i
+  }, parseEraPatterns = {
+    any: [/^b/i, /^(a|c)/i]
+  }, matchQuarterPatterns = {
+    narrow: /^[1234]/i,
+    abbreviated: /^q[1234]/i,
+    wide: /^[1234](th|st|nd|rd)? quarter/i
+  }, parseQuarterPatterns = {
+    any: [/1/i, /2/i, /3/i, /4/i]
+  }, matchMonthPatterns = {
+    narrow: /^[jfmasond]/i,
+    abbreviated: /^(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)/i,
+    wide: /^(january|february|march|april|may|june|july|august|september|october|november|december)/i
+  }, parseMonthPatterns = {
+    narrow: [
+      /^j/i,
+      /^f/i,
+      /^m/i,
+      /^a/i,
+      /^m/i,
+      /^j/i,
+      /^j/i,
+      /^a/i,
+      /^s/i,
+      /^o/i,
+      /^n/i,
+      /^d/i
+    ],
+    any: [
+      /^ja/i,
+      /^f/i,
+      /^mar/i,
+      /^ap/i,
+      /^may/i,
+      /^jun/i,
+      /^jul/i,
+      /^au/i,
+      /^s/i,
+      /^o/i,
+      /^n/i,
+      /^d/i
+    ]
+  }, matchDayPatterns = {
+    narrow: /^[smtwf]/i,
+    short: /^(su|mo|tu|we|th|fr|sa)/i,
+    abbreviated: /^(sun|mon|tue|wed|thu|fri|sat)/i,
+    wide: /^(sunday|monday|tuesday|wednesday|thursday|friday|saturday)/i
+  }, parseDayPatterns = {
+    narrow: [/^s/i, /^m/i, /^t/i, /^w/i, /^t/i, /^f/i, /^s/i],
+    any: [/^su/i, /^m/i, /^tu/i, /^w/i, /^th/i, /^f/i, /^sa/i]
+  }, matchDayPeriodPatterns = {
+    narrow: /^(a|p|mi|n|(in the|at) (morning|afternoon|evening|night))/i,
+    any: /^([ap]\.?\s?m\.?|midnight|noon|(in the|at) (morning|afternoon|evening|night))/i
+  }, parseDayPeriodPatterns = {
+    any: {
+      am: /^a/i,
+      pm: /^p/i,
+      midnight: /^mi/i,
+      noon: /^no/i,
+      morning: /morning/i,
+      afternoon: /afternoon/i,
+      evening: /evening/i,
+      night: /night/i
+    }
+  }, match = {
+    ordinalNumber: buildMatchPatternFn({
+      matchPattern: matchOrdinalNumberPattern,
+      parsePattern: parseOrdinalNumberPattern,
+      valueCallback: (value) => parseInt(value, 10)
+    }),
+    era: buildMatchFn({
+      matchPatterns: matchEraPatterns,
+      defaultMatchWidth: "wide",
+      parsePatterns: parseEraPatterns,
+      defaultParseWidth: "any"
+    }),
+    quarter: buildMatchFn({
+      matchPatterns: matchQuarterPatterns,
+      defaultMatchWidth: "wide",
+      parsePatterns: parseQuarterPatterns,
+      defaultParseWidth: "any",
+      valueCallback: (index) => index + 1
+    }),
+    month: buildMatchFn({
+      matchPatterns: matchMonthPatterns,
+      defaultMatchWidth: "wide",
+      parsePatterns: parseMonthPatterns,
+      defaultParseWidth: "any"
+    }),
+    day: buildMatchFn({
+      matchPatterns: matchDayPatterns,
+      defaultMatchWidth: "wide",
+      parsePatterns: parseDayPatterns,
+      defaultParseWidth: "any"
+    }),
+    dayPeriod: buildMatchFn({
+      matchPatterns: matchDayPeriodPatterns,
+      defaultMatchWidth: "any",
+      parsePatterns: parseDayPeriodPatterns,
+      defaultParseWidth: "any"
+    })
+  };
+
+  // internal/ui/src/node_modules/date-fns/locale/en-US.mjs
+  var enUS = {
+    code: "en-US",
+    formatDistance,
+    formatLong,
+    formatRelative,
+    localize,
+    match,
+    options: {
+      weekStartsOn: 0,
+      firstWeekContainsDate: 1
+    }
+  };
+
+  // internal/ui/src/node_modules/date-fns/getDayOfYear.mjs
+  function getDayOfYear(date) {
+    let _date = toDate(date);
+    return differenceInCalendarDays(_date, startOfYear(_date)) + 1;
+  }
+
+  // internal/ui/src/node_modules/date-fns/getISOWeek.mjs
+  function getISOWeek(date) {
+    let _date = toDate(date), diff = +startOfISOWeek(_date) - +startOfISOWeekYear(_date);
+    return Math.round(diff / millisecondsInWeek) + 1;
+  }
+
+  // internal/ui/src/node_modules/date-fns/getWeekYear.mjs
+  function getWeekYear(date, options) {
+    let _date = toDate(date), year = _date.getFullYear(), defaultOptions2 = getDefaultOptions(), firstWeekContainsDate = options?.firstWeekContainsDate ?? options?.locale?.options?.firstWeekContainsDate ?? defaultOptions2.firstWeekContainsDate ?? defaultOptions2.locale?.options?.firstWeekContainsDate ?? 1, firstWeekOfNextYear = constructFrom(date, 0);
+    firstWeekOfNextYear.setFullYear(year + 1, 0, firstWeekContainsDate), firstWeekOfNextYear.setHours(0, 0, 0, 0);
+    let startOfNextYear = startOfWeek(firstWeekOfNextYear, options), firstWeekOfThisYear = constructFrom(date, 0);
+    firstWeekOfThisYear.setFullYear(year, 0, firstWeekContainsDate), firstWeekOfThisYear.setHours(0, 0, 0, 0);
+    let startOfThisYear = startOfWeek(firstWeekOfThisYear, options);
+    return _date.getTime() >= startOfNextYear.getTime() ? year + 1 : _date.getTime() >= startOfThisYear.getTime() ? year : year - 1;
+  }
+
+  // internal/ui/src/node_modules/date-fns/startOfWeekYear.mjs
+  function startOfWeekYear(date, options) {
+    let defaultOptions2 = getDefaultOptions(), firstWeekContainsDate = options?.firstWeekContainsDate ?? options?.locale?.options?.firstWeekContainsDate ?? defaultOptions2.firstWeekContainsDate ?? defaultOptions2.locale?.options?.firstWeekContainsDate ?? 1, year = getWeekYear(date, options), firstWeek = constructFrom(date, 0);
+    return firstWeek.setFullYear(year, 0, firstWeekContainsDate), firstWeek.setHours(0, 0, 0, 0), startOfWeek(firstWeek, options);
+  }
+
+  // internal/ui/src/node_modules/date-fns/getWeek.mjs
+  function getWeek(date, options) {
+    let _date = toDate(date), diff = +startOfWeek(_date, options) - +startOfWeekYear(_date, options);
+    return Math.round(diff / millisecondsInWeek) + 1;
+  }
+
+  // internal/ui/src/node_modules/date-fns/_lib/addLeadingZeros.mjs
+  function addLeadingZeros(number, targetLength) {
+    let sign = number < 0 ? "-" : "", output = Math.abs(number).toString().padStart(targetLength, "0");
+    return sign + output;
+  }
+
+  // internal/ui/src/node_modules/date-fns/_lib/format/lightFormatters.mjs
+  var lightFormatters = {
+    // Year
+    y(date, token) {
+      let signedYear = date.getFullYear(), year = signedYear > 0 ? signedYear : 1 - signedYear;
+      return addLeadingZeros(token === "yy" ? year % 100 : year, token.length);
+    },
+    // Month
+    M(date, token) {
+      let month = date.getMonth();
+      return token === "M" ? String(month + 1) : addLeadingZeros(month + 1, 2);
+    },
+    // Day of the month
+    d(date, token) {
+      return addLeadingZeros(date.getDate(), token.length);
+    },
+    // AM or PM
+    a(date, token) {
+      let dayPeriodEnumValue = date.getHours() / 12 >= 1 ? "pm" : "am";
+      switch (token) {
+        case "a":
+        case "aa":
+          return dayPeriodEnumValue.toUpperCase();
+        case "aaa":
+          return dayPeriodEnumValue;
+        case "aaaaa":
+          return dayPeriodEnumValue[0];
+        case "aaaa":
+        default:
+          return dayPeriodEnumValue === "am" ? "a.m." : "p.m.";
+      }
+    },
+    // Hour [1-12]
+    h(date, token) {
+      return addLeadingZeros(date.getHours() % 12 || 12, token.length);
+    },
+    // Hour [0-23]
+    H(date, token) {
+      return addLeadingZeros(date.getHours(), token.length);
+    },
+    // Minute
+    m(date, token) {
+      return addLeadingZeros(date.getMinutes(), token.length);
+    },
+    // Second
+    s(date, token) {
+      return addLeadingZeros(date.getSeconds(), token.length);
+    },
+    // Fraction of second
+    S(date, token) {
+      let numberOfDigits = token.length, milliseconds = date.getMilliseconds(), fractionalSeconds = Math.trunc(
+        milliseconds * Math.pow(10, numberOfDigits - 3)
+      );
+      return addLeadingZeros(fractionalSeconds, token.length);
+    }
+  };
+
+  // internal/ui/src/node_modules/date-fns/_lib/format/formatters.mjs
+  var dayPeriodEnum = {
+    am: "am",
+    pm: "pm",
+    midnight: "midnight",
+    noon: "noon",
+    morning: "morning",
+    afternoon: "afternoon",
+    evening: "evening",
+    night: "night"
+  }, formatters = {
+    // Era
+    G: function(date, token, localize2) {
+      let era = date.getFullYear() > 0 ? 1 : 0;
+      switch (token) {
+        // AD, BC
+        case "G":
+        case "GG":
+        case "GGG":
+          return localize2.era(era, { width: "abbreviated" });
+        // A, B
+        case "GGGGG":
+          return localize2.era(era, { width: "narrow" });
+        // Anno Domini, Before Christ
+        case "GGGG":
+        default:
+          return localize2.era(era, { width: "wide" });
+      }
+    },
+    // Year
+    y: function(date, token, localize2) {
+      if (token === "yo") {
+        let signedYear = date.getFullYear(), year = signedYear > 0 ? signedYear : 1 - signedYear;
+        return localize2.ordinalNumber(year, { unit: "year" });
+      }
+      return lightFormatters.y(date, token);
+    },
+    // Local week-numbering year
+    Y: function(date, token, localize2, options) {
+      let signedWeekYear = getWeekYear(date, options), weekYear = signedWeekYear > 0 ? signedWeekYear : 1 - signedWeekYear;
+      if (token === "YY") {
+        let twoDigitYear = weekYear % 100;
+        return addLeadingZeros(twoDigitYear, 2);
+      }
+      return token === "Yo" ? localize2.ordinalNumber(weekYear, { unit: "year" }) : addLeadingZeros(weekYear, token.length);
+    },
+    // ISO week-numbering year
+    R: function(date, token) {
+      let isoWeekYear = getISOWeekYear(date);
+      return addLeadingZeros(isoWeekYear, token.length);
+    },
+    // Extended year. This is a single number designating the year of this calendar system.
+    // The main difference between `y` and `u` localizers are B.C. years:
+    // | Year | `y` | `u` |
+    // |------|-----|-----|
+    // | AC 1 |   1 |   1 |
+    // | BC 1 |   1 |   0 |
+    // | BC 2 |   2 |  -1 |
+    // Also `yy` always returns the last two digits of a year,
+    // while `uu` pads single digit years to 2 characters and returns other years unchanged.
+    u: function(date, token) {
+      let year = date.getFullYear();
+      return addLeadingZeros(year, token.length);
+    },
+    // Quarter
+    Q: function(date, token, localize2) {
+      let quarter = Math.ceil((date.getMonth() + 1) / 3);
+      switch (token) {
+        // 1, 2, 3, 4
+        case "Q":
+          return String(quarter);
+        // 01, 02, 03, 04
+        case "QQ":
+          return addLeadingZeros(quarter, 2);
+        // 1st, 2nd, 3rd, 4th
+        case "Qo":
+          return localize2.ordinalNumber(quarter, { unit: "quarter" });
+        // Q1, Q2, Q3, Q4
+        case "QQQ":
+          return localize2.quarter(quarter, {
+            width: "abbreviated",
+            context: "formatting"
+          });
+        // 1, 2, 3, 4 (narrow quarter; could be not numerical)
+        case "QQQQQ":
+          return localize2.quarter(quarter, {
+            width: "narrow",
+            context: "formatting"
+          });
+        // 1st quarter, 2nd quarter, ...
+        case "QQQQ":
+        default:
+          return localize2.quarter(quarter, {
+            width: "wide",
+            context: "formatting"
+          });
+      }
+    },
+    // Stand-alone quarter
+    q: function(date, token, localize2) {
+      let quarter = Math.ceil((date.getMonth() + 1) / 3);
+      switch (token) {
+        // 1, 2, 3, 4
+        case "q":
+          return String(quarter);
+        // 01, 02, 03, 04
+        case "qq":
+          return addLeadingZeros(quarter, 2);
+        // 1st, 2nd, 3rd, 4th
+        case "qo":
+          return localize2.ordinalNumber(quarter, { unit: "quarter" });
+        // Q1, Q2, Q3, Q4
+        case "qqq":
+          return localize2.quarter(quarter, {
+            width: "abbreviated",
+            context: "standalone"
+          });
+        // 1, 2, 3, 4 (narrow quarter; could be not numerical)
+        case "qqqqq":
+          return localize2.quarter(quarter, {
+            width: "narrow",
+            context: "standalone"
+          });
+        // 1st quarter, 2nd quarter, ...
+        case "qqqq":
+        default:
+          return localize2.quarter(quarter, {
+            width: "wide",
+            context: "standalone"
+          });
+      }
+    },
+    // Month
+    M: function(date, token, localize2) {
+      let month = date.getMonth();
+      switch (token) {
+        case "M":
+        case "MM":
+          return lightFormatters.M(date, token);
+        // 1st, 2nd, ..., 12th
+        case "Mo":
+          return localize2.ordinalNumber(month + 1, { unit: "month" });
+        // Jan, Feb, ..., Dec
+        case "MMM":
+          return localize2.month(month, {
+            width: "abbreviated",
+            context: "formatting"
+          });
+        // J, F, ..., D
+        case "MMMMM":
+          return localize2.month(month, {
+            width: "narrow",
+            context: "formatting"
+          });
+        // January, February, ..., December
+        case "MMMM":
+        default:
+          return localize2.month(month, { width: "wide", context: "formatting" });
+      }
+    },
+    // Stand-alone month
+    L: function(date, token, localize2) {
+      let month = date.getMonth();
+      switch (token) {
+        // 1, 2, ..., 12
+        case "L":
+          return String(month + 1);
+        // 01, 02, ..., 12
+        case "LL":
+          return addLeadingZeros(month + 1, 2);
+        // 1st, 2nd, ..., 12th
+        case "Lo":
+          return localize2.ordinalNumber(month + 1, { unit: "month" });
+        // Jan, Feb, ..., Dec
+        case "LLL":
+          return localize2.month(month, {
+            width: "abbreviated",
+            context: "standalone"
+          });
+        // J, F, ..., D
+        case "LLLLL":
+          return localize2.month(month, {
+            width: "narrow",
+            context: "standalone"
+          });
+        // January, February, ..., December
+        case "LLLL":
+        default:
+          return localize2.month(month, { width: "wide", context: "standalone" });
+      }
+    },
+    // Local week of year
+    w: function(date, token, localize2, options) {
+      let week = getWeek(date, options);
+      return token === "wo" ? localize2.ordinalNumber(week, { unit: "week" }) : addLeadingZeros(week, token.length);
+    },
+    // ISO week of year
+    I: function(date, token, localize2) {
+      let isoWeek = getISOWeek(date);
+      return token === "Io" ? localize2.ordinalNumber(isoWeek, { unit: "week" }) : addLeadingZeros(isoWeek, token.length);
+    },
+    // Day of the month
+    d: function(date, token, localize2) {
+      return token === "do" ? localize2.ordinalNumber(date.getDate(), { unit: "date" }) : lightFormatters.d(date, token);
+    },
+    // Day of year
+    D: function(date, token, localize2) {
+      let dayOfYear = getDayOfYear(date);
+      return token === "Do" ? localize2.ordinalNumber(dayOfYear, { unit: "dayOfYear" }) : addLeadingZeros(dayOfYear, token.length);
+    },
+    // Day of week
+    E: function(date, token, localize2) {
+      let dayOfWeek = date.getDay();
+      switch (token) {
+        // Tue
+        case "E":
+        case "EE":
+        case "EEE":
+          return localize2.day(dayOfWeek, {
+            width: "abbreviated",
+            context: "formatting"
+          });
+        // T
+        case "EEEEE":
+          return localize2.day(dayOfWeek, {
+            width: "narrow",
+            context: "formatting"
+          });
+        // Tu
+        case "EEEEEE":
+          return localize2.day(dayOfWeek, {
+            width: "short",
+            context: "formatting"
+          });
+        // Tuesday
+        case "EEEE":
+        default:
+          return localize2.day(dayOfWeek, {
+            width: "wide",
+            context: "formatting"
+          });
+      }
+    },
+    // Local day of week
+    e: function(date, token, localize2, options) {
+      let dayOfWeek = date.getDay(), localDayOfWeek = (dayOfWeek - options.weekStartsOn + 8) % 7 || 7;
+      switch (token) {
+        // Numerical value (Nth day of week with current locale or weekStartsOn)
+        case "e":
+          return String(localDayOfWeek);
+        // Padded numerical value
+        case "ee":
+          return addLeadingZeros(localDayOfWeek, 2);
+        // 1st, 2nd, ..., 7th
+        case "eo":
+          return localize2.ordinalNumber(localDayOfWeek, { unit: "day" });
+        case "eee":
+          return localize2.day(dayOfWeek, {
+            width: "abbreviated",
+            context: "formatting"
+          });
+        // T
+        case "eeeee":
+          return localize2.day(dayOfWeek, {
+            width: "narrow",
+            context: "formatting"
+          });
+        // Tu
+        case "eeeeee":
+          return localize2.day(dayOfWeek, {
+            width: "short",
+            context: "formatting"
+          });
+        // Tuesday
+        case "eeee":
+        default:
+          return localize2.day(dayOfWeek, {
+            width: "wide",
+            context: "formatting"
+          });
+      }
+    },
+    // Stand-alone local day of week
+    c: function(date, token, localize2, options) {
+      let dayOfWeek = date.getDay(), localDayOfWeek = (dayOfWeek - options.weekStartsOn + 8) % 7 || 7;
+      switch (token) {
+        // Numerical value (same as in `e`)
+        case "c":
+          return String(localDayOfWeek);
+        // Padded numerical value
+        case "cc":
+          return addLeadingZeros(localDayOfWeek, token.length);
+        // 1st, 2nd, ..., 7th
+        case "co":
+          return localize2.ordinalNumber(localDayOfWeek, { unit: "day" });
+        case "ccc":
+          return localize2.day(dayOfWeek, {
+            width: "abbreviated",
+            context: "standalone"
+          });
+        // T
+        case "ccccc":
+          return localize2.day(dayOfWeek, {
+            width: "narrow",
+            context: "standalone"
+          });
+        // Tu
+        case "cccccc":
+          return localize2.day(dayOfWeek, {
+            width: "short",
+            context: "standalone"
+          });
+        // Tuesday
+        case "cccc":
+        default:
+          return localize2.day(dayOfWeek, {
+            width: "wide",
+            context: "standalone"
+          });
+      }
+    },
+    // ISO day of week
+    i: function(date, token, localize2) {
+      let dayOfWeek = date.getDay(), isoDayOfWeek = dayOfWeek === 0 ? 7 : dayOfWeek;
+      switch (token) {
+        // 2
+        case "i":
+          return String(isoDayOfWeek);
+        // 02
+        case "ii":
+          return addLeadingZeros(isoDayOfWeek, token.length);
+        // 2nd
+        case "io":
+          return localize2.ordinalNumber(isoDayOfWeek, { unit: "day" });
+        // Tue
+        case "iii":
+          return localize2.day(dayOfWeek, {
+            width: "abbreviated",
+            context: "formatting"
+          });
+        // T
+        case "iiiii":
+          return localize2.day(dayOfWeek, {
+            width: "narrow",
+            context: "formatting"
+          });
+        // Tu
+        case "iiiiii":
+          return localize2.day(dayOfWeek, {
+            width: "short",
+            context: "formatting"
+          });
+        // Tuesday
+        case "iiii":
+        default:
+          return localize2.day(dayOfWeek, {
+            width: "wide",
+            context: "formatting"
+          });
+      }
+    },
+    // AM or PM
+    a: function(date, token, localize2) {
+      let dayPeriodEnumValue = date.getHours() / 12 >= 1 ? "pm" : "am";
+      switch (token) {
+        case "a":
+        case "aa":
+          return localize2.dayPeriod(dayPeriodEnumValue, {
+            width: "abbreviated",
+            context: "formatting"
+          });
+        case "aaa":
+          return localize2.dayPeriod(dayPeriodEnumValue, {
+            width: "abbreviated",
+            context: "formatting"
+          }).toLowerCase();
+        case "aaaaa":
+          return localize2.dayPeriod(dayPeriodEnumValue, {
+            width: "narrow",
+            context: "formatting"
+          });
+        case "aaaa":
+        default:
+          return localize2.dayPeriod(dayPeriodEnumValue, {
+            width: "wide",
+            context: "formatting"
+          });
+      }
+    },
+    // AM, PM, midnight, noon
+    b: function(date, token, localize2) {
+      let hours = date.getHours(), dayPeriodEnumValue;
+      switch (hours === 12 ? dayPeriodEnumValue = dayPeriodEnum.noon : hours === 0 ? dayPeriodEnumValue = dayPeriodEnum.midnight : dayPeriodEnumValue = hours / 12 >= 1 ? "pm" : "am", token) {
+        case "b":
+        case "bb":
+          return localize2.dayPeriod(dayPeriodEnumValue, {
+            width: "abbreviated",
+            context: "formatting"
+          });
+        case "bbb":
+          return localize2.dayPeriod(dayPeriodEnumValue, {
+            width: "abbreviated",
+            context: "formatting"
+          }).toLowerCase();
+        case "bbbbb":
+          return localize2.dayPeriod(dayPeriodEnumValue, {
+            width: "narrow",
+            context: "formatting"
+          });
+        case "bbbb":
+        default:
+          return localize2.dayPeriod(dayPeriodEnumValue, {
+            width: "wide",
+            context: "formatting"
+          });
+      }
+    },
+    // in the morning, in the afternoon, in the evening, at night
+    B: function(date, token, localize2) {
+      let hours = date.getHours(), dayPeriodEnumValue;
+      switch (hours >= 17 ? dayPeriodEnumValue = dayPeriodEnum.evening : hours >= 12 ? dayPeriodEnumValue = dayPeriodEnum.afternoon : hours >= 4 ? dayPeriodEnumValue = dayPeriodEnum.morning : dayPeriodEnumValue = dayPeriodEnum.night, token) {
+        case "B":
+        case "BB":
+        case "BBB":
+          return localize2.dayPeriod(dayPeriodEnumValue, {
+            width: "abbreviated",
+            context: "formatting"
+          });
+        case "BBBBB":
+          return localize2.dayPeriod(dayPeriodEnumValue, {
+            width: "narrow",
+            context: "formatting"
+          });
+        case "BBBB":
+        default:
+          return localize2.dayPeriod(dayPeriodEnumValue, {
+            width: "wide",
+            context: "formatting"
+          });
+      }
+    },
+    // Hour [1-12]
+    h: function(date, token, localize2) {
+      if (token === "ho") {
+        let hours = date.getHours() % 12;
+        return hours === 0 && (hours = 12), localize2.ordinalNumber(hours, { unit: "hour" });
+      }
+      return lightFormatters.h(date, token);
+    },
+    // Hour [0-23]
+    H: function(date, token, localize2) {
+      return token === "Ho" ? localize2.ordinalNumber(date.getHours(), { unit: "hour" }) : lightFormatters.H(date, token);
+    },
+    // Hour [0-11]
+    K: function(date, token, localize2) {
+      let hours = date.getHours() % 12;
+      return token === "Ko" ? localize2.ordinalNumber(hours, { unit: "hour" }) : addLeadingZeros(hours, token.length);
+    },
+    // Hour [1-24]
+    k: function(date, token, localize2) {
+      let hours = date.getHours();
+      return hours === 0 && (hours = 24), token === "ko" ? localize2.ordinalNumber(hours, { unit: "hour" }) : addLeadingZeros(hours, token.length);
+    },
+    // Minute
+    m: function(date, token, localize2) {
+      return token === "mo" ? localize2.ordinalNumber(date.getMinutes(), { unit: "minute" }) : lightFormatters.m(date, token);
+    },
+    // Second
+    s: function(date, token, localize2) {
+      return token === "so" ? localize2.ordinalNumber(date.getSeconds(), { unit: "second" }) : lightFormatters.s(date, token);
+    },
+    // Fraction of second
+    S: function(date, token) {
+      return lightFormatters.S(date, token);
+    },
+    // Timezone (ISO-8601. If offset is 0, output is always `'Z'`)
+    X: function(date, token, _localize) {
+      let timezoneOffset = date.getTimezoneOffset();
+      if (timezoneOffset === 0)
+        return "Z";
+      switch (token) {
+        // Hours and optional minutes
+        case "X":
+          return formatTimezoneWithOptionalMinutes(timezoneOffset);
+        // Hours, minutes and optional seconds without `:` delimiter
+        // Note: neither ISO-8601 nor JavaScript supports seconds in timezone offsets
+        // so this token always has the same output as `XX`
+        case "XXXX":
+        case "XX":
+          return formatTimezone(timezoneOffset);
+        // Hours, minutes and optional seconds with `:` delimiter
+        // Note: neither ISO-8601 nor JavaScript supports seconds in timezone offsets
+        // so this token always has the same output as `XXX`
+        case "XXXXX":
+        case "XXX":
+        // Hours and minutes with `:` delimiter
+        default:
+          return formatTimezone(timezoneOffset, ":");
+      }
+    },
+    // Timezone (ISO-8601. If offset is 0, output is `'+00:00'` or equivalent)
+    x: function(date, token, _localize) {
+      let timezoneOffset = date.getTimezoneOffset();
+      switch (token) {
+        // Hours and optional minutes
+        case "x":
+          return formatTimezoneWithOptionalMinutes(timezoneOffset);
+        // Hours, minutes and optional seconds without `:` delimiter
+        // Note: neither ISO-8601 nor JavaScript supports seconds in timezone offsets
+        // so this token always has the same output as `xx`
+        case "xxxx":
+        case "xx":
+          return formatTimezone(timezoneOffset);
+        // Hours, minutes and optional seconds with `:` delimiter
+        // Note: neither ISO-8601 nor JavaScript supports seconds in timezone offsets
+        // so this token always has the same output as `xxx`
+        case "xxxxx":
+        case "xxx":
+        // Hours and minutes with `:` delimiter
+        default:
+          return formatTimezone(timezoneOffset, ":");
+      }
+    },
+    // Timezone (GMT)
+    O: function(date, token, _localize) {
+      let timezoneOffset = date.getTimezoneOffset();
+      switch (token) {
+        // Short
+        case "O":
+        case "OO":
+        case "OOO":
+          return "GMT" + formatTimezoneShort(timezoneOffset, ":");
+        // Long
+        case "OOOO":
+        default:
+          return "GMT" + formatTimezone(timezoneOffset, ":");
+      }
+    },
+    // Timezone (specific non-location)
+    z: function(date, token, _localize) {
+      let timezoneOffset = date.getTimezoneOffset();
+      switch (token) {
+        // Short
+        case "z":
+        case "zz":
+        case "zzz":
+          return "GMT" + formatTimezoneShort(timezoneOffset, ":");
+        // Long
+        case "zzzz":
+        default:
+          return "GMT" + formatTimezone(timezoneOffset, ":");
+      }
+    },
+    // Seconds timestamp
+    t: function(date, token, _localize) {
+      let timestamp = Math.trunc(date.getTime() / 1e3);
+      return addLeadingZeros(timestamp, token.length);
+    },
+    // Milliseconds timestamp
+    T: function(date, token, _localize) {
+      let timestamp = date.getTime();
+      return addLeadingZeros(timestamp, token.length);
+    }
+  };
+  function formatTimezoneShort(offset, delimiter = "") {
+    let sign = offset > 0 ? "-" : "+", absOffset = Math.abs(offset), hours = Math.trunc(absOffset / 60), minutes = absOffset % 60;
+    return minutes === 0 ? sign + String(hours) : sign + String(hours) + delimiter + addLeadingZeros(minutes, 2);
+  }
+  function formatTimezoneWithOptionalMinutes(offset, delimiter) {
+    return offset % 60 === 0 ? (offset > 0 ? "-" : "+") + addLeadingZeros(Math.abs(offset) / 60, 2) : formatTimezone(offset, delimiter);
+  }
+  function formatTimezone(offset, delimiter = "") {
+    let sign = offset > 0 ? "-" : "+", absOffset = Math.abs(offset), hours = addLeadingZeros(Math.trunc(absOffset / 60), 2), minutes = addLeadingZeros(absOffset % 60, 2);
+    return sign + hours + delimiter + minutes;
+  }
+
+  // internal/ui/src/node_modules/date-fns/_lib/format/longFormatters.mjs
+  var dateLongFormatter = (pattern, formatLong2) => {
+    switch (pattern) {
+      case "P":
+        return formatLong2.date({ width: "short" });
+      case "PP":
+        return formatLong2.date({ width: "medium" });
+      case "PPP":
+        return formatLong2.date({ width: "long" });
+      case "PPPP":
+      default:
+        return formatLong2.date({ width: "full" });
+    }
+  }, timeLongFormatter = (pattern, formatLong2) => {
+    switch (pattern) {
+      case "p":
+        return formatLong2.time({ width: "short" });
+      case "pp":
+        return formatLong2.time({ width: "medium" });
+      case "ppp":
+        return formatLong2.time({ width: "long" });
+      case "pppp":
+      default:
+        return formatLong2.time({ width: "full" });
+    }
+  }, dateTimeLongFormatter = (pattern, formatLong2) => {
+    let matchResult = pattern.match(/(P+)(p+)?/) || [], datePattern = matchResult[1], timePattern = matchResult[2];
+    if (!timePattern)
+      return dateLongFormatter(pattern, formatLong2);
+    let dateTimeFormat;
+    switch (datePattern) {
+      case "P":
+        dateTimeFormat = formatLong2.dateTime({ width: "short" });
+        break;
+      case "PP":
+        dateTimeFormat = formatLong2.dateTime({ width: "medium" });
+        break;
+      case "PPP":
+        dateTimeFormat = formatLong2.dateTime({ width: "long" });
+        break;
+      case "PPPP":
+      default:
+        dateTimeFormat = formatLong2.dateTime({ width: "full" });
+        break;
+    }
+    return dateTimeFormat.replace("{{date}}", dateLongFormatter(datePattern, formatLong2)).replace("{{time}}", timeLongFormatter(timePattern, formatLong2));
+  }, longFormatters = {
+    p: timeLongFormatter,
+    P: dateTimeLongFormatter
+  };
+
+  // internal/ui/src/node_modules/date-fns/_lib/protectedTokens.mjs
+  var dayOfYearTokenRE = /^D+$/, weekYearTokenRE = /^Y+$/, throwTokens = ["D", "DD", "YY", "YYYY"];
+  function isProtectedDayOfYearToken(token) {
+    return dayOfYearTokenRE.test(token);
+  }
+  function isProtectedWeekYearToken(token) {
+    return weekYearTokenRE.test(token);
+  }
+  function warnOrThrowProtectedError(token, format2, input) {
+    let _message = message(token, format2, input);
+    if (console.warn(_message), throwTokens.includes(token)) throw new RangeError(_message);
+  }
+  function message(token, format2, input) {
+    let subject = token[0] === "Y" ? "years" : "days of the month";
+    return `Use \`${token.toLowerCase()}\` instead of \`${token}\` (in \`${format2}\`) for formatting ${subject} to the input \`${input}\`; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md`;
+  }
+
+  // internal/ui/src/node_modules/date-fns/format.mjs
+  var formattingTokensRegExp = /[yYQqMLwIdDecihHKkms]o|(\w)\1*|''|'(''|[^'])+('|$)|./g, longFormattingTokensRegExp = /P+p+|P+|p+|''|'(''|[^'])+('|$)|./g, escapedStringRegExp = /^'([^]*?)'?$/, doubleQuoteRegExp = /''/g, unescapedLatinCharacterRegExp = /[a-zA-Z]/;
+  function format(date, formatStr, options) {
+    let defaultOptions2 = getDefaultOptions(), locale = options?.locale ?? defaultOptions2.locale ?? enUS, firstWeekContainsDate = options?.firstWeekContainsDate ?? options?.locale?.options?.firstWeekContainsDate ?? defaultOptions2.firstWeekContainsDate ?? defaultOptions2.locale?.options?.firstWeekContainsDate ?? 1, weekStartsOn = options?.weekStartsOn ?? options?.locale?.options?.weekStartsOn ?? defaultOptions2.weekStartsOn ?? defaultOptions2.locale?.options?.weekStartsOn ?? 0, originalDate = toDate(date);
+    if (!isValid(originalDate))
+      throw new RangeError("Invalid time value");
+    let parts = formatStr.match(longFormattingTokensRegExp).map((substring) => {
+      let firstCharacter = substring[0];
+      if (firstCharacter === "p" || firstCharacter === "P") {
+        let longFormatter = longFormatters[firstCharacter];
+        return longFormatter(substring, locale.formatLong);
+      }
+      return substring;
+    }).join("").match(formattingTokensRegExp).map((substring) => {
+      if (substring === "''")
+        return { isToken: !1, value: "'" };
+      let firstCharacter = substring[0];
+      if (firstCharacter === "'")
+        return { isToken: !1, value: cleanEscapedString(substring) };
+      if (formatters[firstCharacter])
+        return { isToken: !0, value: substring };
+      if (firstCharacter.match(unescapedLatinCharacterRegExp))
+        throw new RangeError(
+          "Format string contains an unescaped latin alphabet character `" + firstCharacter + "`"
+        );
+      return { isToken: !1, value: substring };
     });
-    provider && params.append("provider", provider), search && params.append("search", search);
-    let response = await fetch(`/api/recordings?${params}`);
-    if (!response.ok)
-      throw new Error("Failed to fetch recordings");
-    return response.json();
+    locale.localize.preprocessor && (parts = locale.localize.preprocessor(originalDate, parts));
+    let formatterOptions = {
+      firstWeekContainsDate,
+      weekStartsOn,
+      locale
+    };
+    return parts.map((part) => {
+      if (!part.isToken) return part.value;
+      let token = part.value;
+      (!options?.useAdditionalWeekYearTokens && isProtectedWeekYearToken(token) || !options?.useAdditionalDayOfYearTokens && isProtectedDayOfYearToken(token)) && warnOrThrowProtectedError(token, formatStr, String(date));
+      let formatter = formatters[token[0]];
+      return formatter(originalDate, token, locale.localize, formatterOptions);
+    }).join("");
   }
-  async function fetchRecording(id) {
-    let response = await fetch(`/api/recordings/${id}`);
-    if (!response.ok)
-      throw new Error(`Failed to fetch recording: ${response.statusText}`);
-    return response.json();
+  function cleanEscapedString(input) {
+    let matched = input.match(escapedStringRegExp);
+    return matched ? matched[1].replace(doubleQuoteRegExp, "'") : input;
   }
-  async function fetchParsedRecording(id) {
-    let response = await fetch(`/api/recordings/${id}/parse`);
-    if (!response.ok)
-      throw new Error(`Failed to parse recording: ${response.statusText}`);
-    return response.json();
+
+  // internal/ui/src/app/components/ui/table.tsx
+  var import_react3 = __toESM(require_react(), 1);
+  function Table({ children, className = "", ...props }) {
+    return /* @__PURE__ */ import_react3.default.createElement("div", { className: "w-full overflow-auto" }, /* @__PURE__ */ import_react3.default.createElement(
+      "table",
+      {
+        className: `w-full caption-bottom text-sm ${className}`,
+        ...props
+      },
+      children
+    ));
+  }
+  function TableHeader({ children, className = "", ...props }) {
+    return /* @__PURE__ */ import_react3.default.createElement("thead", { className: `border-b ${className}`, ...props }, children);
+  }
+  function TableBody({ children, className = "", ...props }) {
+    return /* @__PURE__ */ import_react3.default.createElement("tbody", { className: `[&_tr:last-child]:border-0 ${className}`, ...props }, children);
+  }
+  function TableRow({ children, className = "", onClick, ...props }) {
+    return /* @__PURE__ */ import_react3.default.createElement(
+      "tr",
+      {
+        className: `border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted ${onClick ? "cursor-pointer" : ""} ${className}`,
+        onClick,
+        ...props
+      },
+      children
+    );
+  }
+  function TableHead({ children, className = "", ...props }) {
+    return /* @__PURE__ */ import_react3.default.createElement(
+      "th",
+      {
+        className: `h-12 px-4 text-left align-middle font-medium text-muted-foreground [&:has([role=checkbox])]:pr-0 ${className}`,
+        ...props
+      },
+      children
+    );
+  }
+  function TableCell({ children, className = "", ...props }) {
+    return /* @__PURE__ */ import_react3.default.createElement(
+      "td",
+      {
+        className: `p-4 align-middle [&:has([role=checkbox])]:pr-0 ${className}`,
+        ...props
+      },
+      children
+    );
   }
 
   // internal/ui/src/app/lib/styles.ts
@@ -23803,11 +23856,22 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
   var PROVIDER_STYLES = {
     gemini: "bg-blue-100 text-blue-800 dark:bg-blue-900/20 dark:text-blue-300",
     openai: "bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-300",
-    claude: "bg-orange-100 text-orange-800 dark:bg-orange-900/20 dark:text-orange-300"
+    claude: "bg-orange-100 text-orange-800 dark:bg-orange-900/20 dark:text-orange-300",
+    chatgpt: "bg-purple-100 text-purple-800 dark:bg-purple-900/20 dark:text-purple-300",
+    unknown: "bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-300"
+  }, PROVIDER_LABELS = {
+    gemini: "Gemini",
+    openai: "OpenAI",
+    claude: "Claude",
+    chatgpt: "Codex",
+    unknown: "Unknown"
   };
   function getProviderStyles(provider) {
     let normalized = provider.toLowerCase();
-    return normalized in PROVIDER_STYLES ? PROVIDER_STYLES[normalized] : "bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-300";
+    return normalized in PROVIDER_STYLES ? PROVIDER_STYLES[normalized] : PROVIDER_STYLES.unknown;
+  }
+  function getProviderLabel(provider) {
+    return PROVIDER_LABELS[provider.toLowerCase()] ?? provider;
   }
   function getSizeColor(bytes) {
     return bytes < 10240 ? "text-green-600 dark:text-green-400" : bytes < 1048576 ? "text-yellow-600 dark:text-yellow-400" : "text-red-600 dark:text-red-400";
@@ -23827,13 +23891,83 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
       return String(obj);
     }
   }
-  function formatBody(body) {
-    return typeof body == "string" ? body : formatJSON(body);
+
+  // internal/ui/src/app/components/RecordingsTable.tsx
+  function RecordingsTable({
+    recordings,
+    onSelect,
+    emptyMessage = "No recordings found"
+  }) {
+    return /* @__PURE__ */ import_react4.default.createElement("div", { className: "border rounded-md bg-card" }, /* @__PURE__ */ import_react4.default.createElement(Table, null, /* @__PURE__ */ import_react4.default.createElement(TableHeader, null, /* @__PURE__ */ import_react4.default.createElement(TableRow, null, /* @__PURE__ */ import_react4.default.createElement(TableHead, null, "ID"), /* @__PURE__ */ import_react4.default.createElement(TableHead, null, "Timestamp"), /* @__PURE__ */ import_react4.default.createElement(TableHead, null, "Provider"), /* @__PURE__ */ import_react4.default.createElement(TableHead, null, "Method"), /* @__PURE__ */ import_react4.default.createElement(TableHead, null, "Path"), /* @__PURE__ */ import_react4.default.createElement(TableHead, null, "Status"), /* @__PURE__ */ import_react4.default.createElement(TableHead, null, "Duration"), /* @__PURE__ */ import_react4.default.createElement(TableHead, null, "Size"))), /* @__PURE__ */ import_react4.default.createElement(TableBody, null, recordings.length === 0 ? /* @__PURE__ */ import_react4.default.createElement(TableRow, null, /* @__PURE__ */ import_react4.default.createElement(TableCell, { colSpan: 8, className: "text-center py-8 text-muted-foreground" }, emptyMessage)) : recordings.map((recording) => /* @__PURE__ */ import_react4.default.createElement(
+      TableRow,
+      {
+        key: recording.id,
+        onClick: () => onSelect(recording),
+        className: "cursor-pointer"
+      },
+      /* @__PURE__ */ import_react4.default.createElement(TableCell, { className: "font-mono text-xs text-muted-foreground" }, truncateId(recording.id)),
+      /* @__PURE__ */ import_react4.default.createElement(TableCell, { className: "text-sm text-foreground" }, format(new Date(recording.timestamp), "MMM d, HH:mm:ss")),
+      /* @__PURE__ */ import_react4.default.createElement(TableCell, null, /* @__PURE__ */ import_react4.default.createElement(
+        "span",
+        {
+          className: "inline-flex items-center px-2 py-1 rounded text-xs font-medium " + getProviderStyles(recording.provider)
+        },
+        getProviderLabel(recording.provider)
+      )),
+      /* @__PURE__ */ import_react4.default.createElement(TableCell, { className: "text-sm font-mono text-foreground" }, recording.method),
+      /* @__PURE__ */ import_react4.default.createElement(TableCell, { className: "text-sm font-mono max-w-xs truncate text-foreground" }, recording.path),
+      /* @__PURE__ */ import_react4.default.createElement(TableCell, { className: `font-medium ${getStatusTextColor(recording.status)}` }, recording.status),
+      /* @__PURE__ */ import_react4.default.createElement(TableCell, { className: "text-sm text-foreground" }, recording.duration, "ms"),
+      /* @__PURE__ */ import_react4.default.createElement(TableCell, { className: `text-sm font-mono ${getSizeColor(recording.responseSize)}` }, formatBytes(recording.responseSize))
+    )))));
+  }
+
+  // internal/ui/src/app/lib/api.ts
+  var GroupingDisabledError = class extends Error {
+    constructor() {
+      super("Session grouping is not enabled"), this.name = "GroupingDisabledError";
+    }
+  };
+  async function fetchRecordings(page, limit, provider, search) {
+    let params = new URLSearchParams({
+      page: page.toString(),
+      limit: limit.toString()
+    });
+    provider && params.append("provider", provider), search && params.append("search", search);
+    let response = await fetch(`/api/recordings?${params}`);
+    if (!response.ok)
+      throw new Error("Failed to fetch recordings");
+    return response.json();
+  }
+  async function fetchRecording(id) {
+    let response = await fetch(`/api/recordings/${id}`);
+    if (!response.ok)
+      throw new Error(`Failed to fetch recording: ${response.statusText}`);
+    return response.json();
+  }
+  async function fetchSessionGroups(page, limit) {
+    let params = new URLSearchParams({
+      page: page.toString(),
+      limit: limit.toString()
+    }), response = await fetch(`/api/groups/sessions?${params}`);
+    if (response.status === 501)
+      throw new GroupingDisabledError();
+    if (!response.ok)
+      throw new Error("Failed to fetch sessions");
+    return response.json();
+  }
+  async function fetchSessionGroup(traceId) {
+    let response = await fetch(`/api/groups/sessions/${traceId}`);
+    if (response.status === 501)
+      throw new GroupingDisabledError();
+    if (!response.ok)
+      throw new Error(`Failed to fetch session: ${response.statusText}`);
+    return response.json();
   }
 
   // internal/ui/src/app/pages/Recordings.tsx
   function Recordings() {
-    let navigate = useNavigate(), [page, setPage] = (0, import_react4.useState)(1), [limit] = (0, import_react4.useState)(50), [provider, setProvider] = (0, import_react4.useState)(""), [search, setSearch] = (0, import_react4.useState)(""), [searchInput, setSearchInput] = (0, import_react4.useState)(""), { data: data2, isLoading, error, refetch, isFetching } = useQuery({
+    let navigate = useNavigate(), [page, setPage] = (0, import_react5.useState)(1), [limit] = (0, import_react5.useState)(50), [provider, setProvider] = (0, import_react5.useState)(""), [search, setSearch] = (0, import_react5.useState)(""), [searchInput, setSearchInput] = (0, import_react5.useState)(""), { data: data2, isLoading, error, refetch, isFetching } = useQuery({
       queryKey: ["recordings", page, limit, provider, search],
       queryFn: () => fetchRecordings(page, limit, provider, search),
       refetchInterval: 1e4,
@@ -23846,21 +23980,21 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
     }, handleRefresh = () => {
       refetch();
     };
-    return /* @__PURE__ */ import_react4.default.createElement("div", { className: "mx-auto flex-1" }, /* @__PURE__ */ import_react4.default.createElement("div", { className: "space-y-4 w-full p-4" }, /* @__PURE__ */ import_react4.default.createElement("div", { className: "flex items-center justify-between" }, /* @__PURE__ */ import_react4.default.createElement("div", null, /* @__PURE__ */ import_react4.default.createElement("h1", { className: "text-2xl font-bold text-foreground" }, "Recordings"), /* @__PURE__ */ import_react4.default.createElement("p", { className: "text-sm text-muted-foreground" }, data2?.total ? `${data2.total} total recordings` : "Loading...")), /* @__PURE__ */ import_react4.default.createElement(
+    return /* @__PURE__ */ import_react5.default.createElement("div", { className: "mx-auto flex-1" }, /* @__PURE__ */ import_react5.default.createElement("div", { className: "space-y-4 w-full p-4" }, /* @__PURE__ */ import_react5.default.createElement("div", { className: "flex items-center justify-between" }, /* @__PURE__ */ import_react5.default.createElement("div", null, /* @__PURE__ */ import_react5.default.createElement("h1", { className: "text-2xl font-bold text-foreground" }, "Recordings"), /* @__PURE__ */ import_react5.default.createElement("p", { className: "text-sm text-muted-foreground" }, data2?.total ? `${data2.total} total recordings` : "Loading...")), /* @__PURE__ */ import_react5.default.createElement(
       Button,
       {
         onClick: handleRefresh,
         disabled: isFetching,
         className: "flex items-center gap-2"
       },
-      /* @__PURE__ */ import_react4.default.createElement(
+      /* @__PURE__ */ import_react5.default.createElement(
         RefreshCw,
         {
           className: `h-4 w-4 ${isFetching ? "animate-spin" : ""}`
         }
       ),
       "Refresh"
-    )), /* @__PURE__ */ import_react4.default.createElement("div", { className: "flex gap-4 items-end" }, /* @__PURE__ */ import_react4.default.createElement("div", { className: "flex-1" }, /* @__PURE__ */ import_react4.default.createElement("label", { className: "text-sm font-medium mb-1 block text-muted-foreground" }, "Search"), /* @__PURE__ */ import_react4.default.createElement("div", { className: "flex gap-2" }, /* @__PURE__ */ import_react4.default.createElement(
+    )), /* @__PURE__ */ import_react5.default.createElement("div", { className: "flex gap-4 items-end" }, /* @__PURE__ */ import_react5.default.createElement("div", { className: "flex-1" }, /* @__PURE__ */ import_react5.default.createElement("label", { className: "text-sm font-medium mb-1 block text-muted-foreground" }, "Search"), /* @__PURE__ */ import_react5.default.createElement("div", { className: "flex gap-2" }, /* @__PURE__ */ import_react5.default.createElement(
       Input,
       {
         placeholder: "Search by ID, path, or error...",
@@ -23870,15 +24004,15 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
           e.key === "Enter" && handleSearch();
         }
       }
-    ), /* @__PURE__ */ import_react4.default.createElement(
+    ), /* @__PURE__ */ import_react5.default.createElement(
       Button,
       {
         onClick: handleSearch,
         className: "flex items-center gap-2"
       },
-      /* @__PURE__ */ import_react4.default.createElement(Search, { className: "h-4 w-4" }),
+      /* @__PURE__ */ import_react5.default.createElement(Search, { className: "h-4 w-4" }),
       "Search"
-    ))), /* @__PURE__ */ import_react4.default.createElement("div", { className: "w-48" }, /* @__PURE__ */ import_react4.default.createElement("label", { className: "text-sm font-medium mb-1 block text-muted-foreground" }, "Provider"), /* @__PURE__ */ import_react4.default.createElement(
+    ))), /* @__PURE__ */ import_react5.default.createElement("div", { className: "w-48" }, /* @__PURE__ */ import_react5.default.createElement("label", { className: "text-sm font-medium mb-1 block text-muted-foreground" }, "Provider"), /* @__PURE__ */ import_react5.default.createElement(
       "select",
       {
         value: provider,
@@ -23887,53 +24021,18 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
         },
         className: "w-full px-3 py-2 border rounded-md bg-background text-foreground border-input"
       },
-      /* @__PURE__ */ import_react4.default.createElement("option", { value: "" }, "All Providers"),
-      /* @__PURE__ */ import_react4.default.createElement("option", { value: "openai" }, "OpenAI"),
-      /* @__PURE__ */ import_react4.default.createElement("option", { value: "claude" }, "Claude"),
-      /* @__PURE__ */ import_react4.default.createElement("option", { value: "gemini" }, "Gemini")
-    )), (provider || search) && /* @__PURE__ */ import_react4.default.createElement(Button, { variant: "outline", onClick: handleClearFilters }, "Clear Filters")), error && /* @__PURE__ */ import_react4.default.createElement("div", { className: "p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-md text-red-800 dark:text-red-300" }, "Error loading recordings: ", error.message), isLoading && /* @__PURE__ */ import_react4.default.createElement("div", { className: "flex items-center justify-center py-12" }, /* @__PURE__ */ import_react4.default.createElement("div", { className: "text-muted-foreground" }, "Loading recordings...")), !isLoading && data2 && /* @__PURE__ */ import_react4.default.createElement(import_react4.default.Fragment, null, /* @__PURE__ */ import_react4.default.createElement("div", { className: "border rounded-md bg-card" }, /* @__PURE__ */ import_react4.default.createElement(Table, null, /* @__PURE__ */ import_react4.default.createElement(TableHeader, null, /* @__PURE__ */ import_react4.default.createElement(TableRow, null, /* @__PURE__ */ import_react4.default.createElement(TableHead, null, "ID"), /* @__PURE__ */ import_react4.default.createElement(TableHead, null, "Timestamp"), /* @__PURE__ */ import_react4.default.createElement(TableHead, null, "Provider"), /* @__PURE__ */ import_react4.default.createElement(TableHead, null, "Method"), /* @__PURE__ */ import_react4.default.createElement(TableHead, null, "Path"), /* @__PURE__ */ import_react4.default.createElement(TableHead, null, "Status"), /* @__PURE__ */ import_react4.default.createElement(TableHead, null, "Duration"), /* @__PURE__ */ import_react4.default.createElement(TableHead, null, "Size"))), /* @__PURE__ */ import_react4.default.createElement(TableBody, null, data2.recordings.length === 0 ? /* @__PURE__ */ import_react4.default.createElement(TableRow, null, /* @__PURE__ */ import_react4.default.createElement(
-      TableCell,
+      /* @__PURE__ */ import_react5.default.createElement("option", { value: "" }, "All Providers"),
+      /* @__PURE__ */ import_react5.default.createElement("option", { value: "claude" }, "Claude"),
+      /* @__PURE__ */ import_react5.default.createElement("option", { value: "chatgpt" }, "Codex"),
+      /* @__PURE__ */ import_react5.default.createElement("option", { value: "openai" }, "OpenAI"),
+      /* @__PURE__ */ import_react5.default.createElement("option", { value: "gemini" }, "Gemini")
+    )), (provider || search) && /* @__PURE__ */ import_react5.default.createElement(Button, { variant: "outline", onClick: handleClearFilters }, "Clear Filters")), error && /* @__PURE__ */ import_react5.default.createElement("div", { className: "p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-md text-red-800 dark:text-red-300" }, "Error loading recordings: ", error.message), isLoading && /* @__PURE__ */ import_react5.default.createElement("div", { className: "flex items-center justify-center py-12" }, /* @__PURE__ */ import_react5.default.createElement("div", { className: "text-muted-foreground" }, "Loading recordings...")), !isLoading && data2 && /* @__PURE__ */ import_react5.default.createElement(import_react5.default.Fragment, null, /* @__PURE__ */ import_react5.default.createElement(
+      RecordingsTable,
       {
-        colSpan: 8,
-        className: "text-center py-8 text-muted-foreground"
-      },
-      "No recordings found"
-    )) : data2.recordings.map((recording) => /* @__PURE__ */ import_react4.default.createElement(
-      TableRow,
-      {
-        key: recording.id,
-        onClick: () => navigate(`/recordings/${recording.id}`)
-      },
-      /* @__PURE__ */ import_react4.default.createElement(TableCell, { className: "font-mono text-xs text-muted-foreground" }, truncateId(recording.id)),
-      /* @__PURE__ */ import_react4.default.createElement(TableCell, { className: "text-sm text-foreground" }, format(
-        new Date(recording.timestamp),
-        "MMM d, HH:mm:ss"
-      )),
-      /* @__PURE__ */ import_react4.default.createElement(TableCell, null, /* @__PURE__ */ import_react4.default.createElement(
-        "span",
-        {
-          className: "inline-flex items-center px-2 py-1 rounded text-xs font-medium " + getProviderStyles(recording.provider)
-        },
-        recording.provider
-      )),
-      /* @__PURE__ */ import_react4.default.createElement(TableCell, { className: "text-sm font-mono text-foreground" }, recording.method),
-      /* @__PURE__ */ import_react4.default.createElement(TableCell, { className: "text-sm font-mono max-w-xs truncate text-foreground" }, recording.path),
-      /* @__PURE__ */ import_react4.default.createElement(
-        TableCell,
-        {
-          className: `font-medium ${getStatusTextColor(recording.status)}`
-        },
-        recording.status
-      ),
-      /* @__PURE__ */ import_react4.default.createElement(TableCell, { className: "text-sm text-foreground" }, recording.duration, "ms"),
-      /* @__PURE__ */ import_react4.default.createElement(
-        TableCell,
-        {
-          className: `text-sm font-mono ${getSizeColor(recording.responseSize)}`
-        },
-        formatBytes(recording.responseSize)
-      )
-    ))))), data2.recordings.length > 0 && /* @__PURE__ */ import_react4.default.createElement("div", { className: "flex items-center justify-between" }, /* @__PURE__ */ import_react4.default.createElement("div", { className: "text-sm text-muted-foreground" }, "Page ", data2.page, " of ", Math.ceil(data2.total / data2.limit)), /* @__PURE__ */ import_react4.default.createElement("div", { className: "flex gap-2" }, /* @__PURE__ */ import_react4.default.createElement(
+        recordings: data2.recordings,
+        onSelect: (recording) => navigate(`/recordings/${recording.id}`)
+      }
+    ), data2.recordings.length > 0 && /* @__PURE__ */ import_react5.default.createElement("div", { className: "flex items-center justify-between" }, /* @__PURE__ */ import_react5.default.createElement("div", { className: "text-sm text-muted-foreground" }, "Page ", data2.page, " of ", Math.ceil(data2.total / data2.limit)), /* @__PURE__ */ import_react5.default.createElement("div", { className: "flex gap-2" }, /* @__PURE__ */ import_react5.default.createElement(
       Button,
       {
         variant: "outline",
@@ -23941,7 +24040,7 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
         disabled: page === 1
       },
       "Previous"
-    ), /* @__PURE__ */ import_react4.default.createElement(
+    ), /* @__PURE__ */ import_react5.default.createElement(
       Button,
       {
         variant: "outline",
@@ -23953,24 +24052,24 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
   }
 
   // internal/ui/src/app/pages/Recording.tsx
-  var import_react14 = __toESM(require_react(), 1);
+  var import_react21 = __toESM(require_react(), 1);
 
   // internal/ui/src/app/components/recording/RecordingDetail.tsx
-  var import_react12 = __toESM(require_react(), 1);
+  var import_react19 = __toESM(require_react(), 1);
 
   // internal/ui/src/app/components/recording/RecordingHeader.tsx
-  var import_react5 = __toESM(require_react(), 1);
+  var import_react6 = __toESM(require_react(), 1);
   function RecordingHeader({ recordingId, recording }) {
-    let navigate = useNavigate(), [copied, setCopied] = (0, import_react5.useState)(!1);
-    return /* @__PURE__ */ import_react5.default.createElement("div", { className: "flex items-center justify-between p-6 border-b bg-card" }, /* @__PURE__ */ import_react5.default.createElement("div", { className: "flex items-center gap-4" }, /* @__PURE__ */ import_react5.default.createElement(
+    let navigate = useNavigate(), [copied, setCopied] = (0, import_react6.useState)(!1);
+    return /* @__PURE__ */ import_react6.default.createElement("div", { className: "flex items-center justify-between p-6 border-b bg-card" }, /* @__PURE__ */ import_react6.default.createElement("div", { className: "flex items-center gap-4" }, /* @__PURE__ */ import_react6.default.createElement(
       "button",
       {
         onClick: () => navigate("/recordings"),
         className: "p-2 hover:bg-muted rounded-md transition-colors",
         "aria-label": "Back to recordings list"
       },
-      /* @__PURE__ */ import_react5.default.createElement(ArrowLeft, { className: "h-5 w-5" })
-    ), /* @__PURE__ */ import_react5.default.createElement("div", null, /* @__PURE__ */ import_react5.default.createElement("h2", { className: "text-xl font-bold" }, "Recording Details"), /* @__PURE__ */ import_react5.default.createElement("p", { className: "text-sm text-muted-foreground font-mono mt-1" }, recordingId))), /* @__PURE__ */ import_react5.default.createElement("div", { className: "flex items-center gap-2" }, /* @__PURE__ */ import_react5.default.createElement(
+      /* @__PURE__ */ import_react6.default.createElement(ArrowLeft, { className: "h-5 w-5" })
+    ), /* @__PURE__ */ import_react6.default.createElement("div", null, /* @__PURE__ */ import_react6.default.createElement("h2", { className: "text-xl font-bold" }, "Recording Details"), /* @__PURE__ */ import_react6.default.createElement("p", { className: "text-sm text-muted-foreground font-mono mt-1" }, recordingId))), /* @__PURE__ */ import_react6.default.createElement("div", { className: "flex items-center gap-2" }, /* @__PURE__ */ import_react6.default.createElement(
       Button,
       {
         size: "sm",
@@ -23986,8 +24085,8 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
         },
         disabled: !recording
       },
-      copied ? /* @__PURE__ */ import_react5.default.createElement(import_react5.default.Fragment, null, /* @__PURE__ */ import_react5.default.createElement(Check, { className: "h-4 w-4 mr-1" }), "Copied") : /* @__PURE__ */ import_react5.default.createElement(import_react5.default.Fragment, null, /* @__PURE__ */ import_react5.default.createElement(Copy, { className: "h-4 w-4 mr-1" }), "Copy JSON")
-    ), /* @__PURE__ */ import_react5.default.createElement(
+      copied ? /* @__PURE__ */ import_react6.default.createElement(import_react6.default.Fragment, null, /* @__PURE__ */ import_react6.default.createElement(Check, { className: "h-4 w-4 mr-1" }), "Copied") : /* @__PURE__ */ import_react6.default.createElement(import_react6.default.Fragment, null, /* @__PURE__ */ import_react6.default.createElement(Copy, { className: "h-4 w-4 mr-1" }), "Copy JSON")
+    ), /* @__PURE__ */ import_react6.default.createElement(
       Button,
       {
         size: "sm",
@@ -24003,43 +24102,47 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
         },
         disabled: !recording
       },
-      /* @__PURE__ */ import_react5.default.createElement(Download, { className: "h-4 w-4 mr-1" }),
+      /* @__PURE__ */ import_react6.default.createElement(Download, { className: "h-4 w-4 mr-1" }),
       "Download"
     )));
   }
 
   // internal/ui/src/app/components/recording/RecordingMetadata.tsx
-  var import_react6 = __toESM(require_react(), 1);
+  var import_react7 = __toESM(require_react(), 1);
   function RecordingMetadata({ recording }) {
-    return /* @__PURE__ */ import_react6.default.createElement("div", { className: "grid grid-cols-4 gap-4 mb-6" }, /* @__PURE__ */ import_react6.default.createElement("div", null, /* @__PURE__ */ import_react6.default.createElement("label", { className: "text-sm font-medium text-muted-foreground" }, "Timestamp"), /* @__PURE__ */ import_react6.default.createElement("p", { className: "text-sm mt-1" }, format(new Date(recording.timestamp), "MMM d, yyyy HH:mm:ss"))), /* @__PURE__ */ import_react6.default.createElement("div", null, /* @__PURE__ */ import_react6.default.createElement("label", { className: "text-sm font-medium text-muted-foreground" }, "Provider"), /* @__PURE__ */ import_react6.default.createElement("p", { className: "text-sm mt-1" }, /* @__PURE__ */ import_react6.default.createElement(
+    let body = recording.request.body, model = body && typeof body == "object" ? body.model : void 0;
+    return /* @__PURE__ */ import_react7.default.createElement("div", { className: "flex flex-wrap gap-x-8 gap-y-3 mb-6" }, /* @__PURE__ */ import_react7.default.createElement(MetadataField, { label: "Timestamp" }, format(new Date(recording.timestamp), "MMM d, yyyy HH:mm:ss")), /* @__PURE__ */ import_react7.default.createElement(MetadataField, { label: "Provider" }, /* @__PURE__ */ import_react7.default.createElement(
       "span",
       {
         className: `inline-flex items-center px-2 py-1 rounded text-xs font-medium ${getProviderStyles(recording.provider)}`
       },
-      recording.provider
-    ))), /* @__PURE__ */ import_react6.default.createElement("div", null, /* @__PURE__ */ import_react6.default.createElement("label", { className: "text-sm font-medium text-muted-foreground" }, "Duration"), /* @__PURE__ */ import_react6.default.createElement("p", { className: "text-sm mt-1" }, recording.timing.duration_ms, "ms")), /* @__PURE__ */ import_react6.default.createElement("div", null, /* @__PURE__ */ import_react6.default.createElement("label", { className: "text-sm font-medium text-muted-foreground" }, "Status"), /* @__PURE__ */ import_react6.default.createElement("p", { className: "text-sm mt-1" }, /* @__PURE__ */ import_react6.default.createElement(
+      getProviderLabel(recording.provider)
+    )), model && /* @__PURE__ */ import_react7.default.createElement(MetadataField, { label: "Model" }, /* @__PURE__ */ import_react7.default.createElement("span", { className: "font-mono" }, model)), /* @__PURE__ */ import_react7.default.createElement(MetadataField, { label: "Status" }, /* @__PURE__ */ import_react7.default.createElement(
       "span",
       {
         className: `inline-flex items-center px-2 py-1 rounded text-xs font-medium ${getStatusColor(recording.response.status)}`
       },
       recording.response.status
-    ))));
+    )), /* @__PURE__ */ import_react7.default.createElement(MetadataField, { label: "Duration" }, recording.timing.duration_ms, "ms"), recording.response.streaming && /* @__PURE__ */ import_react7.default.createElement(MetadataField, { label: "Transport" }, /* @__PURE__ */ import_react7.default.createElement("span", { className: "inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-muted text-muted-foreground" }, "SSE stream")));
+  }
+  function MetadataField({ label, children }) {
+    return /* @__PURE__ */ import_react7.default.createElement("div", null, /* @__PURE__ */ import_react7.default.createElement("label", { className: "text-sm font-medium text-muted-foreground" }, label), /* @__PURE__ */ import_react7.default.createElement("p", { className: "text-sm mt-1" }, children));
   }
 
   // internal/ui/src/app/components/recording/RecordingError.tsx
-  var import_react7 = __toESM(require_react(), 1);
+  var import_react8 = __toESM(require_react(), 1);
   function RecordingError({ error }) {
-    return /* @__PURE__ */ import_react7.default.createElement("div", { className: "p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-md mb-6" }, /* @__PURE__ */ import_react7.default.createElement("label", { className: "text-sm font-medium text-red-800 dark:text-red-300" }, "Error"), /* @__PURE__ */ import_react7.default.createElement("p", { className: "text-sm text-red-700 dark:text-red-400 mt-1 font-mono" }, error));
+    return /* @__PURE__ */ import_react8.default.createElement("div", { className: "p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-md mb-6" }, /* @__PURE__ */ import_react8.default.createElement("label", { className: "text-sm font-medium text-red-800 dark:text-red-300" }, "Error"), /* @__PURE__ */ import_react8.default.createElement("p", { className: "text-sm text-red-700 dark:text-red-400 mt-1 font-mono" }, error));
   }
 
   // internal/ui/src/app/components/recording/RecordingTabs.tsx
-  var import_react8 = __toESM(require_react(), 1);
+  var import_react9 = __toESM(require_react(), 1);
   function RecordingTabs({
     activeTab,
     onTabChange,
     tabs
   }) {
-    return /* @__PURE__ */ import_react8.default.createElement("div", { className: "flex gap-6 border-b -mb-px" }, tabs.map((tab) => /* @__PURE__ */ import_react8.default.createElement(
+    return /* @__PURE__ */ import_react9.default.createElement("div", { className: "flex gap-6 border-b -mb-px" }, tabs.map((tab) => /* @__PURE__ */ import_react9.default.createElement(
       "button",
       {
         key: tab.id,
@@ -24054,10 +24157,823 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
   }
 
   // internal/ui/src/app/components/recording/RequestPanel.tsx
-  var import_react9 = __toESM(require_react(), 1);
+  var import_react17 = __toESM(require_react(), 1);
+
+  // internal/ui/src/app/components/recording/BodyView.tsx
+  var import_react15 = __toESM(require_react(), 1);
+
+  // internal/ui/src/app/lib/conversation.ts
+  function joinText(content) {
+    return typeof content == "string" ? content : Array.isArray(content) ? content.map((part) => typeof part == "string" ? part : part && typeof part.text == "string" ? part.text : "").filter(Boolean).join(`
+
+`) : "";
+  }
+
+  // internal/ui/src/app/lib/sse.ts
+  function looksLikeSSE(body) {
+    let head = body.slice(0, 2e3).trimStart();
+    return /^(event|data):/m.test(head);
+  }
+  function looksBinary(body) {
+    let sample = body.slice(0, 512);
+    if (sample.includes("\uFFFD")) return !0;
+    let control = 0;
+    for (let i = 0; i < sample.length; i++) {
+      let c = sample.charCodeAt(i);
+      c < 32 && c !== 9 && c !== 10 && c !== 13 && control++;
+    }
+    return control > sample.length * 0.05;
+  }
+  function parseSSE(text) {
+    let events = [], eventName, dataLines = [], flush = () => {
+      if (eventName === void 0 && dataLines.length === 0) return;
+      let data2 = dataLines.join(`
+`), event = { event: eventName, data: data2 };
+      if (data2 && data2 !== "[DONE]")
+        try {
+          event.json = JSON.parse(data2);
+        } catch {
+        }
+      events.push(event), eventName = void 0, dataLines = [];
+    };
+    for (let rawLine of text.split(/\r?\n/)) {
+      let line = rawLine;
+      if (line === "") {
+        flush();
+        continue;
+      }
+      if (line.startsWith(":")) continue;
+      let colon = line.indexOf(":"), field = colon === -1 ? line : line.slice(0, colon), value = colon === -1 ? "" : line.slice(colon + 1);
+      value.startsWith(" ") && (value = value.slice(1)), field === "event" ? eventName = value : field === "data" && dataLines.push(value);
+    }
+    return flush(), events;
+  }
+  function countEvents(events) {
+    let counts = {};
+    for (let e of events) {
+      let key = e.event || e.json?.type || (e.data === "[DONE]" ? "[DONE]" : "unknown");
+      counts[key] = (counts[key] || 0) + 1;
+    }
+    return counts;
+  }
+
+  // internal/ui/src/app/lib/claude.ts
+  var HANDLED_REQUEST_KEYS = /* @__PURE__ */ new Set(["model", "stream", "system", "messages", "tools"]);
+  function claudeContentBlock(part) {
+    if (part == null) return { kind: "other", label: "empty", raw: part };
+    if (typeof part == "string") return { kind: "text", text: part };
+    switch (part.type) {
+      case "text":
+        return { kind: "text", text: part.text ?? "" };
+      case "thinking":
+        return { kind: "thinking", text: part.thinking ?? "" };
+      case "redacted_thinking":
+        return { kind: "thinking", text: "[redacted thinking]" };
+      case "tool_use":
+      case "server_tool_use":
+        return {
+          kind: "tool_call",
+          id: part.id,
+          name: part.name ?? part.type,
+          input: part.input
+        };
+      case "tool_result": {
+        let text = joinText(part.content);
+        return {
+          kind: "tool_result",
+          id: part.tool_use_id,
+          isError: part.is_error === !0,
+          text,
+          raw: text ? void 0 : part.content
+        };
+      }
+      case "image": {
+        let source = part.source ?? {};
+        return source.type === "base64" && source.data ? {
+          kind: "image",
+          mediaType: source.media_type,
+          src: `data:${source.media_type ?? "image/png"};base64,${source.data}`
+        } : { kind: "image", mediaType: source.media_type, src: source.url };
+      }
+      default:
+        return { kind: "other", label: part.type ?? "unknown", raw: part };
+    }
+  }
+  function claudeMessage(msg) {
+    let blocks = Array.isArray(msg?.content) ? msg.content.map(claudeContentBlock) : [{ kind: "text", text: String(msg?.content ?? "") }];
+    return { role: msg?.role ?? "unknown", blocks };
+  }
+  function isClaudeMessagesBody(body) {
+    return body != null && typeof body == "object" && Array.isArray(body.messages);
+  }
+  function normalizeClaudeRequest(body) {
+    let tools = Array.isArray(body.tools) ? body.tools.map((t) => ({
+      name: t?.name ?? t?.type ?? "unknown",
+      description: t?.description,
+      schema: t?.input_schema
+    })) : [], params = {};
+    for (let [key, value] of Object.entries(body))
+      !HANDLED_REQUEST_KEYS.has(key) && value != null && (params[key] = value);
+    return {
+      model: body.model,
+      stream: body.stream === !0,
+      system: joinText(body.system) || void 0,
+      tools,
+      messages: body.messages.map(claudeMessage),
+      params
+    };
+  }
+  function claudeUsage(usage) {
+    if (usage == null || typeof usage != "object") return;
+    let info = {};
+    return usage.input_tokens != null && (info.input = usage.input_tokens), usage.output_tokens != null && (info.output = usage.output_tokens), usage.cache_read_input_tokens != null && (info.cacheRead = usage.cache_read_input_tokens), usage.cache_creation_input_tokens != null && (info.cacheWrite = usage.cache_creation_input_tokens), Object.keys(info).length > 0 ? info : void 0;
+  }
+  function normalizeClaudeResponse(body) {
+    return body == null || typeof body != "object" ? null : body.type === "error" ? { error: body.error?.message ?? "Unknown API error" } : body.type !== "message" || !Array.isArray(body.content) ? null : {
+      model: body.model,
+      id: body.id,
+      stopReason: body.stop_reason ?? void 0,
+      message: { role: body.role ?? "assistant", blocks: body.content.map(claudeContentBlock) },
+      usage: claudeUsage(body.usage)
+    };
+  }
+  function reconstructClaudeStream(events) {
+    let view = { eventCounts: countEvents(events) }, blocks = [], partialJSON = {}, sawMessage = !1;
+    for (let e of events) {
+      let data2 = e.json;
+      if (data2)
+        switch (data2.type) {
+          case "message_start": {
+            sawMessage = !0, view.model = data2.message?.model, view.id = data2.message?.id, view.usage = claudeUsage(data2.message?.usage);
+            break;
+          }
+          case "content_block_start": {
+            blocks[data2.index] = claudeContentBlock(data2.content_block);
+            break;
+          }
+          case "content_block_delta": {
+            let block = blocks[data2.index], delta = data2.delta;
+            if (!block || !delta) break;
+            delta.type === "text_delta" && block.kind === "text" ? block.text += delta.text ?? "" : delta.type === "thinking_delta" && block.kind === "thinking" ? block.text += delta.thinking ?? "" : delta.type === "input_json_delta" && block.kind === "tool_call" && (partialJSON[data2.index] = (partialJSON[data2.index] ?? "") + (delta.partial_json ?? ""));
+            break;
+          }
+          case "content_block_stop": {
+            let block = blocks[data2.index], partial = partialJSON[data2.index];
+            if (block?.kind === "tool_call" && partial)
+              try {
+                block.input = JSON.parse(partial);
+              } catch {
+                block.input = partial;
+              }
+            break;
+          }
+          case "message_delta": {
+            data2.delta?.stop_reason && (view.stopReason = data2.delta.stop_reason);
+            let usage = claudeUsage(data2.usage);
+            usage && (view.usage = { ...view.usage, ...usage });
+            break;
+          }
+          case "error": {
+            view.error = data2.error?.message ?? "Stream error";
+            break;
+          }
+        }
+    }
+    return !sawMessage && !view.error ? null : (view.message = { role: "assistant", blocks: blocks.filter(Boolean) }, view);
+  }
+
+  // internal/ui/src/app/lib/codex.ts
+  var HANDLED_REQUEST_KEYS2 = /* @__PURE__ */ new Set(["model", "stream", "instructions", "input", "tools"]);
+  function parseArguments(args) {
+    if (typeof args != "string") return args;
+    try {
+      return JSON.parse(args);
+    } catch {
+      return args;
+    }
+  }
+  function contentPartBlock(part) {
+    if (part == null) return { kind: "other", label: "empty", raw: part };
+    if (typeof part == "string") return { kind: "text", text: part };
+    switch (part.type) {
+      case "input_text":
+      case "output_text":
+      case "summary_text":
+      case "text":
+        return { kind: "text", text: part.text ?? "" };
+      case "refusal":
+        return { kind: "text", text: part.refusal ?? "[refusal]" };
+      case "input_image":
+        return { kind: "image", src: typeof part.image_url == "string" ? part.image_url : part.image_url?.url };
+      default:
+        return { kind: "other", label: part.type ?? "unknown", raw: part };
+    }
+  }
+  function itemToMessage(item) {
+    if (item == null) return null;
+    if (typeof item == "string")
+      return { role: "user", blocks: [{ kind: "text", text: item }] };
+    let type = item.type ?? (item.role ? "message" : void 0);
+    switch (type) {
+      case "message": {
+        let blocks = Array.isArray(item.content) ? item.content.map(contentPartBlock) : [{ kind: "text", text: String(item.content ?? "") }];
+        return { role: item.role ?? "user", blocks };
+      }
+      case "function_call":
+        return {
+          role: "assistant",
+          blocks: [
+            {
+              kind: "tool_call",
+              id: item.call_id ?? item.id,
+              name: item.name ?? "function",
+              input: parseArguments(item.arguments)
+            }
+          ]
+        };
+      case "custom_tool_call":
+        return {
+          role: "assistant",
+          blocks: [
+            {
+              kind: "tool_call",
+              id: item.call_id ?? item.id,
+              name: item.name ?? "custom_tool",
+              input: item.input
+            }
+          ]
+        };
+      case "local_shell_call":
+        return {
+          role: "assistant",
+          blocks: [
+            {
+              kind: "tool_call",
+              id: item.call_id ?? item.id,
+              name: "local_shell",
+              input: item.action
+            }
+          ]
+        };
+      case "function_call_output":
+      case "custom_tool_call_output":
+      case "local_shell_call_output": {
+        let text = typeof item.output == "string" ? item.output : joinText(item.output);
+        return {
+          role: "tool",
+          blocks: [
+            {
+              kind: "tool_result",
+              id: item.call_id,
+              text,
+              raw: text ? void 0 : item.output
+            }
+          ]
+        };
+      }
+      case "reasoning": {
+        let summary = joinText(item.summary) || joinText(item.content);
+        return !summary && item.encrypted_content ? null : {
+          role: "assistant",
+          blocks: [{ kind: "thinking", text: summary || "[reasoning]" }]
+        };
+      }
+      case "web_search_call":
+        return {
+          role: "assistant",
+          blocks: [
+            { kind: "tool_call", id: item.id, name: "web_search", input: item.action ?? item.query }
+          ]
+        };
+      default:
+        return { role: item.role ?? "assistant", blocks: [{ kind: "other", label: type ?? "unknown", raw: item }] };
+    }
+  }
+  function responsesTool(t) {
+    return t?.type === "function" || t?.name ? {
+      name: t.name ?? "function",
+      description: t.description,
+      schema: t.parameters
+    } : { name: t?.type ?? "unknown", description: t?.description, schema: void 0 };
+  }
+  function isResponsesRequestBody(body) {
+    return body != null && typeof body == "object" && (Array.isArray(body.input) || typeof body.input == "string" || typeof body.instructions == "string");
+  }
+  function normalizeResponsesRequest(body) {
+    let input = body.input, messages = (Array.isArray(input) ? input : input != null ? [input] : []).map(itemToMessage).filter((m) => m != null), params = {};
+    for (let [key, value] of Object.entries(body))
+      !HANDLED_REQUEST_KEYS2.has(key) && value != null && (params[key] = value);
+    return {
+      model: body.model,
+      stream: body.stream === !0,
+      system: typeof body.instructions == "string" ? body.instructions : void 0,
+      tools: Array.isArray(body.tools) ? body.tools.map(responsesTool) : [],
+      messages,
+      params
+    };
+  }
+  function responsesUsage(usage) {
+    if (!(usage == null || typeof usage != "object"))
+      return {
+        input: usage.input_tokens,
+        output: usage.output_tokens,
+        total: usage.total_tokens,
+        cacheRead: usage.input_tokens_details?.cached_tokens,
+        reasoning: usage.output_tokens_details?.reasoning_tokens
+      };
+  }
+  function normalizeResponsesResponse(body) {
+    if (body == null || typeof body != "object") return null;
+    if (body.error && !body.output)
+      return { error: body.error?.message ?? "Unknown API error" };
+    if (!Array.isArray(body.output)) return null;
+    let blocks = [];
+    for (let item of body.output) {
+      let msg = itemToMessage(item);
+      msg && blocks.push(...msg.blocks);
+    }
+    let stopReason = body.status;
+    return body.status === "incomplete" && body.incomplete_details?.reason && (stopReason = `incomplete: ${body.incomplete_details.reason}`), {
+      model: body.model,
+      id: body.id,
+      stopReason,
+      message: { role: "assistant", blocks },
+      usage: responsesUsage(body.usage),
+      error: body.error?.message
+    };
+  }
+  function reconstructResponsesStream(events) {
+    let eventCounts = countEvents(events), doneItems = [], deltaText = "", model, id, finalView = null;
+    for (let e of events) {
+      let data2 = e.json;
+      if (data2)
+        switch (data2.type) {
+          case "response.created":
+            model = data2.response?.model, id = data2.response?.id;
+            break;
+          case "response.output_item.done":
+            doneItems.push(data2.item);
+            break;
+          case "response.output_text.delta":
+            deltaText += data2.delta ?? "";
+            break;
+          case "response.completed":
+          case "response.failed":
+          case "response.incomplete":
+            finalView = normalizeResponsesResponse(data2.response);
+            break;
+        }
+    }
+    if (finalView?.message?.blocks.length)
+      return { ...finalView, eventCounts };
+    if (!finalView && doneItems.length === 0 && !deltaText && !model) return null;
+    let blocks = [];
+    for (let item of doneItems) {
+      let msg = itemToMessage(item);
+      msg && blocks.push(...msg.blocks);
+    }
+    return blocks.length === 0 && deltaText && blocks.push({ kind: "text", text: deltaText }), {
+      model: finalView?.model ?? model,
+      id: finalView?.id ?? id,
+      stopReason: finalView?.stopReason ?? "stream truncated",
+      usage: finalView?.usage,
+      error: finalView?.error,
+      message: { role: "assistant", blocks },
+      eventCounts
+    };
+  }
+
+  // internal/ui/src/app/components/JsonView.tsx
+  var import_react10 = __toESM(require_react(), 1);
+  var MAX_STRING_PREVIEW = 240, MAX_CHILDREN = 100;
+  function JsonView({ data: data2, defaultExpandDepth = 2 }) {
+    return /* @__PURE__ */ import_react10.default.createElement("div", { className: "font-mono text-xs leading-5 overflow-x-auto" }, /* @__PURE__ */ import_react10.default.createElement(JsonNode, { value: data2, depth: 0, expandDepth: defaultExpandDepth }));
+  }
+  function JsonString({ value }) {
+    let [expanded, setExpanded] = (0, import_react10.useState)(!1), long = value.length > MAX_STRING_PREVIEW, shown = expanded || !long ? value : value.slice(0, MAX_STRING_PREVIEW);
+    return /* @__PURE__ */ import_react10.default.createElement("span", { className: "text-chart-4 whitespace-pre-wrap break-all" }, '"', shown, '"', long && /* @__PURE__ */ import_react10.default.createElement(
+      "button",
+      {
+        onClick: () => setExpanded(!expanded),
+        className: "ml-1 text-muted-foreground hover:text-foreground underline decoration-dotted"
+      },
+      expanded ? "less" : `+${(value.length - MAX_STRING_PREVIEW).toLocaleString()} chars`
+    ));
+  }
+  function JsonNode({
+    value,
+    depth,
+    expandDepth,
+    propertyKey
+  }) {
+    let isCollection = value !== null && typeof value == "object", [open, setOpen] = (0, import_react10.useState)(depth < expandDepth), [childLimit, setChildLimit] = (0, import_react10.useState)(MAX_CHILDREN), entries = (0, import_react10.useMemo)(() => isCollection ? Array.isArray(value) ? value.map((v, i) => [String(i), v]) : Object.entries(value) : [], [isCollection, value]), keyLabel = propertyKey !== void 0 ? /* @__PURE__ */ import_react10.default.createElement("span", { className: "text-chart-2" }, propertyKey) : null;
+    if (!isCollection)
+      return /* @__PURE__ */ import_react10.default.createElement("div", { style: { paddingLeft: depth === 0 ? 0 : 14 } }, keyLabel, keyLabel && /* @__PURE__ */ import_react10.default.createElement("span", { className: "text-muted-foreground" }, ": "), /* @__PURE__ */ import_react10.default.createElement(JsonLeaf, { value }));
+    let isArray = Array.isArray(value), braces = isArray ? "[]" : "{}", summary = isArray ? `${entries.length} items` : `${entries.length} keys`;
+    return /* @__PURE__ */ import_react10.default.createElement("div", { style: { paddingLeft: depth === 0 ? 0 : 14 } }, /* @__PURE__ */ import_react10.default.createElement(
+      "button",
+      {
+        onClick: () => setOpen(!open),
+        className: "inline-flex items-center gap-0.5 hover:bg-muted/60 -ml-0.5 px-0.5"
+      },
+      open ? /* @__PURE__ */ import_react10.default.createElement(ChevronDown, { className: "h-3 w-3 text-muted-foreground shrink-0" }) : /* @__PURE__ */ import_react10.default.createElement(ChevronRight, { className: "h-3 w-3 text-muted-foreground shrink-0" }),
+      keyLabel,
+      keyLabel && /* @__PURE__ */ import_react10.default.createElement("span", { className: "text-muted-foreground" }, ": "),
+      /* @__PURE__ */ import_react10.default.createElement("span", { className: "text-muted-foreground" }, open ? braces[0] : `${braces[0]}\u2026${braces[1]}`),
+      !open && /* @__PURE__ */ import_react10.default.createElement("span", { className: "text-muted-foreground/70 ml-1" }, summary)
+    ), open && /* @__PURE__ */ import_react10.default.createElement(import_react10.default.Fragment, null, entries.slice(0, childLimit).map(([k, v]) => /* @__PURE__ */ import_react10.default.createElement(
+      JsonNode,
+      {
+        key: k,
+        value: v,
+        depth: depth + 1,
+        expandDepth,
+        propertyKey: isArray ? void 0 : k
+      }
+    )), entries.length > childLimit && /* @__PURE__ */ import_react10.default.createElement(
+      "button",
+      {
+        onClick: () => setChildLimit(childLimit + MAX_CHILDREN),
+        className: "text-muted-foreground hover:text-foreground underline decoration-dotted",
+        style: { paddingLeft: 14 }
+      },
+      "show ",
+      Math.min(MAX_CHILDREN, entries.length - childLimit),
+      " more of",
+      " ",
+      entries.length - childLimit,
+      " remaining"
+    ), /* @__PURE__ */ import_react10.default.createElement("div", { className: "text-muted-foreground" }, braces[1])));
+  }
+  function JsonLeaf({ value }) {
+    if (value === null) return /* @__PURE__ */ import_react10.default.createElement("span", { className: "text-chart-5" }, "null");
+    switch (typeof value) {
+      case "string":
+        return /* @__PURE__ */ import_react10.default.createElement(JsonString, { value });
+      case "number":
+        return /* @__PURE__ */ import_react10.default.createElement("span", { className: "text-chart-1" }, String(value));
+      case "boolean":
+        return /* @__PURE__ */ import_react10.default.createElement("span", { className: "text-chart-5" }, String(value));
+      case "undefined":
+        return /* @__PURE__ */ import_react10.default.createElement("span", { className: "text-muted-foreground" }, "undefined");
+      default:
+        return /* @__PURE__ */ import_react10.default.createElement("span", null, String(value));
+    }
+  }
+
+  // internal/ui/src/app/components/conversation/RequestOverview.tsx
+  var import_react13 = __toESM(require_react(), 1);
+
+  // internal/ui/src/app/components/ui/badge.tsx
+  var React29 = __toESM(require_react(), 1);
+  var badgeVariants = cva(
+    "inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&>svg]:size-3 gap-1 [&>svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden",
+    {
+      variants: {
+        variant: {
+          default: "border-transparent bg-primary text-primary-foreground [a&]:hover:bg-primary/90",
+          secondary: "border-transparent bg-secondary text-secondary-foreground [a&]:hover:bg-secondary/90",
+          destructive: "border-transparent bg-destructive text-white [a&]:hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40",
+          outline: "text-foreground [a&]:hover:bg-accent [a&]:hover:text-accent-foreground"
+        }
+      },
+      defaultVariants: {
+        variant: "default"
+      }
+    }
+  );
+  function Badge({
+    className,
+    variant,
+    asChild = !1,
+    ...props
+  }) {
+    return /* @__PURE__ */ React29.createElement(
+      asChild ? Slot : "span",
+      {
+        "data-slot": "badge",
+        className: cn(badgeVariants({ variant }), className),
+        ...props
+      }
+    );
+  }
+
+  // internal/ui/src/app/components/conversation/Expandable.tsx
+  var import_react11 = __toESM(require_react(), 1);
+  function Expandable({ children, maxHeight = 260, className }) {
+    let ref = (0, import_react11.useRef)(null), [expanded, setExpanded] = (0, import_react11.useState)(!1), [overflows, setOverflows] = (0, import_react11.useState)(!1);
+    return (0, import_react11.useLayoutEffect)(() => {
+      ref.current && setOverflows(ref.current.scrollHeight > maxHeight + 20);
+    }, [maxHeight, children]), /* @__PURE__ */ import_react11.default.createElement("div", { className }, /* @__PURE__ */ import_react11.default.createElement(
+      "div",
+      {
+        ref,
+        className: "relative overflow-hidden",
+        style: expanded ? void 0 : { maxHeight }
+      },
+      children,
+      overflows && !expanded && /* @__PURE__ */ import_react11.default.createElement("div", { className: "absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-card to-transparent pointer-events-none" })
+    ), overflows && /* @__PURE__ */ import_react11.default.createElement(
+      "button",
+      {
+        onClick: () => setExpanded(!expanded),
+        className: "mt-1 text-xs text-primary hover:underline"
+      },
+      expanded ? "Show less" : "Show more"
+    ));
+  }
+
+  // internal/ui/src/app/components/conversation/MessageCard.tsx
+  var import_react12 = __toESM(require_react(), 1);
+  var ROLE_STYLES = {
+    user: { border: "border-l-chart-2", label: "text-chart-2" },
+    assistant: { border: "border-l-chart-4", label: "text-chart-4" },
+    system: { border: "border-l-chart-5", label: "text-chart-5" },
+    developer: { border: "border-l-chart-5", label: "text-chart-5" },
+    tool: { border: "border-l-chart-3", label: "text-chart-3" }
+  };
+  function MessageCard({ message: message2 }) {
+    let style = ROLE_STYLES[message2.role] ?? {
+      border: "border-l-border",
+      label: "text-muted-foreground"
+    };
+    return /* @__PURE__ */ import_react12.default.createElement("div", { className: cn("border-l-2 pl-3 py-1", style.border) }, /* @__PURE__ */ import_react12.default.createElement("div", { className: cn("text-[10px] font-semibold uppercase tracking-widest mb-1", style.label) }, message2.role), /* @__PURE__ */ import_react12.default.createElement("div", { className: "space-y-2" }, message2.blocks.map((block, i) => /* @__PURE__ */ import_react12.default.createElement(BlockView, { key: i, block }))));
+  }
+  function BlockView({ block }) {
+    switch (block.kind) {
+      case "text":
+        return /* @__PURE__ */ import_react12.default.createElement(Expandable, null, /* @__PURE__ */ import_react12.default.createElement("p", { className: "text-sm whitespace-pre-wrap break-words" }, block.text));
+      case "thinking":
+        return /* @__PURE__ */ import_react12.default.createElement(ThinkingBlock, { text: block.text });
+      case "tool_call":
+        return /* @__PURE__ */ import_react12.default.createElement(ToolCallBlock, { block });
+      case "tool_result":
+        return /* @__PURE__ */ import_react12.default.createElement(ToolResultBlock, { block });
+      case "image":
+        return /* @__PURE__ */ import_react12.default.createElement("div", null, block.src ? /* @__PURE__ */ import_react12.default.createElement(
+          "img",
+          {
+            src: block.src,
+            alt: block.mediaType ?? "image",
+            className: "max-h-48 max-w-full border"
+          }
+        ) : /* @__PURE__ */ import_react12.default.createElement("span", { className: "text-xs text-muted-foreground italic" }, "image ", block.mediaType ? `(${block.mediaType})` : ""));
+      case "other":
+        return /* @__PURE__ */ import_react12.default.createElement(
+          CollapsibleRow,
+          {
+            icon: /* @__PURE__ */ import_react12.default.createElement(CornerDownRight, { className: "h-3.5 w-3.5" }),
+            title: block.label,
+            titleClassName: "text-muted-foreground"
+          },
+          /* @__PURE__ */ import_react12.default.createElement(JsonView, { data: block.raw, defaultExpandDepth: 1 })
+        );
+    }
+  }
+  function ThinkingBlock({ text }) {
+    return /* @__PURE__ */ import_react12.default.createElement(
+      CollapsibleRow,
+      {
+        icon: /* @__PURE__ */ import_react12.default.createElement(Brain, { className: "h-3.5 w-3.5" }),
+        title: "thinking",
+        titleClassName: "text-muted-foreground",
+        preview: text
+      },
+      /* @__PURE__ */ import_react12.default.createElement(Expandable, { maxHeight: 400 }, /* @__PURE__ */ import_react12.default.createElement("p", { className: "text-sm whitespace-pre-wrap break-words text-muted-foreground italic" }, text))
+    );
+  }
+  function ToolCallBlock({ block }) {
+    let preview = typeof block.input == "string" ? block.input : previewJSON(block.input);
+    return /* @__PURE__ */ import_react12.default.createElement(
+      CollapsibleRow,
+      {
+        icon: /* @__PURE__ */ import_react12.default.createElement(Wrench, { className: "h-3.5 w-3.5" }),
+        title: block.name,
+        titleClassName: "text-chart-3 font-semibold",
+        preview
+      },
+      typeof block.input == "string" ? /* @__PURE__ */ import_react12.default.createElement(Expandable, { maxHeight: 400 }, /* @__PURE__ */ import_react12.default.createElement("pre", { className: "text-xs whitespace-pre-wrap break-words" }, block.input)) : /* @__PURE__ */ import_react12.default.createElement(JsonView, { data: block.input, defaultExpandDepth: 2 })
+    );
+  }
+  function ToolResultBlock({ block }) {
+    return /* @__PURE__ */ import_react12.default.createElement(
+      CollapsibleRow,
+      {
+        icon: /* @__PURE__ */ import_react12.default.createElement(CornerDownRight, { className: "h-3.5 w-3.5" }),
+        title: block.isError ? "tool result \xB7 error" : "tool result",
+        titleClassName: block.isError ? "text-destructive-foreground font-semibold" : "text-chart-3",
+        preview: block.text || previewJSON(block.raw)
+      },
+      block.text ? /* @__PURE__ */ import_react12.default.createElement(Expandable, { maxHeight: 400 }, /* @__PURE__ */ import_react12.default.createElement(
+        "pre",
+        {
+          className: cn(
+            "text-xs whitespace-pre-wrap break-words",
+            block.isError && "text-destructive-foreground"
+          )
+        },
+        block.text
+      )) : /* @__PURE__ */ import_react12.default.createElement(JsonView, { data: block.raw, defaultExpandDepth: 1 })
+    );
+  }
+  function previewJSON(value) {
+    if (value == null) return "";
+    try {
+      return JSON.stringify(value);
+    } catch {
+      return String(value);
+    }
+  }
+  function CollapsibleRow({ icon, title, titleClassName, preview, children }) {
+    let [open, setOpen] = (0, import_react12.useState)(!1);
+    return /* @__PURE__ */ import_react12.default.createElement("div", { className: "border bg-muted/20" }, /* @__PURE__ */ import_react12.default.createElement(
+      "button",
+      {
+        onClick: () => setOpen(!open),
+        className: "flex w-full items-center gap-2 px-2 py-1.5 text-left hover:bg-muted/50 transition-colors min-w-0"
+      },
+      open ? /* @__PURE__ */ import_react12.default.createElement(ChevronDown, { className: "h-3.5 w-3.5 text-muted-foreground shrink-0" }) : /* @__PURE__ */ import_react12.default.createElement(ChevronRight, { className: "h-3.5 w-3.5 text-muted-foreground shrink-0" }),
+      /* @__PURE__ */ import_react12.default.createElement("span", { className: "text-muted-foreground shrink-0" }, icon),
+      /* @__PURE__ */ import_react12.default.createElement("span", { className: cn("text-xs font-mono shrink-0", titleClassName) }, title),
+      !open && preview && /* @__PURE__ */ import_react12.default.createElement("span", { className: "text-xs text-muted-foreground truncate min-w-0" }, preview)
+    ), open && /* @__PURE__ */ import_react12.default.createElement("div", { className: "px-3 pb-2 pt-1 border-t" }, children));
+  }
+
+  // internal/ui/src/app/components/conversation/RequestOverview.tsx
+  function RequestOverview({ view }) {
+    return /* @__PURE__ */ import_react13.default.createElement("div", { className: "space-y-4" }, /* @__PURE__ */ import_react13.default.createElement("div", { className: "flex flex-wrap items-center gap-2" }, view.model && /* @__PURE__ */ import_react13.default.createElement(Badge, { variant: "secondary" }, view.model), view.stream && /* @__PURE__ */ import_react13.default.createElement(Badge, { variant: "outline" }, "stream"), /* @__PURE__ */ import_react13.default.createElement(ParamChips, { params: view.params })), view.system && /* @__PURE__ */ import_react13.default.createElement(SystemPromptSection, { text: view.system }), view.tools.length > 0 && /* @__PURE__ */ import_react13.default.createElement(ToolsSection, { tools: view.tools }), /* @__PURE__ */ import_react13.default.createElement("div", null, /* @__PURE__ */ import_react13.default.createElement(SectionLabel, null, "Messages ", /* @__PURE__ */ import_react13.default.createElement("span", { className: "text-muted-foreground" }, "(", view.messages.length, ")")), /* @__PURE__ */ import_react13.default.createElement("div", { className: "space-y-3" }, view.messages.map((message2, i) => /* @__PURE__ */ import_react13.default.createElement(MessageCard, { key: i, message: message2 })))));
+  }
+  function SectionLabel({ children }) {
+    return /* @__PURE__ */ import_react13.default.createElement("div", { className: "text-[10px] font-semibold uppercase tracking-widest text-muted-foreground mb-2" }, children);
+  }
+  function ParamChips({ params }) {
+    let [showObjects, setShowObjects] = (0, import_react13.useState)(null), entries = Object.entries(params);
+    return entries.length === 0 ? null : /* @__PURE__ */ import_react13.default.createElement(import_react13.default.Fragment, null, entries.map(([key, value]) => value === null || typeof value != "object" ? /* @__PURE__ */ import_react13.default.createElement(Badge, { key, variant: "outline", className: "font-mono font-normal" }, /* @__PURE__ */ import_react13.default.createElement("span", null, /* @__PURE__ */ import_react13.default.createElement("span", { className: "text-muted-foreground" }, key, "="), String(value))) : /* @__PURE__ */ import_react13.default.createElement(import_react13.default.Fragment, { key }, /* @__PURE__ */ import_react13.default.createElement(
+      Badge,
+      {
+        variant: "outline",
+        className: "font-mono font-normal cursor-pointer hover:bg-accent",
+        onClick: () => setShowObjects(showObjects === key ? null : key)
+      },
+      /* @__PURE__ */ import_react13.default.createElement("span", { className: "text-muted-foreground" }, key),
+      showObjects === key ? /* @__PURE__ */ import_react13.default.createElement(ChevronDown, { className: "h-3 w-3" }) : /* @__PURE__ */ import_react13.default.createElement(ChevronRight, { className: "h-3 w-3" })
+    ), showObjects === key && /* @__PURE__ */ import_react13.default.createElement("div", { className: "w-full border bg-muted/20 p-2" }, /* @__PURE__ */ import_react13.default.createElement(JsonView, { data: value, defaultExpandDepth: 2 })))));
+  }
+  function SystemPromptSection({ text }) {
+    let [open, setOpen] = (0, import_react13.useState)(!1), firstLine = text.split(`
+`, 1)[0];
+    return /* @__PURE__ */ import_react13.default.createElement("div", { className: "border bg-muted/20" }, /* @__PURE__ */ import_react13.default.createElement(
+      "button",
+      {
+        onClick: () => setOpen(!open),
+        className: "flex w-full items-center gap-2 px-2 py-1.5 text-left hover:bg-muted/50 transition-colors min-w-0"
+      },
+      open ? /* @__PURE__ */ import_react13.default.createElement(ChevronDown, { className: "h-3.5 w-3.5 text-muted-foreground shrink-0" }) : /* @__PURE__ */ import_react13.default.createElement(ChevronRight, { className: "h-3.5 w-3.5 text-muted-foreground shrink-0" }),
+      /* @__PURE__ */ import_react13.default.createElement(ScrollText, { className: "h-3.5 w-3.5 text-chart-5 shrink-0" }),
+      /* @__PURE__ */ import_react13.default.createElement("span", { className: "text-xs font-mono text-chart-5 font-semibold shrink-0" }, "system"),
+      /* @__PURE__ */ import_react13.default.createElement("span", { className: "text-xs text-muted-foreground shrink-0" }, text.length.toLocaleString(), " chars"),
+      !open && /* @__PURE__ */ import_react13.default.createElement("span", { className: "text-xs text-muted-foreground truncate min-w-0" }, firstLine)
+    ), open && /* @__PURE__ */ import_react13.default.createElement("div", { className: "px-3 pb-2 pt-1 border-t" }, /* @__PURE__ */ import_react13.default.createElement(Expandable, { maxHeight: 500 }, /* @__PURE__ */ import_react13.default.createElement("p", { className: "text-sm whitespace-pre-wrap break-words" }, text))));
+  }
+  function ToolsSection({ tools }) {
+    let [open, setOpen] = (0, import_react13.useState)(!1), [openTool, setOpenTool] = (0, import_react13.useState)(null);
+    return /* @__PURE__ */ import_react13.default.createElement("div", { className: "border bg-muted/20" }, /* @__PURE__ */ import_react13.default.createElement(
+      "button",
+      {
+        onClick: () => setOpen(!open),
+        className: "flex w-full items-center gap-2 px-2 py-1.5 text-left hover:bg-muted/50 transition-colors min-w-0"
+      },
+      open ? /* @__PURE__ */ import_react13.default.createElement(ChevronDown, { className: "h-3.5 w-3.5 text-muted-foreground shrink-0" }) : /* @__PURE__ */ import_react13.default.createElement(ChevronRight, { className: "h-3.5 w-3.5 text-muted-foreground shrink-0" }),
+      /* @__PURE__ */ import_react13.default.createElement(Wrench, { className: "h-3.5 w-3.5 text-chart-3 shrink-0" }),
+      /* @__PURE__ */ import_react13.default.createElement("span", { className: "text-xs font-mono text-chart-3 font-semibold shrink-0" }, "tools (", tools.length, ")"),
+      !open && /* @__PURE__ */ import_react13.default.createElement("span", { className: "text-xs text-muted-foreground truncate min-w-0" }, tools.map((t) => t.name).join(", "))
+    ), open && /* @__PURE__ */ import_react13.default.createElement("div", { className: "border-t divide-y" }, tools.map((tool) => /* @__PURE__ */ import_react13.default.createElement("div", { key: tool.name, className: "px-3 py-1.5" }, /* @__PURE__ */ import_react13.default.createElement(
+      "button",
+      {
+        onClick: () => setOpenTool(openTool === tool.name ? null : tool.name),
+        className: "flex w-full items-baseline gap-2 text-left min-w-0"
+      },
+      /* @__PURE__ */ import_react13.default.createElement("span", { className: "text-xs font-mono font-semibold shrink-0" }, tool.name),
+      /* @__PURE__ */ import_react13.default.createElement("span", { className: "text-xs text-muted-foreground truncate min-w-0" }, tool.description?.split(`
+`, 1)[0])
+    ), openTool === tool.name && /* @__PURE__ */ import_react13.default.createElement("div", { className: "mt-2 space-y-2" }, tool.description && /* @__PURE__ */ import_react13.default.createElement(Expandable, { maxHeight: 200 }, /* @__PURE__ */ import_react13.default.createElement("p", { className: "text-xs whitespace-pre-wrap text-muted-foreground" }, tool.description)), tool.schema != null && /* @__PURE__ */ import_react13.default.createElement(JsonView, { data: tool.schema, defaultExpandDepth: 2 }))))));
+  }
+
+  // internal/ui/src/app/components/conversation/ResponseOverview.tsx
+  var import_react14 = __toESM(require_react(), 1);
+  function ResponseOverview({ view }) {
+    return /* @__PURE__ */ import_react14.default.createElement("div", { className: "space-y-4" }, /* @__PURE__ */ import_react14.default.createElement("div", { className: "flex flex-wrap items-center gap-2" }, view.model && /* @__PURE__ */ import_react14.default.createElement(Badge, { variant: "secondary" }, view.model), view.stopReason && /* @__PURE__ */ import_react14.default.createElement(Badge, { variant: "outline", className: "font-mono font-normal" }, /* @__PURE__ */ import_react14.default.createElement("span", null, /* @__PURE__ */ import_react14.default.createElement("span", { className: "text-muted-foreground" }, "stop="), view.stopReason)), view.usage && /* @__PURE__ */ import_react14.default.createElement(UsageChips, { usage: view.usage })), view.error && /* @__PURE__ */ import_react14.default.createElement("div", { className: "flex items-start gap-2 border border-destructive-foreground/40 bg-destructive p-3" }, /* @__PURE__ */ import_react14.default.createElement(TriangleAlert, { className: "h-4 w-4 text-destructive-foreground shrink-0 mt-0.5" }), /* @__PURE__ */ import_react14.default.createElement("p", { className: "text-sm text-destructive-foreground whitespace-pre-wrap break-words" }, view.error)), view.message && view.message.blocks.length > 0 && /* @__PURE__ */ import_react14.default.createElement("div", null, /* @__PURE__ */ import_react14.default.createElement(SectionLabel, null, "Output"), /* @__PURE__ */ import_react14.default.createElement(MessageCard, { message: view.message })), view.eventCounts && Object.keys(view.eventCounts).length > 0 && /* @__PURE__ */ import_react14.default.createElement("div", null, /* @__PURE__ */ import_react14.default.createElement(SectionLabel, null, "Stream events"), /* @__PURE__ */ import_react14.default.createElement("div", { className: "flex flex-wrap gap-1.5" }, Object.entries(view.eventCounts).map(([type, count]) => /* @__PURE__ */ import_react14.default.createElement(Badge, { key: type, variant: "outline", className: "font-mono font-normal" }, type, /* @__PURE__ */ import_react14.default.createElement("span", { className: "text-muted-foreground" }, "\xD7", count))))));
+  }
+  var USAGE_LABELS = [
+    ["input", "in"],
+    ["output", "out"],
+    ["cacheRead", "cache read"],
+    ["cacheWrite", "cache write"],
+    ["reasoning", "reasoning"],
+    ["total", "total"]
+  ];
+  function UsageChips({ usage }) {
+    return /* @__PURE__ */ import_react14.default.createElement(import_react14.default.Fragment, null, USAGE_LABELS.map(([key, label]) => {
+      let value = usage[key];
+      return value == null ? null : /* @__PURE__ */ import_react14.default.createElement(Badge, { key, variant: "outline", className: "font-mono font-normal" }, /* @__PURE__ */ import_react14.default.createElement("span", { className: "text-muted-foreground" }, label), value.toLocaleString());
+    }));
+  }
+
+  // internal/ui/src/app/components/recording/BodyView.tsx
+  function isResponsesTraffic(recording) {
+    return recording.provider === "chatgpt" || recording.provider === "openai" && recording.request.path.startsWith("/v1/responses");
+  }
+  function analyze(recording, which) {
+    let body = which === "request" ? recording.request.body : recording.response.body, analysis = { binary: !1 };
+    if (body == null || body === "") return analysis;
+    if (typeof body == "string") {
+      if (analysis.raw = body, looksBinary(body))
+        return analysis.binary = !0, analysis;
+      if (looksLikeSSE(body)) {
+        if (which === "response")
+          try {
+            let events = parseSSE(body);
+            recording.provider === "claude" ? analysis.response = reconstructClaudeStream(events) ?? void 0 : isResponsesTraffic(recording) && (analysis.response = reconstructResponsesStream(events) ?? void 0), !analysis.response && events.length > 0 && (analysis.response = { eventCounts: countEvents(events) });
+          } catch {
+          }
+        return analysis;
+      }
+      try {
+        analysis.json = JSON.parse(body);
+      } catch {
+        return analysis;
+      }
+    } else
+      analysis.json = body;
+    let json = analysis.json;
+    try {
+      which === "request" ? recording.provider === "claude" && isClaudeMessagesBody(json) ? analysis.request = normalizeClaudeRequest(json) : isResponsesTraffic(recording) && isResponsesRequestBody(json) && (analysis.request = normalizeResponsesRequest(json)) : recording.provider === "claude" ? analysis.response = normalizeClaudeResponse(json) ?? void 0 : isResponsesTraffic(recording) && (analysis.response = normalizeResponsesResponse(json) ?? void 0);
+    } catch {
+    }
+    return analysis;
+  }
+  function BodyView({ recording, which }) {
+    let analysis = (0, import_react15.useMemo)(() => analyze(recording, which), [recording, which]), hasPretty = analysis.request != null || analysis.response != null, fallback = analysis.json !== void 0 ? "json" : "raw", [mode, setMode] = (0, import_react15.useState)(hasPretty ? "pretty" : fallback);
+    if (analysis.raw === void 0 && analysis.json === void 0)
+      return /* @__PURE__ */ import_react15.default.createElement("p", { className: "text-sm text-muted-foreground italic" }, "No body");
+    let modes = [];
+    hasPretty && modes.push({ id: "pretty", label: "Formatted" }), analysis.json !== void 0 && modes.push({ id: "json", label: "JSON" }), analysis.raw !== void 0 && modes.push({ id: "raw", label: "Raw" });
+    let active = modes.some((m) => m.id === mode) ? mode : modes[0].id;
+    return /* @__PURE__ */ import_react15.default.createElement("div", { className: "space-y-3" }, modes.length > 1 && /* @__PURE__ */ import_react15.default.createElement(ModeToggle, { modes, active, onChange: setMode }), analysis.binary && /* @__PURE__ */ import_react15.default.createElement("div", { className: "flex items-start gap-2 border bg-muted/40 p-2 text-xs text-muted-foreground" }, /* @__PURE__ */ import_react15.default.createElement(TriangleAlert, { className: "h-3.5 w-3.5 shrink-0 mt-0.5" }), "This body is not readable text \u2014 it was likely recorded compressed by an older version of mirra."), active === "pretty" && analysis.request && /* @__PURE__ */ import_react15.default.createElement(RequestOverview, { view: analysis.request }), active === "pretty" && analysis.response && /* @__PURE__ */ import_react15.default.createElement(ResponseOverview, { view: analysis.response }), active === "json" && /* @__PURE__ */ import_react15.default.createElement("div", { className: "border bg-muted/20 p-3" }, /* @__PURE__ */ import_react15.default.createElement(JsonView, { data: analysis.json })), active === "raw" && /* @__PURE__ */ import_react15.default.createElement(RawText, { text: analysis.raw ?? "" }));
+  }
+  function ModeToggle({
+    modes,
+    active,
+    onChange
+  }) {
+    return /* @__PURE__ */ import_react15.default.createElement("div", { className: "inline-flex border divide-x" }, modes.map((m) => /* @__PURE__ */ import_react15.default.createElement(
+      "button",
+      {
+        key: m.id,
+        onClick: () => onChange(m.id),
+        className: cn(
+          "px-3 py-1 text-xs font-medium transition-colors",
+          active === m.id ? "bg-primary text-primary-foreground" : "bg-card text-muted-foreground hover:text-foreground hover:bg-muted/50"
+        )
+      },
+      m.label
+    )));
+  }
+  var RAW_PREVIEW_BYTES = 1e5;
+  function RawText({ text }) {
+    let [showAll, setShowAll] = (0, import_react15.useState)(!1), truncated = !showAll && text.length > RAW_PREVIEW_BYTES, shown = truncated ? text.slice(0, RAW_PREVIEW_BYTES) : text;
+    return /* @__PURE__ */ import_react15.default.createElement("div", null, /* @__PURE__ */ import_react15.default.createElement("pre", { className: "text-xs bg-muted/20 border p-3 overflow-x-auto whitespace-pre-wrap break-words" }, shown), truncated && /* @__PURE__ */ import_react15.default.createElement(
+      "button",
+      {
+        onClick: () => setShowAll(!0),
+        className: "mt-1 text-xs text-primary hover:underline"
+      },
+      "Show all (",
+      (text.length / 1024).toFixed(0),
+      " KB)"
+    ));
+  }
+
+  // internal/ui/src/app/components/recording/HeadersSection.tsx
+  var import_react16 = __toESM(require_react(), 1);
+  function HeadersSection({ headers }) {
+    let [open, setOpen] = (0, import_react16.useState)(!1), entries = Object.entries(headers ?? {}).sort(([a], [b]) => a.localeCompare(b));
+    return /* @__PURE__ */ import_react16.default.createElement("div", null, /* @__PURE__ */ import_react16.default.createElement(
+      "button",
+      {
+        onClick: () => setOpen(!open),
+        className: "flex items-center gap-1 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+      },
+      open ? /* @__PURE__ */ import_react16.default.createElement(ChevronDown, { className: "h-4 w-4" }) : /* @__PURE__ */ import_react16.default.createElement(ChevronRight, { className: "h-4 w-4" }),
+      "Headers ",
+      /* @__PURE__ */ import_react16.default.createElement("span", { className: "text-xs" }, "(", entries.length, ")")
+    ), open && /* @__PURE__ */ import_react16.default.createElement("div", { className: "mt-1 border bg-muted/20 p-3 overflow-x-auto" }, /* @__PURE__ */ import_react16.default.createElement("table", { className: "text-xs font-mono" }, /* @__PURE__ */ import_react16.default.createElement("tbody", null, entries.map(([key, values]) => /* @__PURE__ */ import_react16.default.createElement("tr", { key, className: "align-top" }, /* @__PURE__ */ import_react16.default.createElement("td", { className: "pr-4 py-0.5 text-chart-2 whitespace-nowrap" }, key), /* @__PURE__ */ import_react16.default.createElement("td", { className: "py-0.5 break-all" }, values.join(", "))))))));
+  }
+
+  // internal/ui/src/app/components/recording/RequestPanel.tsx
   function RequestPanel({ recording }) {
-    let [copied, setCopied] = (0, import_react9.useState)(!1), [headersCollapsed, setHeadersCollapsed] = (0, import_react9.useState)(!0);
-    return /* @__PURE__ */ import_react9.default.createElement("div", { className: "bg-card border rounded-md" }, /* @__PURE__ */ import_react9.default.createElement("div", { className: "flex items-center justify-between p-3 bg-muted/30 border-b" }, /* @__PURE__ */ import_react9.default.createElement("h3", { className: "font-semibold" }, "Request"), /* @__PURE__ */ import_react9.default.createElement(Button, { size: "sm", variant: "ghost", onClick: () => {
+    let [copied, setCopied] = (0, import_react17.useState)(!1);
+    return /* @__PURE__ */ import_react17.default.createElement("div", { className: "bg-card border rounded-md" }, /* @__PURE__ */ import_react17.default.createElement("div", { className: "flex items-center justify-between p-3 bg-muted/30 border-b" }, /* @__PURE__ */ import_react17.default.createElement("h3", { className: "font-semibold" }, "Request"), /* @__PURE__ */ import_react17.default.createElement(Button, { size: "sm", variant: "ghost", onClick: () => {
       let requestData = formatJSON({
         method: recording.request.method,
         path: recording.request.path,
@@ -24066,79 +24982,30 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
         body: recording.request.body
       });
       navigator.clipboard.writeText(requestData), setCopied(!0), setTimeout(() => setCopied(!1), 2e3);
-    } }, copied ? /* @__PURE__ */ import_react9.default.createElement(import_react9.default.Fragment, null, /* @__PURE__ */ import_react9.default.createElement(Check, { className: "h-4 w-4 mr-1" }), "Copied") : /* @__PURE__ */ import_react9.default.createElement(import_react9.default.Fragment, null, /* @__PURE__ */ import_react9.default.createElement(Copy, { className: "h-4 w-4 mr-1" }), "Copy"))), /* @__PURE__ */ import_react9.default.createElement("div", { className: "p-4 space-y-3" }, /* @__PURE__ */ import_react9.default.createElement("div", null, /* @__PURE__ */ import_react9.default.createElement("label", { className: "text-sm font-medium text-muted-foreground" }, "Endpoint"), /* @__PURE__ */ import_react9.default.createElement("p", { className: "text-sm mt-1 font-mono" }, recording.request.method, " ", recording.request.path, recording.request.query && `?${recording.request.query}`)), /* @__PURE__ */ import_react9.default.createElement("div", null, /* @__PURE__ */ import_react9.default.createElement(
-      "button",
-      {
-        onClick: () => setHeadersCollapsed(!headersCollapsed),
-        className: "flex items-center gap-1 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-      },
-      headersCollapsed ? /* @__PURE__ */ import_react9.default.createElement(ChevronRight, { className: "h-4 w-4" }) : /* @__PURE__ */ import_react9.default.createElement(ChevronDown, { className: "h-4 w-4" }),
-      "Headers"
-    ), !headersCollapsed && /* @__PURE__ */ import_react9.default.createElement("pre", { className: "text-xs bg-muted p-3 rounded-md overflow-x-auto mt-1 font-mono" }, formatJSON(recording.request.headers))), /* @__PURE__ */ import_react9.default.createElement("div", null, /* @__PURE__ */ import_react9.default.createElement("label", { className: "text-sm font-medium text-muted-foreground" }, "Body"), /* @__PURE__ */ import_react9.default.createElement("pre", { className: "text-xs bg-muted p-3 rounded-md overflow-x-auto mt-1 font-mono max-h-96" }, formatBody(recording.request.body)))));
+    } }, copied ? /* @__PURE__ */ import_react17.default.createElement(import_react17.default.Fragment, null, /* @__PURE__ */ import_react17.default.createElement(Check, { className: "h-4 w-4 mr-1" }), "Copied") : /* @__PURE__ */ import_react17.default.createElement(import_react17.default.Fragment, null, /* @__PURE__ */ import_react17.default.createElement(Copy, { className: "h-4 w-4 mr-1" }), "Copy"))), /* @__PURE__ */ import_react17.default.createElement("div", { className: "p-4 space-y-3" }, /* @__PURE__ */ import_react17.default.createElement("div", null, /* @__PURE__ */ import_react17.default.createElement("label", { className: "text-sm font-medium text-muted-foreground" }, "Endpoint"), /* @__PURE__ */ import_react17.default.createElement("p", { className: "text-sm mt-1 font-mono" }, recording.request.method, " ", recording.request.path, recording.request.query && `?${recording.request.query}`)), /* @__PURE__ */ import_react17.default.createElement(HeadersSection, { headers: recording.request.headers }), /* @__PURE__ */ import_react17.default.createElement("div", null, /* @__PURE__ */ import_react17.default.createElement("label", { className: "text-sm font-medium text-muted-foreground" }, "Body"), /* @__PURE__ */ import_react17.default.createElement("div", { className: "mt-1" }, /* @__PURE__ */ import_react17.default.createElement(BodyView, { recording, which: "request" })))));
   }
 
   // internal/ui/src/app/components/recording/ResponsePanel.tsx
-  var import_react10 = __toESM(require_react(), 1);
+  var import_react18 = __toESM(require_react(), 1);
   function ResponsePanel({ recording }) {
-    let [copied, setCopied] = (0, import_react10.useState)(!1), [headersCollapsed, setHeadersCollapsed] = (0, import_react10.useState)(!0);
-    return /* @__PURE__ */ import_react10.default.createElement("div", { className: "bg-card border rounded-md" }, /* @__PURE__ */ import_react10.default.createElement("div", { className: "flex items-center justify-between p-3 bg-muted/30 border-b" }, /* @__PURE__ */ import_react10.default.createElement("h3", { className: "font-semibold" }, "Response"), /* @__PURE__ */ import_react10.default.createElement(Button, { size: "sm", variant: "ghost", onClick: () => {
+    let [copied, setCopied] = (0, import_react18.useState)(!1);
+    return /* @__PURE__ */ import_react18.default.createElement("div", { className: "bg-card border rounded-md" }, /* @__PURE__ */ import_react18.default.createElement("div", { className: "flex items-center justify-between p-3 bg-muted/30 border-b" }, /* @__PURE__ */ import_react18.default.createElement("h3", { className: "font-semibold" }, "Response"), /* @__PURE__ */ import_react18.default.createElement(Button, { size: "sm", variant: "ghost", onClick: () => {
       let responseData = formatJSON({
         status: recording.response.status,
         headers: recording.response.headers,
         body: recording.response.body
       });
       navigator.clipboard.writeText(responseData), setCopied(!0), setTimeout(() => setCopied(!1), 2e3);
-    } }, copied ? /* @__PURE__ */ import_react10.default.createElement(import_react10.default.Fragment, null, /* @__PURE__ */ import_react10.default.createElement(Check, { className: "h-4 w-4 mr-1" }), "Copied") : /* @__PURE__ */ import_react10.default.createElement(import_react10.default.Fragment, null, /* @__PURE__ */ import_react10.default.createElement(Copy, { className: "h-4 w-4 mr-1" }), "Copy"))), /* @__PURE__ */ import_react10.default.createElement("div", { className: "p-4 space-y-3" }, /* @__PURE__ */ import_react10.default.createElement("div", null, /* @__PURE__ */ import_react10.default.createElement(
-      "button",
-      {
-        onClick: () => setHeadersCollapsed(!headersCollapsed),
-        className: "flex items-center gap-1 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-      },
-      headersCollapsed ? /* @__PURE__ */ import_react10.default.createElement(ChevronRight, { className: "h-4 w-4" }) : /* @__PURE__ */ import_react10.default.createElement(ChevronDown, { className: "h-4 w-4" }),
-      "Headers"
-    ), !headersCollapsed && /* @__PURE__ */ import_react10.default.createElement("pre", { className: "text-xs bg-muted p-3 rounded-md overflow-x-auto mt-1 font-mono" }, formatJSON(recording.response.headers))), /* @__PURE__ */ import_react10.default.createElement("div", null, /* @__PURE__ */ import_react10.default.createElement("label", { className: "text-sm font-medium text-muted-foreground" }, "Body"), /* @__PURE__ */ import_react10.default.createElement("pre", { className: "text-xs bg-muted p-3 rounded-md overflow-x-auto mt-1 font-mono max-h-96" }, formatBody(recording.response.body)))));
-  }
-
-  // internal/ui/src/app/components/recording/ParsedResponsePanel.tsx
-  var import_react11 = __toESM(require_react(), 1);
-  function ParsedResponsePanel({
-    recording,
-    parsedData,
-    isLoading,
-    error
-  }) {
-    return /* @__PURE__ */ import_react11.default.createElement("div", { className: "bg-card border rounded-md" }, /* @__PURE__ */ import_react11.default.createElement("div", { className: "flex items-center justify-between p-3 bg-muted/30 border-b" }, /* @__PURE__ */ import_react11.default.createElement("h3", { className: "font-semibold" }, "Parsed Response")), /* @__PURE__ */ import_react11.default.createElement("div", { className: "p-4" }, recording.response.streaming ? /* @__PURE__ */ import_react11.default.createElement("div", { className: "mt-1" }, isLoading && /* @__PURE__ */ import_react11.default.createElement("div", { className: "flex items-center justify-center p-8" }, /* @__PURE__ */ import_react11.default.createElement(LoaderCircle, { className: "h-6 w-6 animate-spin text-primary" }), /* @__PURE__ */ import_react11.default.createElement("span", { className: "ml-2 text-muted-foreground" }, "Parsing stream...")), error && /* @__PURE__ */ import_react11.default.createElement("div", { className: "p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded text-red-800 dark:text-red-300 text-sm" }, "Failed to parse stream: ", error.message), parsedData && !isLoading && /* @__PURE__ */ import_react11.default.createElement("div", { className: "space-y-4" }, /* @__PURE__ */ import_react11.default.createElement("div", null, /* @__PURE__ */ import_react11.default.createElement("h4", { className: "text-sm font-semibold mb-2" }, "Reconstructed Output"), /* @__PURE__ */ import_react11.default.createElement("div", { className: "p-3 bg-muted/50 rounded border" }, parsedData.text ? /* @__PURE__ */ import_react11.default.createElement("p", { className: "text-sm whitespace-pre-wrap" }, parsedData.text) : /* @__PURE__ */ import_react11.default.createElement("p", { className: "text-sm text-muted-foreground italic" }, "No text content"))), Object.keys(parsedData.metadata).length > 0 && /* @__PURE__ */ import_react11.default.createElement("div", null, /* @__PURE__ */ import_react11.default.createElement("h4", { className: "text-sm font-semibold mb-2" }, "Metadata"), /* @__PURE__ */ import_react11.default.createElement("div", { className: "grid grid-cols-2 gap-2" }, Object.entries(parsedData.metadata).map(
-      ([key, value]) => /* @__PURE__ */ import_react11.default.createElement(
-        "div",
-        {
-          key,
-          className: "p-2 bg-muted/50 rounded border"
-        },
-        /* @__PURE__ */ import_react11.default.createElement("div", { className: "text-xs font-medium text-muted-foreground" }, key),
-        /* @__PURE__ */ import_react11.default.createElement("div", { className: "text-sm mt-1" }, typeof value == "object" ? /* @__PURE__ */ import_react11.default.createElement("pre", { className: "text-xs whitespace-pre-wrap overflow-x-auto" }, JSON.stringify(value, null, 2)) : String(value))
-      )
-    ))), Object.keys(parsedData.eventCounts).length > 0 && /* @__PURE__ */ import_react11.default.createElement("div", null, /* @__PURE__ */ import_react11.default.createElement("h4", { className: "text-sm font-semibold mb-2" }, "Event Summary"), /* @__PURE__ */ import_react11.default.createElement("div", { className: "p-3 bg-muted/50 rounded border" }, /* @__PURE__ */ import_react11.default.createElement("div", { className: "flex flex-wrap gap-2" }, Object.entries(parsedData.eventCounts).map(
-      ([eventType, count]) => /* @__PURE__ */ import_react11.default.createElement(
-        "span",
-        {
-          key: eventType,
-          className: "inline-flex items-center px-2 py-1 rounded text-xs bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300"
-        },
-        eventType,
-        ": ",
-        count
-      )
-    )))))) : /* @__PURE__ */ import_react11.default.createElement("div", { className: "text-center py-8 text-muted-foreground" }, "This recording is not streaming, so there is no parsed view available.")));
+    } }, copied ? /* @__PURE__ */ import_react18.default.createElement(import_react18.default.Fragment, null, /* @__PURE__ */ import_react18.default.createElement(Check, { className: "h-4 w-4 mr-1" }), "Copied") : /* @__PURE__ */ import_react18.default.createElement(import_react18.default.Fragment, null, /* @__PURE__ */ import_react18.default.createElement(Copy, { className: "h-4 w-4 mr-1" }), "Copy"))), /* @__PURE__ */ import_react18.default.createElement("div", { className: "p-4 space-y-3" }, /* @__PURE__ */ import_react18.default.createElement(HeadersSection, { headers: recording.response.headers }), /* @__PURE__ */ import_react18.default.createElement("div", null, /* @__PURE__ */ import_react18.default.createElement("label", { className: "text-sm font-medium text-muted-foreground" }, "Body"), /* @__PURE__ */ import_react18.default.createElement("div", { className: "mt-1" }, /* @__PURE__ */ import_react18.default.createElement(BodyView, { recording, which: "response" })))));
   }
 
   // internal/ui/src/app/components/recording/RecordingDetail.tsx
   var TABS = [
     { id: "request", label: "Request" },
-    { id: "response", label: "Response" },
-    { id: "parsed", label: "Parsed Response" }
+    { id: "response", label: "Response" }
   ];
   function RecordingDetail({ recordingId }) {
-    let [searchParams, setSearchParams] = useSearchParams(), activeTab = searchParams.get("tab") || "request", setActiveTab = (tab) => {
+    let [searchParams, setSearchParams] = useSearchParams(), tabParam = searchParams.get("tab") || "request", activeTab = tabParam === "parsed" ? "response" : tabParam, setActiveTab = (tab) => {
       setSearchParams(
         (prev) => {
           let newParams = new URLSearchParams(prev);
@@ -24150,56 +25017,47 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
       queryKey: ["recording", recordingId],
       queryFn: () => fetchRecording(recordingId),
       enabled: !!recordingId
-    }), {
-      data: parsedData,
-      isLoading: isParsing,
-      error: parseError
-    } = useQuery({
-      queryKey: ["parsed", recordingId],
-      queryFn: () => fetchParsedRecording(recordingId),
-      enabled: activeTab === "parsed" && !!recording?.response.streaming
     });
-    return isLoadingRecording && !recording ? /* @__PURE__ */ import_react12.default.createElement("div", { className: "flex-1 flex items-center justify-center py-12" }, /* @__PURE__ */ import_react12.default.createElement(LoaderCircle, { className: "h-8 w-8 animate-spin text-primary" }), /* @__PURE__ */ import_react12.default.createElement("span", { className: "ml-2 text-muted-foreground" }, "Loading recording...")) : recording ? /* @__PURE__ */ import_react12.default.createElement("div", { className: "w-full h-full flex flex-col bg-background text-foreground" }, /* @__PURE__ */ import_react12.default.createElement(RecordingHeader, { recordingId, recording }), /* @__PURE__ */ import_react12.default.createElement("div", { className: "flex-1 flex flex-col overflow-hidden bg-background" }, /* @__PURE__ */ import_react12.default.createElement("div", { className: "bg-card border-b" }, /* @__PURE__ */ import_react12.default.createElement("div", { className: "p-6 pb-0" }, /* @__PURE__ */ import_react12.default.createElement(RecordingMetadata, { recording }), recording.error && /* @__PURE__ */ import_react12.default.createElement(RecordingError, { error: recording.error }), /* @__PURE__ */ import_react12.default.createElement(
+    return isLoadingRecording && !recording ? /* @__PURE__ */ import_react19.default.createElement("div", { className: "flex-1 flex items-center justify-center py-12" }, /* @__PURE__ */ import_react19.default.createElement(LoaderCircle, { className: "h-8 w-8 animate-spin text-primary" }), /* @__PURE__ */ import_react19.default.createElement("span", { className: "ml-2 text-muted-foreground" }, "Loading recording...")) : recording ? /* @__PURE__ */ import_react19.default.createElement("div", { className: "w-full h-full flex flex-col bg-background text-foreground" }, /* @__PURE__ */ import_react19.default.createElement(RecordingHeader, { recordingId, recording }), /* @__PURE__ */ import_react19.default.createElement("div", { className: "flex-1 flex flex-col overflow-hidden bg-background" }, /* @__PURE__ */ import_react19.default.createElement("div", { className: "bg-card border-b" }, /* @__PURE__ */ import_react19.default.createElement("div", { className: "p-6 pb-0" }, /* @__PURE__ */ import_react19.default.createElement(RecordingMetadata, { recording }), recording.error && /* @__PURE__ */ import_react19.default.createElement(RecordingError, { error: recording.error }), /* @__PURE__ */ import_react19.default.createElement(
       RecordingTabs,
       {
         activeTab,
         onTabChange: setActiveTab,
         tabs: TABS
       }
-    ))), /* @__PURE__ */ import_react12.default.createElement("div", { className: "flex-1 overflow-y-auto p-6 bg-muted/10" }, activeTab === "request" && /* @__PURE__ */ import_react12.default.createElement(RequestPanel, { recording }), activeTab === "response" && /* @__PURE__ */ import_react12.default.createElement(ResponsePanel, { recording }), activeTab === "parsed" && /* @__PURE__ */ import_react12.default.createElement(
-      ParsedResponsePanel,
-      {
-        recording,
-        parsedData,
-        isLoading: isParsing,
-        error: parseError
-      }
-    )))) : /* @__PURE__ */ import_react12.default.createElement("div", { className: "flex-1 flex items-center justify-center py-12" }, /* @__PURE__ */ import_react12.default.createElement("span", { className: "ml-2 text-muted-foreground" }, "Recording not found."));
+    ))), /* @__PURE__ */ import_react19.default.createElement("div", { className: "flex-1 overflow-y-auto p-6 bg-muted/10" }, activeTab === "request" && /* @__PURE__ */ import_react19.default.createElement(RequestPanel, { recording }), activeTab === "response" && /* @__PURE__ */ import_react19.default.createElement(ResponsePanel, { recording })))) : /* @__PURE__ */ import_react19.default.createElement("div", { className: "flex-1 flex items-center justify-center py-12" }, /* @__PURE__ */ import_react19.default.createElement("span", { className: "ml-2 text-muted-foreground" }, "Recording not found."));
   }
 
   // internal/ui/src/app/components/RecordingSidebar.tsx
-  var import_react13 = __toESM(require_react(), 1);
+  var import_react20 = __toESM(require_react(), 1);
   function RecordingSidebar({
-    currentRecordingId
+    currentRecordingId,
+    sessionId
   }) {
-    let navigate = useNavigate(), [searchParams] = useSearchParams(), scrollRef = (0, import_react13.useRef)(null), [width, setWidth] = (0, import_react13.useState)(320), [isResizing, setIsResizing] = (0, import_react13.useState)(!1), startResizing = (0, import_react13.useCallback)(() => {
+    let navigate = useNavigate(), [searchParams] = useSearchParams(), scrollRef = (0, import_react20.useRef)(null), [width, setWidth] = (0, import_react20.useState)(320), [isResizing, setIsResizing] = (0, import_react20.useState)(!1), startResizing = (0, import_react20.useCallback)(() => {
       setIsResizing(!0);
-    }, []), stopResizing = (0, import_react13.useCallback)(() => {
+    }, []), stopResizing = (0, import_react20.useCallback)(() => {
       setIsResizing(!1);
-    }, []), resize = (0, import_react13.useCallback)((mouseMoveEvent) => {
+    }, []), resize = (0, import_react20.useCallback)((mouseMoveEvent) => {
       let newWidth = mouseMoveEvent.clientX;
       newWidth > 200 && newWidth < 800 && setWidth(newWidth);
     }, []);
-    (0, import_react13.useEffect)(() => (isResizing && (window.addEventListener("mousemove", resize), window.addEventListener("mouseup", stopResizing)), () => {
+    (0, import_react20.useEffect)(() => (isResizing && (window.addEventListener("mousemove", resize), window.addEventListener("mouseup", stopResizing)), () => {
       window.removeEventListener("mousemove", resize), window.removeEventListener("mouseup", stopResizing);
     }), [isResizing, resize, stopResizing]);
     let { data: data2, isLoading } = useQuery({
       queryKey: ["recordings", "sidebar"],
       queryFn: () => fetchRecordings(1, 100),
       // Fetch first 100 for the sidebar
-      refetchInterval: 5e3
-    }), recordings = data2?.recordings || [];
-    return (0, import_react13.useEffect)(() => {
+      refetchInterval: 5e3,
+      enabled: !sessionId
+    }), { data: sessionData, isLoading: isLoadingSession } = useQuery({
+      queryKey: ["session", sessionId],
+      queryFn: () => fetchSessionGroup(sessionId),
+      refetchInterval: 5e3,
+      enabled: !!sessionId
+    }), recordings = (sessionId ? sessionData?.recordings : data2?.recordings) || [];
+    return (0, import_react20.useEffect)(() => {
       let handleKeyDown = (e) => {
         if (!recordings.length) return;
         let currentIndex = recordings.findIndex(
@@ -24216,21 +25074,30 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
         }));
       };
       return window.addEventListener("keydown", handleKeyDown), () => window.removeEventListener("keydown", handleKeyDown);
-    }, [currentRecordingId, recordings, navigate, searchParams]), (0, import_react13.useEffect)(() => {
+    }, [currentRecordingId, recordings, navigate, searchParams]), (0, import_react20.useEffect)(() => {
       if (scrollRef.current) {
         let activeElement = scrollRef.current.querySelector('[data-active="true"]');
         activeElement && activeElement.scrollIntoView({ block: "nearest", behavior: "smooth" });
       }
-    }, [currentRecordingId, recordings]), isLoading ? /* @__PURE__ */ import_react13.default.createElement("div", { className: "w-80 border-r bg-muted/10 flex items-center justify-center" }, /* @__PURE__ */ import_react13.default.createElement(LoaderCircle, { className: "h-6 w-6 animate-spin text-muted-foreground" })) : /* @__PURE__ */ import_react13.default.createElement(
+    }, [currentRecordingId, recordings]), isLoading || isLoadingSession ? /* @__PURE__ */ import_react20.default.createElement("div", { className: "w-80 border-r bg-muted/10 flex items-center justify-center" }, /* @__PURE__ */ import_react20.default.createElement(LoaderCircle, { className: "h-6 w-6 animate-spin text-muted-foreground" })) : /* @__PURE__ */ import_react20.default.createElement(
       "div",
       {
         className: "relative border-r bg-muted/10 flex flex-col h-full flex-shrink-0",
         style: { width }
       },
-      /* @__PURE__ */ import_react13.default.createElement("div", { className: "p-4 border-b bg-background/50 backdrop-blur" }, /* @__PURE__ */ import_react13.default.createElement("h3", { className: "font-semibold text-sm text-muted-foreground uppercase tracking-wider" }, "Recent Recordings")),
-      /* @__PURE__ */ import_react13.default.createElement("div", { className: "flex-1 overflow-y-auto", ref: scrollRef }, recordings.length === 0 ? /* @__PURE__ */ import_react13.default.createElement("div", { className: "p-4 text-center text-muted-foreground text-sm" }, "No recordings found") : /* @__PURE__ */ import_react13.default.createElement("div", { className: "divide-y" }, recordings.map((recording) => {
+      /* @__PURE__ */ import_react20.default.createElement("div", { className: "p-4 border-b bg-background/50 backdrop-blur flex items-center justify-between gap-2" }, /* @__PURE__ */ import_react20.default.createElement("h3", { className: "font-semibold text-sm text-muted-foreground uppercase tracking-wider truncate" }, sessionId ? `Session ${truncateId(sessionId, 12)}` : "Recent Recordings"), sessionId && /* @__PURE__ */ import_react20.default.createElement(
+        "button",
+        {
+          onClick: () => navigate(`/recordings/${currentRecordingId}`),
+          className: "p-1 hover:bg-muted rounded transition-colors shrink-0",
+          "aria-label": "Leave session view",
+          title: "Show recent recordings instead"
+        },
+        /* @__PURE__ */ import_react20.default.createElement(X, { className: "h-4 w-4 text-muted-foreground" })
+      )),
+      /* @__PURE__ */ import_react20.default.createElement("div", { className: "flex-1 overflow-y-auto", ref: scrollRef }, recordings.length === 0 ? /* @__PURE__ */ import_react20.default.createElement("div", { className: "p-4 text-center text-muted-foreground text-sm" }, "No recordings found") : /* @__PURE__ */ import_react20.default.createElement("div", { className: "divide-y" }, recordings.map((recording) => {
         let isActive = recording.id === currentRecordingId;
-        return /* @__PURE__ */ import_react13.default.createElement(
+        return /* @__PURE__ */ import_react20.default.createElement(
           "button",
           {
             key: recording.id,
@@ -24244,7 +25111,7 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
             },
             className: `w-full text-left p-3 hover:bg-muted/50 transition-colors focus:outline-none ${isActive ? "bg-muted border-l-2 border-l-primary" : "border-l-2 border-l-transparent"}`
           },
-          /* @__PURE__ */ import_react13.default.createElement("div", { className: "flex items-center justify-between mb-1" }, /* @__PURE__ */ import_react13.default.createElement(
+          /* @__PURE__ */ import_react20.default.createElement("div", { className: "flex items-center justify-between mb-1" }, /* @__PURE__ */ import_react20.default.createElement(
             "span",
             {
               className: `text-xs font-medium ${getStatusTextColor(recording.status)}`
@@ -24252,8 +25119,8 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
             recording.status,
             " ",
             recording.method
-          ), /* @__PURE__ */ import_react13.default.createElement("span", { className: "text-[10px] text-muted-foreground" }, format(new Date(recording.timestamp), "HH:mm:ss"))),
-          /* @__PURE__ */ import_react13.default.createElement(
+          ), /* @__PURE__ */ import_react20.default.createElement("span", { className: "text-[10px] text-muted-foreground" }, format(new Date(recording.timestamp), "HH:mm:ss"))),
+          /* @__PURE__ */ import_react20.default.createElement(
             "div",
             {
               className: "text-xs font-mono truncate text-foreground/80 mb-1",
@@ -24261,16 +25128,16 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
             },
             recording.path
           ),
-          /* @__PURE__ */ import_react13.default.createElement("div", { className: "flex items-center justify-between text-[10px] text-muted-foreground" }, /* @__PURE__ */ import_react13.default.createElement(
+          /* @__PURE__ */ import_react20.default.createElement("div", { className: "flex items-center justify-between text-[10px] text-muted-foreground" }, /* @__PURE__ */ import_react20.default.createElement(
             "span",
             {
               className: getProviderStyles(recording.provider) + " px-1 py-0.5 rounded"
             },
-            recording.provider
-          ), /* @__PURE__ */ import_react13.default.createElement("span", null, recording.duration, "ms"))
+            getProviderLabel(recording.provider)
+          ), /* @__PURE__ */ import_react20.default.createElement("span", null, recording.duration, "ms"))
         );
       }))),
-      /* @__PURE__ */ import_react13.default.createElement(
+      /* @__PURE__ */ import_react20.default.createElement(
         "div",
         {
           className: "absolute right-0 top-0 bottom-0 w-1 cursor-col-resize hover:bg-primary/50 active:bg-primary transition-colors z-10",
@@ -24282,27 +25149,135 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
 
   // internal/ui/src/app/pages/Recording.tsx
   function Recording() {
-    let { id } = useParams(), navigate = useNavigate();
-    return id ? /* @__PURE__ */ import_react14.default.createElement("div", { className: "flex h-[calc(100vh-4rem)] w-full border-b" }, /* @__PURE__ */ import_react14.default.createElement(RecordingSidebar, { currentRecordingId: id }), /* @__PURE__ */ import_react14.default.createElement("div", { className: "flex-1 min-w-0 h-full" }, /* @__PURE__ */ import_react14.default.createElement(RecordingDetail, { recordingId: id }))) : (navigate("/recordings"), null);
+    let { id } = useParams(), navigate = useNavigate(), [searchParams] = useSearchParams(), sessionId = searchParams.get("session") ?? void 0;
+    return id ? /* @__PURE__ */ import_react21.default.createElement("div", { className: "flex h-[calc(100vh-4rem)] w-full border-b" }, /* @__PURE__ */ import_react21.default.createElement(RecordingSidebar, { currentRecordingId: id, sessionId }), /* @__PURE__ */ import_react21.default.createElement("div", { className: "flex-1 min-w-0 h-full" }, /* @__PURE__ */ import_react21.default.createElement(RecordingDetail, { recordingId: id }))) : (navigate("/recordings"), null);
+  }
+
+  // internal/ui/src/app/pages/Sessions.tsx
+  var import_react22 = __toESM(require_react(), 1);
+
+  // internal/ui/src/app/lib/sessions.ts
+  function formatTimespan(first, last) {
+    let ms = new Date(last).getTime() - new Date(first).getTime();
+    if (!Number.isFinite(ms) || ms < 0) return "\u2014";
+    let seconds = Math.round(ms / 1e3);
+    if (seconds < 1) return "<1s";
+    if (seconds < 60) return `${seconds}s`;
+    let minutes = Math.floor(seconds / 60);
+    return minutes < 60 ? `${minutes}m ${seconds % 60}s` : `${Math.floor(minutes / 60)}h ${minutes % 60}m`;
+  }
+
+  // internal/ui/src/app/pages/Sessions.tsx
+  function Sessions() {
+    let navigate = useNavigate(), [page, setPage] = (0, import_react22.useState)(1), [limit] = (0, import_react22.useState)(50), { data: data2, isLoading, error, refetch, isFetching } = useQuery({
+      queryKey: ["sessions", page, limit],
+      queryFn: () => fetchSessionGroups(page, limit),
+      refetchInterval: 1e4,
+      refetchIntervalInBackground: !0,
+      retry: (count, err) => !(err instanceof GroupingDisabledError) && count < 3
+    });
+    return /* @__PURE__ */ import_react22.default.createElement("div", { className: "mx-auto flex-1" }, /* @__PURE__ */ import_react22.default.createElement("div", { className: "space-y-4 w-full p-4" }, /* @__PURE__ */ import_react22.default.createElement("div", { className: "flex items-center justify-between" }, /* @__PURE__ */ import_react22.default.createElement("div", null, /* @__PURE__ */ import_react22.default.createElement("h1", { className: "text-2xl font-bold text-foreground" }, "Sessions"), /* @__PURE__ */ import_react22.default.createElement("p", { className: "text-sm text-muted-foreground" }, data2?.total ? `${data2.total} total sessions` : "Recordings grouped by agent session")), /* @__PURE__ */ import_react22.default.createElement(
+      Button,
+      {
+        onClick: () => refetch(),
+        disabled: isFetching,
+        className: "flex items-center gap-2"
+      },
+      /* @__PURE__ */ import_react22.default.createElement(RefreshCw, { className: `h-4 w-4 ${isFetching ? "animate-spin" : ""}` }),
+      "Refresh"
+    )), error instanceof GroupingDisabledError ? /* @__PURE__ */ import_react22.default.createElement("div", { className: "p-8 text-center text-muted-foreground border rounded-md bg-card" }, "Session grouping is not enabled on this server. Enable recording to group traffic into sessions.") : error ? /* @__PURE__ */ import_react22.default.createElement("div", { className: "p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-md text-red-800 dark:text-red-300" }, "Error loading sessions: ", error.message) : null, isLoading && !error && /* @__PURE__ */ import_react22.default.createElement("div", { className: "flex items-center justify-center py-12" }, /* @__PURE__ */ import_react22.default.createElement("div", { className: "text-muted-foreground" }, "Loading sessions...")), !isLoading && data2 && /* @__PURE__ */ import_react22.default.createElement(import_react22.default.Fragment, null, /* @__PURE__ */ import_react22.default.createElement("div", { className: "border rounded-md bg-card" }, /* @__PURE__ */ import_react22.default.createElement(Table, null, /* @__PURE__ */ import_react22.default.createElement(TableHeader, null, /* @__PURE__ */ import_react22.default.createElement(TableRow, null, /* @__PURE__ */ import_react22.default.createElement(TableHead, null, "Trace"), /* @__PURE__ */ import_react22.default.createElement(TableHead, null, "Started"), /* @__PURE__ */ import_react22.default.createElement(TableHead, null, "Span"), /* @__PURE__ */ import_react22.default.createElement(TableHead, null, "Requests"), /* @__PURE__ */ import_react22.default.createElement(TableHead, null, "Providers"), /* @__PURE__ */ import_react22.default.createElement(TableHead, null, "Errors"))), /* @__PURE__ */ import_react22.default.createElement(TableBody, null, data2.groups.length === 0 ? /* @__PURE__ */ import_react22.default.createElement(TableRow, null, /* @__PURE__ */ import_react22.default.createElement(
+      TableCell,
+      {
+        colSpan: 6,
+        className: "text-center py-8 text-muted-foreground"
+      },
+      "No sessions yet. Sessions appear as traffic with trace or session metadata flows through the proxy."
+    )) : data2.groups.map((group) => /* @__PURE__ */ import_react22.default.createElement(
+      TableRow,
+      {
+        key: group.trace_id,
+        onClick: () => navigate(`/sessions/${group.trace_id}`),
+        className: "cursor-pointer"
+      },
+      /* @__PURE__ */ import_react22.default.createElement(TableCell, { className: "font-mono text-xs text-muted-foreground" }, truncateId(group.trace_id, 12)),
+      /* @__PURE__ */ import_react22.default.createElement(TableCell, { className: "text-sm" }, format(new Date(group.first_timestamp), "MMM d, HH:mm:ss")),
+      /* @__PURE__ */ import_react22.default.createElement(TableCell, { className: "text-sm text-muted-foreground" }, formatTimespan(group.first_timestamp, group.last_timestamp)),
+      /* @__PURE__ */ import_react22.default.createElement(TableCell, { className: "text-sm" }, group.request_count),
+      /* @__PURE__ */ import_react22.default.createElement(TableCell, null, /* @__PURE__ */ import_react22.default.createElement("div", { className: "flex flex-wrap gap-1" }, group.providers.map((provider) => /* @__PURE__ */ import_react22.default.createElement(
+        "span",
+        {
+          key: provider,
+          className: "inline-flex items-center px-2 py-0.5 rounded text-xs font-medium " + getProviderStyles(provider)
+        },
+        getProviderLabel(provider)
+      )))),
+      /* @__PURE__ */ import_react22.default.createElement(TableCell, null, group.has_errors && /* @__PURE__ */ import_react22.default.createElement(TriangleAlert, { className: "h-4 w-4 text-red-600 dark:text-red-400" }))
+    ))))), data2.groups.length > 0 && /* @__PURE__ */ import_react22.default.createElement("div", { className: "flex items-center justify-between" }, /* @__PURE__ */ import_react22.default.createElement("div", { className: "text-sm text-muted-foreground" }, "Page ", data2.page, " of ", Math.max(1, Math.ceil(data2.total / data2.limit))), /* @__PURE__ */ import_react22.default.createElement("div", { className: "flex gap-2" }, /* @__PURE__ */ import_react22.default.createElement(
+      Button,
+      {
+        variant: "outline",
+        onClick: () => setPage(page - 1),
+        disabled: page === 1
+      },
+      "Previous"
+    ), /* @__PURE__ */ import_react22.default.createElement(
+      Button,
+      {
+        variant: "outline",
+        onClick: () => setPage(page + 1),
+        disabled: !data2.hasMore
+      },
+      "Next"
+    ))))));
+  }
+
+  // internal/ui/src/app/pages/Session.tsx
+  var import_react23 = __toESM(require_react(), 1);
+  function Session() {
+    let { traceId } = useParams(), navigate = useNavigate(), { data: data2, isLoading, error } = useQuery({
+      queryKey: ["session", traceId],
+      queryFn: () => fetchSessionGroup(traceId),
+      enabled: !!traceId,
+      refetchInterval: 1e4
+    });
+    return traceId ? /* @__PURE__ */ import_react23.default.createElement("div", { className: "mx-auto flex-1" }, /* @__PURE__ */ import_react23.default.createElement("div", { className: "space-y-4 w-full p-4" }, /* @__PURE__ */ import_react23.default.createElement("div", { className: "flex items-center gap-4" }, /* @__PURE__ */ import_react23.default.createElement(
+      "button",
+      {
+        onClick: () => navigate("/sessions"),
+        className: "p-2 hover:bg-muted rounded-md transition-colors",
+        "aria-label": "Back to sessions list"
+      },
+      /* @__PURE__ */ import_react23.default.createElement(ArrowLeft, { className: "h-5 w-5" })
+    ), /* @__PURE__ */ import_react23.default.createElement("div", null, /* @__PURE__ */ import_react23.default.createElement("h1", { className: "text-2xl font-bold text-foreground" }, "Session"), /* @__PURE__ */ import_react23.default.createElement("p", { className: "text-sm text-muted-foreground font-mono" }, traceId))), error && /* @__PURE__ */ import_react23.default.createElement("div", { className: "p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-md text-red-800 dark:text-red-300" }, "Error loading session: ", error.message), isLoading && /* @__PURE__ */ import_react23.default.createElement("div", { className: "flex items-center justify-center py-12" }, /* @__PURE__ */ import_react23.default.createElement("div", { className: "text-muted-foreground" }, "Loading session...")), data2 && /* @__PURE__ */ import_react23.default.createElement(import_react23.default.Fragment, null, /* @__PURE__ */ import_react23.default.createElement("div", { className: "flex flex-wrap gap-x-8 gap-y-3 border rounded-md bg-card p-4" }, /* @__PURE__ */ import_react23.default.createElement(SessionField, { label: "Started" }, format(new Date(data2.group.first_timestamp), "MMM d, yyyy HH:mm:ss")), /* @__PURE__ */ import_react23.default.createElement(SessionField, { label: "Span" }, formatTimespan(data2.group.first_timestamp, data2.group.last_timestamp)), /* @__PURE__ */ import_react23.default.createElement(SessionField, { label: "Requests" }, data2.group.request_count), data2.group.session_id && /* @__PURE__ */ import_react23.default.createElement(SessionField, { label: "Session ID" }, /* @__PURE__ */ import_react23.default.createElement("span", { className: "font-mono text-xs" }, data2.group.session_id)), data2.group.has_errors && /* @__PURE__ */ import_react23.default.createElement(SessionField, { label: "Errors" }, /* @__PURE__ */ import_react23.default.createElement("span", { className: "inline-flex items-center gap-1 text-red-600 dark:text-red-400" }, /* @__PURE__ */ import_react23.default.createElement(TriangleAlert, { className: "h-4 w-4" }), " yes"))), /* @__PURE__ */ import_react23.default.createElement(
+      RecordingsTable,
+      {
+        recordings: data2.recordings,
+        onSelect: (recording) => navigate(`/recordings/${recording.id}?session=${traceId}`),
+        emptyMessage: "No recordings in this session"
+      }
+    )))) : (navigate("/sessions"), null);
+  }
+  function SessionField({ label, children }) {
+    return /* @__PURE__ */ import_react23.default.createElement("div", null, /* @__PURE__ */ import_react23.default.createElement("label", { className: "text-sm font-medium text-muted-foreground" }, label), /* @__PURE__ */ import_react23.default.createElement("p", { className: "text-sm mt-1" }, children));
   }
 
   // internal/ui/src/app/components/mode-toggle.tsx
-  var import_react16 = __toESM(require_react(), 1);
+  var import_react25 = __toESM(require_react(), 1);
 
   // internal/ui/src/app/components/theme-provider.tsx
-  var import_react15 = __toESM(require_react(), 1), initialState = {
+  var import_react24 = __toESM(require_react(), 1), initialState = {
     theme: "system",
     setTheme: () => null
-  }, ThemeProviderContext = (0, import_react15.createContext)(initialState);
+  }, ThemeProviderContext = (0, import_react24.createContext)(initialState);
   function ThemeProvider({
     children,
     defaultTheme = "system",
     storageKey = "vite-ui-theme"
   }) {
-    let [theme, setTheme] = (0, import_react15.useState)(
+    let [theme, setTheme] = (0, import_react24.useState)(
       () => localStorage.getItem(storageKey) || defaultTheme
     );
-    (0, import_react15.useEffect)(() => {
+    (0, import_react24.useEffect)(() => {
       let root = window.document.documentElement;
       if (root.classList.remove("light", "dark"), theme === "system") {
         let systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
@@ -24317,38 +25292,101 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
         localStorage.setItem(storageKey, theme2), setTheme(theme2);
       }
     };
-    return /* @__PURE__ */ import_react15.default.createElement(ThemeProviderContext.Provider, { value }, children);
+    return /* @__PURE__ */ import_react24.default.createElement(ThemeProviderContext.Provider, { value }, children);
   }
   var useTheme = () => {
-    let context = (0, import_react15.useContext)(ThemeProviderContext);
+    let context = (0, import_react24.useContext)(ThemeProviderContext);
     if (context === void 0)
       throw new Error("useTheme must be used within a ThemeProvider");
     return context;
   };
 
   // internal/ui/src/app/components/mode-toggle.tsx
-  function ModeToggle() {
+  function ModeToggle2() {
     let { theme, setTheme } = useTheme();
-    return /* @__PURE__ */ import_react16.default.createElement(Button, { variant: "ghost", size: "icon", onClick: () => setTheme(theme === "dark" ? "light" : "dark") }, /* @__PURE__ */ import_react16.default.createElement(Sun, { className: "h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" }), /* @__PURE__ */ import_react16.default.createElement(Moon, { className: "absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" }), /* @__PURE__ */ import_react16.default.createElement("span", { className: "sr-only" }, "Toggle theme"));
+    return /* @__PURE__ */ import_react25.default.createElement(Button, { variant: "ghost", size: "icon", onClick: () => setTheme(theme === "dark" ? "light" : "dark") }, /* @__PURE__ */ import_react25.default.createElement(Sun, { className: "h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" }), /* @__PURE__ */ import_react25.default.createElement(Moon, { className: "absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" }), /* @__PURE__ */ import_react25.default.createElement("span", { className: "sr-only" }, "Toggle theme"));
+  }
+
+  // internal/ui/src/app/components/Logo.tsx
+  var import_react26 = __toESM(require_react(), 1);
+  function LogoMark({ className }) {
+    return /* @__PURE__ */ import_react26.default.createElement(
+      "svg",
+      {
+        viewBox: "0 0 32 32",
+        className,
+        "aria-hidden": "true",
+        focusable: "false"
+      },
+      /* @__PURE__ */ import_react26.default.createElement("polygon", { points: "3,7 13,16 3,25", fill: "currentColor" }),
+      /* @__PURE__ */ import_react26.default.createElement("rect", { x: "15.25", y: "5", width: "1.5", height: "22", fill: "currentColor", opacity: "0.55" }),
+      /* @__PURE__ */ import_react26.default.createElement(
+        "polygon",
+        {
+          points: "29,7 19,16 29,25",
+          fill: "none",
+          stroke: "oklch(0.65 0.12 220)",
+          strokeWidth: "2"
+        }
+      )
+    );
+  }
+  function Logo() {
+    return /* @__PURE__ */ import_react26.default.createElement("span", { className: "inline-flex items-center gap-2 text-foreground" }, /* @__PURE__ */ import_react26.default.createElement(LogoMark, { className: "h-6 w-6" }), /* @__PURE__ */ import_react26.default.createElement(
+      "span",
+      {
+        className: "text-xl font-semibold tracking-tight leading-none select-none",
+        style: { fontFamily: '"Google Sans Code", monospace' }
+      },
+      "mi",
+      /* @__PURE__ */ import_react26.default.createElement("span", null, "r"),
+      /* @__PURE__ */ import_react26.default.createElement("span", { className: "inline-block", style: { transform: "scaleX(-1)" } }, "r"),
+      "a"
+    ));
+  }
+
+  // internal/ui/src/app/lib/useSessionsEnabled.ts
+  function useSessionsEnabled() {
+    let { data: data2 } = useQuery({
+      queryKey: ["sessions-enabled"],
+      queryFn: async () => {
+        try {
+          return await fetchSessionGroups(1, 1), !0;
+        } catch (err) {
+          return !(err instanceof GroupingDisabledError);
+        }
+      },
+      staleTime: 1 / 0,
+      retry: !1
+    });
+    return data2 ?? !0;
   }
 
   // internal/ui/src/app/App.tsx
   function App() {
-    return /* @__PURE__ */ import_react17.default.createElement("div", { className: "min-h-screen flex flex-col bg-background" }, /* @__PURE__ */ import_react17.default.createElement("header", { className: "border-b" }, /* @__PURE__ */ import_react17.default.createElement("div", { className: " mx-auto px-4" }, /* @__PURE__ */ import_react17.default.createElement("div", { className: "flex h-16 items-center justify-between" }, /* @__PURE__ */ import_react17.default.createElement("div", { className: "flex items-center" }, /* @__PURE__ */ import_react17.default.createElement(
-      "a",
+    let sessionsEnabled = useSessionsEnabled();
+    return /* @__PURE__ */ import_react27.default.createElement("div", { className: "min-h-screen flex flex-col bg-background" }, /* @__PURE__ */ import_react27.default.createElement("header", { className: "border-b" }, /* @__PURE__ */ import_react27.default.createElement("div", { className: " mx-auto px-4" }, /* @__PURE__ */ import_react27.default.createElement("div", { className: "flex h-16 items-center justify-between" }, /* @__PURE__ */ import_react27.default.createElement("div", { className: "flex items-center gap-8" }, /* @__PURE__ */ import_react27.default.createElement(Link, { to: "/", "aria-label": "mirra home" }, /* @__PURE__ */ import_react27.default.createElement(Logo, null)), /* @__PURE__ */ import_react27.default.createElement("nav", { className: "flex items-center gap-1" }, /* @__PURE__ */ import_react27.default.createElement(HeaderLink, { to: "/recordings" }, "Recordings"), sessionsEnabled && /* @__PURE__ */ import_react27.default.createElement(HeaderLink, { to: "/sessions" }, "Sessions"))), /* @__PURE__ */ import_react27.default.createElement("div", { className: "flex items-center gap-4" }, /* @__PURE__ */ import_react27.default.createElement(ModeToggle2, null))))), /* @__PURE__ */ import_react27.default.createElement("main", null, /* @__PURE__ */ import_react27.default.createElement(Routes, null, /* @__PURE__ */ import_react27.default.createElement(Route, { path: "/", element: /* @__PURE__ */ import_react27.default.createElement(Recordings, null) }), /* @__PURE__ */ import_react27.default.createElement(Route, { path: "/recordings", element: /* @__PURE__ */ import_react27.default.createElement(Recordings, null) }), /* @__PURE__ */ import_react27.default.createElement(Route, { path: "/recordings/:id", element: /* @__PURE__ */ import_react27.default.createElement(Recording, null) }), /* @__PURE__ */ import_react27.default.createElement(Route, { path: "/sessions", element: /* @__PURE__ */ import_react27.default.createElement(Sessions, null) }), /* @__PURE__ */ import_react27.default.createElement(Route, { path: "/sessions/:traceId", element: /* @__PURE__ */ import_react27.default.createElement(Session, null) }))));
+  }
+  function HeaderLink({ to, children }) {
+    let { pathname } = useLocation(), isActive = pathname.startsWith(to) || to === "/recordings" && pathname === "/";
+    return /* @__PURE__ */ import_react27.default.createElement(
+      NavLink,
       {
-        href: "/",
-        className: "flex text-xl font-bold libertinus-math-regular"
+        to,
+        className: cn(
+          "px-3 py-1.5 text-sm font-medium transition-colors",
+          isActive ? "text-foreground bg-muted" : "text-muted-foreground hover:text-foreground"
+        )
       },
-      /* @__PURE__ */ import_react17.default.createElement("img", { src: "/logo.png", alt: "mirra", className: "h-8 mr-2" })
-    )), /* @__PURE__ */ import_react17.default.createElement("div", { className: "flex items-center gap-4" }, /* @__PURE__ */ import_react17.default.createElement(ModeToggle, null))))), /* @__PURE__ */ import_react17.default.createElement("main", null, /* @__PURE__ */ import_react17.default.createElement(Routes, null, /* @__PURE__ */ import_react17.default.createElement(Route, { path: "/", element: /* @__PURE__ */ import_react17.default.createElement(Recordings, null) }), /* @__PURE__ */ import_react17.default.createElement(Route, { path: "/recordings", element: /* @__PURE__ */ import_react17.default.createElement(Recordings, null) }), /* @__PURE__ */ import_react17.default.createElement(Route, { path: "/recordings/:id", element: /* @__PURE__ */ import_react17.default.createElement(Recording, null) }))));
+      children
+    );
   }
   var App_default = App;
 
   // internal/ui/src/index.tsx
   var queryClient = new QueryClient();
   import_client.default.createRoot(document.getElementById("root")).render(
-    /* @__PURE__ */ import_react18.default.createElement(import_react18.default.StrictMode, null, /* @__PURE__ */ import_react18.default.createElement(QueryClientProvider, { client: queryClient }, /* @__PURE__ */ import_react18.default.createElement(ThemeProvider, { defaultTheme: "system", storageKey: "mirra-ui-theme" }, /* @__PURE__ */ import_react18.default.createElement(BrowserRouter, null, /* @__PURE__ */ import_react18.default.createElement(App_default, null)))))
+    /* @__PURE__ */ import_react28.default.createElement(import_react28.default.StrictMode, null, /* @__PURE__ */ import_react28.default.createElement(QueryClientProvider, { client: queryClient }, /* @__PURE__ */ import_react28.default.createElement(ThemeProvider, { defaultTheme: "system", storageKey: "mirra-ui-theme" }, /* @__PURE__ */ import_react28.default.createElement(BrowserRouter, null, /* @__PURE__ */ import_react28.default.createElement(App_default, null)))))
   );
 })();
 /*! Bundled license information:
@@ -24428,16 +25466,22 @@ lucide-react/dist/esm/defaultAttributes.js:
 lucide-react/dist/esm/Icon.js:
 lucide-react/dist/esm/createLucideIcon.js:
 lucide-react/dist/esm/icons/arrow-left.js:
+lucide-react/dist/esm/icons/brain.js:
 lucide-react/dist/esm/icons/check.js:
 lucide-react/dist/esm/icons/chevron-down.js:
 lucide-react/dist/esm/icons/chevron-right.js:
 lucide-react/dist/esm/icons/copy.js:
+lucide-react/dist/esm/icons/corner-down-right.js:
 lucide-react/dist/esm/icons/download.js:
 lucide-react/dist/esm/icons/loader-circle.js:
 lucide-react/dist/esm/icons/moon.js:
 lucide-react/dist/esm/icons/refresh-cw.js:
+lucide-react/dist/esm/icons/scroll-text.js:
 lucide-react/dist/esm/icons/search.js:
 lucide-react/dist/esm/icons/sun.js:
+lucide-react/dist/esm/icons/triangle-alert.js:
+lucide-react/dist/esm/icons/wrench.js:
+lucide-react/dist/esm/icons/x.js:
 lucide-react/dist/esm/lucide-react.js:
   (**
    * @license lucide-react v0.477.0 - ISC

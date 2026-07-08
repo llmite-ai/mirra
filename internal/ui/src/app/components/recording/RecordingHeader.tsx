@@ -12,7 +12,10 @@ interface RecordingHeaderProps {
 /**
  * Header bar with back button and recording ID
  */
-export function RecordingHeader({ recordingId, recording }: RecordingHeaderProps) {
+export function RecordingHeader({
+  recordingId,
+  recording,
+}: RecordingHeaderProps) {
   const navigate = useNavigate();
   const [copied, setCopied] = useState(false);
 
@@ -25,7 +28,7 @@ export function RecordingHeader({ recordingId, recording }: RecordingHeaderProps
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch (error) {
-      console.error('Failed to copy:', error);
+      console.error("Failed to copy:", error);
     }
   };
 
@@ -34,9 +37,9 @@ export function RecordingHeader({ recordingId, recording }: RecordingHeaderProps
 
     try {
       const recordingJson = JSON.stringify(recording, null, 2);
-      const blob = new Blob([recordingJson], { type: 'application/json' });
+      const blob = new Blob([recordingJson], { type: "application/json" });
       const url = URL.createObjectURL(blob);
-      const link = document.createElement('a');
+      const link = document.createElement("a");
       link.href = url;
       link.download = `recording-${recording.id}.json`;
       document.body.appendChild(link);
@@ -44,7 +47,7 @@ export function RecordingHeader({ recordingId, recording }: RecordingHeaderProps
       document.body.removeChild(link);
       URL.revokeObjectURL(url);
     } catch (error) {
-      console.error('Failed to download:', error);
+      console.error("Failed to download:", error);
     }
   };
 

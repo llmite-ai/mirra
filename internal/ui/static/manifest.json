@@ -1,0 +1,21 @@
+{
+  "name": "mirra",
+  "short_name": "mirra",
+  "description": "Recording proxy for LLM API traffic",
+  "icons": [
+    {
+      "src": "/logo192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#2e3440",
+  "theme_color": "#2e3440"
+}

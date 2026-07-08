@@ -1,9 +1,15 @@
-import React, { useState } from 'react';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Button } from '@/components/ui/button';
-import { ChevronUp, ChevronDown } from 'lucide-react';
+import React, { useState } from "react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
+import { ChevronUp, ChevronDown } from "lucide-react";
 
 export interface TimePickerProps {
   value: { hours: number; minutes: number };
@@ -18,24 +24,24 @@ const TimePicker: React.FC<TimePickerProps> = ({
   onChange,
   className = "",
   label = "Time",
-  id = "time-picker"
+  id = "time-picker",
 }) => {
   // State to track if we're using a preset or custom minute value
   const [useCustomMinute, setUseCustomMinute] = useState(
-    ![0, 15, 30, 45].includes(value.minutes)
+    ![0, 15, 30, 45].includes(value.minutes),
   );
 
   // Generate hour options (0-23)
   const hours = Array.from({ length: 24 }, (_, i) => i);
 
   // Generate minute presets (0, 15, 30, 45)
-  const minutePresets = [0, 15, 30, 45, 'custom'];
+  const minutePresets = [0, 15, 30, 45, "custom"];
 
   // Format time to display
   const formatTime = (hours: number, minutes: number) => {
-    const period = hours >= 12 ? 'PM' : 'AM';
+    const period = hours >= 12 ? "PM" : "AM";
     const displayHours = hours % 12 === 0 ? 12 : hours % 12;
-    return `${displayHours}:${minutes.toString().padStart(2, '0')} ${period}`;
+    return `${displayHours}:${minutes.toString().padStart(2, "0")} ${period}`;
   };
 
   // Handle minute input change
@@ -56,7 +62,7 @@ const TimePicker: React.FC<TimePickerProps> = ({
 
   // Handle preset selection
   const handlePresetChange = (val: string) => {
-    if (val === 'custom') {
+    if (val === "custom") {
       setUseCustomMinute(true);
     } else {
       setUseCustomMinute(false);
@@ -80,9 +86,13 @@ const TimePicker: React.FC<TimePickerProps> = ({
           <SelectContent>
             {hours.map((hour) => (
               <SelectItem key={`hour-${hour}`} value={hour.toString()}>
-                {hour === 0 ? '12 AM' :
-                  hour === 12 ? '12 PM' :
-                    hour < 12 ? `${hour} AM` : `${hour - 12} PM`}
+                {hour === 0
+                  ? "12 AM"
+                  : hour === 12
+                    ? "12 PM"
+                    : hour < 12
+                      ? `${hour} AM`
+                      : `${hour - 12} PM`}
               </SelectItem>
             ))}
           </SelectContent>
@@ -134,11 +144,10 @@ const TimePicker: React.FC<TimePickerProps> = ({
             </SelectTrigger>
             <SelectContent>
               {minutePresets.map((minute) => (
-                <SelectItem
-                  key={`minute-${minute}`}
-                  value={minute.toString()}
-                >
-                  {minute === 'custom' ? 'Custom...' : minute.toString().padStart(2, '0')}
+                <SelectItem key={`minute-${minute}`} value={minute.toString()}>
+                  {minute === "custom"
+                    ? "Custom..."
+                    : minute.toString().padStart(2, "0")}
                 </SelectItem>
               ))}
             </SelectContent>

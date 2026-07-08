@@ -1,10 +1,11 @@
 module github.com/jpoz/mirra
 
-go 1.23.0
+go 1.24
 
 require (
 	github.com/evanw/esbuild v0.25.12
 	github.com/google/uuid v1.6.0
+	github.com/klauspost/compress v1.19.0
 	github.com/stretchr/testify v1.11.1
 )
 

@@ -44,9 +44,26 @@ export function getStatusTextColor(status: number): string {
  */
 const PROVIDER_STYLES = {
   gemini: "bg-blue-100 text-blue-800 dark:bg-blue-900/20 dark:text-blue-300",
-  openai: "bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-300",
-  claude: "bg-orange-100 text-orange-800 dark:bg-orange-900/20 dark:text-orange-300",
+  openai:
+    "bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-300",
+  claude:
+    "bg-orange-100 text-orange-800 dark:bg-orange-900/20 dark:text-orange-300",
+  chatgpt:
+    "bg-purple-100 text-purple-800 dark:bg-purple-900/20 dark:text-purple-300",
+  unknown: "bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-300",
 } as const;
+
+/**
+ * Display names for providers. "chatgpt" is Codex traffic authenticated
+ * with a ChatGPT subscription.
+ */
+const PROVIDER_LABELS: Record<string, string> = {
+  gemini: "Gemini",
+  openai: "OpenAI",
+  claude: "Claude",
+  chatgpt: "Codex",
+  unknown: "Unknown",
+};
 
 /**
  * Returns Tailwind classes for provider badges
@@ -56,7 +73,14 @@ export function getProviderStyles(provider: string): string {
   if (normalized in PROVIDER_STYLES) {
     return PROVIDER_STYLES[normalized as keyof typeof PROVIDER_STYLES];
   }
-  return "bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-300";
+  return PROVIDER_STYLES.unknown;
+}
+
+/**
+ * Returns the human-readable name for a provider
+ */
+export function getProviderLabel(provider: string): string {
+  return PROVIDER_LABELS[provider.toLowerCase()] ?? provider;
 }
 
 /**

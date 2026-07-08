@@ -43,9 +43,10 @@ func Load(path string) (*Config, error) {
 			Level:  "info",
 		},
 		Providers: map[string]Provider{
-			"claude": {UpstreamURL: "https://api.anthropic.com"},
-			"openai": {UpstreamURL: "https://api.openai.com"},
-			"gemini": {UpstreamURL: "https://generativelanguage.googleapis.com"},
+			"claude":  {UpstreamURL: "https://api.anthropic.com"},
+			"openai":  {UpstreamURL: "https://api.openai.com"},
+			"gemini":  {UpstreamURL: "https://generativelanguage.googleapis.com"},
+			"chatgpt": {UpstreamURL: "https://chatgpt.com/backend-api/codex"},
 		},
 	}
 
@@ -94,6 +95,13 @@ func Load(path string) (*Config, error) {
 			cfg.Providers = make(map[string]Provider)
 		}
 		cfg.Providers["gemini"] = Provider{UpstreamURL: geminiUpstream}
+	}
+
+	if chatgptUpstream := os.Getenv("MIRRA_CHATGPT_UPSTREAM"); chatgptUpstream != "" {
+		if cfg.Providers == nil {
+			cfg.Providers = make(map[string]Provider)
+		}
+		cfg.Providers["chatgpt"] = Provider{UpstreamURL: chatgptUpstream}
 	}
 
 	if logLevel := os.Getenv("LOG_LEVEL"); logLevel != "" {

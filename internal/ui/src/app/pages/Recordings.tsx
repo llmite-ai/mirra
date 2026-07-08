@@ -1,21 +1,11 @@
 import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useNavigate } from "react-router";
-import { format } from "date-fns";
 import { Search, RefreshCw } from "lucide-react";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "../components/ui/table";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
+import { RecordingsTable } from "../components/RecordingsTable";
 import { fetchRecordings } from "../lib/api";
-import { getStatusTextColor, getProviderStyles, getSizeColor } from "@/lib/styles";
-import { formatBytes, truncateId } from "@/lib/formatters";
 
 export default function Recordings() {
   const navigate = useNavigate();
@@ -111,8 +101,9 @@ export default function Recordings() {
               className="w-full px-3 py-2 border rounded-md bg-background text-foreground border-input"
             >
               <option value="">All Providers</option>
-              <option value="openai">OpenAI</option>
               <option value="claude">Claude</option>
+              <option value="chatgpt">Codex</option>
+              <option value="openai">OpenAI</option>
               <option value="gemini">Gemini</option>
             </select>
           </div>
@@ -140,80 +131,10 @@ export default function Recordings() {
         {/* Table */}
         {!isLoading && data && (
           <>
-            <div className="border rounded-md bg-card">
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>ID</TableHead>
-                    <TableHead>Timestamp</TableHead>
-                    <TableHead>Provider</TableHead>
-                    <TableHead>Method</TableHead>
-                    <TableHead>Path</TableHead>
-                    <TableHead>Status</TableHead>
-                    <TableHead>Duration</TableHead>
-                    <TableHead>Size</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {data.recordings.length === 0 ? (
-                    <TableRow>
-                      <TableCell
-                        colSpan={8}
-                        className="text-center py-8 text-muted-foreground"
-                      >
-                        No recordings found
-                      </TableCell>
-                    </TableRow>
-                  ) : (
-                    data.recordings.map((recording) => (
-                      <TableRow
-                        key={recording.id}
-                        onClick={() => navigate(`/recordings/${recording.id}`)}
-                      >
-                        <TableCell className="font-mono text-xs text-muted-foreground">
-                          {truncateId(recording.id)}
-                        </TableCell>
-                        <TableCell className="text-sm text-foreground">
-                          {format(
-                            new Date(recording.timestamp),
-                            "MMM d, HH:mm:ss",
-                          )}
-                        </TableCell>
-                        <TableCell>
-                          <span
-                            className={
-                              "inline-flex items-center px-2 py-1 rounded text-xs font-medium " +
-                              getProviderStyles(recording.provider)
-                            }
-                          >
-                            {recording.provider}
-                          </span>
-                        </TableCell>
-                        <TableCell className="text-sm font-mono text-foreground">
-                          {recording.method}
-                        </TableCell>
-                        <TableCell className="text-sm font-mono max-w-xs truncate text-foreground">
-                          {recording.path}
-                        </TableCell>
-                        <TableCell
-                          className={`font-medium ${getStatusTextColor(recording.status)}`}
-                        >
-                          {recording.status}
-                        </TableCell>
-                        <TableCell className="text-sm text-foreground">
-                          {recording.duration}ms
-                        </TableCell>
-                        <TableCell
-                          className={`text-sm font-mono ${getSizeColor(recording.responseSize)}`}
-                        >
-                          {formatBytes(recording.responseSize)}
-                        </TableCell>
-                      </TableRow>
-                    ))
-                  )}
-                </TableBody>
-              </Table>
-            </div>
+            <RecordingsTable
+              recordings={data.recordings}
+              onSelect={(recording) => navigate(`/recordings/${recording.id}`)}
+            />
 
             {/* Pagination */}
             {data.recordings.length > 0 && (

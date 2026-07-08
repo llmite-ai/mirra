@@ -2,16 +2,24 @@ import React, { useEffect, useRef, useState, useCallback } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useNavigate, useSearchParams } from "react-router";
 import { format } from "date-fns";
-import { Loader2 } from "lucide-react";
-import { fetchRecordings } from "../lib/api";
-import { getStatusTextColor, getProviderStyles } from "@/lib/styles";
+import { Loader2, X } from "lucide-react";
+import { fetchRecordings, fetchSessionGroup } from "../lib/api";
+import {
+  getStatusTextColor,
+  getProviderStyles,
+  getProviderLabel,
+} from "@/lib/styles";
+import { truncateId } from "@/lib/formatters";
 
 interface RecordingSidebarProps {
   currentRecordingId: string;
+  /** When set, the sidebar lists this session's recordings instead of the latest traffic */
+  sessionId?: string;
 }
 
 export default function RecordingSidebar({
   currentRecordingId,
+  sessionId,
 }: RecordingSidebarProps) {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
@@ -49,9 +57,18 @@ export default function RecordingSidebar({
     queryKey: ["recordings", "sidebar"],
     queryFn: () => fetchRecordings(1, 100), // Fetch first 100 for the sidebar
     refetchInterval: 5000,
+    enabled: !sessionId,
   });
 
-  const recordings = data?.recordings || [];
+  const { data: sessionData, isLoading: isLoadingSession } = useQuery({
+    queryKey: ["session", sessionId],
+    queryFn: () => fetchSessionGroup(sessionId!),
+    refetchInterval: 5000,
+    enabled: !!sessionId,
+  });
+
+  const recordings =
+    (sessionId ? sessionData?.recordings : data?.recordings) || [];
 
   // Keyboard navigation
   useEffect(() => {
@@ -100,7 +117,7 @@ export default function RecordingSidebar({
     }
   }, [currentRecordingId, recordings]);
 
-  if (isLoading) {
+  if (isLoading || isLoadingSession) {
     return (
       <div className="w-80 border-r bg-muted/10 flex items-center justify-center">
         <Loader2 className="h-6 w-6 animate-spin text-muted-foreground" />
@@ -113,10 +130,22 @@ export default function RecordingSidebar({
       className="relative border-r bg-muted/10 flex flex-col h-full flex-shrink-0"
       style={{ width }}
     >
-      <div className="p-4 border-b bg-background/50 backdrop-blur">
-        <h3 className="font-semibold text-sm text-muted-foreground uppercase tracking-wider">
-          Recent Recordings
+      <div className="p-4 border-b bg-background/50 backdrop-blur flex items-center justify-between gap-2">
+        <h3 className="font-semibold text-sm text-muted-foreground uppercase tracking-wider truncate">
+          {sessionId
+            ? `Session ${truncateId(sessionId, 12)}`
+            : "Recent Recordings"}
         </h3>
+        {sessionId && (
+          <button
+            onClick={() => navigate(`/recordings/${currentRecordingId}`)}
+            className="p-1 hover:bg-muted rounded transition-colors shrink-0"
+            aria-label="Leave session view"
+            title="Show recent recordings instead"
+          >
+            <X className="h-4 w-4 text-muted-foreground" />
+          </button>
+        )}
       </div>
       <div className="flex-1 overflow-y-auto" ref={scrollRef}>
         {recordings.length === 0 ? (
@@ -167,7 +196,7 @@ export default function RecordingSidebar({
                         " px-1 py-0.5 rounded"
                       }
                     >
-                      {recording.provider}
+                      {getProviderLabel(recording.provider)}
                     </span>
                     <span>{recording.duration}ms</span>
                   </div>

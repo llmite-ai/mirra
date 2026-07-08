@@ -1,8 +1,8 @@
 package proxy
 
 import (
-	"bufio"
 	"bytes"
+	"compress/gzip"
 	"encoding/base64"
 	"encoding/json"
 	"fmt"
@@ -11,6 +11,9 @@ import (
 	"net/http"
 	"strings"
 	"time"
+	"unicode/utf8"
+
+	"github.com/klauspost/compress/zstd"
 
 	"github.com/jpoz/mirra/internal/config"
 	"github.com/jpoz/mirra/internal/recorder"
@@ -112,6 +115,17 @@ func (p *Proxy) Handle(w http.ResponseWriter, r *http.Request) {
 
 	// Identify provider early - use "unknown" as fallback for recording
 	provider := p.identifyProvider(r.URL.Path)
+	forwardPath := r.URL.Path
+
+	// Codex sessions authenticated with a ChatGPT subscription use
+	// OpenAI-shaped paths but a different backend; the account header is what
+	// tells the two apart. The /v1 prefix exists only on the OpenAI API side,
+	// so it is dropped before joining with the chatgpt upstream.
+	if provider == "openai" && r.Header.Get("ChatGPT-Account-ID") != "" {
+		provider = "chatgpt"
+		forwardPath = strings.TrimPrefix(r.URL.Path, "/v1")
+	}
+
 	recordProvider := provider
 	if recordProvider == "" {
 		recordProvider = "unknown"
@@ -151,6 +165,14 @@ func (p *Proxy) Handle(w http.ResponseWriter, r *http.Request) {
 		p.recorder.Record(rec)
 	}()
 
+	// WebSocket upgrades (codex's transport for /v1/responses) cannot ride an
+	// http.Client round trip; they get a raw tunnel that records the frames
+	// as they pass. Unknown endpoints fall through to the 404 below.
+	if provider != "" && IsWebSocketUpgrade(r) {
+		p.handleWebSocket(w, r, provider, forwardPath, &rec)
+		return
+	}
+
 	// Read and capture request body
 	bodyBytes, err := io.ReadAll(r.Body)
 	if err != nil {
@@ -163,14 +185,16 @@ func (p *Proxy) Handle(w http.ResponseWriter, r *http.Request) {
 		_ = r.Body.Close()
 	}()
 
-	// Capture request body
+	// Capture request body. Some clients compress request payloads (Codex
+	// sends zstd); the recording holds the decoded form while the upstream
+	// still receives the original bytes.
 	if len(bodyBytes) > 0 {
-		// Try to parse as JSON, otherwise store as string
+		decoded := decodeBody(r.Header, bodyBytes)
 		var jsonBody any
-		if err := json.Unmarshal(bodyBytes, &jsonBody); err == nil {
+		if err := json.Unmarshal(decoded, &jsonBody); err == nil {
 			rec.Request.Body = jsonBody
 		} else {
-			rec.Request.Body = string(bodyBytes)
+			rec.Request.Body = recordString(decoded)
 		}
 	}
 
@@ -198,7 +222,7 @@ func (p *Proxy) Handle(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Create upstream request
-	upstreamURL := providerCfg.UpstreamURL + r.URL.Path
+	upstreamURL := providerCfg.UpstreamURL + forwardPath
 	if r.URL.RawQuery != "" {
 		upstreamURL += "?" + r.URL.RawQuery
 	}
@@ -211,8 +235,14 @@ func (p *Proxy) Handle(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Copy headers
+	// Copy headers. Accept-Encoding is deliberately not forwarded: Go's
+	// transport then negotiates gzip itself and transparently decompresses,
+	// so the client and the recording both see identity-encoded bytes while
+	// the upstream leg stays compressed.
 	for key, values := range r.Header {
+		if strings.EqualFold(key, "Accept-Encoding") {
+			continue
+		}
 		for _, value := range values {
 			req.Header.Add(key, value)
 		}
@@ -241,9 +271,15 @@ func (p *Proxy) Handle(w http.ResponseWriter, r *http.Request) {
 	rec.Response.Status = resp.StatusCode
 	rec.Response.Headers = resp.Header.Clone()
 
-	// Check if streaming
-	isStreaming := strings.Contains(resp.Header.Get("Content-Type"), "text/event-stream") ||
-		strings.Contains(resp.Header.Get("Content-Type"), "stream")
+	// Check if streaming. The chatgpt upstream omits Content-Type on its SSE
+	// responses, so the client's Accept header is the only remaining signal.
+	contentType := resp.Header.Get("Content-Type")
+	isStreaming := strings.Contains(contentType, "text/event-stream") ||
+		strings.Contains(contentType, "stream")
+	if contentType == "" && resp.StatusCode < 300 &&
+		strings.Contains(r.Header.Get("Accept"), "text/event-stream") {
+		isStreaming = true
+	}
 	rec.Response.Streaming = isStreaming
 
 	w.WriteHeader(resp.StatusCode)
@@ -268,68 +304,110 @@ func (p *Proxy) handleRegular(w http.ResponseWriter, body io.Reader, rec *record
 	rec.ResponseSize = int64(buf.Len())
 
 	if buf.Len() > 0 {
-		// Check if response is gzipped
-		isGzipped := false
-		if encodings, ok := rec.Response.Headers["Content-Encoding"]; ok {
-			for _, encoding := range encodings {
-				if strings.Contains(strings.ToLower(encoding), "gzip") {
-					isGzipped = true
-					break
-				}
-			}
-		}
+		decoded := decodeBody(rec.Response.Headers, buf.Bytes())
 
-		// Try to parse as JSON, otherwise store as string or base64
+		// Try to parse as JSON, otherwise store as text or base64
 		var jsonBody any
-		if err := json.Unmarshal(buf.Bytes(), &jsonBody); err == nil {
+		if err := json.Unmarshal(decoded, &jsonBody); err == nil {
 			rec.Response.Body = jsonBody
-		} else if isGzipped {
-			// For gzipped content, base64 encode to preserve binary data
-			rec.Response.Body = "base64:" + base64.StdEncoding.EncodeToString(buf.Bytes())
 		} else {
-			rec.Response.Body = buf.String()
+			rec.Response.Body = recordString(decoded)
 		}
 	}
+}
+
+// decodeBody reverses a gzip or zstd Content-Encoding so recordings hold
+// readable payloads even when a peer compresses without being asked.
+// Undecodable input is returned unchanged; a truncated stream (client
+// disconnect mid-response) still yields the prefix that was flushed.
+func decodeBody(headers map[string][]string, raw []byte) []byte {
+	switch {
+	case hasContentEncoding(headers, "gzip"):
+		gz, err := gzip.NewReader(bytes.NewReader(raw))
+		if err != nil {
+			return raw
+		}
+		defer func() {
+			_ = gz.Close()
+		}()
+		decoded, err := io.ReadAll(gz)
+		if err != nil && len(decoded) == 0 {
+			return raw
+		}
+		return decoded
+	case hasContentEncoding(headers, "zstd"):
+		zr, err := zstd.NewReader(bytes.NewReader(raw))
+		if err != nil {
+			return raw
+		}
+		defer zr.Close()
+		decoded, err := io.ReadAll(zr)
+		if err != nil && len(decoded) == 0 {
+			return raw
+		}
+		return decoded
+	}
+	return raw
+}
+
+func hasContentEncoding(headers map[string][]string, name string) bool {
+	for _, encoding := range headers["Content-Encoding"] {
+		if strings.Contains(strings.ToLower(encoding), name) {
+			return true
+		}
+	}
+	return false
+}
+
+// recordString stores text bodies as strings; binary bodies are base64
+// encoded because encoding/json replaces invalid UTF-8 with U+FFFD, which
+// would destroy the payload.
+func recordString(b []byte) any {
+	if utf8.Valid(b) {
+		return string(b)
+	}
+	return "base64:" + base64.StdEncoding.EncodeToString(b)
 }
 
 func (p *Proxy) handleStreaming(w http.ResponseWriter, body io.Reader, rec *recorder.Recording) {
 	flusher, ok := w.(http.Flusher)
 	if !ok {
 		slog.Error("response writer does not support flushing", "id", rec.ID[:8])
-		_, _ = io.Copy(w, body)
+		p.handleRegular(w, body, rec)
 		return
 	}
 
+	// Copy raw chunks as they arrive: a line scanner would strip \r bytes,
+	// hold data back until a newline shows up, and abort the stream entirely
+	// on lines longer than its buffer.
 	var accumulated bytes.Buffer
-	scanner := bufio.NewScanner(body)
-	scanner.Buffer(make([]byte, 64*1024), 1024*1024) // Support large chunks
-
-	for scanner.Scan() {
-		line := scanner.Bytes()
-		accumulated.Write(line)
-		accumulated.WriteByte('\n')
-
-		// Write to client
-		if _, err := w.Write(line); err != nil {
-			slog.Error("failed to write streaming chunk", "id", rec.ID[:8], "error", err)
+	buf := make([]byte, 32*1024)
+	for {
+		n, readErr := body.Read(buf)
+		if n > 0 {
+			chunk := buf[:n]
+			accumulated.Write(chunk)
+			if _, writeErr := w.Write(chunk); writeErr != nil {
+				slog.Error("failed to write streaming chunk", "id", rec.ID[:8], "error", writeErr)
+				break
+			}
+			flusher.Flush()
+		}
+		if readErr == io.EOF {
 			break
 		}
-		if _, err := w.Write([]byte("\n")); err != nil {
-			slog.Error("failed to write newline", "id", rec.ID[:8], "error", err)
+		if readErr != nil {
+			slog.Error("error reading stream", "id", rec.ID[:8], "error", readErr)
 			break
 		}
-		flusher.Flush()
-	}
-
-	if err := scanner.Err(); err != nil {
-		slog.Error("error reading stream", "id", rec.ID[:8], "error", err)
 	}
 
 	// Set response size
 	rec.ResponseSize = int64(accumulated.Len())
 
 	if accumulated.Len() > 0 {
-		// Store streaming responses as string (they contain SSE format)
-		rec.Response.Body = accumulated.String()
+		// SSE payloads stay a string so the stream parse endpoint can read
+		// them; gzip is reversed and binary falls back to base64.
+		rec.Response.Body = recordString(decodeBody(rec.Response.Headers, accumulated.Bytes()))
 	}
 }

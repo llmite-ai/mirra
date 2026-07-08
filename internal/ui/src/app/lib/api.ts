@@ -43,10 +43,36 @@ export interface Recording {
   error?: string;
 }
 
-export interface ParsedStream {
-  text: string;
-  metadata: Record<string, any>;
-  eventCounts: Record<string, number>;
+export interface SessionGroup {
+  trace_id: string;
+  session_id: string;
+  recording_ids: string[];
+  first_timestamp: string;
+  last_timestamp: string;
+  request_count: number;
+  providers: string[];
+  has_errors: boolean;
+}
+
+export interface SessionGroupListResponse {
+  groups: SessionGroup[];
+  total: number;
+  page: number;
+  limit: number;
+  hasMore: boolean;
+}
+
+export interface SessionGroupDetail {
+  group: SessionGroup;
+  recordings: RecordingSummary[];
+}
+
+/** Thrown when the server answers 501 (session grouping not enabled). */
+export class GroupingDisabledError extends Error {
+  constructor() {
+    super("Session grouping is not enabled");
+    this.name = "GroupingDisabledError";
+  }
 }
 
 export async function fetchRecordings(
@@ -81,12 +107,38 @@ export async function fetchRecording(id: string): Promise<Recording> {
 }
 
 /**
- * Fetches parsed stream data for a recording
+ * Fetches session groups (recordings grouped by trace/session)
  */
-export async function fetchParsedRecording(id: string): Promise<ParsedStream> {
-  const response = await fetch(`/api/recordings/${id}/parse`);
+export async function fetchSessionGroups(
+  page: number,
+  limit: number,
+): Promise<SessionGroupListResponse> {
+  const params = new URLSearchParams({
+    page: page.toString(),
+    limit: limit.toString(),
+  });
+  const response = await fetch(`/api/groups/sessions?${params}`);
+  if (response.status === 501) {
+    throw new GroupingDisabledError();
+  }
   if (!response.ok) {
-    throw new Error(`Failed to parse recording: ${response.statusText}`);
+    throw new Error("Failed to fetch sessions");
+  }
+  return response.json();
+}
+
+/**
+ * Fetches a single session group with its member recordings
+ */
+export async function fetchSessionGroup(
+  traceId: string,
+): Promise<SessionGroupDetail> {
+  const response = await fetch(`/api/groups/sessions/${traceId}`);
+  if (response.status === 501) {
+    throw new GroupingDisabledError();
+  }
+  if (!response.ok) {
+    throw new Error(`Failed to fetch session: ${response.statusText}`);
   }
   return response.json();
 }

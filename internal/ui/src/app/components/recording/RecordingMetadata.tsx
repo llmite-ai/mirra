@@ -1,56 +1,74 @@
 import React from "react";
 import { format } from "date-fns";
 import { Recording } from "@/lib/api";
-import { getStatusColor, getProviderStyles } from "@/lib/styles";
+import {
+  getStatusColor,
+  getProviderStyles,
+  getProviderLabel,
+} from "@/lib/styles";
 
 interface RecordingMetadataProps {
   recording: Recording;
 }
 
 /**
- * Displays key metadata: timestamp, provider, duration, status
+ * Displays key metadata: timestamp, provider, model, duration, status
  */
 export function RecordingMetadata({ recording }: RecordingMetadataProps) {
+  const body: any = recording.request.body;
+  const model = body && typeof body === "object" ? body.model : undefined;
+
   return (
-    <div className="grid grid-cols-4 gap-4 mb-6">
-      <div>
-        <label className="text-sm font-medium text-muted-foreground">
-          Timestamp
-        </label>
-        <p className="text-sm mt-1">
-          {format(new Date(recording.timestamp), "MMM d, yyyy HH:mm:ss")}
-        </p>
-      </div>
-      <div>
-        <label className="text-sm font-medium text-muted-foreground">
-          Provider
-        </label>
-        <p className="text-sm mt-1">
-          <span
-            className={`inline-flex items-center px-2 py-1 rounded text-xs font-medium ${getProviderStyles(recording.provider)}`}
-          >
-            {recording.provider}
+    <div className="flex flex-wrap gap-x-8 gap-y-3 mb-6">
+      <MetadataField label="Timestamp">
+        {format(new Date(recording.timestamp), "MMM d, yyyy HH:mm:ss")}
+      </MetadataField>
+      <MetadataField label="Provider">
+        <span
+          className={`inline-flex items-center px-2 py-1 rounded text-xs font-medium ${getProviderStyles(recording.provider)}`}
+        >
+          {getProviderLabel(recording.provider)}
+        </span>
+      </MetadataField>
+      {model && (
+        <MetadataField label="Model">
+          <span className="font-mono">{model}</span>
+        </MetadataField>
+      )}
+      <MetadataField label="Status">
+        <span
+          className={`inline-flex items-center px-2 py-1 rounded text-xs font-medium ${getStatusColor(recording.response.status)}`}
+        >
+          {recording.response.status}
+        </span>
+      </MetadataField>
+      <MetadataField label="Duration">
+        {recording.timing.duration_ms}ms
+      </MetadataField>
+      {recording.response.streaming && (
+        <MetadataField label="Transport">
+          <span className="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-muted text-muted-foreground">
+            SSE stream
           </span>
-        </p>
-      </div>
-      <div>
-        <label className="text-sm font-medium text-muted-foreground">
-          Duration
-        </label>
-        <p className="text-sm mt-1">{recording.timing.duration_ms}ms</p>
-      </div>
-      <div>
-        <label className="text-sm font-medium text-muted-foreground">
-          Status
-        </label>
-        <p className="text-sm mt-1">
-          <span
-            className={`inline-flex items-center px-2 py-1 rounded text-xs font-medium ${getStatusColor(recording.response.status)}`}
-          >
-            {recording.response.status}
-          </span>
-        </p>
-      </div>
+        </MetadataField>
+      )}
+    </div>
+  );
+}
+
+function MetadataField({
+  label,
+  children,
+}: {
+  label: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div>
+      <label className="text-sm font-medium text-muted-foreground">
+        {label}
+      </label>
+      <p className="text-sm mt-1">{children}</p>
     </div>
   );
 }

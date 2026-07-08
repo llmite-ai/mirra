@@ -24,8 +24,10 @@ go build -o mirra .
 
 Then start the proxy:
 ```bash
-mirra start
+mirra
 ```
+
+Bare `mirra` is shorthand for `mirra start`. Add `--attach claude,codex` to also point new Claude Code / Codex sessions at the proxy.
 
 ## Features
 
@@ -70,6 +72,46 @@ Or provide a configuration file:
 ./mirra start --config ./config.json
 ```
 
+### Run Claude Code through MIRRA
+
+```bash
+./mirra claude
+```
+
+Launches the `claude` CLI with its API traffic routed through MIRRA. If a MIRRA proxy is already listening on the configured port it is reused; otherwise one starts in-process and lives for the duration of the session. Everything after `claude` is passed through to the CLI:
+
+```bash
+./mirra claude --resume
+./mirra claude -p "explain this repo"
+```
+
+Unlike `--attach`, this touches no config files: the proxy address is injected only into that session's environment (`ANTHROPIC_BASE_URL`), so other `claude` sessions are unaffected and there is nothing to restore afterwards. Run `./mirra claude` from several terminals and they all share the first proxy; whichever process started it keeps it alive until the last session finishes. While claude owns the terminal, proxy logs go to `~/.mirra/mirra.log`.
+
+### Auto-attach Claude Code and Codex
+
+```bash
+./mirra start --attach claude,codex
+```
+
+While an attached proxy is running, every **new** `claude` or `codex` session routes its API traffic through MIRRA; already-running sessions are unaffected. On shutdown (Ctrl+C / SIGTERM) the original configs are restored.
+
+How it works:
+
+- **Claude Code**: merges `env.ANTHROPIC_BASE_URL` into `~/.claude/settings.json` (respects `CLAUDE_CONFIG_DIR`). Works with both API-key and subscription auth.
+- **Codex**: prepends a marker-delimited `openai_base_url` override to `~/.codex/config.toml` (respects `CODEX_HOME`). Works with both API-key and ChatGPT-subscription auth — subscription traffic is detected per-request via the `ChatGPT-Account-ID` header and forwarded to `chatgpt.com/backend-api/codex`, recorded under the `chatgpt` provider. Codex's websocket transport is tunneled transparently; each connection becomes one recording holding every message in both directions.
+
+Only the specific keys MIRRA owns are touched, and what was changed is journaled to `~/.mirra/attach.json` before the proxy starts serving. If an attached run dies without cleaning up (crash, `kill -9`), the next `mirra start --attach` repairs it automatically, or run:
+
+```bash
+./mirra detach
+```
+
+Notes:
+
+- A tool whose config directory doesn't exist is skipped with a log line.
+- If `config.toml` already sets `openai_base_url`, MIRRA refuses to manage codex and says so rather than fighting over the key.
+- A websocket recording is written when the connection closes, so a long codex session shows up once it ends.
+
 ### Configure your API client
 
 Point your LLM API client to the MIRRA proxy instead of the upstream API:
@@ -111,7 +153,7 @@ Export with filters:
 Options:
 - `--from` - Start date (YYYY-MM-DD)
 - `--to` - End date (YYYY-MM-DD)
-- `--provider` - Filter by provider (claude, openai, or gemini)
+- `--provider` - Filter by provider (claude, openai, gemini, or chatgpt)
 - `--output` - Output file path (default: export.jsonl)
 - `--recordings` - Path to recordings directory (default: ./recordings)
 
@@ -129,7 +171,7 @@ Filter by date range or provider:
 
 Options:
 - `--from` - Start date (YYYY-MM-DD)
-- `--provider` - Filter by provider (claude, openai, or gemini)
+- `--provider` - Filter by provider (claude, openai, gemini, or chatgpt)
 - `--recordings` - Path to recordings directory (default: ./recordings)
 
 ### View a specific recording
@@ -185,6 +227,9 @@ Configuration can be provided via a JSON file or environment variables.
     },
     "gemini": {
       "upstream_url": "https://generativelanguage.googleapis.com"
+    },
+    "chatgpt": {
+      "upstream_url": "https://chatgpt.com/backend-api/codex"
     }
   }
 }
@@ -200,6 +245,7 @@ Environment variables override config file values:
 - `MIRRA_CLAUDE_UPSTREAM` - Claude API upstream URL
 - `MIRRA_OPENAI_UPSTREAM` - OpenAI API upstream URL
 - `MIRRA_GEMINI_UPSTREAM` - Gemini API upstream URL
+- `MIRRA_CHATGPT_UPSTREAM` - ChatGPT backend upstream URL (codex subscription traffic)
 
 ### Logging
 
@@ -221,7 +267,7 @@ Each recording includes:
 {
   "id": "uuid-v4",
   "timestamp": "2025-01-15T10:30:00Z",
-  "provider": "claude|openai|gemini",
+  "provider": "claude|openai|gemini|chatgpt",
   "request": {
     "method": "POST",
     "path": "/v1/messages",

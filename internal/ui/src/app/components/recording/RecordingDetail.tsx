@@ -2,14 +2,13 @@ import React from "react";
 import { Loader2 } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { useSearchParams } from "react-router";
-import { fetchRecording, fetchParsedRecording } from "@/lib/api";
+import { fetchRecording } from "@/lib/api";
 import { RecordingHeader } from "./RecordingHeader";
 import { RecordingMetadata } from "./RecordingMetadata";
 import { RecordingError } from "./RecordingError";
 import { RecordingTabs } from "./RecordingTabs";
 import { RequestPanel } from "./RequestPanel";
 import { ResponsePanel } from "./ResponsePanel";
-import { ParsedResponsePanel } from "./ParsedResponsePanel";
 
 interface RecordingDetailProps {
   recordingId: string;
@@ -18,7 +17,6 @@ interface RecordingDetailProps {
 const TABS = [
   { id: "request", label: "Request" },
   { id: "response", label: "Response" },
-  { id: "parsed", label: "Parsed Response" },
 ];
 
 /**
@@ -27,7 +25,9 @@ const TABS = [
  */
 export default function RecordingDetail({ recordingId }: RecordingDetailProps) {
   const [searchParams, setSearchParams] = useSearchParams();
-  const activeTab = searchParams.get("tab") || "request";
+  const tabParam = searchParams.get("tab") || "request";
+  // "parsed" was its own tab before streams rendered in the response view
+  const activeTab = tabParam === "parsed" ? "response" : tabParam;
 
   const setActiveTab = (tab: string) => {
     setSearchParams(
@@ -36,7 +36,7 @@ export default function RecordingDetail({ recordingId }: RecordingDetailProps) {
         newParams.set("tab", tab);
         return newParams;
       },
-      { replace: true }
+      { replace: true },
     );
   };
 
@@ -44,16 +44,6 @@ export default function RecordingDetail({ recordingId }: RecordingDetailProps) {
     queryKey: ["recording", recordingId],
     queryFn: () => fetchRecording(recordingId),
     enabled: !!recordingId,
-  });
-
-  const {
-    data: parsedData,
-    isLoading: isParsing,
-    error: parseError,
-  } = useQuery({
-    queryKey: ["parsed", recordingId],
-    queryFn: () => fetchParsedRecording(recordingId),
-    enabled: activeTab === "parsed" && !!recording?.response.streaming,
   });
 
   // Loading state
@@ -95,14 +85,6 @@ export default function RecordingDetail({ recordingId }: RecordingDetailProps) {
         <div className="flex-1 overflow-y-auto p-6 bg-muted/10">
           {activeTab === "request" && <RequestPanel recording={recording} />}
           {activeTab === "response" && <ResponsePanel recording={recording} />}
-          {activeTab === "parsed" && (
-            <ParsedResponsePanel
-              recording={recording}
-              parsedData={parsedData}
-              isLoading={isParsing}
-              error={parseError}
-            />
-          )}
         </div>
       </div>
     </div>
