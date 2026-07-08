@@ -32,7 +32,7 @@ export function RecordingsTable({
   emptyMessage = "No recordings found",
 }: RecordingsTableProps) {
   return (
-    <div className="border rounded-md bg-card">
+    <div className="border rounded-lg bg-card shadow-elev overflow-hidden [&_th]:text-[11px] [&_th]:uppercase [&_th]:tracking-[0.08em] [&_th]:font-semibold [&_th]:text-muted-foreground">
       <Table>
         <TableHeader>
           <TableRow>
@@ -72,7 +72,7 @@ export function RecordingsTable({
                 <TableCell>
                   <span
                     className={
-                      "inline-flex items-center px-2 py-1 rounded text-xs font-medium " +
+                      "inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium " +
                       getProviderStyles(recording.provider)
                     }
                   >

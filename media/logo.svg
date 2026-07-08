@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <style>
+    .fg { fill: #24292f; }
+    @media (prefers-color-scheme: dark) {
+      .fg { fill: #eceff4; }
+    }
+  </style>
+  <polygon class="fg" points="3,7 13,16 3,25"/>
+  <rect class="fg" x="15.25" y="5" width="1.5" height="22" opacity="0.55"/>
+  <polygon points="29,7 19,16 29,25" fill="none" stroke="#81a1c1" stroke-width="2"/>
+</svg>

@@ -86,7 +86,7 @@ function ParamChips({ params }: { params: Record<string, unknown> }) {
               )}
             </Badge>
             {showObjects === key && (
-              <div className="w-full border bg-muted/20 p-2">
+              <div className="w-full rounded-lg border bg-muted/20 p-2">
                 <JsonView data={value} defaultExpandDepth={2} />
               </div>
             )}
@@ -101,7 +101,7 @@ function SystemPromptSection({ text }: { text: string }) {
   const [open, setOpen] = useState(false);
   const firstLine = text.split("\n", 1)[0];
   return (
-    <div className="border bg-muted/20">
+    <div className="rounded-lg border bg-muted/20 overflow-hidden">
       <button
         onClick={() => setOpen(!open)}
         className="flex w-full items-center gap-2 px-2 py-1.5 text-left hover:bg-muted/50 transition-colors min-w-0"
@@ -140,7 +140,7 @@ function ToolsSection({ tools }: { tools: RequestView["tools"] }) {
   const [openTool, setOpenTool] = useState<string | null>(null);
 
   return (
-    <div className="border bg-muted/20">
+    <div className="rounded-lg border bg-muted/20 overflow-hidden">
       <button
         onClick={() => setOpen(!open)}
         className="flex w-full items-center gap-2 px-2 py-1.5 text-left hover:bg-muted/50 transition-colors min-w-0"

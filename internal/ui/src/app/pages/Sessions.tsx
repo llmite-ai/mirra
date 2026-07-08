@@ -36,7 +36,9 @@ export default function Sessions() {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-2xl font-bold text-foreground">Sessions</h1>
+            <h1 className="text-2xl font-semibold tracking-tight text-foreground">
+              Sessions
+            </h1>
             <p className="text-sm text-muted-foreground">
               {data?.total
                 ? `${data.total} total sessions`
@@ -44,6 +46,7 @@ export default function Sessions() {
             </p>
           </div>
           <Button
+            variant="outline"
             onClick={() => refetch()}
             disabled={isFetching}
             className="flex items-center gap-2"
@@ -57,12 +60,12 @@ export default function Sessions() {
 
         {/* Error State */}
         {error instanceof GroupingDisabledError ? (
-          <div className="p-8 text-center text-muted-foreground border rounded-md bg-card">
+          <div className="p-8 text-center text-muted-foreground border rounded-lg bg-card shadow-elev">
             Session grouping is not enabled on this server. Enable recording to
             group traffic into sessions.
           </div>
         ) : error ? (
-          <div className="p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-md text-red-800 dark:text-red-300">
+          <div className="p-4 rounded-lg bg-rose-500/10 border border-rose-500/25 text-rose-700 dark:text-rose-300">
             Error loading sessions: {(error as Error).message}
           </div>
         ) : null}
@@ -77,7 +80,7 @@ export default function Sessions() {
         {/* Table */}
         {!isLoading && data && (
           <>
-            <div className="border rounded-md bg-card">
+            <div className="border rounded-lg bg-card shadow-elev overflow-hidden [&_th]:text-[11px] [&_th]:uppercase [&_th]:tracking-[0.08em] [&_th]:font-semibold [&_th]:text-muted-foreground">
               <Table>
                 <TableHeader>
                   <TableRow>
@@ -131,7 +134,7 @@ export default function Sessions() {
                               <span
                                 key={provider}
                                 className={
-                                  "inline-flex items-center px-2 py-0.5 rounded text-xs font-medium " +
+                                  "inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium " +
                                   getProviderStyles(provider)
                                 }
                               >

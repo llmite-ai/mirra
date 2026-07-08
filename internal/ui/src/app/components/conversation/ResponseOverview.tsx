@@ -26,7 +26,7 @@ export function ResponseOverview({ view }: { view: ResponseView }) {
       </div>
 
       {view.error && (
-        <div className="flex items-start gap-2 border border-destructive-foreground/40 bg-destructive p-3">
+        <div className="flex items-start gap-2 rounded-lg border border-destructive-foreground/25 bg-destructive p-3">
           <AlertTriangle className="h-4 w-4 text-destructive-foreground shrink-0 mt-0.5" />
           <p className="text-sm text-destructive-foreground whitespace-pre-wrap break-words">
             {view.error}

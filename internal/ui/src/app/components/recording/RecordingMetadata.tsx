@@ -19,13 +19,13 @@ export function RecordingMetadata({ recording }: RecordingMetadataProps) {
   const model = body && typeof body === "object" ? body.model : undefined;
 
   return (
-    <div className="flex flex-wrap gap-x-8 gap-y-3 mb-6">
+    <div className="flex flex-wrap gap-x-10 gap-y-3 mb-6">
       <MetadataField label="Timestamp">
         {format(new Date(recording.timestamp), "MMM d, yyyy HH:mm:ss")}
       </MetadataField>
       <MetadataField label="Provider">
         <span
-          className={`inline-flex items-center px-2 py-1 rounded text-xs font-medium ${getProviderStyles(recording.provider)}`}
+          className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${getProviderStyles(recording.provider)}`}
         >
           {getProviderLabel(recording.provider)}
         </span>
@@ -37,7 +37,7 @@ export function RecordingMetadata({ recording }: RecordingMetadataProps) {
       )}
       <MetadataField label="Status">
         <span
-          className={`inline-flex items-center px-2 py-1 rounded text-xs font-medium ${getStatusColor(recording.response.status)}`}
+          className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${getStatusColor(recording.response.status)}`}
         >
           {recording.response.status}
         </span>
@@ -47,7 +47,7 @@ export function RecordingMetadata({ recording }: RecordingMetadataProps) {
       </MetadataField>
       {recording.response.streaming && (
         <MetadataField label="Transport">
-          <span className="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-muted text-muted-foreground">
+          <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-muted text-muted-foreground ring-1 ring-inset ring-border">
             SSE stream
           </span>
         </MetadataField>
@@ -65,10 +65,10 @@ function MetadataField({
 }) {
   return (
     <div>
-      <label className="text-sm font-medium text-muted-foreground">
+      <label className="text-[11px] font-semibold uppercase tracking-[0.08em] text-muted-foreground">
         {label}
       </label>
-      <p className="text-sm mt-1">{children}</p>
+      <p className="text-sm mt-1.5">{children}</p>
     </div>
   );
 }

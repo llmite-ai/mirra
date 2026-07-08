@@ -1,4 +1,5 @@
 import React from "react";
+import { cn } from "@/lib/utils";
 
 interface RecordingTabsProps {
   activeTab: string;
@@ -7,7 +8,7 @@ interface RecordingTabsProps {
 }
 
 /**
- * Tab navigation component
+ * Tab navigation with a crisp underline on the active tab.
  */
 export function RecordingTabs({
   activeTab,
@@ -15,21 +16,22 @@ export function RecordingTabs({
   tabs,
 }: RecordingTabsProps) {
   return (
-    <div className="flex gap-6 border-b -mb-px">
+    <div className="flex gap-6 border-b border-border/60">
       {tabs.map((tab) => (
         <button
           key={tab.id}
           onClick={() => onTabChange(tab.id)}
-          className={`
-            pb-3 text-sm font-medium transition-colors border-b-2
-            ${
-              activeTab === tab.id
-                ? "border-primary text-primary"
-                : "border-transparent text-muted-foreground hover:text-foreground hover:border-border"
-            }
-          `}
+          className={cn(
+            "relative pb-3 text-sm font-medium transition-colors",
+            activeTab === tab.id
+              ? "text-foreground"
+              : "text-muted-foreground hover:text-foreground",
+          )}
         >
           {tab.label}
+          {activeTab === tab.id && (
+            <span className="absolute inset-x-0 -bottom-px h-0.5 rounded-full bg-primary" />
+          )}
         </button>
       ))}
     </div>

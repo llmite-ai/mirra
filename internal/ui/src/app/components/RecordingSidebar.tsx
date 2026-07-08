@@ -130,8 +130,8 @@ export default function RecordingSidebar({
       className="relative border-r bg-muted/10 flex flex-col h-full flex-shrink-0"
       style={{ width }}
     >
-      <div className="p-4 border-b bg-background/50 backdrop-blur flex items-center justify-between gap-2">
-        <h3 className="font-semibold text-sm text-muted-foreground uppercase tracking-wider truncate">
+      <div className="p-4 border-b border-border/60 bg-background/50 backdrop-blur flex items-center justify-between gap-2">
+        <h3 className="font-semibold text-[11px] text-muted-foreground uppercase tracking-[0.08em] truncate">
           {sessionId
             ? `Session ${truncateId(sessionId, 12)}`
             : "Recent Recordings"}
@@ -167,10 +167,10 @@ export default function RecordingSidebar({
                       search: search ? `?${search}` : "",
                     });
                   }}
-                  className={`w-full text-left p-3 hover:bg-muted/50 transition-colors focus:outline-none ${
+                  className={`w-full text-left p-3 transition-colors focus:outline-none ${
                     isActive
-                      ? "bg-muted border-l-2 border-l-primary"
-                      : "border-l-2 border-l-transparent"
+                      ? "bg-primary/10 border-l-2 border-l-primary"
+                      : "border-l-2 border-l-transparent hover:bg-muted/40"
                   }`}
                 >
                   <div className="flex items-center justify-between mb-1">
@@ -193,7 +193,7 @@ export default function RecordingSidebar({
                     <span
                       className={
                         getProviderStyles(recording.provider) +
-                        " px-1 py-0.5 rounded"
+                        " px-1.5 py-0.5 rounded-full font-medium"
                       }
                     >
                       {getProviderLabel(recording.provider)}

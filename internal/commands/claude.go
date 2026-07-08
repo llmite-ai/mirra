@@ -23,46 +23,21 @@ import (
 const claudeBaseURLEnv = "ANTHROPIC_BASE_URL"
 
 // Claude runs the claude CLI with its API traffic routed through a mirra
-// proxy. A mirra already listening on the configured port is reused;
-// otherwise one is started in-process and kept alive until this session and
-// any other attached sessions finish. The proxy address is injected only
-// into the child's environment, so no config files are touched and nothing
-// needs restoring afterwards. All arguments pass through to claude.
+// proxy on the configured port (default 4567, so the UI is always at
+// http://localhost:4567). A mirra already listening there is reused;
+// otherwise one starts in-process and lives until this session and any other
+// `mirra claude` sessions riding on it finish. The proxy address is injected
+// only into the child's environment — no config files are touched, so no
+// other claude session is affected. All arguments pass through to claude.
 func Claude(args []string) (int, error) {
 	cfg, err := config.Load("")
 	if err != nil {
 		return 1, fmt.Errorf("load config: %w", err)
 	}
-	proxyURL := fmt.Sprintf("http://localhost:%d", cfg.Port)
 	pretty := cfg.Logging.Format != "json" && cfg.Logging.Format != "plain"
 
-	if mirraAlive(proxyURL) {
-		return runAttached(proxyURL, args, pretty)
-	}
-	return runOwned(cfg, proxyURL, args, pretty)
-}
-
-// runAttached rides on a mirra proxy owned by another process.
-func runAttached(proxyURL string, args []string, pretty bool) (int, error) {
-	release, err := holdSession(proxyURL)
-	if err != nil {
-		// Registration is best-effort: an older mirra without the hold
-		// endpoint still proxies fine, it just can't wait for this session
-		// before shutting down.
-		slog.Warn("could not register session with the running mirra", "error", err)
-	} else {
-		defer release()
-	}
-	announce(pretty, fmt.Sprintf("using the mirra already running at %s", proxyURL))
-	return runClaude(proxyURL, args)
-}
-
-// runOwned starts a proxy in-process, runs claude against it, then keeps the
-// proxy alive until every other attached session has finished.
-func runOwned(cfg *config.Config, proxyURL string, args []string, pretty bool) (int, error) {
-	// Server request logs must not scribble over claude's TUI, so they go to
-	// a file for the life of the session. The startup banner still prints to
-	// stdout before claude takes over the terminal.
+	// From here on the terminal belongs to claude's TUI, so every log —
+	// including the proxy's request log — goes to a file.
 	logFile, logPath, err := openRunLog()
 	if err != nil {
 		return 1, fmt.Errorf("open log file: %w", err)
@@ -77,6 +52,18 @@ func runOwned(cfg *config.Config, proxyURL string, args []string, pretty bool) (
 	log := logger.NewLogger(fileFormat, cfg.Logging.Level, logFile)
 	slog.SetDefault(log)
 
+	proxyURL := fmt.Sprintf("http://localhost:%d", cfg.Port)
+	if mirraAlive(proxyURL) {
+		if code, ok, err := attachAndRun(proxyURL, args, pretty); ok {
+			return code, err
+		}
+	}
+	return runOwned(cfg, log, logPath, args, pretty)
+}
+
+// runOwned starts a proxy in-process, runs claude against it, then keeps the
+// proxy alive until every other attached `mirra claude` session has finished.
+func runOwned(cfg *config.Config, log *slog.Logger, logPath string, args []string, pretty bool) (int, error) {
 	srv := server.New(cfg, log, ui.NewManager(ui.WithLogger(log)))
 	ready := make(chan struct{})
 	srv.OnReady(func() { close(ready) })
@@ -86,13 +73,16 @@ func runOwned(cfg *config.Config, proxyURL string, args []string, pretty bool) (
 	serverDone := make(chan error, 1)
 	go func() { serverDone <- srv.Start(ctx) }()
 
+	proxyURL := fmt.Sprintf("http://localhost:%d", cfg.Port)
 	select {
 	case <-ready:
 	case err := <-serverDone:
-		// Losing the port bind usually means another mirra claimed it between
-		// our health check and listen; give it a moment and ride on it.
+		// Losing the bind usually means another mirra claimed the port
+		// between our health check and listen; give it a moment to serve.
 		if waitMirraAlive(proxyURL, 5) {
-			return runAttached(proxyURL, args, pretty)
+			if code, ok, aerr := attachAndRun(proxyURL, args, pretty); ok {
+				return code, aerr
+			}
 		}
 		return 1, fmt.Errorf("could not start proxy on %s (another service on the port? set MIRRA_PORT to move it): %w", proxyURL, err)
 	}
@@ -115,6 +105,21 @@ func runOwned(cfg *config.Config, proxyURL string, args []string, pretty bool) (
 	cancel()
 	<-serverDone
 	return code, runErr
+}
+
+// attachAndRun rides on a mirra proxy owned by another process. ok is false
+// when the proxy disappeared before this session could register, in which
+// case the caller should start its own.
+func attachAndRun(proxyURL string, args []string, pretty bool) (code int, ok bool, err error) {
+	release, err := holdSession(proxyURL)
+	if err != nil {
+		slog.Warn("running mirra went away; starting a new one", "url", proxyURL, "error", err)
+		return 0, false, nil
+	}
+	defer release()
+	announce(pretty, fmt.Sprintf("using the mirra already running at %s", proxyURL))
+	code, err = runClaude(proxyURL, args)
+	return code, true, err
 }
 
 // runClaude executes the claude CLI with ANTHROPIC_BASE_URL pointed at the
@@ -185,20 +190,6 @@ func claudeEnv(base []string, proxyURL string) []string {
 	return append(env, claudeBaseURLEnv+"="+proxyURL)
 }
 
-// mirraAlive reports whether a mirra proxy — specifically mirra, not just
-// any HTTP server — is answering at proxyURL.
-func mirraAlive(proxyURL string) bool {
-	client := &http.Client{Timeout: 500 * time.Millisecond}
-	resp, err := client.Get(proxyURL + "/health")
-	if err != nil {
-		return false
-	}
-	defer func() {
-		_ = resp.Body.Close()
-	}()
-	return resp.StatusCode == http.StatusOK && resp.Header.Get(server.HeaderMirra) != ""
-}
-
 // waitMirraAlive polls for a mirra proxy at proxyURL, giving a rival process
 // that just won the bind race a moment to start serving.
 func waitMirraAlive(proxyURL string, attempts int) bool {
@@ -211,6 +202,20 @@ func waitMirraAlive(proxyURL string, attempts int) bool {
 		}
 	}
 	return false
+}
+
+// mirraAlive reports whether a mirra proxy — specifically mirra, not just
+// any HTTP server — is answering at proxyURL.
+func mirraAlive(proxyURL string) bool {
+	client := &http.Client{Timeout: 500 * time.Millisecond}
+	resp, err := client.Get(proxyURL + "/health")
+	if err != nil {
+		return false
+	}
+	defer func() {
+		_ = resp.Body.Close()
+	}()
+	return resp.StatusCode == http.StatusOK && resp.Header.Get(server.HeaderMirra) != ""
 }
 
 // holdSession opens a request the server keeps open for the life of this
@@ -230,8 +235,6 @@ func holdSession(proxyURL string) (func(), error) {
 		cancel()
 		return nil, err
 	}
-	// A server predating the hold endpoint answers with the UI's SPA
-	// fallback, which lacks the mirra header.
 	if resp.StatusCode != http.StatusOK || resp.Header.Get(server.HeaderMirra) == "" {
 		cancel()
 		_ = resp.Body.Close()
@@ -262,7 +265,8 @@ func openRunLog() (*os.File, string, error) {
 }
 
 // announce prints a status line in the same style as the startup banner, or
-// a structured log record when pretty output is off.
+// a structured log record when pretty output is off. Announcements happen
+// only before claude takes over the terminal or after it exits.
 func announce(pretty bool, msg string) {
 	if !pretty {
 		slog.Info(msg)

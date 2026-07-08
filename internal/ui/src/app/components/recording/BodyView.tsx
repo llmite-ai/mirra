@@ -145,7 +145,7 @@ export function BodyView({ recording, which }: BodyViewProps) {
       )}
 
       {analysis.binary && (
-        <div className="flex items-start gap-2 border bg-muted/40 p-2 text-xs text-muted-foreground">
+        <div className="flex items-start gap-2 rounded-lg border bg-muted/40 p-2 text-xs text-muted-foreground">
           <AlertTriangle className="h-3.5 w-3.5 shrink-0 mt-0.5" />
           This body is not readable text — it was likely recorded compressed by
           an older version of mirra.
@@ -159,7 +159,7 @@ export function BodyView({ recording, which }: BodyViewProps) {
         <ResponseOverview view={analysis.response} />
       )}
       {active === "json" && (
-        <div className="border bg-muted/20 p-3">
+        <div className="rounded-lg border bg-muted/20 p-3">
           <JsonView data={analysis.json} />
         </div>
       )}
@@ -178,16 +178,16 @@ function ModeToggle({
   onChange: (mode: ViewMode) => void;
 }) {
   return (
-    <div className="inline-flex border divide-x">
+    <div className="inline-flex items-center gap-0.5 rounded-lg bg-muted/70 p-0.5">
       {modes.map((m) => (
         <button
           key={m.id}
           onClick={() => onChange(m.id)}
           className={cn(
-            "px-3 py-1 text-xs font-medium transition-colors",
+            "px-3 py-1 text-xs font-medium rounded-md transition-all",
             active === m.id
-              ? "bg-primary text-primary-foreground"
-              : "bg-card text-muted-foreground hover:text-foreground hover:bg-muted/50",
+              ? "bg-card text-foreground shadow-sm"
+              : "text-muted-foreground hover:text-foreground",
           )}
         >
           {m.label}
@@ -206,7 +206,7 @@ function RawText({ text }: { text: string }) {
 
   return (
     <div>
-      <pre className="text-xs bg-muted/20 border p-3 overflow-x-auto whitespace-pre-wrap break-words">
+      <pre className="text-xs font-mono bg-muted/20 border rounded-lg p-3 overflow-x-auto whitespace-pre-wrap break-words">
         {shown}
       </pre>
       {truncated && (

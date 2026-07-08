@@ -2,9 +2,8 @@
 
 /* Additional custom styles can be added here */
 :root {
-  font-family: "Google Sans Code", monospace;
+  font-family: "Instrument Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
   font-optical-sizing: auto;
-  font-weight: <weight>;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -12,14 +11,8 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.libertinus-math-regular {
-  font-family: "Libertinus Math", system-ui;
-  font-weight: 400;
-  font-style: normal;
-}
-
 body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-} 
+}

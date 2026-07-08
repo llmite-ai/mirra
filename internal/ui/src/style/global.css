@@ -1,86 +1,109 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
-
 @import "tailwindcss";
 
 @plugin 'tailwindcss-animate';
 
 @custom-variant dark (&:is(.dark *));
 
-:root {
-  /* Nord-inspired light theme */
-  --background: oklch(0.96 0.01 240); /* Nord5: Snow Storm middle shade */
-  --foreground: oklch(0.31 0.02 255); /* Nord1: Polar Night - dark blue-gray for text */
-  --card: oklch(0.98 0.01 240); /* Nord6: Snow Storm lightest shade - almost white with slight blue tint */
-  --card-foreground: oklch(0.31 0.02 255); /* Nord1 */
-  --popover: oklch(0.96 0.01 240); /* Nord5 */
-  --popover-foreground: oklch(0.31 0.02 255); /* Nord1 */
-  --primary: oklch(0.65 0.12 220); /* Nord9: Frost medium blue */
-  --primary-foreground: oklch(0.98 0.01 240); /* Nord6 */
-  --secondary: oklch(0.93 0.01 230); /* Nord4: Snow Storm darkest - light blue-gray */
-  --secondary-foreground: oklch(0.31 0.02 255); /* Nord1 */
-  --muted: oklch(0.93 0.01 230); /* Nord4 */
-  --muted-foreground: oklch(0.45 0.02 240); /* Between Nord1 and Nord3 - muted text */
-  --accent: oklch(0.93 0.01 230); /* Nord4 */
-  --accent-foreground: oklch(0.31 0.02 255); /* Nord1 */
-  --destructive: oklch(90% 0.0641 15.34); /* CUSTOM */
-  --destructive-foreground: oklch(0.65 0.15 25); /* Nord11: Aurora red */
-  --border: oklch(0.90 0.01 230); /* Lighter than Nord4 */
-  --input: oklch(0.90 0.01 230); /* Lighter than Nord4 */
-  --ring: oklch(0.72 0.10 200); /* Nord8: Frost light blue */
-  --chart-1: oklch(0.59 0.13 230); /* Nord10: Frost dark blue */
-  --chart-2: oklch(0.72 0.10 200); /* Nord8: Frost light blue */
-  --chart-3: oklch(0.70 0.10 180); /* Nord7: Frost blue-green */
-  --chart-4: oklch(0.70 0.12 135); /* Nord14: Aurora green */
-  --chart-5: oklch(0.67 0.13 320); /* Nord15: Aurora purple */
-  --sidebar: oklch(0.96 0.01 240); /* Nord5 */
-  --sidebar-foreground: oklch(0.31 0.02 255); /* Nord1 */
-  --sidebar-primary: oklch(0.65 0.12 220); /* Nord9: Frost medium blue */
-  --sidebar-primary-foreground: oklch(0.98 0.01 240); /* Nord6 */
-  --sidebar-accent: oklch(0.93 0.01 230); /* Nord4 */
-  --sidebar-accent-foreground: oklch(0.31 0.02 255); /* Nord1 */
-  --sidebar-border: oklch(0.90 0.01 230); /* Lighter than Nord4 */
-  --sidebar-ring: oklch(0.72 0.10 200); /* Nord8 */
+/*
+ * mirra — "polished instrument" theme.
+ * Light: porcelain with a deep frost accent.
+ * Dark: obsidian glass with a luminous frost accent.
+ * The single decorative motif is the mirror axis: a hairline gradient
+ * (transparent → frost → transparent) used under the header and as the
+ * active-tab indicator.
+ */
 
-  --radius: 0;
+:root {
+  --background: oklch(0.975 0.004 240);
+  --foreground: oklch(0.24 0.015 255);
+  --card: oklch(0.995 0.002 240);
+  --card-foreground: oklch(0.24 0.015 255);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.24 0.015 255);
+  --primary: oklch(0.56 0.11 238);
+  --primary-foreground: oklch(0.985 0.003 240);
+  --secondary: oklch(0.945 0.006 240);
+  --secondary-foreground: oklch(0.3 0.015 252);
+  --muted: oklch(0.945 0.006 240);
+  --muted-foreground: oklch(0.5 0.015 250);
+  --accent: oklch(0.93 0.008 240);
+  --accent-foreground: oklch(0.24 0.015 255);
+  --destructive: oklch(0.95 0.025 20);
+  --destructive-foreground: oklch(0.55 0.18 25);
+  --border: oklch(0.25 0.02 255 / 10%);
+  --input: oklch(0.25 0.02 255 / 14%);
+  --ring: oklch(0.56 0.11 238 / 45%);
+  --chart-1: oklch(0.5 0.12 238);
+  --chart-2: oklch(0.52 0.1 210);
+  --chart-3: oklch(0.5 0.09 180);
+  --chart-4: oklch(0.52 0.11 150);
+  --chart-5: oklch(0.5 0.12 300);
+  --sidebar: oklch(0.965 0.005 240);
+  --sidebar-foreground: oklch(0.24 0.015 255);
+  --sidebar-primary: oklch(0.56 0.11 238);
+  --sidebar-primary-foreground: oklch(0.985 0.003 240);
+  --sidebar-accent: oklch(0.93 0.008 240);
+  --sidebar-accent-foreground: oklch(0.24 0.015 255);
+  --sidebar-border: oklch(0.25 0.02 255 / 8%);
+  --sidebar-ring: oklch(0.56 0.11 238 / 45%);
+
+  --shadow-elev:
+    0 1px 2px oklch(0.25 0.03 255 / 0.05),
+    0 10px 28px -14px oklch(0.25 0.03 255 / 0.16);
+  --shadow-pop:
+    0 1px 2px oklch(0.25 0.03 255 / 0.06),
+    0 16px 40px -16px oklch(0.25 0.03 255 / 0.24);
+
+  --radius: 0.375rem;
 }
 
 .dark {
-  /* Nord-inspired theme */
-  --background: oklch(0.27 0.02 255); /* Nord0: Polar Night darkest shade */
-  --foreground: oklch(0.92 0.02 240); /* Nord6: Snow Storm lightest shade */
-  --card: oklch(0.31 0.02 255); /* Nord1: Polar Night second shade */
-  --card-foreground: oklch(0.92 0.02 240); /* Nord6 */
-  --popover: oklch(0.31 0.02 255); /* Nord1 */
-  --popover-foreground: oklch(0.92 0.02 240); /* Nord6 */
-  --primary: oklch(0.65 0.12 220); /* Nord9: Frost medium blue */
-  --primary-foreground: oklch(0.92 0.02 240); /* Nord6 */
-  --secondary: oklch(0.42 0.03 240); /* Nord3: Polar Night lightest shade */
-  --secondary-foreground: oklch(0.92 0.02 240); /* Nord6 */
-  --muted: oklch(0.42 0.03 240); /* Nord3 */
-  --muted-foreground: oklch(0.85 0.02 240); /* Nord4: Snow Storm darkest shade */
-  --accent: oklch(0.42 0.03 240); /* Nord3 */
-  --accent-foreground: oklch(0.92 0.02 240); /* Nord6 */
-  --destructive: oklch(24.71% 0.0592 15.34); /* CUSTOM */
-  --destructive-foreground: oklch(0.65 0.15 25); /* Nord11: Aurora red */
-  --border: oklch(0.42 0.03 240); /* Nord3 */
-  --input: oklch(0.42 0.03 240); /* Nord3 */
-  --ring: oklch(0.36 0.03 240); /* Nord2: Polar Night third shade */
-  --chart-1: oklch(0.59 0.13 230); /* Nord10: Frost dark blue */
-  --chart-2: oklch(0.72 0.10 200); /* Nord8: Frost light blue */
-  --chart-3: oklch(0.70 0.10 180); /* Nord7: Frost blue-green */
-  --chart-4: oklch(0.70 0.12 135); /* Nord14: Aurora green */
-  --chart-5: oklch(0.67 0.13 320); /* Nord15: Aurora purple */
-  --sidebar: oklch(0.25 0.02 255); /* Nord0: slightly darker */
-  --sidebar-foreground: oklch(0.92 0.02 240); /* Nord6 */
-  --sidebar-primary: oklch(0.65 0.12 220); /* Nord9: Frost medium blue */
-  --sidebar-primary-foreground: oklch(0.92 0.02 240); /* Nord6 */
-  --sidebar-accent: oklch(0.42 0.03 240); /* Nord3 */
-  --sidebar-accent-foreground: oklch(0.92 0.02 240); /* Nord6 */
-  --sidebar-border: oklch(0.36 0.03 240); /* Nord2 */
-  --sidebar-ring: oklch(0.42 0.03 240); /* Nord3 */
+  --background: oklch(0.16 0.012 255);
+  --foreground: oklch(0.93 0.008 240);
+  --card: oklch(0.195 0.014 255);
+  --card-foreground: oklch(0.93 0.008 240);
+  --popover: oklch(0.215 0.015 255);
+  --popover-foreground: oklch(0.93 0.008 240);
+  --primary: oklch(0.75 0.1 230);
+  --primary-foreground: oklch(0.16 0.02 255);
+  --secondary: oklch(0.245 0.015 252);
+  --secondary-foreground: oklch(0.9 0.01 240);
+  --muted: oklch(0.235 0.014 252);
+  --muted-foreground: oklch(0.67 0.015 245);
+  --accent: oklch(0.26 0.018 250);
+  --accent-foreground: oklch(0.93 0.008 240);
+  --destructive: oklch(0.3 0.07 20);
+  --destructive-foreground: oklch(0.74 0.15 22);
+  --border: oklch(0.93 0.01 240 / 10%);
+  --input: oklch(0.93 0.01 240 / 14%);
+  --ring: oklch(0.75 0.1 230 / 55%);
+  --chart-1: oklch(0.74 0.11 235);
+  --chart-2: oklch(0.78 0.1 205);
+  --chart-3: oklch(0.77 0.09 180);
+  --chart-4: oklch(0.78 0.11 150);
+  --chart-5: oklch(0.74 0.1 300);
+  --sidebar: oklch(0.145 0.012 255);
+  --sidebar-foreground: oklch(0.93 0.008 240);
+  --sidebar-primary: oklch(0.75 0.1 230);
+  --sidebar-primary-foreground: oklch(0.16 0.02 255);
+  --sidebar-accent: oklch(0.26 0.018 250);
+  --sidebar-accent-foreground: oklch(0.93 0.008 240);
+  --sidebar-border: oklch(0.93 0.01 240 / 8%);
+  --sidebar-ring: oklch(0.75 0.1 230 / 55%);
+
+  --shadow-elev:
+    0 1px 1px oklch(0 0 0 / 0.3),
+    0 10px 28px -14px oklch(0 0 0 / 0.6);
+  --shadow-pop:
+    0 1px 2px oklch(0 0 0 / 0.35),
+    0 18px 44px -16px oklch(0 0 0 / 0.7);
 }
 
 @theme inline {
+  --font-sans:
+    "Instrument Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono:
+    "Google Sans Code", ui-monospace, SFMono-Regular, Menlo, monospace;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -109,6 +132,8 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+  --shadow-elev: var(--shadow-elev);
+  --shadow-pop: var(--shadow-pop);
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
@@ -124,10 +149,15 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+  }
+  ::selection {
+    background: oklch(0.75 0.1 230 / 0.3);
+  }
+  table {
+    font-variant-numeric: tabular-nums;
   }
 }
-
 
 body {
   margin: 0;
@@ -146,26 +176,26 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: oklch(0.85 0.02 240); /* Light mode thumb */
+  background: oklch(0.78 0.01 245); /* Light mode thumb */
   border-radius: 5px;
   border: 2px solid transparent; /* Creates padding effect */
   background-clip: content-box;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: oklch(0.75 0.02 240);
+  background: oklch(0.68 0.012 245);
   border: 2px solid transparent;
   background-clip: content-box;
 }
 
 .dark ::-webkit-scrollbar-thumb {
-  background: oklch(0.36 0.03 240); /* Dark mode thumb (Nord2) */
+  background: oklch(0.34 0.015 250);
   border: 2px solid transparent;
   background-clip: content-box;
 }
 
 .dark ::-webkit-scrollbar-thumb:hover {
-  background: oklch(0.42 0.03 240); /* Dark mode hover (Nord3) */
+  background: oklch(0.42 0.018 250);
   border: 2px solid transparent;
   background-clip: content-box;
 }

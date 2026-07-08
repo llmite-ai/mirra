@@ -45,12 +45,15 @@ export default function Recordings() {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-2xl font-bold text-foreground">Recordings</h1>
+            <h1 className="text-2xl font-semibold tracking-tight text-foreground">
+              Recordings
+            </h1>
             <p className="text-sm text-muted-foreground">
               {data?.total ? `${data.total} total recordings` : "Loading..."}
             </p>
           </div>
           <Button
+            variant="outline"
             onClick={handleRefresh}
             disabled={isFetching}
             className="flex items-center gap-2"
@@ -80,6 +83,7 @@ export default function Recordings() {
                 }}
               />
               <Button
+                variant="outline"
                 onClick={handleSearch}
                 className="flex items-center gap-2"
               >
@@ -98,7 +102,7 @@ export default function Recordings() {
                 setProvider(e.target.value);
                 setPage(1);
               }}
-              className="w-full px-3 py-2 border rounded-md bg-background text-foreground border-input"
+              className="w-full px-3 py-2 text-sm border rounded-lg bg-card text-foreground border-input shadow-elev"
             >
               <option value="">All Providers</option>
               <option value="claude">Claude</option>
@@ -116,7 +120,7 @@ export default function Recordings() {
 
         {/* Error State */}
         {error && (
-          <div className="p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-md text-red-800 dark:text-red-300">
+          <div className="p-4 rounded-lg bg-rose-500/10 border border-rose-500/25 text-rose-700 dark:text-rose-300">
             Error loading recordings: {(error as Error).message}
           </div>
         )}

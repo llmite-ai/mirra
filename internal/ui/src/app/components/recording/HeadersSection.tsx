@@ -28,7 +28,7 @@ export function HeadersSection({
         Headers <span className="text-xs">({entries.length})</span>
       </button>
       {open && (
-        <div className="mt-1 border bg-muted/20 p-3 overflow-x-auto">
+        <div className="mt-1 rounded-lg border bg-muted/20 p-3 overflow-x-auto">
           <table className="text-xs font-mono">
             <tbody>
               {entries.map(([key, values]) => (

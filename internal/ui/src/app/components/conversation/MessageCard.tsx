@@ -194,7 +194,7 @@ function CollapsibleRow({
 }: CollapsibleRowProps) {
   const [open, setOpen] = useState(false);
   return (
-    <div className="border bg-muted/20">
+    <div className="rounded-lg border bg-muted/20 overflow-hidden">
       <button
         onClick={() => setOpen(!open)}
         className="flex w-full items-center gap-2 px-2 py-1.5 text-left hover:bg-muted/50 transition-colors min-w-0"

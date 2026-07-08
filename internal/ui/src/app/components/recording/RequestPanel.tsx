@@ -30,9 +30,9 @@ export function RequestPanel({ recording }: RequestPanelProps) {
   };
 
   return (
-    <div className="bg-card border rounded-md">
-      <div className="flex items-center justify-between p-3 bg-muted/30 border-b">
-        <h3 className="font-semibold">Request</h3>
+    <div className="bg-card border rounded-lg shadow-elev overflow-hidden">
+      <div className="flex items-center justify-between px-4 py-3 border-b border-border/60">
+        <h3 className="font-semibold tracking-tight">Request</h3>
         <Button size="sm" variant="ghost" onClick={copyToClipboard}>
           {copied ? (
             <>

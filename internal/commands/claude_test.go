@@ -1,7 +1,6 @@
 package commands
 
 import (
-	"context"
 	"net/http"
 	"net/http/httptest"
 	"slices"
@@ -94,6 +93,32 @@ func TestClaudeEnv_Scenarios(t *testing.T) {
 	}
 }
 
+func TestWaitMirraAlive_EventualSuccess(t *testing.T) {
+	var ready bool
+	ts := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		if !ready {
+			ready = true
+			w.WriteHeader(http.StatusServiceUnavailable)
+			return
+		}
+		w.Header().Set(server.HeaderMirra, "1")
+		w.WriteHeader(http.StatusOK)
+	}))
+	defer ts.Close()
+
+	if !waitMirraAlive(ts.URL, 5) {
+		t.Fatal("waitMirraAlive() = false, want true after server becomes ready")
+	}
+}
+
+func TestWaitMirraAlive_NeverAlive(t *testing.T) {
+	ts := httptest.NewServer(http.NotFoundHandler())
+	ts.Close()
+	if waitMirraAlive(ts.URL, 2) {
+		t.Fatal("waitMirraAlive() = true for a closed server, want false")
+	}
+}
+
 func TestHoldSession_HoldsUntilReleased(t *testing.T) {
 	held := make(chan struct{}, 1)
 	released := make(chan struct{})
@@ -126,7 +151,7 @@ func TestHoldSession_HoldsUntilReleased(t *testing.T) {
 }
 
 func TestHoldSession_RejectsNonMirraResponse(t *testing.T) {
-	// A mirra predating the hold endpoint answers via the SPA fallback:
+	// A server predating the hold endpoint answers via the SPA fallback:
 	// 200 with HTML and no mirra header.
 	ts := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "text/html")
@@ -136,32 +161,5 @@ func TestHoldSession_RejectsNonMirraResponse(t *testing.T) {
 
 	if _, err := holdSession(ts.URL); err == nil {
 		t.Fatal("holdSession() = nil error for a server without hold support, want error")
-	}
-}
-
-func TestWaitMirraAlive_EventualSuccess(t *testing.T) {
-	var ready bool
-	ts := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		if !ready {
-			ready = true
-			w.WriteHeader(http.StatusServiceUnavailable)
-			return
-		}
-		w.Header().Set(server.HeaderMirra, "1")
-		w.WriteHeader(http.StatusOK)
-	}))
-	defer ts.Close()
-
-	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
-	defer cancel()
-	done := make(chan bool, 1)
-	go func() { done <- waitMirraAlive(ts.URL, 5) }()
-	select {
-	case got := <-done:
-		if !got {
-			t.Fatal("waitMirraAlive() = false, want true after server becomes ready")
-		}
-	case <-ctx.Done():
-		t.Fatal("waitMirraAlive() did not return in time")
 	}
 }

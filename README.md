@@ -1,12 +1,16 @@
-# 𝕄𝕀ℝℝ𝔸
+<p align="center">
+  <img src="media/logo.svg" width="72" alt="mirra mark" />
+</p>
 
-**M**onitoring & **I**nspection **R**ecording **R**elay **A**rchive
+<h1 align="center">mirra</h1>
 
-<img width="3284" height="2622" alt="CleanShot 2025-12-10 at 10 38 18@2x" src="https://github.com/user-attachments/assets/1f20054e-3712-437e-8124-885eada20e2f" />
+<p align="center"><strong>M</strong>onitoring &amp; <strong>I</strong>nspection <strong>R</strong>ecording <strong>R</strong>elay <strong>A</strong>rchive</p>
+
+<img src="media/screenshot-recording.png" alt="mirra web UI — a recorded Claude stream reconstructed into a readable response" />
 
 A transparent HTTP proxy for Large Language Model APIs that records all request/response traffic without modifying it.
 
-MIRRA acts as a pass-through intermediary for inspection, auditing, and analysis of LLM API usage. Currently supports Claude (Anthropic), OpenAI, and Google Gemini APIs.
+MIRRA acts as a pass-through intermediary for inspection, auditing, and analysis of LLM API usage. Currently supports Claude (Anthropic), OpenAI, Codex (ChatGPT subscription), and Google Gemini APIs.
 
 ## Quick Installation
 
@@ -32,10 +36,12 @@ Bare `mirra` is shorthand for `mirra start`. Add `--attach claude,codex` to also
 ## Features
 
 - **Transparent proxying**: Requests and responses pass through unmodified
-- **Multi-provider support**: Claude (Anthropic), OpenAI, and Google Gemini APIs
-- **Streaming support**: Handles both regular and Server-Sent Events (SSE) streaming responses
+- **Multi-provider support**: Claude (Anthropic), OpenAI, Codex (ChatGPT subscription), and Google Gemini APIs
+- **Web UI**: Browse traffic in the browser — conversations, system prompts, tool calls, thinking blocks, and token usage rendered readably for Claude and Codex, with a JSON/raw fallback for everything
+- **Session grouping**: Recordings are grouped into agent sessions by trace/session metadata and browsable as one conversation flow
+- **Streaming support**: Handles both regular and Server-Sent Events (SSE) streaming responses; recorded streams are reconstructed into the final message in the UI
 - **Asynchronous recording**: Records traffic without adding latency to API calls
-- **Compression handling**: Automatically handles and records gzip-compressed responses
+- **Compression handling**: Decompresses gzip- and zstd-encoded payloads so recordings stay readable
 - **Export & analysis**: Built-in commands to export and analyze recorded traffic
 - **Advanced viewing**: Partial UUID matching, automatic redaction of sensitive data, SSE formatting
 - **Structured logging**: Multiple output formats (pretty, JSON, plain) with color-coded request logs
@@ -72,20 +78,30 @@ Or provide a configuration file:
 ./mirra start --config ./config.json
 ```
 
+### Browse traffic in the web UI
+
+The proxy serves a web UI on the same port — open [http://localhost:4567](http://localhost:4567) while `mirra start` is running.
+
+<img src="media/screenshot-recordings.png" alt="mirra web UI — recordings list" />
+
+- **Recordings** lists every captured request with provider, status, duration, and size, with search and provider filters.
+- Opening a recording shows the request and response as **formatted views**: Claude and Codex traffic renders as a conversation — system prompt, tool definitions, messages, tool calls and results, thinking blocks, and token usage — and recorded SSE streams are reconstructed into the final message with a per-event summary. Every body also has JSON and raw views one toggle away.
+- **Sessions** groups recordings into agent sessions (by trace or session metadata), so a whole Claude Code or Codex run can be stepped through in order with the arrow keys.
+
 ### Run Claude Code through MIRRA
 
 ```bash
 ./mirra claude
 ```
 
-Launches the `claude` CLI with its API traffic routed through MIRRA. If a MIRRA proxy is already listening on the configured port it is reused; otherwise one starts in-process and lives for the duration of the session. Everything after `claude` is passed through to the CLI:
+Launches the `claude` CLI with its API traffic routed through MIRRA, with the UI at the usual place: `http://localhost:4567` (the configured port). A MIRRA already listening there — whether from `mirra start` or another `mirra claude` — is reused; otherwise one starts in-process and lives until this session and any other `mirra claude` sessions riding on it finish. Everything after `claude` is passed through to the CLI:
 
 ```bash
 ./mirra claude --resume
 ./mirra claude -p "explain this repo"
 ```
 
-Unlike `--attach`, this touches no config files: the proxy address is injected only into that session's environment (`ANTHROPIC_BASE_URL`), so other `claude` sessions are unaffected and there is nothing to restore afterwards. Run `./mirra claude` from several terminals and they all share the first proxy; whichever process started it keeps it alive until the last session finishes. While claude owns the terminal, proxy logs go to `~/.mirra/mirra.log`.
+Unlike `--attach`, this touches no config files: the proxy address is injected only as an environment variable (`ANTHROPIC_BASE_URL`) on the one claude process it spawns, so other claude sessions are unaffected and there is nothing to restore afterwards. While claude owns the terminal, all proxy output goes to `~/.mirra/mirra.log`.
 
 ### Auto-attach Claude Code and Codex
 
@@ -293,7 +309,7 @@ Each recording includes:
 }
 ```
 
-**Note**: For gzip-compressed responses, the body is stored as base64-encoded with a "base64:" prefix.
+**Note**: Compressed payloads (gzip, zstd) are decompressed before recording so bodies stay readable. A body that still isn't valid text (e.g. binary content) is stored base64-encoded with a `base64:` prefix.
 
 ## Supported API Endpoints
 

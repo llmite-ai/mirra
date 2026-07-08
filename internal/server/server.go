@@ -28,6 +28,14 @@ type Server struct {
 	onReady      func()
 	held         *sessionTracker
 	closing      chan struct{}
+	port         int
+}
+
+// Port returns the port the listener is bound to. It is valid once the
+// OnReady callback has fired, and is the only way to learn the port when the
+// config asked for an ephemeral one (port 0).
+func (s *Server) Port() int {
+	return s.port
 }
 
 // OnReady registers a callback invoked once the listener is bound and the
@@ -116,6 +124,9 @@ func (s *Server) Start(ctx context.Context) error {
 	srv := &http.Server{
 		Addr:    fmt.Sprintf(":%d", s.cfg.Port),
 		Handler: handler,
+		// Handler panics etc. must go through the configured logger, not
+		// stderr: with `mirra claude` the terminal belongs to claude's TUI.
+		ErrorLog: slog.NewLogLogger(s.log.Handler(), slog.LevelError),
 	}
 
 	ln, err := net.Listen("tcp", srv.Addr)
@@ -125,6 +136,7 @@ func (s *Server) Start(ctx context.Context) error {
 		}
 		return err
 	}
+	s.port = ln.Addr().(*net.TCPAddr).Port
 
 	s.printStartupBanner()
 
@@ -168,11 +180,11 @@ func (s *Server) Start(ctx context.Context) error {
 // The pretty format gets a plain banner so terminals render the URL as a
 // clickable link; structured formats keep a machine-parseable log line.
 func (s *Server) printStartupBanner() {
-	url := fmt.Sprintf("http://localhost:%d", s.cfg.Port)
+	url := fmt.Sprintf("http://localhost:%d", s.port)
 
 	switch s.cfg.Logging.Format {
 	case "json", "plain":
-		slog.Info("𝕄𝕀ℝℝ𝔸 started", "port", s.cfg.Port, "url", url)
+		slog.Info("𝕄𝕀ℝℝ𝔸 started", "port", s.port, "url", url)
 	default:
 		fmt.Fprintf(os.Stdout, "\n  𝕄𝕀ℝℝ𝔸 running\n\n  ➜  UI & proxy: \033[4;96m%s\033[0m\n\n", url)
 	}

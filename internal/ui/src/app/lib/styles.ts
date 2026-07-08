@@ -1,25 +1,27 @@
 /**
- * Centralized style utilities for consistent styling across components
+ * Centralized style utilities for consistent styling across components.
+ * Badges are soft tints with hairline inset rings; pair with a rounded-full
+ * pill container at the call site.
  */
 
 /**
  * Returns Tailwind classes for HTTP status codes
- * - 2xx: green (success)
- * - 4xx: yellow (client error)
- * - 5xx: red (server error)
- * - Other: gray (informational/redirect)
+ * - 2xx: emerald (success)
+ * - 4xx: amber (client error)
+ * - 5xx: rose (server error)
+ * - Other: neutral (informational/redirect)
  */
 export function getStatusColor(status: number): string {
   if (status >= 200 && status < 300) {
-    return "text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-900/20";
+    return "text-emerald-700 dark:text-emerald-300 bg-emerald-500/10 ring-1 ring-inset ring-emerald-500/25";
   }
   if (status >= 400 && status < 500) {
-    return "text-yellow-600 dark:text-yellow-400 bg-yellow-50 dark:bg-yellow-900/20";
+    return "text-amber-700 dark:text-amber-300 bg-amber-500/10 ring-1 ring-inset ring-amber-500/25";
   }
   if (status >= 500) {
-    return "text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/20";
+    return "text-rose-700 dark:text-rose-300 bg-rose-500/10 ring-1 ring-inset ring-rose-500/25";
   }
-  return "text-gray-600 dark:text-gray-400 bg-gray-50 dark:bg-gray-800";
+  return "text-muted-foreground bg-muted ring-1 ring-inset ring-border";
 }
 
 /**
@@ -28,13 +30,13 @@ export function getStatusColor(status: number): string {
  */
 export function getStatusTextColor(status: number): string {
   if (status >= 200 && status < 300) {
-    return "text-green-600 dark:text-green-400";
+    return "text-emerald-600 dark:text-emerald-400";
   }
   if (status >= 400 && status < 500) {
-    return "text-yellow-600 dark:text-yellow-400";
+    return "text-amber-600 dark:text-amber-400";
   }
   if (status >= 500) {
-    return "text-red-600 dark:text-red-400";
+    return "text-rose-600 dark:text-rose-400";
   }
   return "text-muted-foreground";
 }
@@ -43,14 +45,15 @@ export function getStatusTextColor(status: number): string {
  * Provider color mappings for consistent branding
  */
 const PROVIDER_STYLES = {
-  gemini: "bg-blue-100 text-blue-800 dark:bg-blue-900/20 dark:text-blue-300",
+  gemini:
+    "bg-sky-500/10 text-sky-700 dark:text-sky-300 ring-1 ring-inset ring-sky-500/25",
   openai:
-    "bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-300",
+    "bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 ring-1 ring-inset ring-emerald-500/25",
   claude:
-    "bg-orange-100 text-orange-800 dark:bg-orange-900/20 dark:text-orange-300",
+    "bg-orange-500/10 text-orange-700 dark:text-orange-300 ring-1 ring-inset ring-orange-500/25",
   chatgpt:
-    "bg-purple-100 text-purple-800 dark:bg-purple-900/20 dark:text-purple-300",
-  unknown: "bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-300",
+    "bg-violet-500/10 text-violet-700 dark:text-violet-300 ring-1 ring-inset ring-violet-500/25",
+  unknown: "bg-muted text-muted-foreground ring-1 ring-inset ring-border",
 } as const;
 
 /**
@@ -85,19 +88,19 @@ export function getProviderLabel(provider: string): string {
 
 /**
  * Returns color classes based on response size
- * - < 10KB: green (small, efficient)
- * - < 1MB: yellow (moderate)
- * - >= 1MB: red (large)
+ * - < 10KB: emerald (small, efficient)
+ * - < 1MB: amber (moderate)
+ * - >= 1MB: rose (large)
  */
 export function getSizeColor(bytes: number): string {
   const TEN_KB = 10 * 1024;
   const ONE_MB = 1024 * 1024;
 
   if (bytes < TEN_KB) {
-    return "text-green-600 dark:text-green-400";
+    return "text-emerald-600 dark:text-emerald-400";
   }
   if (bytes < ONE_MB) {
-    return "text-yellow-600 dark:text-yellow-400";
+    return "text-amber-600 dark:text-amber-400";
   }
-  return "text-red-600 dark:text-red-400";
+  return "text-rose-600 dark:text-rose-400";
 }

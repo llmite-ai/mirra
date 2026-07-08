@@ -16,9 +16,9 @@ function App() {
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
-      {/* Header */}
-      <header className="border-b">
-        <div className=" mx-auto px-4">
+      {/* Header — frosted glass */}
+      <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur-md">
+        <div className="mx-auto px-6">
           <div className="flex h-16 items-center justify-between">
             <div className="flex items-center gap-8">
               <Link to="/" aria-label="mirra home">
@@ -67,10 +67,10 @@ function HeaderLink({
     <NavLink
       to={to}
       className={cn(
-        "px-3 py-1.5 text-sm font-medium transition-colors",
+        "px-3 py-1.5 text-sm font-medium rounded-md transition-colors",
         isActive
-          ? "text-foreground bg-muted"
-          : "text-muted-foreground hover:text-foreground",
+          ? "text-foreground bg-accent"
+          : "text-muted-foreground hover:text-foreground hover:bg-accent/60",
       )}
     >
       {children}

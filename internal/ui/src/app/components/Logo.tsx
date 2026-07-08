@@ -40,10 +40,7 @@ export function Logo() {
   return (
     <span className="inline-flex items-center gap-2 text-foreground">
       <LogoMark className="h-6 w-6" />
-      <span
-        className="text-xl font-semibold tracking-tight leading-none select-none"
-        style={{ fontFamily: '"Google Sans Code", monospace' }}
-      >
+      <span className="font-mono text-xl font-semibold tracking-tight leading-none select-none">
         mi<span>r</span>
         <span className="inline-block" style={{ transform: "scaleX(-1)" }}>
           r

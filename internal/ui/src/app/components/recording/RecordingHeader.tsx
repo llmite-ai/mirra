@@ -52,18 +52,20 @@ export function RecordingHeader({
   };
 
   return (
-    <div className="flex items-center justify-between p-6 border-b bg-card">
+    <div className="flex items-center justify-between px-6 py-5 border-b border-border/60 bg-card">
       <div className="flex items-center gap-4">
         <button
           onClick={() => navigate("/recordings")}
-          className="p-2 hover:bg-muted rounded-md transition-colors"
+          className="p-2 hover:bg-muted rounded-lg transition-colors"
           aria-label="Back to recordings list"
         >
           <ArrowLeft className="h-5 w-5" />
         </button>
         <div>
-          <h2 className="text-xl font-bold">Recording Details</h2>
-          <p className="text-sm text-muted-foreground font-mono mt-1">
+          <h2 className="text-lg font-semibold tracking-tight">
+            Recording Details
+          </h2>
+          <p className="text-xs text-muted-foreground font-mono mt-1">
             {recordingId}
           </p>
         </div>

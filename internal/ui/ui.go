@@ -81,8 +81,9 @@ func (m *Manager) Static(root, remove string) http.HandlerFunc {
 			// Get the current working directory
 			workingDir, err := os.Getwd()
 			if err != nil {
-				fmt.Println("Error getting working directory:", err)
-				panic(err)
+				m.log.Error("[assets] failed to get working directory", "error", err)
+				http.Error(w, err.Error(), http.StatusInternalServerError)
+				return
 			}
 
 			path = filepath.Join(workingDir, root, trimmedPath)
@@ -228,7 +229,7 @@ func (m *Manager) buildOptions() (api.BuildOptions, error) {
 	// Get the current working directory
 	workingDir, err := os.Getwd()
 	if err != nil {
-		fmt.Println("Error getting working directory:", err)
+		m.log.Error("[build] failed to get working directory", "error", err)
 		return api.BuildOptions{}, err
 	}
 
@@ -269,10 +270,16 @@ func (m *Manager) buildOptions() (api.BuildOptions, error) {
 						cmd := exec.Command(postcssPath, args.Path)
 						cmd.Dir = "internal/ui/src"
 						cmd.Stdin = bytes.NewReader(content)
-						cmd.Stderr = os.Stderr
+						// Never inherit the terminal: `mirra claude` shares it
+						// with claude's TUI, and stray writes corrupt the display.
+						var stderr bytes.Buffer
+						cmd.Stderr = &stderr
 						out, err := cmd.Output()
 						if err != nil {
-							return api.OnLoadResult{}, err
+							return api.OnLoadResult{}, fmt.Errorf("postcss %s: %w\n%s", args.Path, err, stderr.String())
+						}
+						if stderr.Len() > 0 {
+							m.log.Warn("[build] postcss stderr", "path", args.Path, "output", stderr.String())
 						}
 
 						outString := string(out)

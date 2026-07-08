@@ -36,13 +36,17 @@ export default function Session() {
             <ArrowLeft className="h-5 w-5" />
           </button>
           <div>
-            <h1 className="text-2xl font-bold text-foreground">Session</h1>
-            <p className="text-sm text-muted-foreground font-mono">{traceId}</p>
+            <h1 className="text-2xl font-semibold tracking-tight text-foreground">
+              Session
+            </h1>
+            <p className="text-xs text-muted-foreground font-mono mt-0.5">
+              {traceId}
+            </p>
           </div>
         </div>
 
         {error && (
-          <div className="p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-md text-red-800 dark:text-red-300">
+          <div className="p-4 rounded-lg bg-rose-500/10 border border-rose-500/25 text-rose-700 dark:text-rose-300">
             Error loading session: {(error as Error).message}
           </div>
         )}
@@ -55,7 +59,7 @@ export default function Session() {
 
         {data && (
           <>
-            <div className="flex flex-wrap gap-x-8 gap-y-3 border rounded-md bg-card p-4">
+            <div className="flex flex-wrap gap-x-10 gap-y-3 border rounded-lg bg-card shadow-elev p-5">
               <SessionField label="Started">
                 {format(
                   new Date(data.group.first_timestamp),
@@ -110,10 +114,10 @@ function SessionField({
 }) {
   return (
     <div>
-      <label className="text-sm font-medium text-muted-foreground">
+      <label className="text-[11px] font-semibold uppercase tracking-[0.08em] text-muted-foreground">
         {label}
       </label>
-      <p className="text-sm mt-1">{children}</p>
+      <p className="text-sm mt-1.5">{children}</p>
     </div>
   );
 }
