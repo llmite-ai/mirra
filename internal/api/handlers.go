@@ -29,6 +29,22 @@ type RecordingListResponse struct {
 	HasMore    bool               `json:"hasMore"`
 }
 
+// InflightListResponse represents the API response for listing in-flight requests
+type InflightListResponse struct {
+	Requests []InflightSummary `json:"requests"`
+}
+
+// InflightSummary represents a request currently being proxied. It has no
+// status, duration, or size yet — those only exist once the request completes.
+type InflightSummary struct {
+	ID        string    `json:"id"`
+	Timestamp time.Time `json:"timestamp"`
+	Provider  string    `json:"provider"`
+	Method    string    `json:"method"`
+	Path      string    `json:"path"`
+	StartedAt time.Time `json:"startedAt"`
+}
+
 // RecordingSummary represents a summary of a recording for list view
 type RecordingSummary struct {
 	ID           string    `json:"id"`
@@ -111,6 +127,31 @@ func (h *Handlers) ListRecordings(w http.ResponseWriter, r *http.Request) {
 		Page:       page,
 		Limit:      limit,
 		HasMore:    hasMore,
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	if err := json.NewEncoder(w).Encode(response); err != nil {
+		h.log.Error("Failed to encode response", "error", err)
+	}
+}
+
+// ListInflight handles GET /api/inflight, returning the requests the proxy is
+// currently handling (newest first). These have no persisted recording yet.
+func (h *Handlers) ListInflight(w http.ResponseWriter, r *http.Request) {
+	response := InflightListResponse{Requests: []InflightSummary{}}
+
+	if h.rec != nil {
+		// InflightRequests already returns newest-first.
+		for _, req := range h.rec.InflightRequests() {
+			response.Requests = append(response.Requests, InflightSummary{
+				ID:        req.ID,
+				Timestamp: req.StartedAt,
+				Provider:  req.Provider,
+				Method:    req.Method,
+				Path:      req.Path,
+				StartedAt: req.StartedAt,
+			})
+		}
 	}
 
 	w.Header().Set("Content-Type", "application/json")

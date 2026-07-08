@@ -52,6 +52,7 @@ type Recorder struct {
 	stopChan     chan struct{}
 	wg           sync.WaitGroup
 	index        *Index
+	inflight     *InflightTracker
 	groupManager GroupManager
 }
 
@@ -69,6 +70,7 @@ func New(enabled bool, path string) *Recorder {
 		recordChan: make(chan Recording, 100),
 		stopChan:   make(chan struct{}),
 		index:      NewIndex(path),
+		inflight:   NewInflightTracker(),
 	}
 
 	if enabled {
@@ -221,6 +223,22 @@ func (r *Recorder) SetGroupManager(gm GroupManager) {
 // GetIndex returns the recorder's index for use by API handlers
 func (r *Recorder) GetIndex() *Index {
 	return r.index
+}
+
+// TrackStart registers a request as in-flight. Tracking is independent of
+// whether recording-to-disk is enabled.
+func (r *Recorder) TrackStart(rec *Recording) {
+	r.inflight.Start(rec)
+}
+
+// TrackDone removes a request from the in-flight set once it has completed.
+func (r *Recorder) TrackDone(id string) {
+	r.inflight.Done(id)
+}
+
+// InflightRequests returns the requests currently being proxied, newest first.
+func (r *Recorder) InflightRequests() []InflightRequest {
+	return r.inflight.List()
 }
 
 func NewRecording(provider, method, path, query string, startTime time.Time) Recording {

@@ -88,6 +88,11 @@ func main() {
 			slog.Error("detach failed", "error", err)
 			os.Exit(1)
 		}
+	case "open":
+		if err := commands.Open(args); err != nil {
+			slog.Error("open failed", "error", err)
+			os.Exit(1)
+		}
 	case "help", "-h", "--help":
 		printUsage()
 	default:
@@ -187,6 +192,7 @@ Usage:
   mirra start [--port 4567] [--config ./config.json] [--attach claude,codex]
   mirra claude [claude args...]
   mirra detach
+  mirra open [--port 4567] [--config ./config.json]
   mirra export [--from YYYY-MM-DD] [--to YYYY-MM-DD] [--provider claude|openai|gemini|chatgpt] [--output file.jsonl]
   mirra stats [--from YYYY-MM-DD] [--provider claude|openai|gemini|chatgpt]
   mirra view <recording-id>
@@ -199,6 +205,7 @@ Commands:
   start    - Start the proxy server; --attach points new claude/codex sessions at it
   claude   - Run the claude CLI through mirra, reusing a running proxy or starting one
   detach   - Restore claude/codex configs if an attached run did not shut down cleanly
+  open     - Open the UI of a running mirra in the browser
   export   - Export recordings to a file
   stats    - Show statistics about recordings
   view     - View a specific recording

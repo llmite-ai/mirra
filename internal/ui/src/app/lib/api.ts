@@ -18,6 +18,20 @@ export interface RecordingListResponse {
   hasMore: boolean;
 }
 
+/** A request the proxy is currently handling, before it has completed. */
+export interface InflightRequest {
+  id: string;
+  timestamp: string;
+  provider: string;
+  method: string;
+  path: string;
+  startedAt: string;
+}
+
+interface InflightListResponse {
+  requests: InflightRequest[];
+}
+
 export interface Recording {
   id: string;
   timestamp: string;
@@ -93,6 +107,18 @@ export async function fetchRecordings(
     throw new Error("Failed to fetch recordings");
   }
   return response.json();
+}
+
+/**
+ * Fetches the requests currently being proxied (not yet recorded to disk).
+ */
+export async function fetchInflight(): Promise<InflightRequest[]> {
+  const response = await fetch("/api/inflight");
+  if (!response.ok) {
+    throw new Error("Failed to fetch in-flight requests");
+  }
+  const data: InflightListResponse = await response.json();
+  return data.requests ?? [];
 }
 
 /**

@@ -1,10 +1,11 @@
-import React from "react";
-import { Loader2 } from "lucide-react";
+import React, { useState } from "react";
+import { Loader2, Copy, Check } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { useSearchParams } from "react-router";
-import { fetchRecording } from "@/lib/api";
+import { fetchRecording, Recording } from "@/lib/api";
+import { Button } from "@/components/ui/button";
+import { formatJSON } from "@/lib/formatters";
 import { RecordingHeader } from "./RecordingHeader";
-import { RecordingMetadata } from "./RecordingMetadata";
 import { RecordingError } from "./RecordingError";
 import { RecordingTabs } from "./RecordingTabs";
 import { RequestPanel } from "./RequestPanel";
@@ -66,27 +67,82 @@ export default function RecordingDetail({ recordingId }: RecordingDetailProps) {
   }
 
   return (
-    <div className="w-full h-full flex flex-col bg-background text-foreground">
-      <RecordingHeader recordingId={recordingId} recording={recording} />
-
-      <div className="flex-1 flex flex-col overflow-hidden bg-background">
-        <div className="bg-card border-b">
-          <div className="p-6 pb-0">
-            <RecordingMetadata recording={recording} />
-            {recording.error && <RecordingError error={recording.error} />}
+    <div className="w-full h-full flex flex-col overflow-hidden bg-background text-foreground">
+      <div className="bg-card border-b border-border/60">
+        <div className="px-6 pt-4">
+          <RecordingHeader recordingId={recordingId} recording={recording} />
+          {recording.error && (
+            <div className="mt-4">
+              <RecordingError error={recording.error} />
+            </div>
+          )}
+          <div className="mt-4">
             <RecordingTabs
               activeTab={activeTab}
               onTabChange={setActiveTab}
               tabs={TABS}
+              actions={
+                <CopyPayloadButton
+                  recording={recording}
+                  activeTab={activeTab}
+                />
+              }
             />
           </div>
         </div>
+      </div>
 
-        <div className="flex-1 overflow-y-auto p-6 bg-muted/10">
-          {activeTab === "request" && <RequestPanel recording={recording} />}
-          {activeTab === "response" && <ResponsePanel recording={recording} />}
-        </div>
+      <div className="flex-1 overflow-y-auto p-6 bg-muted/10">
+        {activeTab === "request" && <RequestPanel recording={recording} />}
+        {activeTab === "response" && <ResponsePanel recording={recording} />}
       </div>
     </div>
+  );
+}
+
+/** Copies the payload of whichever tab is currently active. */
+function CopyPayloadButton({
+  recording,
+  activeTab,
+}: {
+  recording: Recording;
+  activeTab: string;
+}) {
+  const [copied, setCopied] = useState(false);
+  const isResponse = activeTab === "response";
+
+  const handleCopy = () => {
+    const payload = isResponse
+      ? {
+          status: recording.response.status,
+          headers: recording.response.headers,
+          body: recording.response.body,
+        }
+      : {
+          method: recording.request.method,
+          path: recording.request.path,
+          query: recording.request.query,
+          headers: recording.request.headers,
+          body: recording.request.body,
+        };
+    navigator.clipboard.writeText(formatJSON(payload));
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  return (
+    <Button size="sm" variant="ghost" onClick={handleCopy}>
+      {copied ? (
+        <>
+          <Check className="h-4 w-4 mr-1" />
+          Copied
+        </>
+      ) : (
+        <>
+          <Copy className="h-4 w-4 mr-1" />
+          Copy {isResponse ? "response" : "request"}
+        </>
+      )}
+    </Button>
   );
 }

@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useNavigate, useSearchParams } from "react-router";
 import { format } from "date-fns";
 import { Loader2, X } from "lucide-react";
-import { fetchRecordings, fetchSessionGroup } from "../lib/api";
+import { fetchRecordings, fetchSessionGroup, fetchInflight } from "../lib/api";
 import {
   getStatusTextColor,
   getProviderStyles,
@@ -16,6 +16,30 @@ interface RecordingSidebarProps {
   currentRecordingId: string;
   /** When set, the sidebar lists this session's recordings instead of the latest traffic */
   sessionId?: string;
+}
+
+/**
+ * Counts up from a start timestamp, re-rendering a few times a second so an
+ * in-flight request's elapsed time reads as live.
+ */
+function Elapsed({ startedAt }: { startedAt: string }) {
+  const [now, setNow] = useState(() => Date.now());
+
+  useEffect(() => {
+    const id = window.setInterval(() => setNow(Date.now()), 250);
+    return () => window.clearInterval(id);
+  }, []);
+
+  const start = new Date(startedAt).getTime();
+  if (!Number.isFinite(start)) return null;
+
+  const seconds = Math.max(0, (now - start) / 1000);
+  const label =
+    seconds < 60
+      ? `${seconds.toFixed(1)}s`
+      : `${Math.floor(seconds / 60)}m ${Math.floor(seconds % 60)}s`;
+
+  return <span className="tabular-nums">{label}</span>;
 }
 
 export default function RecordingSidebar({
@@ -68,8 +92,24 @@ export default function RecordingSidebar({
     enabled: !!sessionId,
   });
 
+  // Live in-flight requests, polled faster than the completed list so they
+  // feel responsive. Only shown in the "Recent Recordings" (non-session) view:
+  // in-flight requests aren't grouped into a session until they're recorded.
+  const { data: inflightData } = useQuery({
+    queryKey: ["recordings", "inflight"],
+    queryFn: fetchInflight,
+    refetchInterval: 2000,
+    enabled: !sessionId,
+  });
+
   const recordings =
     (sessionId ? sessionData?.recordings : data?.recordings) || [];
+
+  // Drop any in-flight entry that has already landed as a completed recording
+  // (both share the same id), so a just-finished request never shows twice.
+  const inflight = (inflightData || []).filter(
+    (req) => !recordings.some((rec) => rec.id === req.id),
+  );
 
   // Keyboard navigation
   useEffect(() => {
@@ -149,12 +189,45 @@ export default function RecordingSidebar({
         )}
       </div>
       <div className="flex-1 overflow-y-auto" ref={scrollRef}>
-        {recordings.length === 0 ? (
+        {recordings.length === 0 && inflight.length === 0 ? (
           <div className="p-4 text-center text-muted-foreground text-sm">
             No recordings found
           </div>
         ) : (
           <div className="divide-y">
+            {inflight.map((req) => (
+              <div
+                key={req.id}
+                className="w-full text-left p-3 border-l-2 border-l-sky-500/70 bg-sky-500/[0.06]"
+              >
+                <div className="flex items-center justify-between mb-1">
+                  <span className="flex items-center gap-1.5 text-xs font-medium text-sky-600 dark:text-sky-400">
+                    <Loader2 className="h-3 w-3 animate-spin" />
+                    in flight {req.method}
+                  </span>
+                  <span className="text-[10px] text-muted-foreground">
+                    {format(new Date(req.startedAt), "HH:mm:ss")}
+                  </span>
+                </div>
+                <div
+                  className="text-xs font-mono truncate text-foreground/80 mb-1"
+                  title={req.path}
+                >
+                  {req.path}
+                </div>
+                <div className="flex items-center justify-between text-[10px] text-muted-foreground">
+                  <span
+                    className={
+                      getProviderStyles(req.provider) +
+                      " px-1.5 py-0.5 rounded-full font-medium"
+                    }
+                  >
+                    {getProviderLabel(req.provider)}
+                  </span>
+                  <Elapsed startedAt={req.startedAt} />
+                </div>
+              </div>
+            ))}
             {recordings.map((recording) => {
               const isActive = recording.id === currentRecordingId;
               return (

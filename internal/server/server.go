@@ -73,6 +73,7 @@ func (s *Server) Start(ctx context.Context) error {
 	// API handlers
 	apiHandlers := api.NewHandlers(s.cfg, s.log, s.recorder)
 	mux.Handle("GET /api/recordings", http.HandlerFunc(apiHandlers.ListRecordings))
+	mux.Handle("GET /api/inflight", http.HandlerFunc(apiHandlers.ListInflight))
 	mux.Handle("GET /api/recordings/{id}/parse", http.HandlerFunc(apiHandlers.ParseRecording))
 	mux.Handle("GET /api/recordings/{id}", http.HandlerFunc(apiHandlers.GetRecording))
 

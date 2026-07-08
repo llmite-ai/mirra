@@ -135,8 +135,16 @@ func (p *Proxy) Handle(w http.ResponseWriter, r *http.Request) {
 	rec := recorder.NewRecording(recordProvider, r.Method, r.URL.Path, r.URL.RawQuery, startTime)
 	rec.Request.Headers = r.Header.Clone()
 
+	// Publish as in-flight so the UI can show live traffic before the request
+	// completes (streaming responses can stay open for many seconds).
+	p.recorder.TrackStart(&rec)
+
 	// Ensure recording happens even on early returns (including body read failures)
 	defer func() {
+		// Drop from the in-flight set first; from here on the completed
+		// recording is the source of truth.
+		p.recorder.TrackDone(rec.ID)
+
 		rec.Timing.CompletedAt = time.Now()
 		rec.Timing.DurationMs = rec.Timing.CompletedAt.Sub(rec.Timing.StartedAt).Milliseconds()
 

@@ -25,6 +25,26 @@ export function getStatusColor(status: number): string {
 }
 
 /**
+ * Returns Tailwind classes for HTTP method chips, tinted by verb so the
+ * request's identity reads at a glance.
+ */
+export function getMethodStyles(method: string): string {
+  switch (method.toUpperCase()) {
+    case "GET":
+      return "text-sky-700 dark:text-sky-300 bg-sky-500/10 ring-1 ring-inset ring-sky-500/25";
+    case "POST":
+      return "text-emerald-700 dark:text-emerald-300 bg-emerald-500/10 ring-1 ring-inset ring-emerald-500/25";
+    case "PUT":
+    case "PATCH":
+      return "text-amber-700 dark:text-amber-300 bg-amber-500/10 ring-1 ring-inset ring-amber-500/25";
+    case "DELETE":
+      return "text-rose-700 dark:text-rose-300 bg-rose-500/10 ring-1 ring-inset ring-rose-500/25";
+    default:
+      return "text-muted-foreground bg-muted ring-1 ring-inset ring-border";
+  }
+}
+
+/**
  * Returns Tailwind classes for text-only status indicators
  * Used in table views where background colors aren't needed
  */

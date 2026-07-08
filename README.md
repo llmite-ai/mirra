@@ -80,7 +80,11 @@ Or provide a configuration file:
 
 ### Browse traffic in the web UI
 
-The proxy serves a web UI on the same port — open [http://localhost:4567](http://localhost:4567) while `mirra start` is running.
+The proxy serves a web UI on the same port — open [http://localhost:4567](http://localhost:4567) while `mirra start` is running, or let mirra open it for you:
+
+```bash
+./mirra open
+```
 
 <img src="media/screenshot-recordings.png" alt="mirra web UI — recordings list" />
 

@@ -9,7 +9,7 @@ interface RecordingErrorProps {
  */
 export function RecordingError({ error }: RecordingErrorProps) {
   return (
-    <div className="p-4 rounded-lg bg-rose-500/10 border border-rose-500/25 mb-6">
+    <div className="p-4 rounded-lg bg-rose-500/10 border border-rose-500/25">
       <label className="text-[11px] font-semibold uppercase tracking-[0.08em] text-rose-700 dark:text-rose-300">
         Error
       </label>
