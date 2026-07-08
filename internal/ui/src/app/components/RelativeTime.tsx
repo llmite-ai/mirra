@@ -28,7 +28,10 @@ export function RelativeTime({ timestamp, className }: RelativeTimeProps) {
   if (!relative) return null;
 
   return (
-    <span className={className} title={format(new Date(timestamp), "MMM d, yyyy HH:mm:ss")}>
+    <span
+      className={className}
+      title={format(new Date(timestamp), "MMM d, yyyy HH:mm:ss")}
+    >
       {relative}
     </span>
   );

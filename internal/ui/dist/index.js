@@ -23940,7 +23940,14 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
       return () => window.clearInterval(id);
     }, []);
     let relative = formatRelativeTime(timestamp);
-    return relative ? /* @__PURE__ */ import_react4.default.createElement("span", { className, title: format(new Date(timestamp), "MMM d, yyyy HH:mm:ss") }, relative) : null;
+    return relative ? /* @__PURE__ */ import_react4.default.createElement(
+      "span",
+      {
+        className,
+        title: format(new Date(timestamp), "MMM d, yyyy HH:mm:ss")
+      },
+      relative
+    ) : null;
   }
 
   // internal/ui/src/app/components/RecordingsTable.tsx
