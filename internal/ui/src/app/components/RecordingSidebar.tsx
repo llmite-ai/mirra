@@ -10,6 +10,7 @@ import {
   getProviderLabel,
 } from "@/lib/styles";
 import { truncateId } from "@/lib/formatters";
+import { RelativeTime } from "@/components/RelativeTime";
 
 interface RecordingSidebarProps {
   currentRecordingId: string;
@@ -181,6 +182,8 @@ export default function RecordingSidebar({
                     </span>
                     <span className="text-[10px] text-muted-foreground">
                       {format(new Date(recording.timestamp), "HH:mm:ss")}
+                      {" · "}
+                      <RelativeTime timestamp={recording.timestamp} />
                     </span>
                   </div>
                   <div

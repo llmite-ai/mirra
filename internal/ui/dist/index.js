@@ -1584,7 +1584,7 @@ Check the top-level render call using <` + parentName + ">.");
       (function() {
         "use strict";
         typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ < "u" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart == "function" && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(new Error());
-        var React48 = require_react(), Scheduler = require_scheduler(), ReactSharedInternals = React48.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED, suppressWarning = !1;
+        var React49 = require_react(), Scheduler = require_scheduler(), ReactSharedInternals = React49.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED, suppressWarning = !1;
         function setSuppressWarning(newSuppressWarning) {
           suppressWarning = newSuppressWarning;
         }
@@ -2708,7 +2708,7 @@ Error generating stack: ` + x.message + `
         }
         var didWarnSelectedSetOnOption = !1, didWarnInvalidChild = !1, didWarnInvalidInnerHTML = !1;
         function validateProps(element, props) {
-          props.value == null && (typeof props.children == "object" && props.children !== null ? React48.Children.forEach(props.children, function(child) {
+          props.value == null && (typeof props.children == "object" && props.children !== null ? React49.Children.forEach(props.children, function(child) {
             child != null && (typeof child == "string" || typeof child == "number" || didWarnInvalidChild || (didWarnInvalidChild = !0, error("Cannot infer the option value of complex children. Pass a `value` prop or use a plain string as children to <option>.")));
           }) : props.dangerouslySetInnerHTML != null && (didWarnInvalidInnerHTML || (didWarnInvalidInnerHTML = !0, error("Pass a `value` prop if you set dangerouslyInnerHTML so React knows which value should be selected.")))), props.selected != null && !didWarnSelectedSetOnOption && (error("Use the `defaultValue` or `value` props on <select> instead of setting `selected` on <option>."), didWarnSelectedSetOnOption = !0);
         }
@@ -15060,14 +15060,14 @@ You might need to use a local HTTP server (instead of file://): https://reactjs.
       "use strict";
       (function() {
         "use strict";
-        var React48 = require_react(), REACT_ELEMENT_TYPE = Symbol.for("react.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler"), REACT_PROVIDER_TYPE = Symbol.for("react.provider"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE2 = Symbol.for("react.lazy"), REACT_OFFSCREEN_TYPE = Symbol.for("react.offscreen"), MAYBE_ITERATOR_SYMBOL = Symbol.iterator, FAUX_ITERATOR_SYMBOL = "@@iterator";
+        var React49 = require_react(), REACT_ELEMENT_TYPE = Symbol.for("react.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler"), REACT_PROVIDER_TYPE = Symbol.for("react.provider"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE2 = Symbol.for("react.lazy"), REACT_OFFSCREEN_TYPE = Symbol.for("react.offscreen"), MAYBE_ITERATOR_SYMBOL = Symbol.iterator, FAUX_ITERATOR_SYMBOL = "@@iterator";
         function getIteratorFn(maybeIterable) {
           if (maybeIterable === null || typeof maybeIterable != "object")
             return null;
           var maybeIterator = MAYBE_ITERATOR_SYMBOL && maybeIterable[MAYBE_ITERATOR_SYMBOL] || maybeIterable[FAUX_ITERATOR_SYMBOL];
           return typeof maybeIterator == "function" ? maybeIterator : null;
         }
-        var ReactSharedInternals = React48.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+        var ReactSharedInternals = React49.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
         function error(format2) {
           {
             for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++)
@@ -15670,10 +15670,10 @@ React keys must be passed directly to JSX without using spread:
   });
 
   // internal/ui/src/index.tsx
-  var import_react28 = __toESM(require_react(), 1), import_client = __toESM(require_client(), 1);
+  var import_react29 = __toESM(require_react(), 1), import_client = __toESM(require_client(), 1);
 
   // internal/ui/src/app/App.tsx
-  var import_react27 = __toESM(require_react(), 1);
+  var import_react28 = __toESM(require_react(), 1);
 
   // internal/ui/src/node_modules/react-router/dist/development/chunk-UIGDSWPH.mjs
   var React = __toESM(require_react(), 1), React2 = __toESM(require_react(), 1), React3 = __toESM(require_react(), 1), React4 = __toESM(require_react(), 1), React9 = __toESM(require_react(), 1), React8 = __toESM(require_react(), 1), React7 = __toESM(require_react(), 1), React6 = __toESM(require_react(), 1), React5 = __toESM(require_react(), 1), React10 = __toESM(require_react(), 1), React11 = __toESM(require_react(), 1), import_meta = {};
@@ -17492,7 +17492,7 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
   }
 
   // internal/ui/src/app/pages/Recordings.tsx
-  var import_react5 = __toESM(require_react(), 1);
+  var import_react6 = __toESM(require_react(), 1);
 
   // internal/ui/src/node_modules/@tanstack/query-core/build/modern/subscribable.js
   var Subscribable = class {
@@ -22461,7 +22461,7 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
   }
 
   // internal/ui/src/app/components/RecordingsTable.tsx
-  var import_react4 = __toESM(require_react(), 1);
+  var import_react5 = __toESM(require_react(), 1);
 
   // internal/ui/src/node_modules/date-fns/toDate.mjs
   function toDate(argument) {
@@ -23902,6 +23902,23 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
   function formatBytes(bytes) {
     return bytes === 0 ? "0 B" : bytes < 1024 ? `${bytes} B` : bytes < 1024 * 1024 ? `${(bytes / 1024).toFixed(1)} KB` : `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
   }
+  function formatRelativeTime(timestamp, now = Date.now()) {
+    let then = new Date(timestamp).getTime();
+    if (!Number.isFinite(then)) return "";
+    let seconds = Math.round((now - then) / 1e3);
+    if (seconds < 1) return "just now";
+    if (seconds < 60) return `${seconds}s ago`;
+    let minutes = Math.floor(seconds / 60);
+    if (minutes < 60) return `${minutes}m ago`;
+    let hours = Math.floor(minutes / 60);
+    if (hours < 24) return `${hours}h ago`;
+    let days = Math.floor(hours / 24);
+    if (days < 7) return `${days}d ago`;
+    let weeks = Math.floor(days / 7);
+    if (weeks < 5) return `${weeks}w ago`;
+    let months = Math.floor(days / 30);
+    return months < 12 ? `${months}mo ago` : `${Math.floor(days / 365)}y ago`;
+  }
   function truncateId(id, length = 8) {
     return id.substring(0, length);
   }
@@ -23913,46 +23930,65 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
     }
   }
 
+  // internal/ui/src/app/components/RelativeTime.tsx
+  var import_react4 = __toESM(require_react(), 1);
+  var TICK_MS = 15e3;
+  function RelativeTime({ timestamp, className }) {
+    let [, setTick] = import_react4.default.useState(0);
+    import_react4.default.useEffect(() => {
+      let id = window.setInterval(() => setTick((t) => t + 1), TICK_MS);
+      return () => window.clearInterval(id);
+    }, []);
+    let relative = formatRelativeTime(timestamp);
+    return relative ? /* @__PURE__ */ import_react4.default.createElement("span", { className, title: format(new Date(timestamp), "MMM d, yyyy HH:mm:ss") }, relative) : null;
+  }
+
   // internal/ui/src/app/components/RecordingsTable.tsx
   function RecordingsTable({
     recordings,
     onSelect,
     emptyMessage = "No recordings found"
   }) {
-    return /* @__PURE__ */ import_react4.default.createElement("div", { className: "border rounded-lg bg-card shadow-elev overflow-hidden [&_th]:text-[11px] [&_th]:uppercase [&_th]:tracking-[0.08em] [&_th]:font-semibold [&_th]:text-muted-foreground" }, /* @__PURE__ */ import_react4.default.createElement(Table, null, /* @__PURE__ */ import_react4.default.createElement(TableHeader, null, /* @__PURE__ */ import_react4.default.createElement(TableRow, null, /* @__PURE__ */ import_react4.default.createElement(TableHead, null, "ID"), /* @__PURE__ */ import_react4.default.createElement(TableHead, null, "Timestamp"), /* @__PURE__ */ import_react4.default.createElement(TableHead, null, "Provider"), /* @__PURE__ */ import_react4.default.createElement(TableHead, null, "Method"), /* @__PURE__ */ import_react4.default.createElement(TableHead, null, "Path"), /* @__PURE__ */ import_react4.default.createElement(TableHead, null, "Status"), /* @__PURE__ */ import_react4.default.createElement(TableHead, null, "Duration"), /* @__PURE__ */ import_react4.default.createElement(TableHead, null, "Size"))), /* @__PURE__ */ import_react4.default.createElement(TableBody, null, recordings.length === 0 ? /* @__PURE__ */ import_react4.default.createElement(TableRow, null, /* @__PURE__ */ import_react4.default.createElement(
+    return /* @__PURE__ */ import_react5.default.createElement("div", { className: "border rounded-lg bg-card shadow-elev overflow-hidden [&_th]:text-[11px] [&_th]:uppercase [&_th]:tracking-[0.08em] [&_th]:font-semibold [&_th]:text-muted-foreground" }, /* @__PURE__ */ import_react5.default.createElement(Table, null, /* @__PURE__ */ import_react5.default.createElement(TableHeader, null, /* @__PURE__ */ import_react5.default.createElement(TableRow, null, /* @__PURE__ */ import_react5.default.createElement(TableHead, null, "ID"), /* @__PURE__ */ import_react5.default.createElement(TableHead, null, "Timestamp"), /* @__PURE__ */ import_react5.default.createElement(TableHead, null, "Provider"), /* @__PURE__ */ import_react5.default.createElement(TableHead, null, "Method"), /* @__PURE__ */ import_react5.default.createElement(TableHead, null, "Path"), /* @__PURE__ */ import_react5.default.createElement(TableHead, null, "Status"), /* @__PURE__ */ import_react5.default.createElement(TableHead, null, "Duration"), /* @__PURE__ */ import_react5.default.createElement(TableHead, null, "Size"))), /* @__PURE__ */ import_react5.default.createElement(TableBody, null, recordings.length === 0 ? /* @__PURE__ */ import_react5.default.createElement(TableRow, null, /* @__PURE__ */ import_react5.default.createElement(
       TableCell,
       {
         colSpan: 8,
         className: "text-center py-8 text-muted-foreground"
       },
       emptyMessage
-    )) : recordings.map((recording) => /* @__PURE__ */ import_react4.default.createElement(
+    )) : recordings.map((recording) => /* @__PURE__ */ import_react5.default.createElement(
       TableRow,
       {
         key: recording.id,
         onClick: () => onSelect(recording),
         className: "cursor-pointer"
       },
-      /* @__PURE__ */ import_react4.default.createElement(TableCell, { className: "font-mono text-xs text-muted-foreground" }, truncateId(recording.id)),
-      /* @__PURE__ */ import_react4.default.createElement(TableCell, { className: "text-sm text-foreground" }, format(new Date(recording.timestamp), "MMM d, HH:mm:ss")),
-      /* @__PURE__ */ import_react4.default.createElement(TableCell, null, /* @__PURE__ */ import_react4.default.createElement(
+      /* @__PURE__ */ import_react5.default.createElement(TableCell, { className: "font-mono text-xs text-muted-foreground" }, truncateId(recording.id)),
+      /* @__PURE__ */ import_react5.default.createElement(TableCell, { className: "text-sm text-foreground" }, /* @__PURE__ */ import_react5.default.createElement("div", null, format(new Date(recording.timestamp), "MMM d, HH:mm:ss")), /* @__PURE__ */ import_react5.default.createElement(
+        RelativeTime,
+        {
+          timestamp: recording.timestamp,
+          className: "text-xs text-muted-foreground"
+        }
+      )),
+      /* @__PURE__ */ import_react5.default.createElement(TableCell, null, /* @__PURE__ */ import_react5.default.createElement(
         "span",
         {
           className: "inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium " + getProviderStyles(recording.provider)
         },
         getProviderLabel(recording.provider)
       )),
-      /* @__PURE__ */ import_react4.default.createElement(TableCell, { className: "text-sm font-mono text-foreground" }, recording.method),
-      /* @__PURE__ */ import_react4.default.createElement(TableCell, { className: "text-sm font-mono max-w-xs truncate text-foreground" }, recording.path),
-      /* @__PURE__ */ import_react4.default.createElement(
+      /* @__PURE__ */ import_react5.default.createElement(TableCell, { className: "text-sm font-mono text-foreground" }, recording.method),
+      /* @__PURE__ */ import_react5.default.createElement(TableCell, { className: "text-sm font-mono max-w-xs truncate text-foreground" }, recording.path),
+      /* @__PURE__ */ import_react5.default.createElement(
         TableCell,
         {
           className: `font-medium ${getStatusTextColor(recording.status)}`
         },
         recording.status
       ),
-      /* @__PURE__ */ import_react4.default.createElement(TableCell, { className: "text-sm text-foreground" }, recording.duration, "ms"),
-      /* @__PURE__ */ import_react4.default.createElement(
+      /* @__PURE__ */ import_react5.default.createElement(TableCell, { className: "text-sm text-foreground" }, recording.duration, "ms"),
+      /* @__PURE__ */ import_react5.default.createElement(
         TableCell,
         {
           className: `text-sm font-mono ${getSizeColor(recording.responseSize)}`
@@ -24007,7 +24043,7 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
 
   // internal/ui/src/app/pages/Recordings.tsx
   function Recordings() {
-    let navigate = useNavigate(), [page, setPage] = (0, import_react5.useState)(1), [limit] = (0, import_react5.useState)(50), [provider, setProvider] = (0, import_react5.useState)(""), [search, setSearch] = (0, import_react5.useState)(""), [searchInput, setSearchInput] = (0, import_react5.useState)(""), { data: data2, isLoading, error, refetch, isFetching } = useQuery({
+    let navigate = useNavigate(), [page, setPage] = (0, import_react6.useState)(1), [limit] = (0, import_react6.useState)(50), [provider, setProvider] = (0, import_react6.useState)(""), [search, setSearch] = (0, import_react6.useState)(""), [searchInput, setSearchInput] = (0, import_react6.useState)(""), { data: data2, isLoading, error, refetch, isFetching } = useQuery({
       queryKey: ["recordings", page, limit, provider, search],
       queryFn: () => fetchRecordings(page, limit, provider, search),
       refetchInterval: 1e4,
@@ -24020,7 +24056,7 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
     }, handleRefresh = () => {
       refetch();
     };
-    return /* @__PURE__ */ import_react5.default.createElement("div", { className: "mx-auto flex-1" }, /* @__PURE__ */ import_react5.default.createElement("div", { className: "space-y-4 w-full p-4" }, /* @__PURE__ */ import_react5.default.createElement("div", { className: "flex items-center justify-between" }, /* @__PURE__ */ import_react5.default.createElement("div", null, /* @__PURE__ */ import_react5.default.createElement("h1", { className: "text-2xl font-semibold tracking-tight text-foreground" }, "Recordings"), /* @__PURE__ */ import_react5.default.createElement("p", { className: "text-sm text-muted-foreground" }, data2?.total ? `${data2.total} total recordings` : "Loading...")), /* @__PURE__ */ import_react5.default.createElement(
+    return /* @__PURE__ */ import_react6.default.createElement("div", { className: "mx-auto flex-1" }, /* @__PURE__ */ import_react6.default.createElement("div", { className: "space-y-4 w-full p-4" }, /* @__PURE__ */ import_react6.default.createElement("div", { className: "flex items-center justify-between" }, /* @__PURE__ */ import_react6.default.createElement("div", null, /* @__PURE__ */ import_react6.default.createElement("h1", { className: "text-2xl font-semibold tracking-tight text-foreground" }, "Recordings"), /* @__PURE__ */ import_react6.default.createElement("p", { className: "text-sm text-muted-foreground" }, data2?.total ? `${data2.total} total recordings` : "Loading...")), /* @__PURE__ */ import_react6.default.createElement(
       Button,
       {
         variant: "outline",
@@ -24028,14 +24064,14 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
         disabled: isFetching,
         className: "flex items-center gap-2"
       },
-      /* @__PURE__ */ import_react5.default.createElement(
+      /* @__PURE__ */ import_react6.default.createElement(
         RefreshCw,
         {
           className: `h-4 w-4 ${isFetching ? "animate-spin" : ""}`
         }
       ),
       "Refresh"
-    )), /* @__PURE__ */ import_react5.default.createElement("div", { className: "flex gap-4 items-end" }, /* @__PURE__ */ import_react5.default.createElement("div", { className: "flex-1" }, /* @__PURE__ */ import_react5.default.createElement("label", { className: "text-sm font-medium mb-1 block text-muted-foreground" }, "Search"), /* @__PURE__ */ import_react5.default.createElement("div", { className: "flex gap-2" }, /* @__PURE__ */ import_react5.default.createElement(
+    )), /* @__PURE__ */ import_react6.default.createElement("div", { className: "flex gap-4 items-end" }, /* @__PURE__ */ import_react6.default.createElement("div", { className: "flex-1" }, /* @__PURE__ */ import_react6.default.createElement("label", { className: "text-sm font-medium mb-1 block text-muted-foreground" }, "Search"), /* @__PURE__ */ import_react6.default.createElement("div", { className: "flex gap-2" }, /* @__PURE__ */ import_react6.default.createElement(
       Input,
       {
         placeholder: "Search by ID, path, or error...",
@@ -24045,16 +24081,16 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
           e.key === "Enter" && handleSearch();
         }
       }
-    ), /* @__PURE__ */ import_react5.default.createElement(
+    ), /* @__PURE__ */ import_react6.default.createElement(
       Button,
       {
         variant: "outline",
         onClick: handleSearch,
         className: "flex items-center gap-2"
       },
-      /* @__PURE__ */ import_react5.default.createElement(Search, { className: "h-4 w-4" }),
+      /* @__PURE__ */ import_react6.default.createElement(Search, { className: "h-4 w-4" }),
       "Search"
-    ))), /* @__PURE__ */ import_react5.default.createElement("div", { className: "w-48" }, /* @__PURE__ */ import_react5.default.createElement("label", { className: "text-sm font-medium mb-1 block text-muted-foreground" }, "Provider"), /* @__PURE__ */ import_react5.default.createElement(
+    ))), /* @__PURE__ */ import_react6.default.createElement("div", { className: "w-48" }, /* @__PURE__ */ import_react6.default.createElement("label", { className: "text-sm font-medium mb-1 block text-muted-foreground" }, "Provider"), /* @__PURE__ */ import_react6.default.createElement(
       "select",
       {
         value: provider,
@@ -24063,18 +24099,18 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
         },
         className: "w-full px-3 py-2 text-sm border rounded-lg bg-card text-foreground border-input shadow-elev"
       },
-      /* @__PURE__ */ import_react5.default.createElement("option", { value: "" }, "All Providers"),
-      /* @__PURE__ */ import_react5.default.createElement("option", { value: "claude" }, "Claude"),
-      /* @__PURE__ */ import_react5.default.createElement("option", { value: "chatgpt" }, "Codex"),
-      /* @__PURE__ */ import_react5.default.createElement("option", { value: "openai" }, "OpenAI"),
-      /* @__PURE__ */ import_react5.default.createElement("option", { value: "gemini" }, "Gemini")
-    )), (provider || search) && /* @__PURE__ */ import_react5.default.createElement(Button, { variant: "outline", onClick: handleClearFilters }, "Clear Filters")), error && /* @__PURE__ */ import_react5.default.createElement("div", { className: "p-4 rounded-lg bg-rose-500/10 border border-rose-500/25 text-rose-700 dark:text-rose-300" }, "Error loading recordings: ", error.message), isLoading && /* @__PURE__ */ import_react5.default.createElement("div", { className: "flex items-center justify-center py-12" }, /* @__PURE__ */ import_react5.default.createElement("div", { className: "text-muted-foreground" }, "Loading recordings...")), !isLoading && data2 && /* @__PURE__ */ import_react5.default.createElement(import_react5.default.Fragment, null, /* @__PURE__ */ import_react5.default.createElement(
+      /* @__PURE__ */ import_react6.default.createElement("option", { value: "" }, "All Providers"),
+      /* @__PURE__ */ import_react6.default.createElement("option", { value: "claude" }, "Claude"),
+      /* @__PURE__ */ import_react6.default.createElement("option", { value: "chatgpt" }, "Codex"),
+      /* @__PURE__ */ import_react6.default.createElement("option", { value: "openai" }, "OpenAI"),
+      /* @__PURE__ */ import_react6.default.createElement("option", { value: "gemini" }, "Gemini")
+    )), (provider || search) && /* @__PURE__ */ import_react6.default.createElement(Button, { variant: "outline", onClick: handleClearFilters }, "Clear Filters")), error && /* @__PURE__ */ import_react6.default.createElement("div", { className: "p-4 rounded-lg bg-rose-500/10 border border-rose-500/25 text-rose-700 dark:text-rose-300" }, "Error loading recordings: ", error.message), isLoading && /* @__PURE__ */ import_react6.default.createElement("div", { className: "flex items-center justify-center py-12" }, /* @__PURE__ */ import_react6.default.createElement("div", { className: "text-muted-foreground" }, "Loading recordings...")), !isLoading && data2 && /* @__PURE__ */ import_react6.default.createElement(import_react6.default.Fragment, null, /* @__PURE__ */ import_react6.default.createElement(
       RecordingsTable,
       {
         recordings: data2.recordings,
         onSelect: (recording) => navigate(`/recordings/${recording.id}`)
       }
-    ), data2.recordings.length > 0 && /* @__PURE__ */ import_react5.default.createElement("div", { className: "flex items-center justify-between" }, /* @__PURE__ */ import_react5.default.createElement("div", { className: "text-sm text-muted-foreground" }, "Page ", data2.page, " of ", Math.ceil(data2.total / data2.limit)), /* @__PURE__ */ import_react5.default.createElement("div", { className: "flex gap-2" }, /* @__PURE__ */ import_react5.default.createElement(
+    ), data2.recordings.length > 0 && /* @__PURE__ */ import_react6.default.createElement("div", { className: "flex items-center justify-between" }, /* @__PURE__ */ import_react6.default.createElement("div", { className: "text-sm text-muted-foreground" }, "Page ", data2.page, " of ", Math.ceil(data2.total / data2.limit)), /* @__PURE__ */ import_react6.default.createElement("div", { className: "flex gap-2" }, /* @__PURE__ */ import_react6.default.createElement(
       Button,
       {
         variant: "outline",
@@ -24082,7 +24118,7 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
         disabled: page === 1
       },
       "Previous"
-    ), /* @__PURE__ */ import_react5.default.createElement(
+    ), /* @__PURE__ */ import_react6.default.createElement(
       Button,
       {
         variant: "outline",
@@ -24094,27 +24130,27 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
   }
 
   // internal/ui/src/app/pages/Recording.tsx
-  var import_react21 = __toESM(require_react(), 1);
+  var import_react22 = __toESM(require_react(), 1);
 
   // internal/ui/src/app/components/recording/RecordingDetail.tsx
-  var import_react19 = __toESM(require_react(), 1);
+  var import_react20 = __toESM(require_react(), 1);
 
   // internal/ui/src/app/components/recording/RecordingHeader.tsx
-  var import_react6 = __toESM(require_react(), 1);
+  var import_react7 = __toESM(require_react(), 1);
   function RecordingHeader({
     recordingId,
     recording
   }) {
-    let navigate = useNavigate(), [copied, setCopied] = (0, import_react6.useState)(!1);
-    return /* @__PURE__ */ import_react6.default.createElement("div", { className: "flex items-center justify-between px-6 py-5 border-b border-border/60 bg-card" }, /* @__PURE__ */ import_react6.default.createElement("div", { className: "flex items-center gap-4" }, /* @__PURE__ */ import_react6.default.createElement(
+    let navigate = useNavigate(), [copied, setCopied] = (0, import_react7.useState)(!1);
+    return /* @__PURE__ */ import_react7.default.createElement("div", { className: "flex items-center justify-between px-6 py-5 border-b border-border/60 bg-card" }, /* @__PURE__ */ import_react7.default.createElement("div", { className: "flex items-center gap-4" }, /* @__PURE__ */ import_react7.default.createElement(
       "button",
       {
         onClick: () => navigate("/recordings"),
         className: "p-2 hover:bg-muted rounded-lg transition-colors",
         "aria-label": "Back to recordings list"
       },
-      /* @__PURE__ */ import_react6.default.createElement(ArrowLeft, { className: "h-5 w-5" })
-    ), /* @__PURE__ */ import_react6.default.createElement("div", null, /* @__PURE__ */ import_react6.default.createElement("h2", { className: "text-lg font-semibold tracking-tight" }, "Recording Details"), /* @__PURE__ */ import_react6.default.createElement("p", { className: "text-xs text-muted-foreground font-mono mt-1" }, recordingId))), /* @__PURE__ */ import_react6.default.createElement("div", { className: "flex items-center gap-2" }, /* @__PURE__ */ import_react6.default.createElement(
+      /* @__PURE__ */ import_react7.default.createElement(ArrowLeft, { className: "h-5 w-5" })
+    ), /* @__PURE__ */ import_react7.default.createElement("div", null, /* @__PURE__ */ import_react7.default.createElement("h2", { className: "text-lg font-semibold tracking-tight" }, "Recording Details"), /* @__PURE__ */ import_react7.default.createElement("p", { className: "text-xs text-muted-foreground font-mono mt-1" }, recordingId))), /* @__PURE__ */ import_react7.default.createElement("div", { className: "flex items-center gap-2" }, /* @__PURE__ */ import_react7.default.createElement(
       Button,
       {
         size: "sm",
@@ -24130,8 +24166,8 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
         },
         disabled: !recording
       },
-      copied ? /* @__PURE__ */ import_react6.default.createElement(import_react6.default.Fragment, null, /* @__PURE__ */ import_react6.default.createElement(Check, { className: "h-4 w-4 mr-1" }), "Copied") : /* @__PURE__ */ import_react6.default.createElement(import_react6.default.Fragment, null, /* @__PURE__ */ import_react6.default.createElement(Copy, { className: "h-4 w-4 mr-1" }), "Copy JSON")
-    ), /* @__PURE__ */ import_react6.default.createElement(
+      copied ? /* @__PURE__ */ import_react7.default.createElement(import_react7.default.Fragment, null, /* @__PURE__ */ import_react7.default.createElement(Check, { className: "h-4 w-4 mr-1" }), "Copied") : /* @__PURE__ */ import_react7.default.createElement(import_react7.default.Fragment, null, /* @__PURE__ */ import_react7.default.createElement(Copy, { className: "h-4 w-4 mr-1" }), "Copy JSON")
+    ), /* @__PURE__ */ import_react7.default.createElement(
       Button,
       {
         size: "sm",
@@ -24147,50 +24183,56 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
         },
         disabled: !recording
       },
-      /* @__PURE__ */ import_react6.default.createElement(Download, { className: "h-4 w-4 mr-1" }),
+      /* @__PURE__ */ import_react7.default.createElement(Download, { className: "h-4 w-4 mr-1" }),
       "Download"
     )));
   }
 
   // internal/ui/src/app/components/recording/RecordingMetadata.tsx
-  var import_react7 = __toESM(require_react(), 1);
+  var import_react8 = __toESM(require_react(), 1);
   function RecordingMetadata({ recording }) {
     let body = recording.request.body, model = body && typeof body == "object" ? body.model : void 0;
-    return /* @__PURE__ */ import_react7.default.createElement("div", { className: "flex flex-wrap gap-x-10 gap-y-3 mb-6" }, /* @__PURE__ */ import_react7.default.createElement(MetadataField, { label: "Timestamp" }, format(new Date(recording.timestamp), "MMM d, yyyy HH:mm:ss")), /* @__PURE__ */ import_react7.default.createElement(MetadataField, { label: "Provider" }, /* @__PURE__ */ import_react7.default.createElement(
+    return /* @__PURE__ */ import_react8.default.createElement("div", { className: "flex flex-wrap gap-x-10 gap-y-3 mb-6" }, /* @__PURE__ */ import_react8.default.createElement(MetadataField, { label: "Timestamp" }, format(new Date(recording.timestamp), "MMM d, yyyy HH:mm:ss"), /* @__PURE__ */ import_react8.default.createElement(
+      RelativeTime,
+      {
+        timestamp: recording.timestamp,
+        className: "ml-2 text-muted-foreground"
+      }
+    )), /* @__PURE__ */ import_react8.default.createElement(MetadataField, { label: "Provider" }, /* @__PURE__ */ import_react8.default.createElement(
       "span",
       {
         className: `inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${getProviderStyles(recording.provider)}`
       },
       getProviderLabel(recording.provider)
-    )), model && /* @__PURE__ */ import_react7.default.createElement(MetadataField, { label: "Model" }, /* @__PURE__ */ import_react7.default.createElement("span", { className: "font-mono" }, model)), /* @__PURE__ */ import_react7.default.createElement(MetadataField, { label: "Status" }, /* @__PURE__ */ import_react7.default.createElement(
+    )), model && /* @__PURE__ */ import_react8.default.createElement(MetadataField, { label: "Model" }, /* @__PURE__ */ import_react8.default.createElement("span", { className: "font-mono" }, model)), /* @__PURE__ */ import_react8.default.createElement(MetadataField, { label: "Status" }, /* @__PURE__ */ import_react8.default.createElement(
       "span",
       {
         className: `inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${getStatusColor(recording.response.status)}`
       },
       recording.response.status
-    )), /* @__PURE__ */ import_react7.default.createElement(MetadataField, { label: "Duration" }, recording.timing.duration_ms, "ms"), recording.response.streaming && /* @__PURE__ */ import_react7.default.createElement(MetadataField, { label: "Transport" }, /* @__PURE__ */ import_react7.default.createElement("span", { className: "inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-muted text-muted-foreground ring-1 ring-inset ring-border" }, "SSE stream")));
+    )), /* @__PURE__ */ import_react8.default.createElement(MetadataField, { label: "Duration" }, recording.timing.duration_ms, "ms"), recording.response.streaming && /* @__PURE__ */ import_react8.default.createElement(MetadataField, { label: "Transport" }, /* @__PURE__ */ import_react8.default.createElement("span", { className: "inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-muted text-muted-foreground ring-1 ring-inset ring-border" }, "SSE stream")));
   }
   function MetadataField({
     label,
     children
   }) {
-    return /* @__PURE__ */ import_react7.default.createElement("div", null, /* @__PURE__ */ import_react7.default.createElement("label", { className: "text-[11px] font-semibold uppercase tracking-[0.08em] text-muted-foreground" }, label), /* @__PURE__ */ import_react7.default.createElement("p", { className: "text-sm mt-1.5" }, children));
+    return /* @__PURE__ */ import_react8.default.createElement("div", null, /* @__PURE__ */ import_react8.default.createElement("label", { className: "text-[11px] font-semibold uppercase tracking-[0.08em] text-muted-foreground" }, label), /* @__PURE__ */ import_react8.default.createElement("p", { className: "text-sm mt-1.5" }, children));
   }
 
   // internal/ui/src/app/components/recording/RecordingError.tsx
-  var import_react8 = __toESM(require_react(), 1);
+  var import_react9 = __toESM(require_react(), 1);
   function RecordingError({ error }) {
-    return /* @__PURE__ */ import_react8.default.createElement("div", { className: "p-4 rounded-lg bg-rose-500/10 border border-rose-500/25 mb-6" }, /* @__PURE__ */ import_react8.default.createElement("label", { className: "text-[11px] font-semibold uppercase tracking-[0.08em] text-rose-700 dark:text-rose-300" }, "Error"), /* @__PURE__ */ import_react8.default.createElement("p", { className: "text-sm text-rose-700 dark:text-rose-300 mt-1 font-mono" }, error));
+    return /* @__PURE__ */ import_react9.default.createElement("div", { className: "p-4 rounded-lg bg-rose-500/10 border border-rose-500/25 mb-6" }, /* @__PURE__ */ import_react9.default.createElement("label", { className: "text-[11px] font-semibold uppercase tracking-[0.08em] text-rose-700 dark:text-rose-300" }, "Error"), /* @__PURE__ */ import_react9.default.createElement("p", { className: "text-sm text-rose-700 dark:text-rose-300 mt-1 font-mono" }, error));
   }
 
   // internal/ui/src/app/components/recording/RecordingTabs.tsx
-  var import_react9 = __toESM(require_react(), 1);
+  var import_react10 = __toESM(require_react(), 1);
   function RecordingTabs({
     activeTab,
     onTabChange,
     tabs
   }) {
-    return /* @__PURE__ */ import_react9.default.createElement("div", { className: "flex gap-6 border-b border-border/60" }, tabs.map((tab) => /* @__PURE__ */ import_react9.default.createElement(
+    return /* @__PURE__ */ import_react10.default.createElement("div", { className: "flex gap-6 border-b border-border/60" }, tabs.map((tab) => /* @__PURE__ */ import_react10.default.createElement(
       "button",
       {
         key: tab.id,
@@ -24201,15 +24243,15 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
         )
       },
       tab.label,
-      activeTab === tab.id && /* @__PURE__ */ import_react9.default.createElement("span", { className: "absolute inset-x-0 -bottom-px h-0.5 rounded-full bg-primary" })
+      activeTab === tab.id && /* @__PURE__ */ import_react10.default.createElement("span", { className: "absolute inset-x-0 -bottom-px h-0.5 rounded-full bg-primary" })
     )));
   }
 
   // internal/ui/src/app/components/recording/RequestPanel.tsx
-  var import_react17 = __toESM(require_react(), 1);
+  var import_react18 = __toESM(require_react(), 1);
 
   // internal/ui/src/app/components/recording/BodyView.tsx
-  var import_react15 = __toESM(require_react(), 1);
+  var import_react16 = __toESM(require_react(), 1);
 
   // internal/ui/src/app/lib/conversation.ts
   function joinText(content) {
@@ -24623,14 +24665,14 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
   }
 
   // internal/ui/src/app/components/JsonView.tsx
-  var import_react10 = __toESM(require_react(), 1);
+  var import_react11 = __toESM(require_react(), 1);
   var MAX_STRING_PREVIEW = 240, MAX_CHILDREN = 100;
   function JsonView({ data: data2, defaultExpandDepth = 2 }) {
-    return /* @__PURE__ */ import_react10.default.createElement("div", { className: "font-mono text-xs leading-5 overflow-x-auto" }, /* @__PURE__ */ import_react10.default.createElement(JsonNode, { value: data2, depth: 0, expandDepth: defaultExpandDepth }));
+    return /* @__PURE__ */ import_react11.default.createElement("div", { className: "font-mono text-xs leading-5 overflow-x-auto" }, /* @__PURE__ */ import_react11.default.createElement(JsonNode, { value: data2, depth: 0, expandDepth: defaultExpandDepth }));
   }
   function JsonString({ value }) {
-    let [expanded, setExpanded] = (0, import_react10.useState)(!1), long = value.length > MAX_STRING_PREVIEW, shown = expanded || !long ? value : value.slice(0, MAX_STRING_PREVIEW);
-    return /* @__PURE__ */ import_react10.default.createElement("span", { className: "text-chart-4 whitespace-pre-wrap break-all" }, '"', shown, '"', long && /* @__PURE__ */ import_react10.default.createElement(
+    let [expanded, setExpanded] = (0, import_react11.useState)(!1), long = value.length > MAX_STRING_PREVIEW, shown = expanded || !long ? value : value.slice(0, MAX_STRING_PREVIEW);
+    return /* @__PURE__ */ import_react11.default.createElement("span", { className: "text-chart-4 whitespace-pre-wrap break-all" }, '"', shown, '"', long && /* @__PURE__ */ import_react11.default.createElement(
       "button",
       {
         onClick: () => setExpanded(!expanded),
@@ -24645,22 +24687,22 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
     expandDepth,
     propertyKey
   }) {
-    let isCollection = value !== null && typeof value == "object", [open, setOpen] = (0, import_react10.useState)(depth < expandDepth), [childLimit, setChildLimit] = (0, import_react10.useState)(MAX_CHILDREN), entries = (0, import_react10.useMemo)(() => isCollection ? Array.isArray(value) ? value.map((v, i) => [String(i), v]) : Object.entries(value) : [], [isCollection, value]), keyLabel = propertyKey !== void 0 ? /* @__PURE__ */ import_react10.default.createElement("span", { className: "text-chart-2" }, propertyKey) : null;
+    let isCollection = value !== null && typeof value == "object", [open, setOpen] = (0, import_react11.useState)(depth < expandDepth), [childLimit, setChildLimit] = (0, import_react11.useState)(MAX_CHILDREN), entries = (0, import_react11.useMemo)(() => isCollection ? Array.isArray(value) ? value.map((v, i) => [String(i), v]) : Object.entries(value) : [], [isCollection, value]), keyLabel = propertyKey !== void 0 ? /* @__PURE__ */ import_react11.default.createElement("span", { className: "text-chart-2" }, propertyKey) : null;
     if (!isCollection)
-      return /* @__PURE__ */ import_react10.default.createElement("div", { style: { paddingLeft: depth === 0 ? 0 : 14 } }, keyLabel, keyLabel && /* @__PURE__ */ import_react10.default.createElement("span", { className: "text-muted-foreground" }, ": "), /* @__PURE__ */ import_react10.default.createElement(JsonLeaf, { value }));
+      return /* @__PURE__ */ import_react11.default.createElement("div", { style: { paddingLeft: depth === 0 ? 0 : 14 } }, keyLabel, keyLabel && /* @__PURE__ */ import_react11.default.createElement("span", { className: "text-muted-foreground" }, ": "), /* @__PURE__ */ import_react11.default.createElement(JsonLeaf, { value }));
     let isArray = Array.isArray(value), braces = isArray ? "[]" : "{}", summary = isArray ? `${entries.length} items` : `${entries.length} keys`;
-    return /* @__PURE__ */ import_react10.default.createElement("div", { style: { paddingLeft: depth === 0 ? 0 : 14 } }, /* @__PURE__ */ import_react10.default.createElement(
+    return /* @__PURE__ */ import_react11.default.createElement("div", { style: { paddingLeft: depth === 0 ? 0 : 14 } }, /* @__PURE__ */ import_react11.default.createElement(
       "button",
       {
         onClick: () => setOpen(!open),
         className: "inline-flex items-center gap-0.5 hover:bg-muted/60 -ml-0.5 px-0.5"
       },
-      open ? /* @__PURE__ */ import_react10.default.createElement(ChevronDown, { className: "h-3 w-3 text-muted-foreground shrink-0" }) : /* @__PURE__ */ import_react10.default.createElement(ChevronRight, { className: "h-3 w-3 text-muted-foreground shrink-0" }),
+      open ? /* @__PURE__ */ import_react11.default.createElement(ChevronDown, { className: "h-3 w-3 text-muted-foreground shrink-0" }) : /* @__PURE__ */ import_react11.default.createElement(ChevronRight, { className: "h-3 w-3 text-muted-foreground shrink-0" }),
       keyLabel,
-      keyLabel && /* @__PURE__ */ import_react10.default.createElement("span", { className: "text-muted-foreground" }, ": "),
-      /* @__PURE__ */ import_react10.default.createElement("span", { className: "text-muted-foreground" }, open ? braces[0] : `${braces[0]}\u2026${braces[1]}`),
-      !open && /* @__PURE__ */ import_react10.default.createElement("span", { className: "text-muted-foreground/70 ml-1" }, summary)
-    ), open && /* @__PURE__ */ import_react10.default.createElement(import_react10.default.Fragment, null, entries.slice(0, childLimit).map(([k, v]) => /* @__PURE__ */ import_react10.default.createElement(
+      keyLabel && /* @__PURE__ */ import_react11.default.createElement("span", { className: "text-muted-foreground" }, ": "),
+      /* @__PURE__ */ import_react11.default.createElement("span", { className: "text-muted-foreground" }, open ? braces[0] : `${braces[0]}\u2026${braces[1]}`),
+      !open && /* @__PURE__ */ import_react11.default.createElement("span", { className: "text-muted-foreground/70 ml-1" }, summary)
+    ), open && /* @__PURE__ */ import_react11.default.createElement(import_react11.default.Fragment, null, entries.slice(0, childLimit).map(([k, v]) => /* @__PURE__ */ import_react11.default.createElement(
       JsonNode,
       {
         key: k,
@@ -24669,7 +24711,7 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
         expandDepth,
         propertyKey: isArray ? void 0 : k
       }
-    )), entries.length > childLimit && /* @__PURE__ */ import_react10.default.createElement(
+    )), entries.length > childLimit && /* @__PURE__ */ import_react11.default.createElement(
       "button",
       {
         onClick: () => setChildLimit(childLimit + MAX_CHILDREN),
@@ -24682,29 +24724,29 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
       " ",
       entries.length - childLimit,
       " remaining"
-    ), /* @__PURE__ */ import_react10.default.createElement("div", { className: "text-muted-foreground" }, braces[1])));
+    ), /* @__PURE__ */ import_react11.default.createElement("div", { className: "text-muted-foreground" }, braces[1])));
   }
   function JsonLeaf({ value }) {
-    if (value === null) return /* @__PURE__ */ import_react10.default.createElement("span", { className: "text-chart-5" }, "null");
+    if (value === null) return /* @__PURE__ */ import_react11.default.createElement("span", { className: "text-chart-5" }, "null");
     switch (typeof value) {
       case "string":
-        return /* @__PURE__ */ import_react10.default.createElement(JsonString, { value });
+        return /* @__PURE__ */ import_react11.default.createElement(JsonString, { value });
       case "number":
-        return /* @__PURE__ */ import_react10.default.createElement("span", { className: "text-chart-1" }, String(value));
+        return /* @__PURE__ */ import_react11.default.createElement("span", { className: "text-chart-1" }, String(value));
       case "boolean":
-        return /* @__PURE__ */ import_react10.default.createElement("span", { className: "text-chart-5" }, String(value));
+        return /* @__PURE__ */ import_react11.default.createElement("span", { className: "text-chart-5" }, String(value));
       case "undefined":
-        return /* @__PURE__ */ import_react10.default.createElement("span", { className: "text-muted-foreground" }, "undefined");
+        return /* @__PURE__ */ import_react11.default.createElement("span", { className: "text-muted-foreground" }, "undefined");
       default:
-        return /* @__PURE__ */ import_react10.default.createElement("span", null, String(value));
+        return /* @__PURE__ */ import_react11.default.createElement("span", null, String(value));
     }
   }
 
   // internal/ui/src/app/components/conversation/RequestOverview.tsx
-  var import_react13 = __toESM(require_react(), 1);
+  var import_react14 = __toESM(require_react(), 1);
 
   // internal/ui/src/app/components/ui/badge.tsx
-  var React29 = __toESM(require_react(), 1);
+  var React30 = __toESM(require_react(), 1);
   var badgeVariants = cva(
     "inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&>svg]:size-3 gap-1 [&>svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden",
     {
@@ -24727,7 +24769,7 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
     asChild = !1,
     ...props
   }) {
-    return /* @__PURE__ */ React29.createElement(
+    return /* @__PURE__ */ React30.createElement(
       asChild ? Slot : "span",
       {
         "data-slot": "badge",
@@ -24738,16 +24780,16 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
   }
 
   // internal/ui/src/app/components/conversation/Expandable.tsx
-  var import_react11 = __toESM(require_react(), 1);
+  var import_react12 = __toESM(require_react(), 1);
   function Expandable({
     children,
     maxHeight = 260,
     className
   }) {
-    let ref = (0, import_react11.useRef)(null), [expanded, setExpanded] = (0, import_react11.useState)(!1), [overflows, setOverflows] = (0, import_react11.useState)(!1);
-    return (0, import_react11.useLayoutEffect)(() => {
+    let ref = (0, import_react12.useRef)(null), [expanded, setExpanded] = (0, import_react12.useState)(!1), [overflows, setOverflows] = (0, import_react12.useState)(!1);
+    return (0, import_react12.useLayoutEffect)(() => {
       ref.current && setOverflows(ref.current.scrollHeight > maxHeight + 20);
-    }, [maxHeight, children]), /* @__PURE__ */ import_react11.default.createElement("div", { className }, /* @__PURE__ */ import_react11.default.createElement(
+    }, [maxHeight, children]), /* @__PURE__ */ import_react12.default.createElement("div", { className }, /* @__PURE__ */ import_react12.default.createElement(
       "div",
       {
         ref,
@@ -24755,8 +24797,8 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
         style: expanded ? void 0 : { maxHeight }
       },
       children,
-      overflows && !expanded && /* @__PURE__ */ import_react11.default.createElement("div", { className: "absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-card to-transparent pointer-events-none" })
-    ), overflows && /* @__PURE__ */ import_react11.default.createElement(
+      overflows && !expanded && /* @__PURE__ */ import_react12.default.createElement("div", { className: "absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-card to-transparent pointer-events-none" })
+    ), overflows && /* @__PURE__ */ import_react12.default.createElement(
       "button",
       {
         onClick: () => setExpanded(!expanded),
@@ -24767,7 +24809,7 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
   }
 
   // internal/ui/src/app/components/conversation/MessageCard.tsx
-  var import_react12 = __toESM(require_react(), 1);
+  var import_react13 = __toESM(require_react(), 1);
   var ROLE_STYLES = {
     user: { border: "border-l-chart-2", label: "text-chart-2" },
     assistant: { border: "border-l-chart-4", label: "text-chart-4" },
@@ -24780,7 +24822,7 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
       border: "border-l-border",
       label: "text-muted-foreground"
     };
-    return /* @__PURE__ */ import_react12.default.createElement("div", { className: cn("border-l-2 pl-3 py-1", style.border) }, /* @__PURE__ */ import_react12.default.createElement(
+    return /* @__PURE__ */ import_react13.default.createElement("div", { className: cn("border-l-2 pl-3 py-1", style.border) }, /* @__PURE__ */ import_react13.default.createElement(
       "div",
       {
         className: cn(
@@ -24789,78 +24831,78 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
         )
       },
       message2.role
-    ), /* @__PURE__ */ import_react12.default.createElement("div", { className: "space-y-2" }, message2.blocks.map((block, i) => /* @__PURE__ */ import_react12.default.createElement(BlockView, { key: i, block }))));
+    ), /* @__PURE__ */ import_react13.default.createElement("div", { className: "space-y-2" }, message2.blocks.map((block, i) => /* @__PURE__ */ import_react13.default.createElement(BlockView, { key: i, block }))));
   }
   function BlockView({ block }) {
     switch (block.kind) {
       case "text":
-        return /* @__PURE__ */ import_react12.default.createElement(Expandable, null, /* @__PURE__ */ import_react12.default.createElement("p", { className: "text-sm whitespace-pre-wrap break-words" }, block.text));
+        return /* @__PURE__ */ import_react13.default.createElement(Expandable, null, /* @__PURE__ */ import_react13.default.createElement("p", { className: "text-sm whitespace-pre-wrap break-words" }, block.text));
       case "thinking":
-        return /* @__PURE__ */ import_react12.default.createElement(ThinkingBlock, { text: block.text });
+        return /* @__PURE__ */ import_react13.default.createElement(ThinkingBlock, { text: block.text });
       case "tool_call":
-        return /* @__PURE__ */ import_react12.default.createElement(ToolCallBlock, { block });
+        return /* @__PURE__ */ import_react13.default.createElement(ToolCallBlock, { block });
       case "tool_result":
-        return /* @__PURE__ */ import_react12.default.createElement(ToolResultBlock, { block });
+        return /* @__PURE__ */ import_react13.default.createElement(ToolResultBlock, { block });
       case "image":
-        return /* @__PURE__ */ import_react12.default.createElement("div", null, block.src ? /* @__PURE__ */ import_react12.default.createElement(
+        return /* @__PURE__ */ import_react13.default.createElement("div", null, block.src ? /* @__PURE__ */ import_react13.default.createElement(
           "img",
           {
             src: block.src,
             alt: block.mediaType ?? "image",
             className: "max-h-48 max-w-full border"
           }
-        ) : /* @__PURE__ */ import_react12.default.createElement("span", { className: "text-xs text-muted-foreground italic" }, "image ", block.mediaType ? `(${block.mediaType})` : ""));
+        ) : /* @__PURE__ */ import_react13.default.createElement("span", { className: "text-xs text-muted-foreground italic" }, "image ", block.mediaType ? `(${block.mediaType})` : ""));
       case "other":
-        return /* @__PURE__ */ import_react12.default.createElement(
+        return /* @__PURE__ */ import_react13.default.createElement(
           CollapsibleRow,
           {
-            icon: /* @__PURE__ */ import_react12.default.createElement(CornerDownRight, { className: "h-3.5 w-3.5" }),
+            icon: /* @__PURE__ */ import_react13.default.createElement(CornerDownRight, { className: "h-3.5 w-3.5" }),
             title: block.label,
             titleClassName: "text-muted-foreground"
           },
-          /* @__PURE__ */ import_react12.default.createElement(JsonView, { data: block.raw, defaultExpandDepth: 1 })
+          /* @__PURE__ */ import_react13.default.createElement(JsonView, { data: block.raw, defaultExpandDepth: 1 })
         );
     }
   }
   function ThinkingBlock({ text }) {
-    return /* @__PURE__ */ import_react12.default.createElement(
+    return /* @__PURE__ */ import_react13.default.createElement(
       CollapsibleRow,
       {
-        icon: /* @__PURE__ */ import_react12.default.createElement(Brain, { className: "h-3.5 w-3.5" }),
+        icon: /* @__PURE__ */ import_react13.default.createElement(Brain, { className: "h-3.5 w-3.5" }),
         title: "thinking",
         titleClassName: "text-muted-foreground",
         preview: text
       },
-      /* @__PURE__ */ import_react12.default.createElement(Expandable, { maxHeight: 400 }, /* @__PURE__ */ import_react12.default.createElement("p", { className: "text-sm whitespace-pre-wrap break-words text-muted-foreground italic" }, text))
+      /* @__PURE__ */ import_react13.default.createElement(Expandable, { maxHeight: 400 }, /* @__PURE__ */ import_react13.default.createElement("p", { className: "text-sm whitespace-pre-wrap break-words text-muted-foreground italic" }, text))
     );
   }
   function ToolCallBlock({
     block
   }) {
     let preview = typeof block.input == "string" ? block.input : previewJSON(block.input);
-    return /* @__PURE__ */ import_react12.default.createElement(
+    return /* @__PURE__ */ import_react13.default.createElement(
       CollapsibleRow,
       {
-        icon: /* @__PURE__ */ import_react12.default.createElement(Wrench, { className: "h-3.5 w-3.5" }),
+        icon: /* @__PURE__ */ import_react13.default.createElement(Wrench, { className: "h-3.5 w-3.5" }),
         title: block.name,
         titleClassName: "text-chart-3 font-semibold",
         preview
       },
-      typeof block.input == "string" ? /* @__PURE__ */ import_react12.default.createElement(Expandable, { maxHeight: 400 }, /* @__PURE__ */ import_react12.default.createElement("pre", { className: "text-xs whitespace-pre-wrap break-words" }, block.input)) : /* @__PURE__ */ import_react12.default.createElement(JsonView, { data: block.input, defaultExpandDepth: 2 })
+      typeof block.input == "string" ? /* @__PURE__ */ import_react13.default.createElement(Expandable, { maxHeight: 400 }, /* @__PURE__ */ import_react13.default.createElement("pre", { className: "text-xs whitespace-pre-wrap break-words" }, block.input)) : /* @__PURE__ */ import_react13.default.createElement(JsonView, { data: block.input, defaultExpandDepth: 2 })
     );
   }
   function ToolResultBlock({
     block
   }) {
-    return /* @__PURE__ */ import_react12.default.createElement(
+    return /* @__PURE__ */ import_react13.default.createElement(
       CollapsibleRow,
       {
-        icon: /* @__PURE__ */ import_react12.default.createElement(CornerDownRight, { className: "h-3.5 w-3.5" }),
+        icon: /* @__PURE__ */ import_react13.default.createElement(CornerDownRight, { className: "h-3.5 w-3.5" }),
         title: block.isError ? "tool result \xB7 error" : "tool result",
         titleClassName: block.isError ? "text-destructive-foreground font-semibold" : "text-chart-3",
         preview: block.text || previewJSON(block.raw)
       },
-      block.text ? /* @__PURE__ */ import_react12.default.createElement(Expandable, { maxHeight: 400 }, /* @__PURE__ */ import_react12.default.createElement(
+      block.text ? /* @__PURE__ */ import_react13.default.createElement(Expandable, { maxHeight: 400 }, /* @__PURE__ */ import_react13.default.createElement(
         "pre",
         {
           className: cn(
@@ -24869,7 +24911,7 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
           )
         },
         block.text
-      )) : /* @__PURE__ */ import_react12.default.createElement(JsonView, { data: block.raw, defaultExpandDepth: 1 })
+      )) : /* @__PURE__ */ import_react13.default.createElement(JsonView, { data: block.raw, defaultExpandDepth: 1 })
     );
   }
   function previewJSON(value) {
@@ -24887,92 +24929,92 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
     preview,
     children
   }) {
-    let [open, setOpen] = (0, import_react12.useState)(!1);
-    return /* @__PURE__ */ import_react12.default.createElement("div", { className: "rounded-lg border bg-muted/20 overflow-hidden" }, /* @__PURE__ */ import_react12.default.createElement(
+    let [open, setOpen] = (0, import_react13.useState)(!1);
+    return /* @__PURE__ */ import_react13.default.createElement("div", { className: "rounded-lg border bg-muted/20 overflow-hidden" }, /* @__PURE__ */ import_react13.default.createElement(
       "button",
       {
         onClick: () => setOpen(!open),
         className: "flex w-full items-center gap-2 px-2 py-1.5 text-left hover:bg-muted/50 transition-colors min-w-0"
       },
-      open ? /* @__PURE__ */ import_react12.default.createElement(ChevronDown, { className: "h-3.5 w-3.5 text-muted-foreground shrink-0" }) : /* @__PURE__ */ import_react12.default.createElement(ChevronRight, { className: "h-3.5 w-3.5 text-muted-foreground shrink-0" }),
-      /* @__PURE__ */ import_react12.default.createElement("span", { className: "text-muted-foreground shrink-0" }, icon),
-      /* @__PURE__ */ import_react12.default.createElement("span", { className: cn("text-xs font-mono shrink-0", titleClassName) }, title),
-      !open && preview && /* @__PURE__ */ import_react12.default.createElement("span", { className: "text-xs text-muted-foreground truncate min-w-0" }, preview)
-    ), open && /* @__PURE__ */ import_react12.default.createElement("div", { className: "px-3 pb-2 pt-1 border-t" }, children));
+      open ? /* @__PURE__ */ import_react13.default.createElement(ChevronDown, { className: "h-3.5 w-3.5 text-muted-foreground shrink-0" }) : /* @__PURE__ */ import_react13.default.createElement(ChevronRight, { className: "h-3.5 w-3.5 text-muted-foreground shrink-0" }),
+      /* @__PURE__ */ import_react13.default.createElement("span", { className: "text-muted-foreground shrink-0" }, icon),
+      /* @__PURE__ */ import_react13.default.createElement("span", { className: cn("text-xs font-mono shrink-0", titleClassName) }, title),
+      !open && preview && /* @__PURE__ */ import_react13.default.createElement("span", { className: "text-xs text-muted-foreground truncate min-w-0" }, preview)
+    ), open && /* @__PURE__ */ import_react13.default.createElement("div", { className: "px-3 pb-2 pt-1 border-t" }, children));
   }
 
   // internal/ui/src/app/components/conversation/RequestOverview.tsx
   function RequestOverview({ view }) {
-    return /* @__PURE__ */ import_react13.default.createElement("div", { className: "space-y-4" }, /* @__PURE__ */ import_react13.default.createElement("div", { className: "flex flex-wrap items-center gap-2" }, view.model && /* @__PURE__ */ import_react13.default.createElement(Badge, { variant: "secondary" }, view.model), view.stream && /* @__PURE__ */ import_react13.default.createElement(Badge, { variant: "outline" }, "stream"), /* @__PURE__ */ import_react13.default.createElement(ParamChips, { params: view.params })), view.system && /* @__PURE__ */ import_react13.default.createElement(SystemPromptSection, { text: view.system }), view.tools.length > 0 && /* @__PURE__ */ import_react13.default.createElement(ToolsSection, { tools: view.tools }), /* @__PURE__ */ import_react13.default.createElement("div", null, /* @__PURE__ */ import_react13.default.createElement(SectionLabel, null, "Messages", " ", /* @__PURE__ */ import_react13.default.createElement("span", { className: "text-muted-foreground" }, "(", view.messages.length, ")")), /* @__PURE__ */ import_react13.default.createElement("div", { className: "space-y-3" }, view.messages.map((message2, i) => /* @__PURE__ */ import_react13.default.createElement(MessageCard, { key: i, message: message2 })))));
+    return /* @__PURE__ */ import_react14.default.createElement("div", { className: "space-y-4" }, /* @__PURE__ */ import_react14.default.createElement("div", { className: "flex flex-wrap items-center gap-2" }, view.model && /* @__PURE__ */ import_react14.default.createElement(Badge, { variant: "secondary" }, view.model), view.stream && /* @__PURE__ */ import_react14.default.createElement(Badge, { variant: "outline" }, "stream"), /* @__PURE__ */ import_react14.default.createElement(ParamChips, { params: view.params })), view.system && /* @__PURE__ */ import_react14.default.createElement(SystemPromptSection, { text: view.system }), view.tools.length > 0 && /* @__PURE__ */ import_react14.default.createElement(ToolsSection, { tools: view.tools }), /* @__PURE__ */ import_react14.default.createElement("div", null, /* @__PURE__ */ import_react14.default.createElement(SectionLabel, null, "Messages", " ", /* @__PURE__ */ import_react14.default.createElement("span", { className: "text-muted-foreground" }, "(", view.messages.length, ")")), /* @__PURE__ */ import_react14.default.createElement("div", { className: "space-y-3" }, view.messages.map((message2, i) => /* @__PURE__ */ import_react14.default.createElement(MessageCard, { key: i, message: message2 })))));
   }
   function SectionLabel({ children }) {
-    return /* @__PURE__ */ import_react13.default.createElement("div", { className: "text-[10px] font-semibold uppercase tracking-widest text-muted-foreground mb-2" }, children);
+    return /* @__PURE__ */ import_react14.default.createElement("div", { className: "text-[10px] font-semibold uppercase tracking-widest text-muted-foreground mb-2" }, children);
   }
   function ParamChips({ params }) {
-    let [showObjects, setShowObjects] = (0, import_react13.useState)(null), entries = Object.entries(params);
-    return entries.length === 0 ? null : /* @__PURE__ */ import_react13.default.createElement(import_react13.default.Fragment, null, entries.map(([key, value]) => value === null || typeof value != "object" ? /* @__PURE__ */ import_react13.default.createElement(
+    let [showObjects, setShowObjects] = (0, import_react14.useState)(null), entries = Object.entries(params);
+    return entries.length === 0 ? null : /* @__PURE__ */ import_react14.default.createElement(import_react14.default.Fragment, null, entries.map(([key, value]) => value === null || typeof value != "object" ? /* @__PURE__ */ import_react14.default.createElement(
       Badge,
       {
         key,
         variant: "outline",
         className: "font-mono font-normal"
       },
-      /* @__PURE__ */ import_react13.default.createElement("span", null, /* @__PURE__ */ import_react13.default.createElement("span", { className: "text-muted-foreground" }, key, "="), String(value))
-    ) : /* @__PURE__ */ import_react13.default.createElement(import_react13.default.Fragment, { key }, /* @__PURE__ */ import_react13.default.createElement(
+      /* @__PURE__ */ import_react14.default.createElement("span", null, /* @__PURE__ */ import_react14.default.createElement("span", { className: "text-muted-foreground" }, key, "="), String(value))
+    ) : /* @__PURE__ */ import_react14.default.createElement(import_react14.default.Fragment, { key }, /* @__PURE__ */ import_react14.default.createElement(
       Badge,
       {
         variant: "outline",
         className: "font-mono font-normal cursor-pointer hover:bg-accent",
         onClick: () => setShowObjects(showObjects === key ? null : key)
       },
-      /* @__PURE__ */ import_react13.default.createElement("span", { className: "text-muted-foreground" }, key),
-      showObjects === key ? /* @__PURE__ */ import_react13.default.createElement(ChevronDown, { className: "h-3 w-3" }) : /* @__PURE__ */ import_react13.default.createElement(ChevronRight, { className: "h-3 w-3" })
-    ), showObjects === key && /* @__PURE__ */ import_react13.default.createElement("div", { className: "w-full rounded-lg border bg-muted/20 p-2" }, /* @__PURE__ */ import_react13.default.createElement(JsonView, { data: value, defaultExpandDepth: 2 })))));
+      /* @__PURE__ */ import_react14.default.createElement("span", { className: "text-muted-foreground" }, key),
+      showObjects === key ? /* @__PURE__ */ import_react14.default.createElement(ChevronDown, { className: "h-3 w-3" }) : /* @__PURE__ */ import_react14.default.createElement(ChevronRight, { className: "h-3 w-3" })
+    ), showObjects === key && /* @__PURE__ */ import_react14.default.createElement("div", { className: "w-full rounded-lg border bg-muted/20 p-2" }, /* @__PURE__ */ import_react14.default.createElement(JsonView, { data: value, defaultExpandDepth: 2 })))));
   }
   function SystemPromptSection({ text }) {
-    let [open, setOpen] = (0, import_react13.useState)(!1), firstLine = text.split(`
+    let [open, setOpen] = (0, import_react14.useState)(!1), firstLine = text.split(`
 `, 1)[0];
-    return /* @__PURE__ */ import_react13.default.createElement("div", { className: "rounded-lg border bg-muted/20 overflow-hidden" }, /* @__PURE__ */ import_react13.default.createElement(
+    return /* @__PURE__ */ import_react14.default.createElement("div", { className: "rounded-lg border bg-muted/20 overflow-hidden" }, /* @__PURE__ */ import_react14.default.createElement(
       "button",
       {
         onClick: () => setOpen(!open),
         className: "flex w-full items-center gap-2 px-2 py-1.5 text-left hover:bg-muted/50 transition-colors min-w-0"
       },
-      open ? /* @__PURE__ */ import_react13.default.createElement(ChevronDown, { className: "h-3.5 w-3.5 text-muted-foreground shrink-0" }) : /* @__PURE__ */ import_react13.default.createElement(ChevronRight, { className: "h-3.5 w-3.5 text-muted-foreground shrink-0" }),
-      /* @__PURE__ */ import_react13.default.createElement(ScrollText, { className: "h-3.5 w-3.5 text-chart-5 shrink-0" }),
-      /* @__PURE__ */ import_react13.default.createElement("span", { className: "text-xs font-mono text-chart-5 font-semibold shrink-0" }, "system"),
-      /* @__PURE__ */ import_react13.default.createElement("span", { className: "text-xs text-muted-foreground shrink-0" }, text.length.toLocaleString(), " chars"),
-      !open && /* @__PURE__ */ import_react13.default.createElement("span", { className: "text-xs text-muted-foreground truncate min-w-0" }, firstLine)
-    ), open && /* @__PURE__ */ import_react13.default.createElement("div", { className: "px-3 pb-2 pt-1 border-t" }, /* @__PURE__ */ import_react13.default.createElement(Expandable, { maxHeight: 500 }, /* @__PURE__ */ import_react13.default.createElement("p", { className: "text-sm whitespace-pre-wrap break-words" }, text))));
+      open ? /* @__PURE__ */ import_react14.default.createElement(ChevronDown, { className: "h-3.5 w-3.5 text-muted-foreground shrink-0" }) : /* @__PURE__ */ import_react14.default.createElement(ChevronRight, { className: "h-3.5 w-3.5 text-muted-foreground shrink-0" }),
+      /* @__PURE__ */ import_react14.default.createElement(ScrollText, { className: "h-3.5 w-3.5 text-chart-5 shrink-0" }),
+      /* @__PURE__ */ import_react14.default.createElement("span", { className: "text-xs font-mono text-chart-5 font-semibold shrink-0" }, "system"),
+      /* @__PURE__ */ import_react14.default.createElement("span", { className: "text-xs text-muted-foreground shrink-0" }, text.length.toLocaleString(), " chars"),
+      !open && /* @__PURE__ */ import_react14.default.createElement("span", { className: "text-xs text-muted-foreground truncate min-w-0" }, firstLine)
+    ), open && /* @__PURE__ */ import_react14.default.createElement("div", { className: "px-3 pb-2 pt-1 border-t" }, /* @__PURE__ */ import_react14.default.createElement(Expandable, { maxHeight: 500 }, /* @__PURE__ */ import_react14.default.createElement("p", { className: "text-sm whitespace-pre-wrap break-words" }, text))));
   }
   function ToolsSection({ tools }) {
-    let [open, setOpen] = (0, import_react13.useState)(!1), [openTool, setOpenTool] = (0, import_react13.useState)(null);
-    return /* @__PURE__ */ import_react13.default.createElement("div", { className: "rounded-lg border bg-muted/20 overflow-hidden" }, /* @__PURE__ */ import_react13.default.createElement(
+    let [open, setOpen] = (0, import_react14.useState)(!1), [openTool, setOpenTool] = (0, import_react14.useState)(null);
+    return /* @__PURE__ */ import_react14.default.createElement("div", { className: "rounded-lg border bg-muted/20 overflow-hidden" }, /* @__PURE__ */ import_react14.default.createElement(
       "button",
       {
         onClick: () => setOpen(!open),
         className: "flex w-full items-center gap-2 px-2 py-1.5 text-left hover:bg-muted/50 transition-colors min-w-0"
       },
-      open ? /* @__PURE__ */ import_react13.default.createElement(ChevronDown, { className: "h-3.5 w-3.5 text-muted-foreground shrink-0" }) : /* @__PURE__ */ import_react13.default.createElement(ChevronRight, { className: "h-3.5 w-3.5 text-muted-foreground shrink-0" }),
-      /* @__PURE__ */ import_react13.default.createElement(Wrench, { className: "h-3.5 w-3.5 text-chart-3 shrink-0" }),
-      /* @__PURE__ */ import_react13.default.createElement("span", { className: "text-xs font-mono text-chart-3 font-semibold shrink-0" }, "tools (", tools.length, ")"),
-      !open && /* @__PURE__ */ import_react13.default.createElement("span", { className: "text-xs text-muted-foreground truncate min-w-0" }, tools.map((t) => t.name).join(", "))
-    ), open && /* @__PURE__ */ import_react13.default.createElement("div", { className: "border-t divide-y" }, tools.map((tool) => /* @__PURE__ */ import_react13.default.createElement("div", { key: tool.name, className: "px-3 py-1.5" }, /* @__PURE__ */ import_react13.default.createElement(
+      open ? /* @__PURE__ */ import_react14.default.createElement(ChevronDown, { className: "h-3.5 w-3.5 text-muted-foreground shrink-0" }) : /* @__PURE__ */ import_react14.default.createElement(ChevronRight, { className: "h-3.5 w-3.5 text-muted-foreground shrink-0" }),
+      /* @__PURE__ */ import_react14.default.createElement(Wrench, { className: "h-3.5 w-3.5 text-chart-3 shrink-0" }),
+      /* @__PURE__ */ import_react14.default.createElement("span", { className: "text-xs font-mono text-chart-3 font-semibold shrink-0" }, "tools (", tools.length, ")"),
+      !open && /* @__PURE__ */ import_react14.default.createElement("span", { className: "text-xs text-muted-foreground truncate min-w-0" }, tools.map((t) => t.name).join(", "))
+    ), open && /* @__PURE__ */ import_react14.default.createElement("div", { className: "border-t divide-y" }, tools.map((tool) => /* @__PURE__ */ import_react14.default.createElement("div", { key: tool.name, className: "px-3 py-1.5" }, /* @__PURE__ */ import_react14.default.createElement(
       "button",
       {
         onClick: () => setOpenTool(openTool === tool.name ? null : tool.name),
         className: "flex w-full items-baseline gap-2 text-left min-w-0"
       },
-      /* @__PURE__ */ import_react13.default.createElement("span", { className: "text-xs font-mono font-semibold shrink-0" }, tool.name),
-      /* @__PURE__ */ import_react13.default.createElement("span", { className: "text-xs text-muted-foreground truncate min-w-0" }, tool.description?.split(`
+      /* @__PURE__ */ import_react14.default.createElement("span", { className: "text-xs font-mono font-semibold shrink-0" }, tool.name),
+      /* @__PURE__ */ import_react14.default.createElement("span", { className: "text-xs text-muted-foreground truncate min-w-0" }, tool.description?.split(`
 `, 1)[0])
-    ), openTool === tool.name && /* @__PURE__ */ import_react13.default.createElement("div", { className: "mt-2 space-y-2" }, tool.description && /* @__PURE__ */ import_react13.default.createElement(Expandable, { maxHeight: 200 }, /* @__PURE__ */ import_react13.default.createElement("p", { className: "text-xs whitespace-pre-wrap text-muted-foreground" }, tool.description)), tool.schema != null && /* @__PURE__ */ import_react13.default.createElement(JsonView, { data: tool.schema, defaultExpandDepth: 2 }))))));
+    ), openTool === tool.name && /* @__PURE__ */ import_react14.default.createElement("div", { className: "mt-2 space-y-2" }, tool.description && /* @__PURE__ */ import_react14.default.createElement(Expandable, { maxHeight: 200 }, /* @__PURE__ */ import_react14.default.createElement("p", { className: "text-xs whitespace-pre-wrap text-muted-foreground" }, tool.description)), tool.schema != null && /* @__PURE__ */ import_react14.default.createElement(JsonView, { data: tool.schema, defaultExpandDepth: 2 }))))));
   }
 
   // internal/ui/src/app/components/conversation/ResponseOverview.tsx
-  var import_react14 = __toESM(require_react(), 1);
+  var import_react15 = __toESM(require_react(), 1);
   function ResponseOverview({ view }) {
-    return /* @__PURE__ */ import_react14.default.createElement("div", { className: "space-y-4" }, /* @__PURE__ */ import_react14.default.createElement("div", { className: "flex flex-wrap items-center gap-2" }, view.model && /* @__PURE__ */ import_react14.default.createElement(Badge, { variant: "secondary" }, view.model), view.stopReason && /* @__PURE__ */ import_react14.default.createElement(Badge, { variant: "outline", className: "font-mono font-normal" }, /* @__PURE__ */ import_react14.default.createElement("span", null, /* @__PURE__ */ import_react14.default.createElement("span", { className: "text-muted-foreground" }, "stop="), view.stopReason)), view.usage && /* @__PURE__ */ import_react14.default.createElement(UsageChips, { usage: view.usage })), view.error && /* @__PURE__ */ import_react14.default.createElement("div", { className: "flex items-start gap-2 rounded-lg border border-destructive-foreground/25 bg-destructive p-3" }, /* @__PURE__ */ import_react14.default.createElement(TriangleAlert, { className: "h-4 w-4 text-destructive-foreground shrink-0 mt-0.5" }), /* @__PURE__ */ import_react14.default.createElement("p", { className: "text-sm text-destructive-foreground whitespace-pre-wrap break-words" }, view.error)), view.message && view.message.blocks.length > 0 && /* @__PURE__ */ import_react14.default.createElement("div", null, /* @__PURE__ */ import_react14.default.createElement(SectionLabel, null, "Output"), /* @__PURE__ */ import_react14.default.createElement(MessageCard, { message: view.message })), view.eventCounts && Object.keys(view.eventCounts).length > 0 && /* @__PURE__ */ import_react14.default.createElement("div", null, /* @__PURE__ */ import_react14.default.createElement(SectionLabel, null, "Stream events"), /* @__PURE__ */ import_react14.default.createElement("div", { className: "flex flex-wrap gap-1.5" }, Object.entries(view.eventCounts).map(([type, count]) => /* @__PURE__ */ import_react14.default.createElement(
+    return /* @__PURE__ */ import_react15.default.createElement("div", { className: "space-y-4" }, /* @__PURE__ */ import_react15.default.createElement("div", { className: "flex flex-wrap items-center gap-2" }, view.model && /* @__PURE__ */ import_react15.default.createElement(Badge, { variant: "secondary" }, view.model), view.stopReason && /* @__PURE__ */ import_react15.default.createElement(Badge, { variant: "outline", className: "font-mono font-normal" }, /* @__PURE__ */ import_react15.default.createElement("span", null, /* @__PURE__ */ import_react15.default.createElement("span", { className: "text-muted-foreground" }, "stop="), view.stopReason)), view.usage && /* @__PURE__ */ import_react15.default.createElement(UsageChips, { usage: view.usage })), view.error && /* @__PURE__ */ import_react15.default.createElement("div", { className: "flex items-start gap-2 rounded-lg border border-destructive-foreground/25 bg-destructive p-3" }, /* @__PURE__ */ import_react15.default.createElement(TriangleAlert, { className: "h-4 w-4 text-destructive-foreground shrink-0 mt-0.5" }), /* @__PURE__ */ import_react15.default.createElement("p", { className: "text-sm text-destructive-foreground whitespace-pre-wrap break-words" }, view.error)), view.message && view.message.blocks.length > 0 && /* @__PURE__ */ import_react15.default.createElement("div", null, /* @__PURE__ */ import_react15.default.createElement(SectionLabel, null, "Output"), /* @__PURE__ */ import_react15.default.createElement(MessageCard, { message: view.message })), view.eventCounts && Object.keys(view.eventCounts).length > 0 && /* @__PURE__ */ import_react15.default.createElement("div", null, /* @__PURE__ */ import_react15.default.createElement(SectionLabel, null, "Stream events"), /* @__PURE__ */ import_react15.default.createElement("div", { className: "flex flex-wrap gap-1.5" }, Object.entries(view.eventCounts).map(([type, count]) => /* @__PURE__ */ import_react15.default.createElement(
       Badge,
       {
         key: type,
@@ -24980,7 +25022,7 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
         className: "font-mono font-normal"
       },
       type,
-      /* @__PURE__ */ import_react14.default.createElement("span", { className: "text-muted-foreground" }, "\xD7", count)
+      /* @__PURE__ */ import_react15.default.createElement("span", { className: "text-muted-foreground" }, "\xD7", count)
     )))));
   }
   var USAGE_LABELS = [
@@ -24992,9 +25034,9 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
     ["total", "total"]
   ];
   function UsageChips({ usage }) {
-    return /* @__PURE__ */ import_react14.default.createElement(import_react14.default.Fragment, null, USAGE_LABELS.map(([key, label]) => {
+    return /* @__PURE__ */ import_react15.default.createElement(import_react15.default.Fragment, null, USAGE_LABELS.map(([key, label]) => {
       let value = usage[key];
-      return value == null ? null : /* @__PURE__ */ import_react14.default.createElement(Badge, { key, variant: "outline", className: "font-mono font-normal" }, /* @__PURE__ */ import_react14.default.createElement("span", { className: "text-muted-foreground" }, label), value.toLocaleString());
+      return value == null ? null : /* @__PURE__ */ import_react15.default.createElement(Badge, { key, variant: "outline", className: "font-mono font-normal" }, /* @__PURE__ */ import_react15.default.createElement("span", { className: "text-muted-foreground" }, label), value.toLocaleString());
     }));
   }
 
@@ -25032,20 +25074,20 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
     return analysis;
   }
   function BodyView({ recording, which }) {
-    let analysis = (0, import_react15.useMemo)(() => analyze(recording, which), [recording, which]), hasPretty = analysis.request != null || analysis.response != null, fallback = analysis.json !== void 0 ? "json" : "raw", [mode, setMode] = (0, import_react15.useState)(hasPretty ? "pretty" : fallback);
+    let analysis = (0, import_react16.useMemo)(() => analyze(recording, which), [recording, which]), hasPretty = analysis.request != null || analysis.response != null, fallback = analysis.json !== void 0 ? "json" : "raw", [mode, setMode] = (0, import_react16.useState)(hasPretty ? "pretty" : fallback);
     if (analysis.raw === void 0 && analysis.json === void 0)
-      return /* @__PURE__ */ import_react15.default.createElement("p", { className: "text-sm text-muted-foreground italic" }, "No body");
+      return /* @__PURE__ */ import_react16.default.createElement("p", { className: "text-sm text-muted-foreground italic" }, "No body");
     let modes = [];
     hasPretty && modes.push({ id: "pretty", label: "Formatted" }), analysis.json !== void 0 && modes.push({ id: "json", label: "JSON" }), analysis.raw !== void 0 && modes.push({ id: "raw", label: "Raw" });
     let active = modes.some((m) => m.id === mode) ? mode : modes[0].id;
-    return /* @__PURE__ */ import_react15.default.createElement("div", { className: "space-y-3" }, modes.length > 1 && /* @__PURE__ */ import_react15.default.createElement(ModeToggle, { modes, active, onChange: setMode }), analysis.binary && /* @__PURE__ */ import_react15.default.createElement("div", { className: "flex items-start gap-2 rounded-lg border bg-muted/40 p-2 text-xs text-muted-foreground" }, /* @__PURE__ */ import_react15.default.createElement(TriangleAlert, { className: "h-3.5 w-3.5 shrink-0 mt-0.5" }), "This body is not readable text \u2014 it was likely recorded compressed by an older version of mirra."), active === "pretty" && analysis.request && /* @__PURE__ */ import_react15.default.createElement(RequestOverview, { view: analysis.request }), active === "pretty" && analysis.response && /* @__PURE__ */ import_react15.default.createElement(ResponseOverview, { view: analysis.response }), active === "json" && /* @__PURE__ */ import_react15.default.createElement("div", { className: "rounded-lg border bg-muted/20 p-3" }, /* @__PURE__ */ import_react15.default.createElement(JsonView, { data: analysis.json })), active === "raw" && /* @__PURE__ */ import_react15.default.createElement(RawText, { text: analysis.raw ?? "" }));
+    return /* @__PURE__ */ import_react16.default.createElement("div", { className: "space-y-3" }, modes.length > 1 && /* @__PURE__ */ import_react16.default.createElement(ModeToggle, { modes, active, onChange: setMode }), analysis.binary && /* @__PURE__ */ import_react16.default.createElement("div", { className: "flex items-start gap-2 rounded-lg border bg-muted/40 p-2 text-xs text-muted-foreground" }, /* @__PURE__ */ import_react16.default.createElement(TriangleAlert, { className: "h-3.5 w-3.5 shrink-0 mt-0.5" }), "This body is not readable text \u2014 it was likely recorded compressed by an older version of mirra."), active === "pretty" && analysis.request && /* @__PURE__ */ import_react16.default.createElement(RequestOverview, { view: analysis.request }), active === "pretty" && analysis.response && /* @__PURE__ */ import_react16.default.createElement(ResponseOverview, { view: analysis.response }), active === "json" && /* @__PURE__ */ import_react16.default.createElement("div", { className: "rounded-lg border bg-muted/20 p-3" }, /* @__PURE__ */ import_react16.default.createElement(JsonView, { data: analysis.json })), active === "raw" && /* @__PURE__ */ import_react16.default.createElement(RawText, { text: analysis.raw ?? "" }));
   }
   function ModeToggle({
     modes,
     active,
     onChange
   }) {
-    return /* @__PURE__ */ import_react15.default.createElement("div", { className: "inline-flex items-center gap-0.5 rounded-lg bg-muted/70 p-0.5" }, modes.map((m) => /* @__PURE__ */ import_react15.default.createElement(
+    return /* @__PURE__ */ import_react16.default.createElement("div", { className: "inline-flex items-center gap-0.5 rounded-lg bg-muted/70 p-0.5" }, modes.map((m) => /* @__PURE__ */ import_react16.default.createElement(
       "button",
       {
         key: m.id,
@@ -25060,8 +25102,8 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
   }
   var RAW_PREVIEW_BYTES = 1e5;
   function RawText({ text }) {
-    let [showAll, setShowAll] = (0, import_react15.useState)(!1), truncated = !showAll && text.length > RAW_PREVIEW_BYTES, shown = truncated ? text.slice(0, RAW_PREVIEW_BYTES) : text;
-    return /* @__PURE__ */ import_react15.default.createElement("div", null, /* @__PURE__ */ import_react15.default.createElement("pre", { className: "text-xs font-mono bg-muted/20 border rounded-lg p-3 overflow-x-auto whitespace-pre-wrap break-words" }, shown), truncated && /* @__PURE__ */ import_react15.default.createElement(
+    let [showAll, setShowAll] = (0, import_react16.useState)(!1), truncated = !showAll && text.length > RAW_PREVIEW_BYTES, shown = truncated ? text.slice(0, RAW_PREVIEW_BYTES) : text;
+    return /* @__PURE__ */ import_react16.default.createElement("div", null, /* @__PURE__ */ import_react16.default.createElement("pre", { className: "text-xs font-mono bg-muted/20 border rounded-lg p-3 overflow-x-auto whitespace-pre-wrap break-words" }, shown), truncated && /* @__PURE__ */ import_react16.default.createElement(
       "button",
       {
         onClick: () => setShowAll(!0),
@@ -25074,29 +25116,29 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
   }
 
   // internal/ui/src/app/components/recording/HeadersSection.tsx
-  var import_react16 = __toESM(require_react(), 1);
+  var import_react17 = __toESM(require_react(), 1);
   function HeadersSection({
     headers
   }) {
-    let [open, setOpen] = (0, import_react16.useState)(!1), entries = Object.entries(headers ?? {}).sort(
+    let [open, setOpen] = (0, import_react17.useState)(!1), entries = Object.entries(headers ?? {}).sort(
       ([a], [b]) => a.localeCompare(b)
     );
-    return /* @__PURE__ */ import_react16.default.createElement("div", null, /* @__PURE__ */ import_react16.default.createElement(
+    return /* @__PURE__ */ import_react17.default.createElement("div", null, /* @__PURE__ */ import_react17.default.createElement(
       "button",
       {
         onClick: () => setOpen(!open),
         className: "flex items-center gap-1 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
       },
-      open ? /* @__PURE__ */ import_react16.default.createElement(ChevronDown, { className: "h-4 w-4" }) : /* @__PURE__ */ import_react16.default.createElement(ChevronRight, { className: "h-4 w-4" }),
+      open ? /* @__PURE__ */ import_react17.default.createElement(ChevronDown, { className: "h-4 w-4" }) : /* @__PURE__ */ import_react17.default.createElement(ChevronRight, { className: "h-4 w-4" }),
       "Headers ",
-      /* @__PURE__ */ import_react16.default.createElement("span", { className: "text-xs" }, "(", entries.length, ")")
-    ), open && /* @__PURE__ */ import_react16.default.createElement("div", { className: "mt-1 rounded-lg border bg-muted/20 p-3 overflow-x-auto" }, /* @__PURE__ */ import_react16.default.createElement("table", { className: "text-xs font-mono" }, /* @__PURE__ */ import_react16.default.createElement("tbody", null, entries.map(([key, values]) => /* @__PURE__ */ import_react16.default.createElement("tr", { key, className: "align-top" }, /* @__PURE__ */ import_react16.default.createElement("td", { className: "pr-4 py-0.5 text-chart-2 whitespace-nowrap" }, key), /* @__PURE__ */ import_react16.default.createElement("td", { className: "py-0.5 break-all" }, values.join(", "))))))));
+      /* @__PURE__ */ import_react17.default.createElement("span", { className: "text-xs" }, "(", entries.length, ")")
+    ), open && /* @__PURE__ */ import_react17.default.createElement("div", { className: "mt-1 rounded-lg border bg-muted/20 p-3 overflow-x-auto" }, /* @__PURE__ */ import_react17.default.createElement("table", { className: "text-xs font-mono" }, /* @__PURE__ */ import_react17.default.createElement("tbody", null, entries.map(([key, values]) => /* @__PURE__ */ import_react17.default.createElement("tr", { key, className: "align-top" }, /* @__PURE__ */ import_react17.default.createElement("td", { className: "pr-4 py-0.5 text-chart-2 whitespace-nowrap" }, key), /* @__PURE__ */ import_react17.default.createElement("td", { className: "py-0.5 break-all" }, values.join(", "))))))));
   }
 
   // internal/ui/src/app/components/recording/RequestPanel.tsx
   function RequestPanel({ recording }) {
-    let [copied, setCopied] = (0, import_react17.useState)(!1);
-    return /* @__PURE__ */ import_react17.default.createElement("div", { className: "bg-card border rounded-lg shadow-elev overflow-hidden" }, /* @__PURE__ */ import_react17.default.createElement("div", { className: "flex items-center justify-between px-4 py-3 border-b border-border/60" }, /* @__PURE__ */ import_react17.default.createElement("h3", { className: "font-semibold tracking-tight" }, "Request"), /* @__PURE__ */ import_react17.default.createElement(Button, { size: "sm", variant: "ghost", onClick: () => {
+    let [copied, setCopied] = (0, import_react18.useState)(!1);
+    return /* @__PURE__ */ import_react18.default.createElement("div", { className: "bg-card border rounded-lg shadow-elev overflow-hidden" }, /* @__PURE__ */ import_react18.default.createElement("div", { className: "flex items-center justify-between px-4 py-3 border-b border-border/60" }, /* @__PURE__ */ import_react18.default.createElement("h3", { className: "font-semibold tracking-tight" }, "Request"), /* @__PURE__ */ import_react18.default.createElement(Button, { size: "sm", variant: "ghost", onClick: () => {
       let requestData = formatJSON({
         method: recording.request.method,
         path: recording.request.path,
@@ -25105,21 +25147,21 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
         body: recording.request.body
       });
       navigator.clipboard.writeText(requestData), setCopied(!0), setTimeout(() => setCopied(!1), 2e3);
-    } }, copied ? /* @__PURE__ */ import_react17.default.createElement(import_react17.default.Fragment, null, /* @__PURE__ */ import_react17.default.createElement(Check, { className: "h-4 w-4 mr-1" }), "Copied") : /* @__PURE__ */ import_react17.default.createElement(import_react17.default.Fragment, null, /* @__PURE__ */ import_react17.default.createElement(Copy, { className: "h-4 w-4 mr-1" }), "Copy"))), /* @__PURE__ */ import_react17.default.createElement("div", { className: "p-4 space-y-3" }, /* @__PURE__ */ import_react17.default.createElement("div", null, /* @__PURE__ */ import_react17.default.createElement("label", { className: "text-sm font-medium text-muted-foreground" }, "Endpoint"), /* @__PURE__ */ import_react17.default.createElement("p", { className: "text-sm mt-1 font-mono" }, recording.request.method, " ", recording.request.path, recording.request.query && `?${recording.request.query}`)), /* @__PURE__ */ import_react17.default.createElement(HeadersSection, { headers: recording.request.headers }), /* @__PURE__ */ import_react17.default.createElement("div", null, /* @__PURE__ */ import_react17.default.createElement("label", { className: "text-sm font-medium text-muted-foreground" }, "Body"), /* @__PURE__ */ import_react17.default.createElement("div", { className: "mt-1" }, /* @__PURE__ */ import_react17.default.createElement(BodyView, { recording, which: "request" })))));
+    } }, copied ? /* @__PURE__ */ import_react18.default.createElement(import_react18.default.Fragment, null, /* @__PURE__ */ import_react18.default.createElement(Check, { className: "h-4 w-4 mr-1" }), "Copied") : /* @__PURE__ */ import_react18.default.createElement(import_react18.default.Fragment, null, /* @__PURE__ */ import_react18.default.createElement(Copy, { className: "h-4 w-4 mr-1" }), "Copy"))), /* @__PURE__ */ import_react18.default.createElement("div", { className: "p-4 space-y-3" }, /* @__PURE__ */ import_react18.default.createElement("div", null, /* @__PURE__ */ import_react18.default.createElement("label", { className: "text-sm font-medium text-muted-foreground" }, "Endpoint"), /* @__PURE__ */ import_react18.default.createElement("p", { className: "text-sm mt-1 font-mono" }, recording.request.method, " ", recording.request.path, recording.request.query && `?${recording.request.query}`)), /* @__PURE__ */ import_react18.default.createElement(HeadersSection, { headers: recording.request.headers }), /* @__PURE__ */ import_react18.default.createElement("div", null, /* @__PURE__ */ import_react18.default.createElement("label", { className: "text-sm font-medium text-muted-foreground" }, "Body"), /* @__PURE__ */ import_react18.default.createElement("div", { className: "mt-1" }, /* @__PURE__ */ import_react18.default.createElement(BodyView, { recording, which: "request" })))));
   }
 
   // internal/ui/src/app/components/recording/ResponsePanel.tsx
-  var import_react18 = __toESM(require_react(), 1);
+  var import_react19 = __toESM(require_react(), 1);
   function ResponsePanel({ recording }) {
-    let [copied, setCopied] = (0, import_react18.useState)(!1);
-    return /* @__PURE__ */ import_react18.default.createElement("div", { className: "bg-card border rounded-lg shadow-elev overflow-hidden" }, /* @__PURE__ */ import_react18.default.createElement("div", { className: "flex items-center justify-between px-4 py-3 border-b border-border/60" }, /* @__PURE__ */ import_react18.default.createElement("h3", { className: "font-semibold tracking-tight" }, "Response"), /* @__PURE__ */ import_react18.default.createElement(Button, { size: "sm", variant: "ghost", onClick: () => {
+    let [copied, setCopied] = (0, import_react19.useState)(!1);
+    return /* @__PURE__ */ import_react19.default.createElement("div", { className: "bg-card border rounded-lg shadow-elev overflow-hidden" }, /* @__PURE__ */ import_react19.default.createElement("div", { className: "flex items-center justify-between px-4 py-3 border-b border-border/60" }, /* @__PURE__ */ import_react19.default.createElement("h3", { className: "font-semibold tracking-tight" }, "Response"), /* @__PURE__ */ import_react19.default.createElement(Button, { size: "sm", variant: "ghost", onClick: () => {
       let responseData = formatJSON({
         status: recording.response.status,
         headers: recording.response.headers,
         body: recording.response.body
       });
       navigator.clipboard.writeText(responseData), setCopied(!0), setTimeout(() => setCopied(!1), 2e3);
-    } }, copied ? /* @__PURE__ */ import_react18.default.createElement(import_react18.default.Fragment, null, /* @__PURE__ */ import_react18.default.createElement(Check, { className: "h-4 w-4 mr-1" }), "Copied") : /* @__PURE__ */ import_react18.default.createElement(import_react18.default.Fragment, null, /* @__PURE__ */ import_react18.default.createElement(Copy, { className: "h-4 w-4 mr-1" }), "Copy"))), /* @__PURE__ */ import_react18.default.createElement("div", { className: "p-4 space-y-3" }, /* @__PURE__ */ import_react18.default.createElement(HeadersSection, { headers: recording.response.headers }), /* @__PURE__ */ import_react18.default.createElement("div", null, /* @__PURE__ */ import_react18.default.createElement("label", { className: "text-sm font-medium text-muted-foreground" }, "Body"), /* @__PURE__ */ import_react18.default.createElement("div", { className: "mt-1" }, /* @__PURE__ */ import_react18.default.createElement(BodyView, { recording, which: "response" })))));
+    } }, copied ? /* @__PURE__ */ import_react19.default.createElement(import_react19.default.Fragment, null, /* @__PURE__ */ import_react19.default.createElement(Check, { className: "h-4 w-4 mr-1" }), "Copied") : /* @__PURE__ */ import_react19.default.createElement(import_react19.default.Fragment, null, /* @__PURE__ */ import_react19.default.createElement(Copy, { className: "h-4 w-4 mr-1" }), "Copy"))), /* @__PURE__ */ import_react19.default.createElement("div", { className: "p-4 space-y-3" }, /* @__PURE__ */ import_react19.default.createElement(HeadersSection, { headers: recording.response.headers }), /* @__PURE__ */ import_react19.default.createElement("div", null, /* @__PURE__ */ import_react19.default.createElement("label", { className: "text-sm font-medium text-muted-foreground" }, "Body"), /* @__PURE__ */ import_react19.default.createElement("div", { className: "mt-1" }, /* @__PURE__ */ import_react19.default.createElement(BodyView, { recording, which: "response" })))));
   }
 
   // internal/ui/src/app/components/recording/RecordingDetail.tsx
@@ -25141,31 +25183,31 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
       queryFn: () => fetchRecording(recordingId),
       enabled: !!recordingId
     });
-    return isLoadingRecording && !recording ? /* @__PURE__ */ import_react19.default.createElement("div", { className: "flex-1 flex items-center justify-center py-12" }, /* @__PURE__ */ import_react19.default.createElement(LoaderCircle, { className: "h-8 w-8 animate-spin text-primary" }), /* @__PURE__ */ import_react19.default.createElement("span", { className: "ml-2 text-muted-foreground" }, "Loading recording...")) : recording ? /* @__PURE__ */ import_react19.default.createElement("div", { className: "w-full h-full flex flex-col bg-background text-foreground" }, /* @__PURE__ */ import_react19.default.createElement(RecordingHeader, { recordingId, recording }), /* @__PURE__ */ import_react19.default.createElement("div", { className: "flex-1 flex flex-col overflow-hidden bg-background" }, /* @__PURE__ */ import_react19.default.createElement("div", { className: "bg-card border-b" }, /* @__PURE__ */ import_react19.default.createElement("div", { className: "p-6 pb-0" }, /* @__PURE__ */ import_react19.default.createElement(RecordingMetadata, { recording }), recording.error && /* @__PURE__ */ import_react19.default.createElement(RecordingError, { error: recording.error }), /* @__PURE__ */ import_react19.default.createElement(
+    return isLoadingRecording && !recording ? /* @__PURE__ */ import_react20.default.createElement("div", { className: "flex-1 flex items-center justify-center py-12" }, /* @__PURE__ */ import_react20.default.createElement(LoaderCircle, { className: "h-8 w-8 animate-spin text-primary" }), /* @__PURE__ */ import_react20.default.createElement("span", { className: "ml-2 text-muted-foreground" }, "Loading recording...")) : recording ? /* @__PURE__ */ import_react20.default.createElement("div", { className: "w-full h-full flex flex-col bg-background text-foreground" }, /* @__PURE__ */ import_react20.default.createElement(RecordingHeader, { recordingId, recording }), /* @__PURE__ */ import_react20.default.createElement("div", { className: "flex-1 flex flex-col overflow-hidden bg-background" }, /* @__PURE__ */ import_react20.default.createElement("div", { className: "bg-card border-b" }, /* @__PURE__ */ import_react20.default.createElement("div", { className: "p-6 pb-0" }, /* @__PURE__ */ import_react20.default.createElement(RecordingMetadata, { recording }), recording.error && /* @__PURE__ */ import_react20.default.createElement(RecordingError, { error: recording.error }), /* @__PURE__ */ import_react20.default.createElement(
       RecordingTabs,
       {
         activeTab,
         onTabChange: setActiveTab,
         tabs: TABS
       }
-    ))), /* @__PURE__ */ import_react19.default.createElement("div", { className: "flex-1 overflow-y-auto p-6 bg-muted/10" }, activeTab === "request" && /* @__PURE__ */ import_react19.default.createElement(RequestPanel, { recording }), activeTab === "response" && /* @__PURE__ */ import_react19.default.createElement(ResponsePanel, { recording })))) : /* @__PURE__ */ import_react19.default.createElement("div", { className: "flex-1 flex items-center justify-center py-12" }, /* @__PURE__ */ import_react19.default.createElement("span", { className: "ml-2 text-muted-foreground" }, "Recording not found."));
+    ))), /* @__PURE__ */ import_react20.default.createElement("div", { className: "flex-1 overflow-y-auto p-6 bg-muted/10" }, activeTab === "request" && /* @__PURE__ */ import_react20.default.createElement(RequestPanel, { recording }), activeTab === "response" && /* @__PURE__ */ import_react20.default.createElement(ResponsePanel, { recording })))) : /* @__PURE__ */ import_react20.default.createElement("div", { className: "flex-1 flex items-center justify-center py-12" }, /* @__PURE__ */ import_react20.default.createElement("span", { className: "ml-2 text-muted-foreground" }, "Recording not found."));
   }
 
   // internal/ui/src/app/components/RecordingSidebar.tsx
-  var import_react20 = __toESM(require_react(), 1);
+  var import_react21 = __toESM(require_react(), 1);
   function RecordingSidebar({
     currentRecordingId,
     sessionId
   }) {
-    let navigate = useNavigate(), [searchParams] = useSearchParams(), scrollRef = (0, import_react20.useRef)(null), [width, setWidth] = (0, import_react20.useState)(320), [isResizing, setIsResizing] = (0, import_react20.useState)(!1), startResizing = (0, import_react20.useCallback)(() => {
+    let navigate = useNavigate(), [searchParams] = useSearchParams(), scrollRef = (0, import_react21.useRef)(null), [width, setWidth] = (0, import_react21.useState)(320), [isResizing, setIsResizing] = (0, import_react21.useState)(!1), startResizing = (0, import_react21.useCallback)(() => {
       setIsResizing(!0);
-    }, []), stopResizing = (0, import_react20.useCallback)(() => {
+    }, []), stopResizing = (0, import_react21.useCallback)(() => {
       setIsResizing(!1);
-    }, []), resize = (0, import_react20.useCallback)((mouseMoveEvent) => {
+    }, []), resize = (0, import_react21.useCallback)((mouseMoveEvent) => {
       let newWidth = mouseMoveEvent.clientX;
       newWidth > 200 && newWidth < 800 && setWidth(newWidth);
     }, []);
-    (0, import_react20.useEffect)(() => (isResizing && (window.addEventListener("mousemove", resize), window.addEventListener("mouseup", stopResizing)), () => {
+    (0, import_react21.useEffect)(() => (isResizing && (window.addEventListener("mousemove", resize), window.addEventListener("mouseup", stopResizing)), () => {
       window.removeEventListener("mousemove", resize), window.removeEventListener("mouseup", stopResizing);
     }), [isResizing, resize, stopResizing]);
     let { data: data2, isLoading } = useQuery({
@@ -25180,7 +25222,7 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
       refetchInterval: 5e3,
       enabled: !!sessionId
     }), recordings = (sessionId ? sessionData?.recordings : data2?.recordings) || [];
-    return (0, import_react20.useEffect)(() => {
+    return (0, import_react21.useEffect)(() => {
       let handleKeyDown = (e) => {
         if (!recordings.length) return;
         let currentIndex = recordings.findIndex(
@@ -25197,18 +25239,18 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
         }));
       };
       return window.addEventListener("keydown", handleKeyDown), () => window.removeEventListener("keydown", handleKeyDown);
-    }, [currentRecordingId, recordings, navigate, searchParams]), (0, import_react20.useEffect)(() => {
+    }, [currentRecordingId, recordings, navigate, searchParams]), (0, import_react21.useEffect)(() => {
       if (scrollRef.current) {
         let activeElement = scrollRef.current.querySelector('[data-active="true"]');
         activeElement && activeElement.scrollIntoView({ block: "nearest", behavior: "smooth" });
       }
-    }, [currentRecordingId, recordings]), isLoading || isLoadingSession ? /* @__PURE__ */ import_react20.default.createElement("div", { className: "w-80 border-r bg-muted/10 flex items-center justify-center" }, /* @__PURE__ */ import_react20.default.createElement(LoaderCircle, { className: "h-6 w-6 animate-spin text-muted-foreground" })) : /* @__PURE__ */ import_react20.default.createElement(
+    }, [currentRecordingId, recordings]), isLoading || isLoadingSession ? /* @__PURE__ */ import_react21.default.createElement("div", { className: "w-80 border-r bg-muted/10 flex items-center justify-center" }, /* @__PURE__ */ import_react21.default.createElement(LoaderCircle, { className: "h-6 w-6 animate-spin text-muted-foreground" })) : /* @__PURE__ */ import_react21.default.createElement(
       "div",
       {
         className: "relative border-r bg-muted/10 flex flex-col h-full flex-shrink-0",
         style: { width }
       },
-      /* @__PURE__ */ import_react20.default.createElement("div", { className: "p-4 border-b border-border/60 bg-background/50 backdrop-blur flex items-center justify-between gap-2" }, /* @__PURE__ */ import_react20.default.createElement("h3", { className: "font-semibold text-[11px] text-muted-foreground uppercase tracking-[0.08em] truncate" }, sessionId ? `Session ${truncateId(sessionId, 12)}` : "Recent Recordings"), sessionId && /* @__PURE__ */ import_react20.default.createElement(
+      /* @__PURE__ */ import_react21.default.createElement("div", { className: "p-4 border-b border-border/60 bg-background/50 backdrop-blur flex items-center justify-between gap-2" }, /* @__PURE__ */ import_react21.default.createElement("h3", { className: "font-semibold text-[11px] text-muted-foreground uppercase tracking-[0.08em] truncate" }, sessionId ? `Session ${truncateId(sessionId, 12)}` : "Recent Recordings"), sessionId && /* @__PURE__ */ import_react21.default.createElement(
         "button",
         {
           onClick: () => navigate(`/recordings/${currentRecordingId}`),
@@ -25216,11 +25258,11 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
           "aria-label": "Leave session view",
           title: "Show recent recordings instead"
         },
-        /* @__PURE__ */ import_react20.default.createElement(X, { className: "h-4 w-4 text-muted-foreground" })
+        /* @__PURE__ */ import_react21.default.createElement(X, { className: "h-4 w-4 text-muted-foreground" })
       )),
-      /* @__PURE__ */ import_react20.default.createElement("div", { className: "flex-1 overflow-y-auto", ref: scrollRef }, recordings.length === 0 ? /* @__PURE__ */ import_react20.default.createElement("div", { className: "p-4 text-center text-muted-foreground text-sm" }, "No recordings found") : /* @__PURE__ */ import_react20.default.createElement("div", { className: "divide-y" }, recordings.map((recording) => {
+      /* @__PURE__ */ import_react21.default.createElement("div", { className: "flex-1 overflow-y-auto", ref: scrollRef }, recordings.length === 0 ? /* @__PURE__ */ import_react21.default.createElement("div", { className: "p-4 text-center text-muted-foreground text-sm" }, "No recordings found") : /* @__PURE__ */ import_react21.default.createElement("div", { className: "divide-y" }, recordings.map((recording) => {
         let isActive = recording.id === currentRecordingId;
-        return /* @__PURE__ */ import_react20.default.createElement(
+        return /* @__PURE__ */ import_react21.default.createElement(
           "button",
           {
             key: recording.id,
@@ -25234,7 +25276,7 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
             },
             className: `w-full text-left p-3 transition-colors focus:outline-none ${isActive ? "bg-primary/10 border-l-2 border-l-primary" : "border-l-2 border-l-transparent hover:bg-muted/40"}`
           },
-          /* @__PURE__ */ import_react20.default.createElement("div", { className: "flex items-center justify-between mb-1" }, /* @__PURE__ */ import_react20.default.createElement(
+          /* @__PURE__ */ import_react21.default.createElement("div", { className: "flex items-center justify-between mb-1" }, /* @__PURE__ */ import_react21.default.createElement(
             "span",
             {
               className: `text-xs font-medium ${getStatusTextColor(recording.status)}`
@@ -25242,8 +25284,8 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
             recording.status,
             " ",
             recording.method
-          ), /* @__PURE__ */ import_react20.default.createElement("span", { className: "text-[10px] text-muted-foreground" }, format(new Date(recording.timestamp), "HH:mm:ss"))),
-          /* @__PURE__ */ import_react20.default.createElement(
+          ), /* @__PURE__ */ import_react21.default.createElement("span", { className: "text-[10px] text-muted-foreground" }, format(new Date(recording.timestamp), "HH:mm:ss"), " \xB7 ", /* @__PURE__ */ import_react21.default.createElement(RelativeTime, { timestamp: recording.timestamp }))),
+          /* @__PURE__ */ import_react21.default.createElement(
             "div",
             {
               className: "text-xs font-mono truncate text-foreground/80 mb-1",
@@ -25251,16 +25293,16 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
             },
             recording.path
           ),
-          /* @__PURE__ */ import_react20.default.createElement("div", { className: "flex items-center justify-between text-[10px] text-muted-foreground" }, /* @__PURE__ */ import_react20.default.createElement(
+          /* @__PURE__ */ import_react21.default.createElement("div", { className: "flex items-center justify-between text-[10px] text-muted-foreground" }, /* @__PURE__ */ import_react21.default.createElement(
             "span",
             {
               className: getProviderStyles(recording.provider) + " px-1.5 py-0.5 rounded-full font-medium"
             },
             getProviderLabel(recording.provider)
-          ), /* @__PURE__ */ import_react20.default.createElement("span", null, recording.duration, "ms"))
+          ), /* @__PURE__ */ import_react21.default.createElement("span", null, recording.duration, "ms"))
         );
       }))),
-      /* @__PURE__ */ import_react20.default.createElement(
+      /* @__PURE__ */ import_react21.default.createElement(
         "div",
         {
           className: "absolute right-0 top-0 bottom-0 w-1 cursor-col-resize hover:bg-primary/50 active:bg-primary transition-colors z-10",
@@ -25273,11 +25315,11 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
   // internal/ui/src/app/pages/Recording.tsx
   function Recording() {
     let { id } = useParams(), navigate = useNavigate(), [searchParams] = useSearchParams(), sessionId = searchParams.get("session") ?? void 0;
-    return id ? /* @__PURE__ */ import_react21.default.createElement("div", { className: "flex h-[calc(100vh-4rem)] w-full border-b" }, /* @__PURE__ */ import_react21.default.createElement(RecordingSidebar, { currentRecordingId: id, sessionId }), /* @__PURE__ */ import_react21.default.createElement("div", { className: "flex-1 min-w-0 h-full" }, /* @__PURE__ */ import_react21.default.createElement(RecordingDetail, { recordingId: id }))) : (navigate("/recordings"), null);
+    return id ? /* @__PURE__ */ import_react22.default.createElement("div", { className: "flex h-[calc(100vh-4rem)] w-full border-b" }, /* @__PURE__ */ import_react22.default.createElement(RecordingSidebar, { currentRecordingId: id, sessionId }), /* @__PURE__ */ import_react22.default.createElement("div", { className: "flex-1 min-w-0 h-full" }, /* @__PURE__ */ import_react22.default.createElement(RecordingDetail, { recordingId: id }))) : (navigate("/recordings"), null);
   }
 
   // internal/ui/src/app/pages/Sessions.tsx
-  var import_react22 = __toESM(require_react(), 1);
+  var import_react23 = __toESM(require_react(), 1);
 
   // internal/ui/src/app/lib/sessions.ts
   function formatTimespan(first, last) {
@@ -25292,14 +25334,14 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
 
   // internal/ui/src/app/pages/Sessions.tsx
   function Sessions() {
-    let navigate = useNavigate(), [page, setPage] = (0, import_react22.useState)(1), [limit] = (0, import_react22.useState)(50), { data: data2, isLoading, error, refetch, isFetching } = useQuery({
+    let navigate = useNavigate(), [page, setPage] = (0, import_react23.useState)(1), [limit] = (0, import_react23.useState)(50), { data: data2, isLoading, error, refetch, isFetching } = useQuery({
       queryKey: ["sessions", page, limit],
       queryFn: () => fetchSessionGroups(page, limit),
       refetchInterval: 1e4,
       refetchIntervalInBackground: !0,
       retry: (count, err) => !(err instanceof GroupingDisabledError) && count < 3
     });
-    return /* @__PURE__ */ import_react22.default.createElement("div", { className: "mx-auto flex-1" }, /* @__PURE__ */ import_react22.default.createElement("div", { className: "space-y-4 w-full p-4" }, /* @__PURE__ */ import_react22.default.createElement("div", { className: "flex items-center justify-between" }, /* @__PURE__ */ import_react22.default.createElement("div", null, /* @__PURE__ */ import_react22.default.createElement("h1", { className: "text-2xl font-semibold tracking-tight text-foreground" }, "Sessions"), /* @__PURE__ */ import_react22.default.createElement("p", { className: "text-sm text-muted-foreground" }, data2?.total ? `${data2.total} total sessions` : "Recordings grouped by agent session")), /* @__PURE__ */ import_react22.default.createElement(
+    return /* @__PURE__ */ import_react23.default.createElement("div", { className: "mx-auto flex-1" }, /* @__PURE__ */ import_react23.default.createElement("div", { className: "space-y-4 w-full p-4" }, /* @__PURE__ */ import_react23.default.createElement("div", { className: "flex items-center justify-between" }, /* @__PURE__ */ import_react23.default.createElement("div", null, /* @__PURE__ */ import_react23.default.createElement("h1", { className: "text-2xl font-semibold tracking-tight text-foreground" }, "Sessions"), /* @__PURE__ */ import_react23.default.createElement("p", { className: "text-sm text-muted-foreground" }, data2?.total ? `${data2.total} total sessions` : "Recordings grouped by agent session")), /* @__PURE__ */ import_react23.default.createElement(
       Button,
       {
         variant: "outline",
@@ -25307,38 +25349,44 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
         disabled: isFetching,
         className: "flex items-center gap-2"
       },
-      /* @__PURE__ */ import_react22.default.createElement(
+      /* @__PURE__ */ import_react23.default.createElement(
         RefreshCw,
         {
           className: `h-4 w-4 ${isFetching ? "animate-spin" : ""}`
         }
       ),
       "Refresh"
-    )), error instanceof GroupingDisabledError ? /* @__PURE__ */ import_react22.default.createElement("div", { className: "p-8 text-center text-muted-foreground border rounded-lg bg-card shadow-elev" }, "Session grouping is not enabled on this server. Enable recording to group traffic into sessions.") : error ? /* @__PURE__ */ import_react22.default.createElement("div", { className: "p-4 rounded-lg bg-rose-500/10 border border-rose-500/25 text-rose-700 dark:text-rose-300" }, "Error loading sessions: ", error.message) : null, isLoading && !error && /* @__PURE__ */ import_react22.default.createElement("div", { className: "flex items-center justify-center py-12" }, /* @__PURE__ */ import_react22.default.createElement("div", { className: "text-muted-foreground" }, "Loading sessions...")), !isLoading && data2 && /* @__PURE__ */ import_react22.default.createElement(import_react22.default.Fragment, null, /* @__PURE__ */ import_react22.default.createElement("div", { className: "border rounded-lg bg-card shadow-elev overflow-hidden [&_th]:text-[11px] [&_th]:uppercase [&_th]:tracking-[0.08em] [&_th]:font-semibold [&_th]:text-muted-foreground" }, /* @__PURE__ */ import_react22.default.createElement(Table, null, /* @__PURE__ */ import_react22.default.createElement(TableHeader, null, /* @__PURE__ */ import_react22.default.createElement(TableRow, null, /* @__PURE__ */ import_react22.default.createElement(TableHead, null, "Trace"), /* @__PURE__ */ import_react22.default.createElement(TableHead, null, "Started"), /* @__PURE__ */ import_react22.default.createElement(TableHead, null, "Span"), /* @__PURE__ */ import_react22.default.createElement(TableHead, null, "Requests"), /* @__PURE__ */ import_react22.default.createElement(TableHead, null, "Providers"), /* @__PURE__ */ import_react22.default.createElement(TableHead, null, "Errors"))), /* @__PURE__ */ import_react22.default.createElement(TableBody, null, data2.groups.length === 0 ? /* @__PURE__ */ import_react22.default.createElement(TableRow, null, /* @__PURE__ */ import_react22.default.createElement(
+    )), error instanceof GroupingDisabledError ? /* @__PURE__ */ import_react23.default.createElement("div", { className: "p-8 text-center text-muted-foreground border rounded-lg bg-card shadow-elev" }, "Session grouping is not enabled on this server. Enable recording to group traffic into sessions.") : error ? /* @__PURE__ */ import_react23.default.createElement("div", { className: "p-4 rounded-lg bg-rose-500/10 border border-rose-500/25 text-rose-700 dark:text-rose-300" }, "Error loading sessions: ", error.message) : null, isLoading && !error && /* @__PURE__ */ import_react23.default.createElement("div", { className: "flex items-center justify-center py-12" }, /* @__PURE__ */ import_react23.default.createElement("div", { className: "text-muted-foreground" }, "Loading sessions...")), !isLoading && data2 && /* @__PURE__ */ import_react23.default.createElement(import_react23.default.Fragment, null, /* @__PURE__ */ import_react23.default.createElement("div", { className: "border rounded-lg bg-card shadow-elev overflow-hidden [&_th]:text-[11px] [&_th]:uppercase [&_th]:tracking-[0.08em] [&_th]:font-semibold [&_th]:text-muted-foreground" }, /* @__PURE__ */ import_react23.default.createElement(Table, null, /* @__PURE__ */ import_react23.default.createElement(TableHeader, null, /* @__PURE__ */ import_react23.default.createElement(TableRow, null, /* @__PURE__ */ import_react23.default.createElement(TableHead, null, "Trace"), /* @__PURE__ */ import_react23.default.createElement(TableHead, null, "Started"), /* @__PURE__ */ import_react23.default.createElement(TableHead, null, "Span"), /* @__PURE__ */ import_react23.default.createElement(TableHead, null, "Requests"), /* @__PURE__ */ import_react23.default.createElement(TableHead, null, "Providers"), /* @__PURE__ */ import_react23.default.createElement(TableHead, null, "Errors"))), /* @__PURE__ */ import_react23.default.createElement(TableBody, null, data2.groups.length === 0 ? /* @__PURE__ */ import_react23.default.createElement(TableRow, null, /* @__PURE__ */ import_react23.default.createElement(
       TableCell,
       {
         colSpan: 6,
         className: "text-center py-8 text-muted-foreground"
       },
       "No sessions yet. Sessions appear as traffic with trace or session metadata flows through the proxy."
-    )) : data2.groups.map((group) => /* @__PURE__ */ import_react22.default.createElement(
+    )) : data2.groups.map((group) => /* @__PURE__ */ import_react23.default.createElement(
       TableRow,
       {
         key: group.trace_id,
         onClick: () => navigate(`/sessions/${group.trace_id}`),
         className: "cursor-pointer"
       },
-      /* @__PURE__ */ import_react22.default.createElement(TableCell, { className: "font-mono text-xs text-muted-foreground" }, truncateId(group.trace_id, 12)),
-      /* @__PURE__ */ import_react22.default.createElement(TableCell, { className: "text-sm" }, format(
+      /* @__PURE__ */ import_react23.default.createElement(TableCell, { className: "font-mono text-xs text-muted-foreground" }, truncateId(group.trace_id, 12)),
+      /* @__PURE__ */ import_react23.default.createElement(TableCell, { className: "text-sm" }, /* @__PURE__ */ import_react23.default.createElement("div", null, format(
         new Date(group.first_timestamp),
         "MMM d, HH:mm:ss"
+      )), /* @__PURE__ */ import_react23.default.createElement(
+        RelativeTime,
+        {
+          timestamp: group.first_timestamp,
+          className: "text-xs text-muted-foreground"
+        }
       )),
-      /* @__PURE__ */ import_react22.default.createElement(TableCell, { className: "text-sm text-muted-foreground" }, formatTimespan(
+      /* @__PURE__ */ import_react23.default.createElement(TableCell, { className: "text-sm text-muted-foreground" }, formatTimespan(
         group.first_timestamp,
         group.last_timestamp
       )),
-      /* @__PURE__ */ import_react22.default.createElement(TableCell, { className: "text-sm" }, group.request_count),
-      /* @__PURE__ */ import_react22.default.createElement(TableCell, null, /* @__PURE__ */ import_react22.default.createElement("div", { className: "flex flex-wrap gap-1" }, group.providers.map((provider) => /* @__PURE__ */ import_react22.default.createElement(
+      /* @__PURE__ */ import_react23.default.createElement(TableCell, { className: "text-sm" }, group.request_count),
+      /* @__PURE__ */ import_react23.default.createElement(TableCell, null, /* @__PURE__ */ import_react23.default.createElement("div", { className: "flex flex-wrap gap-1" }, group.providers.map((provider) => /* @__PURE__ */ import_react23.default.createElement(
         "span",
         {
           key: provider,
@@ -25346,8 +25394,8 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
         },
         getProviderLabel(provider)
       )))),
-      /* @__PURE__ */ import_react22.default.createElement(TableCell, null, group.has_errors && /* @__PURE__ */ import_react22.default.createElement(TriangleAlert, { className: "h-4 w-4 text-red-600 dark:text-red-400" }))
-    ))))), data2.groups.length > 0 && /* @__PURE__ */ import_react22.default.createElement("div", { className: "flex items-center justify-between" }, /* @__PURE__ */ import_react22.default.createElement("div", { className: "text-sm text-muted-foreground" }, "Page ", data2.page, " of", " ", Math.max(1, Math.ceil(data2.total / data2.limit))), /* @__PURE__ */ import_react22.default.createElement("div", { className: "flex gap-2" }, /* @__PURE__ */ import_react22.default.createElement(
+      /* @__PURE__ */ import_react23.default.createElement(TableCell, null, group.has_errors && /* @__PURE__ */ import_react23.default.createElement(TriangleAlert, { className: "h-4 w-4 text-red-600 dark:text-red-400" }))
+    ))))), data2.groups.length > 0 && /* @__PURE__ */ import_react23.default.createElement("div", { className: "flex items-center justify-between" }, /* @__PURE__ */ import_react23.default.createElement("div", { className: "text-sm text-muted-foreground" }, "Page ", data2.page, " of", " ", Math.max(1, Math.ceil(data2.total / data2.limit))), /* @__PURE__ */ import_react23.default.createElement("div", { className: "flex gap-2" }, /* @__PURE__ */ import_react23.default.createElement(
       Button,
       {
         variant: "outline",
@@ -25355,7 +25403,7 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
         disabled: page === 1
       },
       "Previous"
-    ), /* @__PURE__ */ import_react22.default.createElement(
+    ), /* @__PURE__ */ import_react23.default.createElement(
       Button,
       {
         variant: "outline",
@@ -25367,7 +25415,7 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
   }
 
   // internal/ui/src/app/pages/Session.tsx
-  var import_react23 = __toESM(require_react(), 1);
+  var import_react24 = __toESM(require_react(), 1);
   function Session() {
     let { traceId } = useParams(), navigate = useNavigate(), { data: data2, isLoading, error } = useQuery({
       queryKey: ["session", traceId],
@@ -25375,21 +25423,27 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
       enabled: !!traceId,
       refetchInterval: 1e4
     });
-    return traceId ? /* @__PURE__ */ import_react23.default.createElement("div", { className: "mx-auto flex-1" }, /* @__PURE__ */ import_react23.default.createElement("div", { className: "space-y-4 w-full p-4" }, /* @__PURE__ */ import_react23.default.createElement("div", { className: "flex items-center gap-4" }, /* @__PURE__ */ import_react23.default.createElement(
+    return traceId ? /* @__PURE__ */ import_react24.default.createElement("div", { className: "mx-auto flex-1" }, /* @__PURE__ */ import_react24.default.createElement("div", { className: "space-y-4 w-full p-4" }, /* @__PURE__ */ import_react24.default.createElement("div", { className: "flex items-center gap-4" }, /* @__PURE__ */ import_react24.default.createElement(
       "button",
       {
         onClick: () => navigate("/sessions"),
         className: "p-2 hover:bg-muted rounded-md transition-colors",
         "aria-label": "Back to sessions list"
       },
-      /* @__PURE__ */ import_react23.default.createElement(ArrowLeft, { className: "h-5 w-5" })
-    ), /* @__PURE__ */ import_react23.default.createElement("div", null, /* @__PURE__ */ import_react23.default.createElement("h1", { className: "text-2xl font-semibold tracking-tight text-foreground" }, "Session"), /* @__PURE__ */ import_react23.default.createElement("p", { className: "text-xs text-muted-foreground font-mono mt-0.5" }, traceId))), error && /* @__PURE__ */ import_react23.default.createElement("div", { className: "p-4 rounded-lg bg-rose-500/10 border border-rose-500/25 text-rose-700 dark:text-rose-300" }, "Error loading session: ", error.message), isLoading && /* @__PURE__ */ import_react23.default.createElement("div", { className: "flex items-center justify-center py-12" }, /* @__PURE__ */ import_react23.default.createElement("div", { className: "text-muted-foreground" }, "Loading session...")), data2 && /* @__PURE__ */ import_react23.default.createElement(import_react23.default.Fragment, null, /* @__PURE__ */ import_react23.default.createElement("div", { className: "flex flex-wrap gap-x-10 gap-y-3 border rounded-lg bg-card shadow-elev p-5" }, /* @__PURE__ */ import_react23.default.createElement(SessionField, { label: "Started" }, format(
+      /* @__PURE__ */ import_react24.default.createElement(ArrowLeft, { className: "h-5 w-5" })
+    ), /* @__PURE__ */ import_react24.default.createElement("div", null, /* @__PURE__ */ import_react24.default.createElement("h1", { className: "text-2xl font-semibold tracking-tight text-foreground" }, "Session"), /* @__PURE__ */ import_react24.default.createElement("p", { className: "text-xs text-muted-foreground font-mono mt-0.5" }, traceId))), error && /* @__PURE__ */ import_react24.default.createElement("div", { className: "p-4 rounded-lg bg-rose-500/10 border border-rose-500/25 text-rose-700 dark:text-rose-300" }, "Error loading session: ", error.message), isLoading && /* @__PURE__ */ import_react24.default.createElement("div", { className: "flex items-center justify-center py-12" }, /* @__PURE__ */ import_react24.default.createElement("div", { className: "text-muted-foreground" }, "Loading session...")), data2 && /* @__PURE__ */ import_react24.default.createElement(import_react24.default.Fragment, null, /* @__PURE__ */ import_react24.default.createElement("div", { className: "flex flex-wrap gap-x-10 gap-y-3 border rounded-lg bg-card shadow-elev p-5" }, /* @__PURE__ */ import_react24.default.createElement(SessionField, { label: "Started" }, format(
       new Date(data2.group.first_timestamp),
       "MMM d, yyyy HH:mm:ss"
-    )), /* @__PURE__ */ import_react23.default.createElement(SessionField, { label: "Span" }, formatTimespan(
+    ), /* @__PURE__ */ import_react24.default.createElement(
+      RelativeTime,
+      {
+        timestamp: data2.group.first_timestamp,
+        className: "ml-2 text-muted-foreground"
+      }
+    )), /* @__PURE__ */ import_react24.default.createElement(SessionField, { label: "Span" }, formatTimespan(
       data2.group.first_timestamp,
       data2.group.last_timestamp
-    )), /* @__PURE__ */ import_react23.default.createElement(SessionField, { label: "Requests" }, data2.group.request_count), data2.group.session_id && /* @__PURE__ */ import_react23.default.createElement(SessionField, { label: "Session ID" }, /* @__PURE__ */ import_react23.default.createElement("span", { className: "font-mono text-xs" }, data2.group.session_id)), data2.group.has_errors && /* @__PURE__ */ import_react23.default.createElement(SessionField, { label: "Errors" }, /* @__PURE__ */ import_react23.default.createElement("span", { className: "inline-flex items-center gap-1 text-red-600 dark:text-red-400" }, /* @__PURE__ */ import_react23.default.createElement(TriangleAlert, { className: "h-4 w-4" }), " yes"))), /* @__PURE__ */ import_react23.default.createElement(
+    )), /* @__PURE__ */ import_react24.default.createElement(SessionField, { label: "Requests" }, data2.group.request_count), data2.group.session_id && /* @__PURE__ */ import_react24.default.createElement(SessionField, { label: "Session ID" }, /* @__PURE__ */ import_react24.default.createElement("span", { className: "font-mono text-xs" }, data2.group.session_id)), data2.group.has_errors && /* @__PURE__ */ import_react24.default.createElement(SessionField, { label: "Errors" }, /* @__PURE__ */ import_react24.default.createElement("span", { className: "inline-flex items-center gap-1 text-red-600 dark:text-red-400" }, /* @__PURE__ */ import_react24.default.createElement(TriangleAlert, { className: "h-4 w-4" }), " yes"))), /* @__PURE__ */ import_react24.default.createElement(
       RecordingsTable,
       {
         recordings: data2.recordings,
@@ -25402,26 +25456,26 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
     label,
     children
   }) {
-    return /* @__PURE__ */ import_react23.default.createElement("div", null, /* @__PURE__ */ import_react23.default.createElement("label", { className: "text-[11px] font-semibold uppercase tracking-[0.08em] text-muted-foreground" }, label), /* @__PURE__ */ import_react23.default.createElement("p", { className: "text-sm mt-1.5" }, children));
+    return /* @__PURE__ */ import_react24.default.createElement("div", null, /* @__PURE__ */ import_react24.default.createElement("label", { className: "text-[11px] font-semibold uppercase tracking-[0.08em] text-muted-foreground" }, label), /* @__PURE__ */ import_react24.default.createElement("p", { className: "text-sm mt-1.5" }, children));
   }
 
   // internal/ui/src/app/components/mode-toggle.tsx
-  var import_react25 = __toESM(require_react(), 1);
+  var import_react26 = __toESM(require_react(), 1);
 
   // internal/ui/src/app/components/theme-provider.tsx
-  var import_react24 = __toESM(require_react(), 1), initialState = {
+  var import_react25 = __toESM(require_react(), 1), initialState = {
     theme: "system",
     setTheme: () => null
-  }, ThemeProviderContext = (0, import_react24.createContext)(initialState);
+  }, ThemeProviderContext = (0, import_react25.createContext)(initialState);
   function ThemeProvider({
     children,
     defaultTheme = "system",
     storageKey = "vite-ui-theme"
   }) {
-    let [theme, setTheme] = (0, import_react24.useState)(
+    let [theme, setTheme] = (0, import_react25.useState)(
       () => localStorage.getItem(storageKey) || defaultTheme
     );
-    (0, import_react24.useEffect)(() => {
+    (0, import_react25.useEffect)(() => {
       let root = window.document.documentElement;
       if (root.classList.remove("light", "dark"), theme === "system") {
         let systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
@@ -25436,10 +25490,10 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
         localStorage.setItem(storageKey, theme2), setTheme(theme2);
       }
     };
-    return /* @__PURE__ */ import_react24.default.createElement(ThemeProviderContext.Provider, { value }, children);
+    return /* @__PURE__ */ import_react25.default.createElement(ThemeProviderContext.Provider, { value }, children);
   }
   var useTheme = () => {
-    let context = (0, import_react24.useContext)(ThemeProviderContext);
+    let context = (0, import_react25.useContext)(ThemeProviderContext);
     if (context === void 0)
       throw new Error("useTheme must be used within a ThemeProvider");
     return context;
@@ -25448,23 +25502,23 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
   // internal/ui/src/app/components/mode-toggle.tsx
   function ModeToggle2() {
     let { theme, setTheme } = useTheme();
-    return /* @__PURE__ */ import_react25.default.createElement(
+    return /* @__PURE__ */ import_react26.default.createElement(
       Button,
       {
         variant: "ghost",
         size: "icon",
         onClick: () => setTheme(theme === "dark" ? "light" : "dark")
       },
-      /* @__PURE__ */ import_react25.default.createElement(Sun, { className: "h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" }),
-      /* @__PURE__ */ import_react25.default.createElement(Moon, { className: "absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" }),
-      /* @__PURE__ */ import_react25.default.createElement("span", { className: "sr-only" }, "Toggle theme")
+      /* @__PURE__ */ import_react26.default.createElement(Sun, { className: "h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" }),
+      /* @__PURE__ */ import_react26.default.createElement(Moon, { className: "absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" }),
+      /* @__PURE__ */ import_react26.default.createElement("span", { className: "sr-only" }, "Toggle theme")
     );
   }
 
   // internal/ui/src/app/components/Logo.tsx
-  var import_react26 = __toESM(require_react(), 1);
+  var import_react27 = __toESM(require_react(), 1);
   function LogoMark({ className }) {
-    return /* @__PURE__ */ import_react26.default.createElement(
+    return /* @__PURE__ */ import_react27.default.createElement(
       "svg",
       {
         viewBox: "0 0 32 32",
@@ -25472,8 +25526,8 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
         "aria-hidden": "true",
         focusable: "false"
       },
-      /* @__PURE__ */ import_react26.default.createElement("polygon", { points: "3,7 13,16 3,25", fill: "currentColor" }),
-      /* @__PURE__ */ import_react26.default.createElement(
+      /* @__PURE__ */ import_react27.default.createElement("polygon", { points: "3,7 13,16 3,25", fill: "currentColor" }),
+      /* @__PURE__ */ import_react27.default.createElement(
         "rect",
         {
           x: "15.25",
@@ -25484,7 +25538,7 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
           opacity: "0.55"
         }
       ),
-      /* @__PURE__ */ import_react26.default.createElement(
+      /* @__PURE__ */ import_react27.default.createElement(
         "polygon",
         {
           points: "29,7 19,16 29,25",
@@ -25496,7 +25550,7 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
     );
   }
   function Logo() {
-    return /* @__PURE__ */ import_react26.default.createElement("span", { className: "inline-flex items-center gap-2 text-foreground" }, /* @__PURE__ */ import_react26.default.createElement(LogoMark, { className: "h-6 w-6" }), /* @__PURE__ */ import_react26.default.createElement("span", { className: "font-mono text-xl font-semibold tracking-tight leading-none select-none" }, "mi", /* @__PURE__ */ import_react26.default.createElement("span", null, "r"), /* @__PURE__ */ import_react26.default.createElement("span", { className: "inline-block", style: { transform: "scaleX(-1)" } }, "r"), "a"));
+    return /* @__PURE__ */ import_react27.default.createElement("span", { className: "inline-flex items-center gap-2 text-foreground" }, /* @__PURE__ */ import_react27.default.createElement(LogoMark, { className: "h-6 w-6" }), /* @__PURE__ */ import_react27.default.createElement("span", { className: "font-mono text-xl font-semibold tracking-tight leading-none select-none" }, "mi", /* @__PURE__ */ import_react27.default.createElement("span", null, "r"), /* @__PURE__ */ import_react27.default.createElement("span", { className: "inline-block", style: { transform: "scaleX(-1)" } }, "r"), "a"));
   }
 
   // internal/ui/src/app/lib/useSessionsEnabled.ts
@@ -25519,14 +25573,14 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
   // internal/ui/src/app/App.tsx
   function App() {
     let sessionsEnabled = useSessionsEnabled();
-    return /* @__PURE__ */ import_react27.default.createElement("div", { className: "min-h-screen flex flex-col bg-background" }, /* @__PURE__ */ import_react27.default.createElement("header", { className: "sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur-md" }, /* @__PURE__ */ import_react27.default.createElement("div", { className: "mx-auto px-6" }, /* @__PURE__ */ import_react27.default.createElement("div", { className: "flex h-16 items-center justify-between" }, /* @__PURE__ */ import_react27.default.createElement("div", { className: "flex items-center gap-8" }, /* @__PURE__ */ import_react27.default.createElement(Link, { to: "/", "aria-label": "mirra home" }, /* @__PURE__ */ import_react27.default.createElement(Logo, null)), /* @__PURE__ */ import_react27.default.createElement("nav", { className: "flex items-center gap-1" }, /* @__PURE__ */ import_react27.default.createElement(HeaderLink, { to: "/recordings" }, "Recordings"), sessionsEnabled && /* @__PURE__ */ import_react27.default.createElement(HeaderLink, { to: "/sessions" }, "Sessions"))), /* @__PURE__ */ import_react27.default.createElement("div", { className: "flex items-center gap-4" }, /* @__PURE__ */ import_react27.default.createElement(ModeToggle2, null))))), /* @__PURE__ */ import_react27.default.createElement("main", null, /* @__PURE__ */ import_react27.default.createElement(Routes, null, /* @__PURE__ */ import_react27.default.createElement(Route, { path: "/", element: /* @__PURE__ */ import_react27.default.createElement(Recordings, null) }), /* @__PURE__ */ import_react27.default.createElement(Route, { path: "/recordings", element: /* @__PURE__ */ import_react27.default.createElement(Recordings, null) }), /* @__PURE__ */ import_react27.default.createElement(Route, { path: "/recordings/:id", element: /* @__PURE__ */ import_react27.default.createElement(Recording, null) }), /* @__PURE__ */ import_react27.default.createElement(Route, { path: "/sessions", element: /* @__PURE__ */ import_react27.default.createElement(Sessions, null) }), /* @__PURE__ */ import_react27.default.createElement(Route, { path: "/sessions/:traceId", element: /* @__PURE__ */ import_react27.default.createElement(Session, null) }))));
+    return /* @__PURE__ */ import_react28.default.createElement("div", { className: "min-h-screen flex flex-col bg-background" }, /* @__PURE__ */ import_react28.default.createElement("header", { className: "sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur-md" }, /* @__PURE__ */ import_react28.default.createElement("div", { className: "mx-auto px-6" }, /* @__PURE__ */ import_react28.default.createElement("div", { className: "flex h-16 items-center justify-between" }, /* @__PURE__ */ import_react28.default.createElement("div", { className: "flex items-center gap-8" }, /* @__PURE__ */ import_react28.default.createElement(Link, { to: "/", "aria-label": "mirra home" }, /* @__PURE__ */ import_react28.default.createElement(Logo, null)), /* @__PURE__ */ import_react28.default.createElement("nav", { className: "flex items-center gap-1" }, /* @__PURE__ */ import_react28.default.createElement(HeaderLink, { to: "/recordings" }, "Recordings"), sessionsEnabled && /* @__PURE__ */ import_react28.default.createElement(HeaderLink, { to: "/sessions" }, "Sessions"))), /* @__PURE__ */ import_react28.default.createElement("div", { className: "flex items-center gap-4" }, /* @__PURE__ */ import_react28.default.createElement(ModeToggle2, null))))), /* @__PURE__ */ import_react28.default.createElement("main", null, /* @__PURE__ */ import_react28.default.createElement(Routes, null, /* @__PURE__ */ import_react28.default.createElement(Route, { path: "/", element: /* @__PURE__ */ import_react28.default.createElement(Recordings, null) }), /* @__PURE__ */ import_react28.default.createElement(Route, { path: "/recordings", element: /* @__PURE__ */ import_react28.default.createElement(Recordings, null) }), /* @__PURE__ */ import_react28.default.createElement(Route, { path: "/recordings/:id", element: /* @__PURE__ */ import_react28.default.createElement(Recording, null) }), /* @__PURE__ */ import_react28.default.createElement(Route, { path: "/sessions", element: /* @__PURE__ */ import_react28.default.createElement(Sessions, null) }), /* @__PURE__ */ import_react28.default.createElement(Route, { path: "/sessions/:traceId", element: /* @__PURE__ */ import_react28.default.createElement(Session, null) }))));
   }
   function HeaderLink({
     to,
     children
   }) {
     let { pathname } = useLocation(), isActive = pathname.startsWith(to) || to === "/recordings" && pathname === "/";
-    return /* @__PURE__ */ import_react27.default.createElement(
+    return /* @__PURE__ */ import_react28.default.createElement(
       NavLink,
       {
         to,
@@ -25543,7 +25597,7 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
   // internal/ui/src/index.tsx
   var queryClient = new QueryClient();
   import_client.default.createRoot(document.getElementById("root")).render(
-    /* @__PURE__ */ import_react28.default.createElement(import_react28.default.StrictMode, null, /* @__PURE__ */ import_react28.default.createElement(QueryClientProvider, { client: queryClient }, /* @__PURE__ */ import_react28.default.createElement(ThemeProvider, { defaultTheme: "system", storageKey: "mirra-ui-theme" }, /* @__PURE__ */ import_react28.default.createElement(BrowserRouter, null, /* @__PURE__ */ import_react28.default.createElement(App_default, null)))))
+    /* @__PURE__ */ import_react29.default.createElement(import_react29.default.StrictMode, null, /* @__PURE__ */ import_react29.default.createElement(QueryClientProvider, { client: queryClient }, /* @__PURE__ */ import_react29.default.createElement(ThemeProvider, { defaultTheme: "system", storageKey: "mirra-ui-theme" }, /* @__PURE__ */ import_react29.default.createElement(BrowserRouter, null, /* @__PURE__ */ import_react29.default.createElement(App_default, null)))))
   );
 })();
 /*! Bundled license information:

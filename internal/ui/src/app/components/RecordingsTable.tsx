@@ -16,6 +16,7 @@ import {
   getSizeColor,
 } from "@/lib/styles";
 import { formatBytes, truncateId } from "@/lib/formatters";
+import { RelativeTime } from "@/components/RelativeTime";
 
 interface RecordingsTableProps {
   recordings: RecordingSummary[];
@@ -67,7 +68,13 @@ export function RecordingsTable({
                   {truncateId(recording.id)}
                 </TableCell>
                 <TableCell className="text-sm text-foreground">
-                  {format(new Date(recording.timestamp), "MMM d, HH:mm:ss")}
+                  <div>
+                    {format(new Date(recording.timestamp), "MMM d, HH:mm:ss")}
+                  </div>
+                  <RelativeTime
+                    timestamp={recording.timestamp}
+                    className="text-xs text-muted-foreground"
+                  />
                 </TableCell>
                 <TableCell>
                   <span

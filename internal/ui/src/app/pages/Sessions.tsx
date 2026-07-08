@@ -16,6 +16,7 @@ import { fetchSessionGroups, GroupingDisabledError } from "../lib/api";
 import { getProviderStyles, getProviderLabel } from "@/lib/styles";
 import { truncateId } from "@/lib/formatters";
 import { formatTimespan } from "@/lib/sessions";
+import { RelativeTime } from "@/components/RelativeTime";
 
 export default function Sessions() {
   const navigate = useNavigate();
@@ -114,10 +115,16 @@ export default function Sessions() {
                           {truncateId(group.trace_id, 12)}
                         </TableCell>
                         <TableCell className="text-sm">
-                          {format(
-                            new Date(group.first_timestamp),
-                            "MMM d, HH:mm:ss",
-                          )}
+                          <div>
+                            {format(
+                              new Date(group.first_timestamp),
+                              "MMM d, HH:mm:ss",
+                            )}
+                          </div>
+                          <RelativeTime
+                            timestamp={group.first_timestamp}
+                            className="text-xs text-muted-foreground"
+                          />
                         </TableCell>
                         <TableCell className="text-sm text-muted-foreground">
                           {formatTimespan(

@@ -6,6 +6,7 @@ import { AlertTriangle, ArrowLeft } from "lucide-react";
 import { RecordingsTable } from "../components/RecordingsTable";
 import { fetchSessionGroup } from "../lib/api";
 import { formatTimespan } from "@/lib/sessions";
+import { RelativeTime } from "@/components/RelativeTime";
 
 export default function Session() {
   const { traceId } = useParams<{ traceId: string }>();
@@ -65,6 +66,10 @@ export default function Session() {
                   new Date(data.group.first_timestamp),
                   "MMM d, yyyy HH:mm:ss",
                 )}
+                <RelativeTime
+                  timestamp={data.group.first_timestamp}
+                  className="ml-2 text-muted-foreground"
+                />
               </SessionField>
               <SessionField label="Span">
                 {formatTimespan(

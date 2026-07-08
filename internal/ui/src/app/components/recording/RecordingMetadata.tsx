@@ -1,6 +1,7 @@
 import React from "react";
 import { format } from "date-fns";
 import { Recording } from "@/lib/api";
+import { RelativeTime } from "@/components/RelativeTime";
 import {
   getStatusColor,
   getProviderStyles,
@@ -22,6 +23,10 @@ export function RecordingMetadata({ recording }: RecordingMetadataProps) {
     <div className="flex flex-wrap gap-x-10 gap-y-3 mb-6">
       <MetadataField label="Timestamp">
         {format(new Date(recording.timestamp), "MMM d, yyyy HH:mm:ss")}
+        <RelativeTime
+          timestamp={recording.timestamp}
+          className="ml-2 text-muted-foreground"
+        />
       </MetadataField>
       <MetadataField label="Provider">
         <span
